@@ -9,7 +9,7 @@ namespace InitialProject.Model
         public DateTime CreationTime { get; set; }
         public string Text { get; set; }
         public User User { get; set; }
-
+            
         public Comment() { }
 
         public Comment(DateTime creationTime, string text, User user)
