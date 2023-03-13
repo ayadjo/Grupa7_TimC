@@ -13,6 +13,7 @@ namespace InitialProject.Model
         public int Duration { get; set; }
         public string Language { get; set; }
         public int NumberOfPeople { get; set; }
+        public User Guest2 { get; set; }
 
         public ToursOverviewWindow() { }
 
@@ -26,7 +27,8 @@ namespace InitialProject.Model
         public string[] ToCSV()
         {
             string[] csvValues =
-            {   Id.ToString(),
+            {   
+                Id.ToString(),
                 Location.Id.ToString(),
                 Duration.ToString(),
                 Language,
