@@ -29,7 +29,7 @@ namespace InitialProject.Repository
         {
             return _accommodations.Find(a => a.Id == id);
         }
-        public Accommodation Save(Accommodation accommodation)
+        public Accommodation Create(Accommodation accommodation)
         {
             accommodation.Id = NextId();
             _accommodations = _serializer.FromCSV(FilePath);

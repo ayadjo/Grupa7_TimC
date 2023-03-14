@@ -1,4 +1,5 @@
-﻿using InitialProject.Serializer;
+﻿using InitialProject.Model;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace InitialProject.Model
         public string Country { get; set; }
         public string City { get; set; }
         public Location() { }
-        public Location(int id, string country, string city)
+        public Location(string country, string city)
         {
-            Country = Country;
+            Country = country;
             City = city;
         }
         public string[] ToCSV()
