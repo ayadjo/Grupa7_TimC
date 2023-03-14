@@ -13,7 +13,7 @@ namespace InitialProject.Model
     public class Accommodation : ISerializable
     {
         public int Id { get; set; }
-        public String Name { get; set; }
+        public string Name { get; set; }
         public Location Location { get; set; }
         public AccommodationType Type { get; set; }
         public int MaxGuests { get; set; }
@@ -59,18 +59,7 @@ namespace InitialProject.Model
             Id = Convert.ToInt32(values[0]);
             Name = values[1];
             Location = new Location() { Id = Convert.ToInt32(values[2]) };
-            //nisam sigurna da li je dobro ovo za enumeraciju, ako neko zna kako neka ispravi
-            if (Convert.ToInt32(values[3]) == 0)
-            {
-                Type = AccommodationType.apartment;
-            }
-            else if (Convert.ToInt32(values[3]) == 1)
-            {
-                Type = AccommodationType.house;
-            }else
-            {
-                Type = AccommodationType.cottage;
-            }
+            Type =(AccommodationType) Enum.Parse(typeof(AccommodationType), values[3]);
             MaxGuests = Convert.ToInt32(values[4]);
             MinDaysForReservation = Convert.ToInt32(values[5]);
             CancelationPeriod = Convert.ToInt32(values[6]);
