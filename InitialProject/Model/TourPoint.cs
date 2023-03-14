@@ -9,7 +9,7 @@ using InitialProject.Serializer;
 
 namespace InitialProject.Model
 {
-    internal class TourPoint : ISerializable
+    public class TourPoint : ISerializable
     {
         public int Id { get; set; } 
         public String Name { get; set; }

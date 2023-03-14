@@ -15,18 +15,17 @@ namespace InitialProject.Model
         public Accommodation Accommodation { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
-        public int Cleanliness { get; set; }
-        public int Behaviour { get; set; }
-        public string Comment { get; set; }
+   
+        public GuestReview Review { get; set; }
 
         public AccommodationReservation() { }
-        public AccommodationReservation(User guest, Accommodation accommodation, int cleanliness, int behaviour, string comment)
+        public AccommodationReservation(int id, User guest, Accommodation accommodation, DateTime start, DateTime end,GuestReview review)
         {
             Guest = guest;
             Accommodation = accommodation;
-            Cleanliness = cleanliness;
-            Behaviour = behaviour;
-            Comment = comment;
+            Start = start;
+            End = end;
+            Review = review;
         }
 
         string[] ISerializable.ToCSV()
@@ -35,11 +34,9 @@ namespace InitialProject.Model
             {   Id.ToString(),
                 Guest.Id.ToString(),
                 Accommodation.Id.ToString(),
-                Start.ToString(), //new class 
+                Start.ToString(),
                 End.ToString(),
-                Cleanliness.ToString(),
-                Behaviour.ToString(),
-                Comment
+                Review.Id.ToString(),
             };
             return csvValues;
         }
@@ -51,9 +48,7 @@ namespace InitialProject.Model
             Accommodation = new Accommodation() { Id = Convert.ToInt32(values[2]) };
             Start = DateTime.Parse(values[3]);
             End = DateTime.Parse(values[4]);
-            Cleanliness = Convert.ToInt32(values[5]);
-            Behaviour = Convert.ToInt32(values[6]);
-            Comment = values[7];
+            Review = new GuestReview() { Id = Convert.ToInt32(values[5]) };
         }
     }
 }

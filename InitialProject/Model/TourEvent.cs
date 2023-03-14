@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace InitialProject.Model
 {
-    class TourEvent
+    public class TourEvent
     {
 
         public int Id { get; set; } 
