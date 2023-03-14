@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
+using InitialProject.Serializer;
 
 namespace InitialProject.Model
 {
-    internal class TourPoint
+    internal class TourPoint : ISerializable
     {
         public int Id { get; set; } 
         public String Name { get; set; }
@@ -50,7 +51,7 @@ namespace InitialProject.Model
             Name = values[1];
             Tour = new Tour() { Id = Convert.ToInt32(values[2]) };
             Order = Convert.ToInt32(values[3]);
-            Active = Boolean.Parse(values[4]); //?
+            Active = Boolean.Parse(values[4]); 
 
         }
 
