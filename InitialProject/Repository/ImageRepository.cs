@@ -12,6 +12,7 @@ namespace InitialProject.Repository
     public class ImageRepository
     {
         private const string FilePath = "../../../Resources/Data/images.csv";
+        private static ImageRepository instance = null;
 
         private readonly Serializer<Image> _serializer;
 
@@ -22,6 +23,20 @@ namespace InitialProject.Repository
             _serializer = new Serializer<Image>();
             _images = _serializer.FromCSV(FilePath);
         }
+        public static ImageRepository GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ImageRepository();
+            }
+            return instance;
+        }
+
+        /*public void BindImageResource()
+        {
+            
+        }*/
+
         public List<Image> GetAll()
         {
             return _serializer.FromCSV(FilePath);
@@ -66,10 +81,6 @@ namespace InitialProject.Repository
             return image;
         }
 
-        public List<Image> GetByResource(int ResourceId)    //returs list of Images that belongs to some resource(acc. for example)
-        {
-            _images = _serializer.FromCSV(FilePath);
-            return _images.FindAll(i => i.ResourceId == ResourceId);
-        }
+       
     }
 }

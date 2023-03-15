@@ -11,7 +11,8 @@ namespace InitialProject.Model
     {
         public int Id { get; set; }
         public String Url { get; set; }
-        public int ResourceId { get; set; }
+        public int ResourceId { get; set; }//prvo smestaj/tura pa slika
+        //type
         public String Description { get; set; }
         public Image() { }
         public Image(String url, int resourceId, String description)

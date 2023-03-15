@@ -1,5 +1,6 @@
 ﻿using InitialProject.Model;
 using InitialProject.Repository;
+using InitialProject.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,33 +12,39 @@ namespace InitialProject.Controller
 {
     public class AccommodationController
     {
-        private readonly AccommodationRepository _accommodations;
+        private readonly AccommodationService _accommodationService;
 
         public AccommodationController()
         {
-            _accommodations = new AccommodationRepository();
+            _accommodationService = new AccommodationService();
         }
 
         public List<Accommodation> GetAll()
         {
-            return _accommodations.GetAll();
+            return _accommodationService.GetAll();
         }
 
-        public Accommodation Get(Accommodation accommodation)
+        public Accommodation Get(int id)
         {
-            return _accommodations.Get(accommodation.Id);
+            return _accommodationService.Get(id);
         }
-        public Accommodation Create(Accommodation accommodation)
+        public Accommodation Save(Accommodation accommodation)
         {
-            return _accommodations.Create(accommodation);
+            return _accommodationService.Save(accommodation);
         }
         public void Delete(Accommodation accommodation)
         {
-            _accommodations.Delete(accommodation);
+            _accommodationService.Delete(accommodation);
         }
         public void Update(Accommodation accommodation)
         {
-            _accommodations.Update(accommodation);
+            _accommodationService.Update(accommodation);
         }
+
+        public void GetByOwner(Accommodation accommodation)
+        {
+            _accommodationService.GetByOwner(accommodation);
+        }
+
     }
 }

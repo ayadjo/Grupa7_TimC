@@ -95,7 +95,7 @@ namespace InitialProject.View.OwnerView
                 }
             }
         }
-        private int _cancelationPeriod;
+        private int _cancelationPeriod = 1;
         public int CancelationPeriod
         {
             get => _cancelationPeriod;
@@ -130,26 +130,8 @@ namespace InitialProject.View.OwnerView
 
             Accommodation Accommodation = new Accommodation(); 
 
-            MaxGuestTxt.Text = "0";
-            MinDaysForReservationTxt.Text = "0";
-            CancelationPeriodTxt.Text = "0";
         }
 
-        
-
-        private void IncreaseButton_Click(object sender, RoutedEventArgs e)
-        {
-            int value = int.Parse(MaxGuestTxt.Text);
-            value++;
-            MaxGuestTxt.Text = value.ToString();
-        }
-
-        private void DecreaseButton_Click(object sender, RoutedEventArgs e)
-        {
-            int value = int.Parse(MaxGuestTxt.Text);
-            value--;
-            MaxGuestTxt.Text = value.ToString();
-        }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
