@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Controller
 {
-    public class AccommodationController
+    public class LocationController
     {
-        private readonly AccommodationRepository _accommodations;
+        private readonly LocationRepository _locations;
 
-        public AccommodationController()
+        public LocationController()
         {
-            _accommodations = new AccommodationRepository();
+            _locations = new LocationRepository();
         }
 
-        public List<Accommodation> GetAccommodations()
+        public List<Location> GetLocations()
         {
-            return _accommodations.GetAll();
+            return _locations.GetAll();
         }
 
         public void Subscribe(IObserver observer)
         {
-            _accommodations.Subscribe(observer);
+            _locations.Subscribe(observer);
         }
     }
 }

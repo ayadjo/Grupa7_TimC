@@ -10,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace InitialProject.Model
 {
-    public class Accommodation : ISerializable
+    public class Accommodation : InitialProject.Serializer.ISerializable
     {
         public int Id { get; set; }
         public string Name { get; set; }
