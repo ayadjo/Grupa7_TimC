@@ -9,10 +9,10 @@
     <Grid>
         <DataGrid ItemsSource="{Binding Accommodations, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedAccommodation, UpdateSourceTrigger=PropertyChanged}"
-                  Margin="10,10,240,113" AutoGenerateColumns="False" x:Name="AccommodationsDataGrid">
+                  Margin="10,10,240,113" AutoGenerateColumns="False" x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Lokacija" Binding="{Binding Location.Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Lokacija" Binding="{Binding Location.City}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Tip" Binding="{Binding Type}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Max broj gostiju" Binding="{Binding MaxGuests}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Min dana za rezervaciju" Binding="{Binding MinDaysForReservation}"></DataGridTextColumn>
@@ -28,7 +28,7 @@
         <Label HorizontalAlignment="Left" Margin="588,80,0,0" VerticalAlignment="Top" Content="Pretraga po lokaciji:"/>
         <TextBox HorizontalAlignment="Left" Margin="588,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="43" Name="AccommodationSearchByLocationTextBox"/>
 
-        <Label HorizontalAlignment="Left" Margin="588,156,0,0" VerticalAlignment="Top">Pretraga po tipu smeštaja:</Label>
+        <Label HorizontalAlignment="Left" Margin="588,156,0,0" VerticalAlignment="Top" Content="Pretraga po tipu smeštaja:" />
         <TextBox HorizontalAlignment="Left" Margin="588,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="35" Name="AccommodationSearchByTypeTextBox"/>
 
         <Label HorizontalAlignment="Left" Margin="588,217,0,0" VerticalAlignment="Top" Content="Pretraga po broju gostiju:"/>

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Model
 {
-    public class Location 
+    public class Location : ISerializable
     {
         public int Id { get; set; }
         public String State { get; set; }
         public String City { get; set; }
         public Location() { }
-        public Location(int id, String state, String city)
+        public Location(String state, String city)
         {
             State = state;
             City = city;

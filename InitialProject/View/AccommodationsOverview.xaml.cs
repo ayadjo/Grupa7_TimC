@@ -23,7 +23,8 @@ namespace InitialProject.View
     /// </summary>
     public partial class AccommodationsOverview : Window, IObserver
     {
-        private readonly AccommodationController _controller;
+        private readonly AccommodationController _accommodationController;
+        private readonly LocationController _locationController;
 
         public ObservableCollection<Accommodation> Accommodations { get; set; }
         public Accommodation SelectedAccommodation { get; set; }
@@ -33,16 +34,23 @@ namespace InitialProject.View
             InitializeComponent();
             DataContext = this;
 
-            _controller = new AccommodationController();
-            _controller.Subscribe(this);
+            _accommodationController = new AccommodationController();
+            _accommodationController.Subscribe(this);
+            _locationController = new LocationController();
 
-            Accommodations = new ObservableCollection<Accommodation>(_controller.GetAccommodations());
+            Accommodations = new ObservableCollection<Accommodation>(_accommodationController.GetAccommodations());
+
+            for (int i = 0; i < Accommodations.Count; ++i)
+            {
+                Accommodations[i].Location = _locationController.GetLocations().Find(a => a.Id == Accommodations[i].Location.Id);
+
+            }
         }
 
         private void UpdateAccommodationsList()
         {
             Accommodations.Clear();
-            foreach (var accommodation in _controller.GetAccommodations())
+            foreach (var accommodation in _accommodationController.GetAccommodations())
             {
                 Accommodations.Add(accommodation);
             }
@@ -56,26 +64,29 @@ namespace InitialProject.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string name = AccommodationSearchByNameTextBox.Text;
-            string location = AccommodationSearchByLocationTextBox.Text;
+            string city = AccommodationSearchByLocationTextBox.Text;
             string type = AccommodationSearchByTypeTextBox.Text;
             string numberOfGuests = AccommodationSearchByNumberOfGuestsTextBox.Text;
             string numerOfDaysForReservation = AccommodationSearchByNumerOfDaysForReservationTextBox.Text;
 
             // Load the accommodations from the CSV file
-            List<Accommodation> accommodations = _controller.GetAccommodations();
+            List<Accommodation> accommodations = _accommodationController.GetAccommodations();
+
+            for (int i = 0; i < Accommodations.Count; ++i)
+            {
+                Accommodations[i].Location = _locationController.GetLocations().Find(a => a.Id == Accommodations[i].Location.Id);
+
+            }
 
             // Filter accommodations by name
             List<Accommodation> filteredAccommodations = accommodations.Where(a => a.Name.StartsWith(name, StringComparison.OrdinalIgnoreCase)
                                                                                 && a.MaxGuests.ToString().StartsWith(numberOfGuests, StringComparison.OrdinalIgnoreCase)
                                                                                 && a.MinDaysForReservation.ToString().StartsWith(numerOfDaysForReservation, StringComparison.OrdinalIgnoreCase)
-                                                                                && a.Location.ToString().StartsWith(location, StringComparison.OrdinalIgnoreCase)
+                                                                                && a.Location.City.StartsWith(city, StringComparison.OrdinalIgnoreCase)
                                                                                 && a.Type.ToString().StartsWith(type, StringComparison.OrdinalIgnoreCase)).ToList();
 
             // Display the filtered accommodations in the DataGridView
-            AccommodationsDataGrid
-                
-                
-                .ItemsSource = filteredAccommodations;
+            AccommodationsDataGrid.ItemsSource = filteredAccommodations;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace InitialProject.Storage
 {
     class AccommodationStorage
     {
-        private const string StoragePath = "../../../Data/accommodations.csv";
+        private const string StoragePath = "../../../Resources/Data/accommodations.csv";
 
         private readonly Serializer<Accommodation> _serializer;
 
