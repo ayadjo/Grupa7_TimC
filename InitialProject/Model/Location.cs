@@ -1,4 +1,5 @@
-﻿using InitialProject.Serializer;
+﻿using InitialProject.Model;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +11,25 @@ namespace InitialProject.Model
     public class Location : ISerializable
     {
         public int Id { get; set; }
-        public String State { get; set; }
-        public String City { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
         public Location() { }
+
         public Location(String state, String city)
         {
-            State = state;
+            Country = country;
             City = city;
         }
         public string[] ToCSV()
         {
-            string[] csvValues = { Id.ToString(), State, City };
+            string[] csvValues = { Id.ToString(), Country, City };
             return csvValues;
         }
 
         public void FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
-            State = values[1];
+            Country = values[1];
             City = values[2];
         }
     }

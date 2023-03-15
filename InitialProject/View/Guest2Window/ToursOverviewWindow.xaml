@@ -1,0 +1,73 @@
+﻿<Window x:Class="InitialProject.View.Guest2Window.ToursOverviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.View.Guest2Window"
+        mc:Ignorable="d"
+        Title="Prikaz i pretraga tura" Height="450" Width="800">
+    <DockPanel>
+
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="30,50,26,5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+                <ComboBox x:Name="cbLocation" Grid.Row="0" Grid.Column="0" Height="30" Margin="31,10,10,10" />
+                <Image Source="/Resources/Images/location.png" Grid.Row="0" Grid.Column="0" Height="30" Margin="-4,10,113,10" />
+
+                <TextBox x:Name="tbNumberOfPeople" Grid.Row="0" Grid.Column="1" Height="30" Margin="31,10,10,10"/>
+                <Image Source="/Resources/Images/people.png" Grid.Row="0" Height="30" Margin="139,10,118,10" Grid.ColumnSpan="2"/>
+
+                <TextBox x:Name="tbLanguage" Grid.Row="0" Grid.Column="2" Height="30" Margin="31,10,10,10"/>
+                <Image Source="/Resources/Images/language.png" Grid.Row="0" Grid.Column="1" Margin="144,20,122,14" Grid.ColumnSpan="2"/>
+
+                <TextBox x:Name="tbDuration" Grid.Row="0" Grid.Column="3" Height="30" Margin="31,10,10,10"/>
+                <Image Source="/Resources/Images/duration.png" Grid.Row="0" Grid.Column="2" Margin="147,14,108,14" Grid.ColumnSpan="2"/>
+
+                <Button x:Name="buttonSearch" Click="buttonSearch_Click" Content="Pretraži" Grid.Row="0" Grid.Column="4" Height="30"  Margin="10,10,10,10"></Button>
+
+            </Grid>
+        </Grid>
+
+        <Button x:Name="buttonReserve" DockPanel.Dock="Bottom" Content="Rezerviši" Margin="550,0,10,30" Width="70" Height="30" Click="buttonReserve_Click" ></Button>
+
+        <DataGrid 
+                  ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedTour, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  Width="750" Height="200" x:Name="tourOverview">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Lokacija" Binding="{Binding Location}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Jezik" Binding="{Binding Language}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Broj ljudi" Binding="{Binding }" Width="150"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+    </DockPanel>
+</Window>

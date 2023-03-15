@@ -13,20 +13,20 @@ namespace InitialProject.Model
     public class Accommodation : InitialProject.Serializer.ISerializable
     {
         public int Id { get; set; }
-        public String Name { get; set; }
+        public string Name { get; set; }
         public Location Location { get; set; }
         public AccommodationType Type { get; set; }
         public int MaxGuests { get; set; }
         public int MinDaysForReservation { get; set; }
         public int CancelationPeriod { get; set; }
         public List<Image> Images { get; set; }
-        public User Vlasnik { get; set; }
+        public User Owner { get; set; }
 
         public Accommodation() { 
             Images = new List<Image>();
         }
 
-        public Accommodation(String name, Location location, AccommodationType type, int maxGuests, int minDaysForReservation, int cancelationPeriod, User vlasnik)
+        public Accommodation(String name, Location location, AccommodationType type, int maxGuests, int minDaysForReservation, int cancelationPeriod, User owner)
         {
             Name = name;
             Location = location;
@@ -35,7 +35,7 @@ namespace InitialProject.Model
             MinDaysForReservation = minDaysForReservation;
             CancelationPeriod = cancelationPeriod;
             Images = new List<Image>();
-            Vlasnik = vlasnik;
+            Owner = owner;
 
         }
 
@@ -49,7 +49,7 @@ namespace InitialProject.Model
                 MaxGuests.ToString(),
                 MinDaysForReservation.ToString(),
                 CancelationPeriod.ToString(),
-                Vlasnik.Id.ToString()
+                Owner.Id.ToString()
             };
             return csvValues;
         }
@@ -59,22 +59,11 @@ namespace InitialProject.Model
             Id = Convert.ToInt32(values[0]);
             Name = values[1];
             Location = new Location() { Id = Convert.ToInt32(values[2]) };
-            //nisam sigurna da li je dobro ovo za enumeraciju, ako neko zna kako neka ispravi
-            if (Convert.ToInt32(values[3]) == 0)
-            {
-                Type = AccommodationType.apartment;
-            }
-            else if (Convert.ToInt32(values[3]) == 1)
-            {
-                Type = AccommodationType.house;
-            }else
-            {
-                Type = AccommodationType.cottage;
-            }
+            Type =(AccommodationType) Enum.Parse(typeof(AccommodationType), values[3]);
             MaxGuests = Convert.ToInt32(values[4]);
             MinDaysForReservation = Convert.ToInt32(values[5]);
             CancelationPeriod = Convert.ToInt32(values[6]);
-            Vlasnik = new User() { Id = Convert.ToInt32(values[7]) };
+            Owner = new User() { Id = Convert.ToInt32(values[7]) };
         }
 
     }
