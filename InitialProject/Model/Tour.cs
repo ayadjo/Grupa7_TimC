@@ -32,8 +32,9 @@ namespace InitialProject.Model
 
         }
 
-        public Tour(String name, Location location, String description, String languages, int maxGuests, int duration, User guide) { 
+        public Tour(int id, String name, Location location, String description, String languages, int maxGuests, int duration, User guide) { 
         
+            Id = id;    
             Name = name;    
             Location = location;    
             Description = description;  
