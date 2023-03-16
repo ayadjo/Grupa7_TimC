@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="Prikaz i pretraga tura" Height="450" Width="800">
     <DockPanel>
-
+        <StackPanel Orientation="Horizontal">
+    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />            
+</StackPanel>
         <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -35,7 +37,7 @@
                 </Grid.ColumnDefinitions>
 
                 <ComboBox x:Name="cbLocation" Grid.Row="0" Grid.Column="0" Height="30" Margin="31,10,10,10" />
-                <Image Source="/Resources/Images/location.png" Grid.Row="0" Grid.Column="0" Height="30" Margin="-4,10,113,10" />
+                <Image Source="location.png" Grid.Row="0" Grid.Column="0" Height="30" Margin="-4,10,113,10" />
 
                 <TextBox x:Name="tbNumberOfPeople" Grid.Row="0" Grid.Column="1" Height="30" Margin="31,10,10,10"/>
                 <Image Source="/Resources/Images/people.png" Grid.Row="0" Height="30" Margin="139,10,118,10" Grid.ColumnSpan="2"/>
@@ -67,7 +69,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-
+        
 
     </DockPanel>
 </Window>

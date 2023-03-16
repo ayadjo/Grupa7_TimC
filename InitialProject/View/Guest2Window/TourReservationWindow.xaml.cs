@@ -23,5 +23,10 @@ namespace InitialProject.View.Guest2Window
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -13,6 +13,8 @@ namespace InitialProject.Repository
 
         private const string FilePath = "../../../Resources/Data/tours.csv";
 
+        private static TourRepository instance = null;
+
         private readonly Serializer<Tour> _serializer;
 
         private List<Tour> _tours;
@@ -21,6 +23,15 @@ namespace InitialProject.Repository
 
             _serializer = new Serializer<Tour>();
             _tours = _serializer.FromCSV(FilePath);
+        }
+
+        public static TourRepository GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new TourRepository();
+            }
+            return instance;
         }
 
         public Tour Save(Tour tour)

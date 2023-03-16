@@ -1,4 +1,5 @@
-﻿using InitialProject.Model;
+﻿using InitialProject.Controller;
+using InitialProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,13 +20,15 @@ namespace InitialProject.View.Guest2Window
     /// <summary>
     /// Interaction logic for ToursOverviewWindow.xaml
     /// </summary>
-    public partial class ToursOverviewWindow : Window//,IObserver
+    public partial class ToursOverviewWindow : Window
     {
-        //private readonly TourController _tourcontroller;
+       // private readonly TourController _tourcontroller;
 
-        // public ObservableCollection<Tour> Tours { get; set; }
+        public ObservableCollection<Tour> Tours { get; set; }
 
-        //public Tour SelectedTour { get; set; }
+       // public TourController _tourController;
+
+        public Tour SelectedTour { get; set; }
         public ToursOverviewWindow()
         {
             InitializeComponent();
@@ -33,11 +36,10 @@ namespace InitialProject.View.Guest2Window
             DataContext = this;
             var app = Application.Current as App;
 
-            /*_tourcontroller = new TourController();
-            _tourcontroller.Subscribe(this);
+           // _tourcontroller = new TourController();
 
-            Tours = new ObservableCollection<Tour>(_tourcontroller.GetAllTours());
-            */
+            //Tours = new ObservableCollection<Tour>(_tourcontroller.GetAllTours());
+            
         }
 
         private void UpdateToursList()
@@ -51,7 +53,7 @@ namespace InitialProject.View.Guest2Window
 
         public void Update()
         {
-                UpdateToursList();
+            UpdateToursList();
         }
 
 
@@ -60,7 +62,7 @@ namespace InitialProject.View.Guest2Window
             /* if (SelectedTour != null)
              {
                  TourReservation tourReservation = new TourReservation();
-                 tourReservation.Show()
+                 tourReservation.Show();
              }
              else
              {

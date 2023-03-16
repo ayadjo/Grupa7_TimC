@@ -1,4 +1,5 @@
 ﻿using InitialProject.Enumerations;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Xml.Linq;
 
 namespace InitialProject.Model
 {
-    public class TourReservation
+    public class TourReservation : ISerializable
     {
         public int Id { get; set; }
 

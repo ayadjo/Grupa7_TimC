@@ -12,6 +12,8 @@ namespace InitialProject.Repository
     {
         private const string FilePath = "../../../Resources/Data/locations.csv";
 
+        private static LocationRepository instance = null;
+
         private readonly Serializer<Location> _serializer;
 
         private List<Location> _locations;
@@ -20,6 +22,15 @@ namespace InitialProject.Repository
         {
             _serializer = new Serializer<Location>();
             _locations = _serializer.FromCSV(FilePath);
+        }
+
+        public static LocationRepository GetInstance()
+        {
+            if(GetInstance == null)
+            {
+                instance = new LocationRepository();
+            }
+            return instance;
         }
         public List<Location> GetAll()
         {

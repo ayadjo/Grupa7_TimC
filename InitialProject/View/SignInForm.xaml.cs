@@ -1,6 +1,7 @@
 ﻿using InitialProject.Forms;
 using InitialProject.Model;
 using InitialProject.Repository;
+using InitialProject.View.Guest2Window;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -46,6 +47,10 @@ namespace InitialProject
         private void SignIn(object sender, RoutedEventArgs e)
         {
             User user = _repository.GetByUsername(Username);
+
+            ToursOverviewWindow toursOverview = new ToursOverviewWindow();
+            toursOverview.Show();
+
             if (user != null)
             {
                 if(user.Password == txtPassword.Password)
@@ -53,6 +58,8 @@ namespace InitialProject
                     CommentsOverview commentsOverview = new CommentsOverview(user);
                     commentsOverview.Show();
                     Close();
+                    
+
                 } 
                 else
                 {
