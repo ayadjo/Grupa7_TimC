@@ -18,15 +18,14 @@ namespace InitialProject.Repository
 
         private List<Location> _locations;
 
-        public LocationRepository()
+        private LocationRepository()
         {
             _serializer = new Serializer<Location>();
             _locations = _serializer.FromCSV(FilePath);
         }
-
         public static LocationRepository GetInstance()
         {
-            if(GetInstance == null)
+            if(instance == null)
             {
                 instance = new LocationRepository();
             }

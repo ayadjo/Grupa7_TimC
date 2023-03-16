@@ -12,14 +12,42 @@ namespace InitialProject.Repository
     {
         private const string FilePath = "../../../Resources/Data/accommodations.csv";
 
+        private static AccommodationRepository instance = null;
+
         private readonly Serializer<Accommodation> _serializer;
 
         private List<Accommodation> _accommodations;
 
-        public AccommodationRepository()
+        private AccommodationRepository()
         {
             _serializer = new Serializer<Accommodation>();
             _accommodations = _serializer.FromCSV(FilePath);
+        }
+
+        public static AccommodationRepository GetInstance()
+        {
+            if(instance == null)
+            {
+                instance = new AccommodationRepository();
+            }
+            return instance;
+        }
+
+        public void BindAccomodationLocation()
+        {
+            foreach(Accommodation accommodation in _accommodations)
+            {
+                 int locationId = accommodation.Location.Id;
+                Location location = LocationRepository.GetInstance().Get(locationId);
+                if(location != null)
+                {
+                    accommodation.Location = location;
+                }
+                else
+                {
+                    Console.WriteLine("Error in accommodationLocation binding");
+                }
+            }
         }
         public List<Accommodation> GetAll()
         {

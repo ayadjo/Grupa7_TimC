@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InitialProject.Repository;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,12 @@ namespace InitialProject
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            AccommodationRepository.GetInstance();
+            LocationRepository.GetInstance();
+
+            AccommodationRepository.GetInstance().BindAccomodationLocation();
+        }
     }
 }

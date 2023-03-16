@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Repository
 {
-    internal class TourRepository
+    public class TourRepository
     {
 
         private const string FilePath = "../../../Resources/Data/tours.csv";
@@ -34,6 +34,22 @@ namespace InitialProject.Repository
             return instance;
         }
 
+        public void BindTourLocation()
+        {
+            foreach (Tour tour in _tours)
+            {
+                int locationId = tour.Location.Id;
+                Location location = LocationRepository.GetInstance().Get(locationId);
+                if (location != null)
+                {
+                    tour.Location = location;
+                }
+                else
+                {
+                    Console.WriteLine("Error in tourLocation binding");
+                }
+            }
+        }
         public Tour Save(Tour tour)
         {
             tour.Id = NextId();
