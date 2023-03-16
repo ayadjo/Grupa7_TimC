@@ -22,11 +22,13 @@
             <Label Grid.Column="1" Content="Number of people" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="82,0,0,0"/>
             <TextBox x:Name="tbNumberOfPeople" Height="30" Grid.Row="0" Grid.Column="2" Margin="10,72,100,73"/>
             <Image x:Name="Image" Grid.RowSpan="2"></Image>
-            <Button x:Name="a" Grid.Column="1" Content="Rezervisi" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Height="37" Width="76" />
+            
 
 
 
         </Grid>
+
+        <Button x:Name="Reserve" DockPanel.Dock="Bottom" Content="Rezervisi" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Height="37" Width="76" />
 
 
     </DockPanel>

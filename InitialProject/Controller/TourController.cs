@@ -59,5 +59,10 @@ namespace InitialProject.Controller
 
             return _tourService.GetByGuide(id);
         }
+
+        public List<Tour> TourSearch(string country, string city, string language, string numberOfPeople, string duration)
+        {
+            return _tourService.TourSearch(country, city, language, numberOfPeople, duration);
+        }
     }
 }

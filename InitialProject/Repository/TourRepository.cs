@@ -19,7 +19,7 @@ namespace InitialProject.Repository
 
         private List<Tour> _tours;
 
-        public TourRepository() {
+        private TourRepository() {
 
             _serializer = new Serializer<Tour>();
             _tours = _serializer.FromCSV(FilePath);
