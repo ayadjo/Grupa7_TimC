@@ -1,4 +1,5 @@
-﻿using InitialProject.Serializer;
+﻿using InitialProject.Enumerations;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,20 @@ namespace InitialProject.Model
         public String Url { get; set; }
         public int ResourceId { get; set; }
         public String Description { get; set; }
+        public ImageResource Resource { get; set; }
         public Image() { }
-        public Image(String url, int resourceId, String description)
+        public Image(int id, String url, int resourceId, String description, ImageResource resource)
         {
+            Id = id; 
             Url = url;
             ResourceId = resourceId;
             Description = description;
+            Resource = resource;
         }
 
         public string[] ToCSV()
         {
-            string[] csvValues = { Id.ToString(), Url, ResourceId.ToString(), Description };
+            string[] csvValues = { Id.ToString(), Url, ResourceId.ToString(), Description, Resource.ToString() };
             return csvValues;
         }
 
@@ -33,6 +37,7 @@ namespace InitialProject.Model
             Url = values[1];
             ResourceId = Convert.ToInt32(values[2]);
             Description = values[3];
+            Resource = (ImageResource)Enum.Parse(typeof(ImageResource), values[4]);
         }
     }
 }

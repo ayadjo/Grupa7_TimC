@@ -12,22 +12,23 @@ namespace InitialProject.Model
         public string LastName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public UserType Type { get; set; }
+        //public UserType Type { get; set; }
 
         public User() { }
 
-        public User(string firstName, string lastName, string username, string password, UserType type)
+        public User(int id,string firstName, string lastName, string username, string password)
         {
+            Id = id; 
             FirstName = firstName;
             LastName = lastName;
             Username = username;
             Password = password;
-            Type = type;
+            //Type = type;
         }
 
         public string[] ToCSV()
         {
-            string[] csvValues = { Id.ToString(), FirstName, LastName, Username, Password, Type.ToString() };
+            string[] csvValues = { Id.ToString(), FirstName, LastName, Username, Password };
             return csvValues;
         }
 

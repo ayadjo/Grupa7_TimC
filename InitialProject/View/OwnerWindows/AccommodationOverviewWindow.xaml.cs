@@ -1,6 +1,9 @@
-﻿using InitialProject.View.OwnerView;
+﻿using InitialProject.Controller;
+using InitialProject.Model;
+using InitialProject.View.OwnerView;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +23,39 @@ namespace InitialProject.View.OwnerWindows
     /// </summary>
     public partial class AccommodationOverviewWindow : Window
     {
+
+        public ObservableCollection<Accommodation> Accommodations { get; set; }
+        public AccommodationController _accommodationController;
         public AccommodationOverviewWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            _accommodationController = new AccommodationController();
+
+            Accommodations = new ObservableCollection<Accommodation>(_accommodationController.GetAll());
         }
 
         private void RegistenNewAccommodationButton_Click(object sender, RoutedEventArgs e)
         {
             RegisterNewAccommodation NewAccommodation = new RegisterNewAccommodation();
             NewAccommodation.Show();
+            Close();
+            Update();
+        }
+
+        private void UpdateAccommodationsList()
+        {
+        
+            foreach (var accommodation in _accommodationController.GetAll())
+            {
+                Accommodations.Add(accommodation);
+            }
+        }
+
+        public void Update()
+        {
+            UpdateAccommodationsList();
         }
     }
 }

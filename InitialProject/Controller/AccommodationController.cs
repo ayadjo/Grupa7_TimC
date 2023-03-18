@@ -23,16 +23,18 @@ namespace InitialProject.Controller
             return _accommodationService.GetAll();
         }
 
-
         public Accommodation Get(int id)
         {
             return _accommodationService.Get(id);
         }
-
         public Accommodation Save(Accommodation accommodation)
         {
-
             return _accommodationService.Save(accommodation);
+        }
+
+        public Accommodation SaveCascadeImages(Accommodation accommodation)
+        {
+            return _accommodationService.SaveCascadeImages(accommodation);
         }
 
         public void Delete(Accommodation accommodation)

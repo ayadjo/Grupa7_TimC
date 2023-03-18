@@ -23,35 +23,12 @@ namespace InitialProject.Controller
             return _locationService.GetAll();
         }
 
-
         public Location Get(int id)
         {
             return _locationService.Get(id);
         }
 
-        public Location Save(Location location)
-        {
-
-            return _locationService.Save(location);
-        }
-
-        public void Delete(Location location)
-        {
-
-            _locationService.Delete(location);
-        }
-
-        public Location Update(Location location)
-        {
-            return _locationService.Update(location);
-        }
-
-        public int NextId()
-        {
-
-            return _locationService.NextId();
-
-        }
+       
 
         /*
         public List<Accommodation> GetByOwner(int id)
@@ -66,5 +43,35 @@ namespace InitialProject.Controller
             return _tourService.TourSearch(country, city, language, numberOfPeople, duration);
         }
         */
+        public Location Save(Location location)
+        {
+            return _locationService.Save(location);
+        }
+        public void Delete(Location location)
+        {
+            _locationService.Delete(location);
+        }
+        public void Update(Location location)
+        {
+            _locationService.Update(location);
+        }
+
+        public List<String> GetAllCountries()
+        {
+           return  _locationService.GetAllCountries();
+        }
+        public List<string> GetCitiesByCountry(string country)
+        {
+            
+            return _locationService.GetCitiesByCountry(country);
+        }
+
+        public Location FindLocationByCountryCity(string country, string city)
+        {
+            return _locationService.FindLocationByCountryCity(country, city);
+        }
+
+
+
     }
 }

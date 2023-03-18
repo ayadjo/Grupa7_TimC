@@ -1,5 +1,6 @@
 ﻿using InitialProject.Model;
 using InitialProject.Serializer;
+using InitialProject.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace InitialProject.Repository
     public class LocationRepository
     {
         private const string FilePath = "../../../Resources/Data/locations.csv";
+        private static LocationRepository instance = null;
 
         private static LocationRepository instance = null;
 
@@ -33,7 +35,7 @@ namespace InitialProject.Repository
         }
         public List<Location> GetAll()
         {
-            return _serializer.FromCSV(FilePath);
+            return _locations;
         }
         public Location Get(int id)
         {
@@ -58,7 +60,7 @@ namespace InitialProject.Repository
             }
             return _locations.Max(l => l.Id) + 1;
         }
-        public void Delete(Location location)
+          public void Delete(Location location)
         {
             _locations = _serializer.FromCSV(FilePath);
             Location founded = _locations.Find(l => l.Id == location.Id);
@@ -76,5 +78,7 @@ namespace InitialProject.Repository
             _serializer.ToCSV(FilePath, _locations);
             return location;
         }
+
+        
     }
 }

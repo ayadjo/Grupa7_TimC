@@ -21,6 +21,7 @@ namespace InitialProject.Model
         public AccommodationReservation() { }
         public AccommodationReservation(int id, User guest, Accommodation accommodation, DateTime start, DateTime end,GuestReview review)
         {
+            Id = id; 
             Guest = guest;
             Accommodation = accommodation;
             Start = start;

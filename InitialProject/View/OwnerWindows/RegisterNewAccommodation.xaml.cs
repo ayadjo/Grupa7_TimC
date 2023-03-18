@@ -1,11 +1,14 @@
-﻿using InitialProject.Enumerations;
+﻿using InitialProject.Controller;
+using InitialProject.Enumerations;
 using InitialProject.Model;
+using InitialProject.Repository;
 using InitialProject.View.OwnerWindows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +19,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
+using Image = InitialProject.Model.Image;
 
 namespace InitialProject.View.OwnerView
 {
@@ -26,11 +31,16 @@ namespace InitialProject.View.OwnerView
     {
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
-        public AccommodationOverviewWindow AccommodationOverviewWindow { get; set; }
+        public ObservableCollection<AccommodationType> AccommodationTypes { get; set; }
+        
+        public LocationController _locationController;
+        public AccommodationController _accommodationController;
+
+        public List<Image> AllImages { get; set; }
 
         #region NotifyProperties
         private string _name;
-        public string Name
+        public string Naame
         {
             get => _name;
             set
@@ -38,7 +48,7 @@ namespace InitialProject.View.OwnerView
                 if (value != _name)
                 {
                     _name = value;
-                    OnPropertyChanged("Name");
+                    OnPropertyChanged("Naame");
                 }
             }
         }
@@ -68,7 +78,22 @@ namespace InitialProject.View.OwnerView
                 }
             }
         }
-        //private AccommodationType _selectedType;
+
+        private AccommodationType _selectedType;
+        public AccommodationType SelectedType
+        {
+            get => _selectedType;
+            set
+            {
+                if (value != _selectedType)
+                {
+                    _selectedType = value;
+                    OnPropertyChanged("SelectedType");
+                }
+            }
+        }
+        
+
         private int _maxGuests;
         public int MaxGuests
         {
@@ -95,7 +120,7 @@ namespace InitialProject.View.OwnerView
                 }
             }
         }
-        private int _cancelationPeriod;
+        private int _cancelationPeriod = 1;
         public int CancelationPeriod
         {
             get => _cancelationPeriod;
@@ -128,77 +153,54 @@ namespace InitialProject.View.OwnerView
             InitializeComponent();
             this.DataContext = this;
 
-            Accommodation Accommodation = new Accommodation(); 
+            _locationController = new LocationController();
+            _accommodationController = new AccommodationController();
 
-            MaxGuestTxt.Text = "0";
-            MinDaysForReservationTxt.Text = "0";
-            CancelationPeriodTxt.Text = "0";
+            Countries = new ObservableCollection<string>(_locationController.GetAllCountries()); 
+            Cities = new ObservableCollection<string>();
+            AccommodationTypes = new ObservableCollection<AccommodationType>();
+            AccommodationTypes.Add(AccommodationType.apartment);
+            AccommodationTypes.Add(AccommodationType.house);
+            AccommodationTypes.Add(AccommodationType.cottage);
+
+            AllImages = new List<Image>();
+
+            
         }
-
-        
-
-        private void IncreaseButton_Click(object sender, RoutedEventArgs e)
-        {
-            int value = int.Parse(MaxGuestTxt.Text);
-            value++;
-            MaxGuestTxt.Text = value.ToString();
-        }
-
-        private void DecreaseButton_Click(object sender, RoutedEventArgs e)
-        {
-            int value = int.Parse(MaxGuestTxt.Text);
-            value--;
-            MaxGuestTxt.Text = value.ToString();
-        }
-
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
+            User user = new User() { Id = 1 };
 
+            Accommodation accommodation = new Accommodation() { Name=Naame, Location = location, 
+            Type = SelectedType, MaxGuests = MaxGuests, MinDaysForReservation = MinDaysForReservation,
+            CancelationPeriod = CancelationPeriod, Owner = user, Images = AllImages};
+            _accommodationController.SaveCascadeImages(accommodation);
+            Close();
         }
-
+        //treba da sacuva listu slika i potom kad pravim smestaj hocu da mu ucitam tu listu
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
+       
         private void CountryComboBox_LostFocus(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void CityComboBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-
+            List<string> cities = _locationController.GetCitiesByCountry(SelectedCountry);
+            Cities.Clear();
+            foreach(string city in cities)
+            {
+                Cities.Add(city);
+            }
         }
 
         private void AddImages_Click(object sender, RoutedEventArgs e)
         {
-            AddNewImageWindow NewImage = new AddNewImageWindow();
+            AddNewImageWindow NewImage = new AddNewImageWindow(ImageResource.accommodation, AllImages);
             NewImage.Show();
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            var radioButton = (RadioButton)sender; // checked RadioButton
-
-            // logic
-            if (radioButton == ApartmentRadioButton)
-            {
-
-            }
-            else if (radioButton == HouseRadioButton)
-            {
-
-            }
-            else 
-            { 
-            
-            
-            }
-
-                
-        }
-
-        
+       
     }
 }
