@@ -1,4 +1,5 @@
-﻿using InitialProject.Model;
+﻿using InitialProject.Enumerations;
+using InitialProject.Model;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -32,10 +33,24 @@ namespace InitialProject.Repository
             return instance;
         }
 
-        /*public void BindImageResource()
+        public void BindImageResource()
         {
-            
-        }*/
+            foreach(Image image in _images)
+            {
+                if(image.Resource == ImageResource.tour)
+                {
+                    //Tour tour = TourRepository.GetInstance().Get(image.ResourceId)
+                    //tour.Images.Add(image);
+                }
+                else
+                {
+                    Accommodation accommodation = AccommodationRepository.GetInstance().Get(image.ResourceId);
+                    accommodation.Images.Add(image);
+                }
+                
+            }   
+        }
+
 
         public List<Image> GetAll()
         {

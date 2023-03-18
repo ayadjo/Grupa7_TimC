@@ -22,12 +22,14 @@ namespace InitialProject.Model
         public List<Image> Images { get; set; }
         public User Owner { get; set; }
 
+
         public Accommodation() { 
             Images = new List<Image>();
         }
 
-        public Accommodation(String name, Location location, AccommodationType type, int maxGuests, int minDaysForReservation, int cancelationPeriod, User owner)
+        public Accommodation(int id,String name, Location location, AccommodationType type, int maxGuests, int minDaysForReservation, int cancelationPeriod, User owner)
         {
+            Id = id; 
             Name = name;
             Location = location;
             Type = type;

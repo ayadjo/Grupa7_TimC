@@ -26,6 +26,8 @@ namespace InitialProject.Service
         {
             return _imageRepository.Get(id);
         }
+
+ 
         public Image Save(Image image)
         {
             return _imageRepository.Save(image);

@@ -2,6 +2,7 @@
 using InitialProject.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,42 @@ namespace InitialProject.Service
         {
             _locationRepository.Delete(location);
         }
-        
+
+        public List<string> GetAllCountries()
+        {
+            List<string> countries = new List<string>();
+            foreach(Location location in _locationRepository.GetAll())
+            {
+                countries.Add(location.Country);
+            }
+            return countries.Distinct().ToList();
+        }
+
+        public List<string> GetCitiesByCountry(string country)
+        {
+            List<string> cities = new List<string>();
+            foreach (Location location in _locationRepository.GetAll())
+            {
+                if(location.Country == country)
+                {
+                    cities.Add(location.City);
+                }
+            }
+            return cities;
+        }
+
+
+        public Location FindLocationByCountryCity(string country, string city)
+        {
+            foreach (Location location in _locationRepository.GetAll())
+            {
+                if (location.Country == country && location.City == city)
+                {
+                    return location;
+                }
+            }
+            return null;
+        }
+
     }
 }

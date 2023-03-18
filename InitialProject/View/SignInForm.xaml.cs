@@ -1,6 +1,8 @@
 ﻿using InitialProject.Forms;
 using InitialProject.Model;
 using InitialProject.Repository;
+using InitialProject.View.OwnerView;
+using InitialProject.View.OwnerWindows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -45,14 +47,16 @@ namespace InitialProject
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
-            User user = _repository.GetByUsername(Username);
-            if (user != null)
+            //User user = _repository.GetByUsername(Username);
+            OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
+            OwnerMainWindow.Show();
+            /*if (user != null)
             {
                 if(user.Password == txtPassword.Password)
                 {
-                    CommentsOverview commentsOverview = new CommentsOverview(user);
-                    commentsOverview.Show();
-                    Close();
+                   
+                   // newAccommodation.Show();
+                    
                 } 
                 else
                 {
@@ -62,7 +66,7 @@ namespace InitialProject
             else
             {
                 MessageBox.Show("Wrong username!");
-            }
+            }*/
             
         }
     }

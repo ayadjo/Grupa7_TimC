@@ -38,5 +38,23 @@ namespace InitialProject.Controller
         {
             _locationService.Update(location);
         }
+
+        public List<String> GetAllCountries()
+        {
+           return  _locationService.GetAllCountries();
+        }
+        public List<string> GetCitiesByCountry(string country)
+        {
+            
+            return _locationService.GetCitiesByCountry(country);
+        }
+
+        public Location FindLocationByCountryCity(string country, string city)
+        {
+            return _locationService.FindLocationByCountryCity(country, city);
+        }
+
+
+
     }
 }
