@@ -43,34 +43,18 @@ namespace InitialProject
         {
             InitializeComponent();
             DataContext = this;
-            _repository = new UserRepository();
+            _repository = UserRepository.GetInstance();
         }
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
-            //User user = _repository.GetByUsername(Username);
+
             OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
             OwnerMainWindow.Show();
-            /*if (user != null)
-            {
-                if(user.Password == txtPassword.Password)
-                {
-                    /*CommentsOverview commentsOverview = new CommentsOverview(user);
-                    commentsOverview.Show();*/
-                    AccommodationsOverview accommodationsOverview = new AccommodationsOverview();
-                    accommodationsOverview.Show();
-                    Close();
-                } 
-                else
-                {
-                    MessageBox.Show("Wrong password!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Wrong username!");
-            }*/
-            
+            //AccommodationsOverview accommodationsOverview = new AccommodationsOverview();
+            //accommodationsOverview.Show();
+            Close();
+
         }
-    }
+   }  
 }

@@ -29,7 +29,7 @@ namespace InitialProject.Model
             Review = review;
         }
 
-        string[] ISerializable.ToCSV()
+        public string[] ToCSV()
         {
             string[] csvValues =
             {   Id.ToString(),
@@ -42,7 +42,7 @@ namespace InitialProject.Model
             return csvValues;
         }
 
-        void ISerializable.FromCSV(string[] values)
+        public void FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
             Guest = new User() { Id = Convert.ToInt32(values[1]) };

@@ -21,10 +21,6 @@ namespace InitialProject
             LocationRepository.GetInstance();
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
-
-
-            AccommodationReservationRepository.GetInstance();
-
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
         }

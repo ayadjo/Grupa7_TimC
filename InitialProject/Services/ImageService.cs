@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InitialProject.Service
+namespace InitialProject.Services
 {
     public class ImageService
     {
@@ -27,7 +27,7 @@ namespace InitialProject.Service
             return _imageRepository.Get(id);
         }
 
- 
+
         public Image Save(Image image)
         {
             return _imageRepository.Save(image);
@@ -40,6 +40,6 @@ namespace InitialProject.Service
         {
             _imageRepository.Delete(image);
         }
-      
+
     }
 }

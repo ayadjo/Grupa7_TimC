@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Services
 {
-    internal class LocationService
+    public class LocationService
     {
         private LocationRepository _locationRepository;
 
@@ -26,30 +26,17 @@ namespace InitialProject.Services
         {
             return _locationRepository.Get(id);
         }
-
         public Location Save(Location location)
         {
-
             return _locationRepository.Save(location);
         }
-
-        public void Delete(Location location)
-        {
-
-            _locationRepository.Delete(location);
-
-        }
-
         public Location Update(Location location)
         {
             return _locationRepository.Update(location);
         }
-
-        public int NextId()
+        public void Delete(Location location)
         {
-
-            return _locationRepository.NextId();
-
+            _locationRepository.Delete(location);
         }
 
         /*
@@ -59,5 +46,40 @@ namespace InitialProject.Services
             return _accommodationRepository.GetByOwner(id);
         }
         */
+        public List<string> GetAllCountries()
+        {
+            List<string> countries = new List<string>();
+            foreach (Location location in _locationRepository.GetAll())
+            {
+                countries.Add(location.Country);
+            }
+            return countries.Distinct().ToList();
+        }
+
+        public List<string> GetCitiesByCountry(string country)
+        {
+            List<string> cities = new List<string>();
+            foreach (Location location in _locationRepository.GetAll())
+            {
+                if (location.Country == country)
+                {
+                    cities.Add(location.City);
+                }
+            }
+            return cities;
+        }
+
+
+        public Location FindLocationByCountryCity(string country, string city)
+        {
+            foreach (Location location in _locationRepository.GetAll())
+            {
+                if (location.Country == country && location.City == city)
+                {
+                    return location;
+                }
+            }
+            return null;
+        }
     }
 }

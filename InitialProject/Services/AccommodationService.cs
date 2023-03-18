@@ -34,6 +34,12 @@ namespace InitialProject.Services
             return _accommodationRepository.Save(accommodation);
         }
 
+        public Accommodation SaveCascadeImages(Accommodation accommodation)
+        {
+
+            return _accommodationRepository.Save(accommodation);
+        }
+
         public void Delete(Accommodation accommodation)
         {
 

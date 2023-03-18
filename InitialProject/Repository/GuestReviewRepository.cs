@@ -32,12 +32,12 @@ namespace InitialProject.Repository
             }
             return instance;
         }
-        /*public void BindGuestReviewWithAccommodationReservation()
+        public void BindGuestReviewWithAccommodationReservation()
         {
             foreach (GuestReview guestReview in _guestReviews)
             {
                 int accommodationReservationId = guestReview.Reservation.Id;
-                AccommodationReservation reservation = AccommodationRepositoryRepository.GetInstance().Get(accommodationReservationId);
+                AccommodationReservation reservation = AccommodationReservationRepository.GetInstance().Get(accommodationReservationId);
                 if (reservation != null)
                 {
                     guestReview.Reservation = reservation;
@@ -47,10 +47,10 @@ namespace InitialProject.Repository
                     Console.WriteLine("Error in guestReviewAccommodationReservation binding");
                 }
             }
-        }*/
+        }
         public List<GuestReview> GetAll()
         {
-            return _serializer.FromCSV(FilePath);
+            return _guestReviews;
         }
         public GuestReview Get(int id)
         {
@@ -59,14 +59,14 @@ namespace InitialProject.Repository
         public GuestReview Save(GuestReview guestReview)
         {
             guestReview.Id = NextId();
-            _guestReviews = _serializer.FromCSV(FilePath);
+            //_guestReviews = _serializer.FromCSV(FilePath);
             _guestReviews.Add(guestReview);
             _serializer.ToCSV(FilePath, _guestReviews);
             return guestReview;
         }
         public int NextId()
         {
-            _guestReviews = _serializer.FromCSV(FilePath);
+            //_guestReviews = _serializer.FromCSV(FilePath);
             if (_guestReviews.Count < 1)
             {
                 return 1;
@@ -75,7 +75,7 @@ namespace InitialProject.Repository
         }
         public void Delete(GuestReview guestReview)
         {
-            _guestReviews = _serializer.FromCSV(FilePath);
+            //_guestReviews = _serializer.FromCSV(FilePath);
             GuestReview founded = _guestReviews.Find(gR => gR.Id == guestReview.Id);
             _guestReviews.Remove(founded);
             _serializer.ToCSV(FilePath, _guestReviews);
@@ -83,7 +83,7 @@ namespace InitialProject.Repository
 
         public GuestReview Update(GuestReview guestReview)
         {
-            _guestReviews = _serializer.FromCSV(FilePath);
+            //_guestReviews = _serializer.FromCSV(FilePath);
             GuestReview current = _guestReviews.Find(a => a.Id == guestReview.Id);
             int index = _guestReviews.IndexOf(current);
             _guestReviews.Remove(current);
@@ -94,7 +94,7 @@ namespace InitialProject.Repository
 
         public List<GuestReview> GetByReservation(int reservationId)
         {
-            _guestReviews = _serializer.FromCSV(FilePath);
+            //_guestReviews = _serializer.FromCSV(FilePath);
             return _guestReviews.FindAll(gR => gR.Reservation.Id == reservationId);
         }
     }

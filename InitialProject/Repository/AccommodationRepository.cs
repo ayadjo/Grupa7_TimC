@@ -51,41 +51,6 @@ namespace InitialProject.Repository
             }
         }
 
-        public static AccommodationRepository GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new AccommodationRepository();
-            }
-            return instance;
-        }
-
-        public void BindAccomodationLocation()
-        {
-            foreach (Accommodation accommodation in _accommodations)
-            {
-                int locationId = accommodation.Location.Id;
-                Location location = LocationRepository.GetInstance().Get(locationId);
-                if (location != null)
-                {
-                    accommodation.Location = location;
-                }
-                else
-                {
-                    Console.WriteLine("Error in accommodationLocation binding");
-                }
-            }
-        }
-
-        public Accommodation Save(Accommodation accommodation)
-        {
-            accommodation.Id = NextId();
-            _accommodations = _serializer.FromCSV(FilePath);
-            _accommodations.Add(accommodation);
-            _serializer.ToCSV(FilePath, _accommodations);
-            return accommodation;
-        }
-
         public List<Accommodation> GetAll()
         {
             return _accommodations;

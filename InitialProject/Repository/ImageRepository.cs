@@ -39,8 +39,8 @@ namespace InitialProject.Repository
             {
                 if(image.Resource == ImageResource.tour)
                 {
-                    //Tour tour = TourRepository.GetInstance().Get(image.ResourceId)
-                    //tour.Images.Add(image);
+                   // Tour tour = TourRepository.GetInstance().Get(image.ResourceId);
+                   // tour.Images.Add(image);
                 }
                 else
                 {
@@ -54,7 +54,7 @@ namespace InitialProject.Repository
 
         public List<Image> GetAll()
         {
-            return _serializer.FromCSV(FilePath);
+            return _images;
         }
         public Image Get(int id)
         { 
@@ -63,14 +63,14 @@ namespace InitialProject.Repository
         public Image Save(Image image)
         {
             image.Id = NextId();
-            _images = _serializer.FromCSV(FilePath);
+            //_images = _serializer.FromCSV(FilePath);
             _images.Add(image);
             _serializer.ToCSV(FilePath, _images);
             return image;
         }
         public int NextId()
         {
-            _images = _serializer.FromCSV(FilePath);
+            //_images = _serializer.FromCSV(FilePath);
             if (_images.Count < 1)
             {
                 return 1;
@@ -79,7 +79,7 @@ namespace InitialProject.Repository
         }
         public void Delete(Image image)
         {
-            _images = _serializer.FromCSV(FilePath);
+            //_images = _serializer.FromCSV(FilePath);
             Image founded = _images.Find(i => i.Id == image.Id);
             _images.Remove(founded);
             _serializer.ToCSV(FilePath, _images);
@@ -87,7 +87,7 @@ namespace InitialProject.Repository
 
         public Image Update(Image image)
         {
-            _images = _serializer.FromCSV(FilePath);
+            //_images = _serializer.FromCSV(FilePath);
             Image current = _images.Find(i => i.Id == image.Id);
             int index = _images.IndexOf(current);
             _images.Remove(current);
