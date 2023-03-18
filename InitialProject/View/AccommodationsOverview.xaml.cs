@@ -15,7 +15,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using InitialProject.Observer;
 
 namespace InitialProject.View
 {
@@ -63,7 +62,7 @@ namespace InitialProject.View
         }
         
 
-        
+        /*
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             string name = AccommodationSearchByNameTextBox.Text;
@@ -93,7 +92,57 @@ namespace InitialProject.View
             // Display the filtered accommodations in the DataGridView
             AccommodationsDataGrid.ItemsSource = filteredAccommodations;
         }
-        
+        */
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string name = AccommodationSearchByNameTextBox.Text;
+            string country = AccommodationSearchByCountryTextBox.Text;
+            string city = AccommodationSearchByCityTextBox.Text;
+            string type = AccommodationSearchByTypeTextBox.Text;
+
+            int numberOfGuests = 0;
+            int numberOfDaysForReservation = 0;
+
+            try
+            {
+                numberOfGuests = Convert.ToInt32(AccommodationSearchByNumberOfGuestsTextBox.Text);
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                numberOfDaysForReservation = Convert.ToInt32(AccommodationSearchByNumerOfDaysForReservationTextBox.Text);
+            }
+            catch
+            {
+
+            }
+
+            // Load the accommodations from the CSV file
+            List<Accommodation> accommodations = _accommodationController.GetAll();
+
+            for (int i = 0; i < Accommodations.Count; ++i)
+            {
+                Accommodations[i].Location = _locationController.GetAll().Find(a => a.Id == Accommodations[i].Location.Id);
+
+            }
+
+            // Filter accommodations by name
+            List<Accommodation> filteredAccommodations = accommodations.Where(a => a.Name.StartsWith(name, StringComparison.OrdinalIgnoreCase)
+                                                                                && (a.MaxGuests >= numberOfGuests)
+                                                                                && (a.MinDaysForReservation >= numberOfDaysForReservation)
+                                                                                && a.Location.City.StartsWith(city, StringComparison.OrdinalIgnoreCase)
+                                                                                && a.Location.Country.StartsWith(country, StringComparison.OrdinalIgnoreCase)
+                                                                                && a.Type.ToString().StartsWith(type, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            // Display the filtered accommodations in the DataGridView
+            AccommodationsDataGrid.ItemsSource = filteredAccommodations;
+        }
+
 
 
 

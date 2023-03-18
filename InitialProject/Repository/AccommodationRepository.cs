@@ -1,5 +1,4 @@
 ﻿using InitialProject.Model;
-using InitialProject.Observer;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;

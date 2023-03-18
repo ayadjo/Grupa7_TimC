@@ -1,5 +1,4 @@
 ﻿using InitialProject.Model;
-using InitialProject.Observer;
 using InitialProject.Repository;
 using InitialProject.Services;
 using System;
