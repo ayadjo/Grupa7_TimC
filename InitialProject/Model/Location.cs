@@ -15,7 +15,7 @@ namespace InitialProject.Model
         public string City { get; set; }
         public Location() { }
 
-        public Location(String state, String city)
+        public Location(String country, String city)
         {
             Country = country;
             City = city;

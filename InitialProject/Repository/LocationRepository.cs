@@ -1,6 +1,5 @@
 ﻿using InitialProject.Model;
-using InitialProject.Observser;
-using InitialProject.Storage;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,46 +8,73 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Repository
 {
-    class LocationRepository : ISubject
+    public class LocationRepository
     {
-        private readonly List<IObserver> _observers;
+        private const string FilePath = "../../../Resources/Data/locations.csv";
 
-        private readonly LocationStorage _storage;
-        private readonly List<Location> _locations;
+        private static LocationRepository instance = null;
 
-        public LocationRepository()
+        private readonly Serializer<Location> _serializer;
+
+        private List<Location> _locations;
+
+        private LocationRepository()
         {
-            _storage = new LocationStorage();
-            _locations = _storage.Load();
-            _observers = new List<IObserver>();
+            _serializer = new Serializer<Location>();
+            _locations = _serializer.FromCSV(FilePath);
         }
-
-        public int NextId()
+        public static LocationRepository GetInstance()
         {
-            return _locations.Max(l => l.Id) + 1;
+            if (instance == null)
+            {
+                instance = new LocationRepository();
+            }
+            return instance;
         }
-
         public List<Location> GetAll()
         {
-            return _locations;
+            return _serializer.FromCSV(FilePath);
         }
-
-        public void Subscribe(IObserver observer)
+        public Location Get(int id)
         {
-            _observers.Add(observer);
+            return _locations.Find(l => l.Id == id);
+
         }
-
-        public void Unsubscribe(IObserver observer)
+        public Location Save(Location location)
         {
-            _observers.Remove(observer);
+
+            location.Id = NextId();
+            _locations = _serializer.FromCSV(FilePath);
+            _locations.Add(location);
+            _serializer.ToCSV(FilePath, _locations);
+            return location;
         }
-
-        public void NotifyObservers()
+        public int NextId()
         {
-            foreach (var observer in _observers)
+            _locations = _serializer.FromCSV(FilePath);
+            if (_locations.Count < 1)
             {
-                observer.Update();
+                return 1;
             }
+            return _locations.Max(l => l.Id) + 1;
+        }
+        public void Delete(Location location)
+        {
+            _locations = _serializer.FromCSV(FilePath);
+            Location founded = _locations.Find(l => l.Id == location.Id);
+            _locations.Remove(founded);
+            _serializer.ToCSV(FilePath, _locations);
+        }
+
+        public Location Update(Location location)
+        {
+            _locations = _serializer.FromCSV(FilePath);
+            Location current = _locations.Find(l => l.Id == location.Id);
+            int index = _locations.IndexOf(current);
+            _locations.Remove(current);
+            _locations.Insert(index, location);       // keep ascending order of ids in file 
+            _serializer.ToCSV(FilePath, _locations);
+            return location;
         }
     }
 }

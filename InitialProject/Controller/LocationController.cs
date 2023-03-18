@@ -1,6 +1,6 @@
 ﻿using InitialProject.Model;
-using InitialProject.Observser;
 using InitialProject.Repository;
+using InitialProject.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +11,60 @@ namespace InitialProject.Controller
 {
     public class LocationController
     {
-        private readonly LocationRepository _locations;
+        private readonly LocationService _locationService;
 
         public LocationController()
         {
-            _locations = new LocationRepository();
+            _locationService = new LocationService();
         }
 
-        public List<Location> GetLocations()
+        public List<Location> GetAll()
         {
-            return _locations.GetAll();
+            return _locationService.GetAll();
         }
 
-        public void Subscribe(IObserver observer)
+
+        public Location Get(int id)
         {
-            _locations.Subscribe(observer);
+            return _locationService.Get(id);
         }
+
+        public Location Save(Location location)
+        {
+
+            return _locationService.Save(location);
+        }
+
+        public void Delete(Location location)
+        {
+
+            _locationService.Delete(location);
+        }
+
+        public Location Update(Location location)
+        {
+            return _locationService.Update(location);
+        }
+
+        public int NextId()
+        {
+
+            return _locationService.NextId();
+
+        }
+
+        /*
+        public List<Accommodation> GetByOwner(int id)
+        {
+
+            return _accommodationService.GetByOwner(id);
+        }
+
+        
+        public List<Tour> TourSearch(string country, string city, string language, string numberOfPeople, string duration)
+        {
+            return _tourService.TourSearch(country, city, language, numberOfPeople, duration);
+        }
+        */
     }
 }

@@ -1,6 +1,7 @@
 ﻿using InitialProject.Model;
-using InitialProject.Observser;
+using InitialProject.Observer;
 using InitialProject.Repository;
+using InitialProject.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,60 @@ namespace InitialProject.Controller
 {
     public class AccommodationController
     {
-        private readonly AccommodationRepository _accommodations;
+        private readonly AccommodationService _accommodationService;
 
         public AccommodationController()
         {
-            _accommodations = new AccommodationRepository();
+            _accommodationService = new AccommodationService();
         }
 
-        public List<Accommodation> GetAccommodations()
+        public List<Accommodation> GetAll()
         {
-            return _accommodations.GetAll();
+            return _accommodationService.GetAll();
         }
 
-        public void Subscribe(IObserver observer)
+
+        public Accommodation Get(int id)
         {
-            _accommodations.Subscribe(observer);
+            return _accommodationService.Get(id);
         }
+
+        public Accommodation Save(Accommodation accommodation)
+        {
+
+            return _accommodationService.Save(accommodation);
+        }
+
+        public void Delete(Accommodation accommodation)
+        {
+
+            _accommodationService.Delete(accommodation);
+
+        }
+
+        public Accommodation Update(Accommodation accommodation)
+        {
+            return _accommodationService.Update(accommodation);
+        }
+
+        public int NextId()
+        {
+
+            return _accommodationService.NextId();
+
+        }
+
+        public List<Accommodation> GetByOwner(int id)
+        {
+
+            return _accommodationService.GetByOwner(id);
+        }
+
+        /*
+        public List<Accommodation> AccommodationSearch(string name, string country, string city, string type, string maxGuests, string minDaysForReservation)
+        {
+            return _accommodationService.AccommodationSearch(name, country, city, type, maxGuests, minDaysForReservation);
+        }
+        */
     }
 }

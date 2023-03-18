@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InitialProject.Observser
+namespace InitialProject.Observer
 {
-    internal interface ISubject
+    interface ISubject
     {
         void Subscribe(IObserver observer);
         void Unsubscribe(IObserver observer);

@@ -1,6 +1,6 @@
 ﻿using InitialProject.Model;
-using InitialProject.Observser;
-using InitialProject.Storage;
+using InitialProject.Observer;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,46 +9,105 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Repository
 {
-    class AccommodationRepository : ISubject
+    public class AccommodationRepository
     {
-        private readonly List<IObserver> _observers;
+        private const string FilePath = "../../../Resources/Data/accommodations.csv";
 
-        private readonly AccommodationStorage _storage;
-        private readonly List<Accommodation> _accommodations;
+        private static AccommodationRepository instance = null;
 
-        public AccommodationRepository()
+        private readonly Serializer<Accommodation> _serializer;
+
+        private List<Accommodation> _accommodations;
+
+        private AccommodationRepository()
         {
-            _storage = new AccommodationStorage();
-            _accommodations = _storage.Load();
-            _observers = new List<IObserver>();
+            _serializer = new Serializer<Accommodation>();
+            _accommodations = _serializer.FromCSV(FilePath);
         }
 
-        public int NextId()
+        public static AccommodationRepository GetInstance()
         {
-            return _accommodations.Max(s => s.Id) + 1;
+            if (instance == null)
+            {
+                instance = new AccommodationRepository();
+            }
+            return instance;
+        }
+
+        public void BindAccomodationLocation()
+        {
+            foreach (Accommodation accommodation in _accommodations)
+            {
+                int locationId = accommodation.Location.Id;
+                Location location = LocationRepository.GetInstance().Get(locationId);
+                if (location != null)
+                {
+                    accommodation.Location = location;
+                }
+                else
+                {
+                    Console.WriteLine("Error in accommodationLocation binding");
+                }
+            }
+        }
+
+        public Accommodation Save(Accommodation accommodation)
+        {
+            accommodation.Id = NextId();
+            _accommodations = _serializer.FromCSV(FilePath);
+            _accommodations.Add(accommodation);
+            _serializer.ToCSV(FilePath, _accommodations);
+            return accommodation;
         }
 
         public List<Accommodation> GetAll()
         {
             return _accommodations;
         }
-
-        public void Subscribe(IObserver observer)
+        public Accommodation Get(int id)
         {
-            _observers.Add(observer);
+            return _accommodations.Find(a => a.Id == id);
         }
-
-        public void Unsubscribe(IObserver observer)
+        public Accommodation Create(Accommodation accommodation)
         {
-            _observers.Remove(observer);
+            accommodation.Id = NextId();
+            _accommodations = _serializer.FromCSV(FilePath);
+            _accommodations.Add(accommodation);
+            _serializer.ToCSV(FilePath, _accommodations);
+            return accommodation;
         }
-
-        public void NotifyObservers()
+        public int NextId()
         {
-            foreach (var observer in _observers)
+            _accommodations = _serializer.FromCSV(FilePath);
+            if (_accommodations.Count < 1)
             {
-                observer.Update();
+                return 1;
             }
+            return _accommodations.Max(a => a.Id) + 1;
+        }
+        public void Delete(Accommodation accommodation)
+        {
+            _accommodations = _serializer.FromCSV(FilePath);
+            Accommodation founded = _accommodations.Find(a => a.Id == accommodation.Id);
+            _accommodations.Remove(founded);
+            _serializer.ToCSV(FilePath, _accommodations);
+        }
+
+        public Accommodation Update(Accommodation accommodation)
+        {
+            _accommodations = _serializer.FromCSV(FilePath);
+            Accommodation current = _accommodations.Find(a => a.Id == accommodation.Id);
+            int index = _accommodations.IndexOf(current);
+            _accommodations.Remove(current);
+            _accommodations.Insert(index, accommodation);       // keep ascending order of ids in file 
+            _serializer.ToCSV(FilePath, _accommodations);
+            return accommodation;
+        }
+
+        public List<Accommodation> GetByOwner(int ownerId)
+        {
+            _accommodations = _serializer.FromCSV(FilePath);
+            return _accommodations.FindAll(i => i.Owner.Id == ownerId);
         }
     }
 }
