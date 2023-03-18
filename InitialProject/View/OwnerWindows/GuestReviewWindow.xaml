@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.View.OwnerWindows"
         mc:Ignorable="d"
-        Title="GuestReviewWindow" Height="450" Width="800">
+        Title="GuestReviewWindow" Height="420" Width="450">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="CleanlinessLabel" Content="Čistoća" Grid.Row="0" Height="30" HorizontalAlignment="Right"/>
+            <Label/>
+            <Label/>
+        </Grid>
     </Grid>
 </Window>

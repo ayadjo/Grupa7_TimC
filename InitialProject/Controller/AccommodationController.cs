@@ -32,6 +32,11 @@ namespace InitialProject.Controller
         {
             return _accommodationService.Save(accommodation);
         }
+
+        public Accommodation SaveCascadeImages(Accommodation accommodation)
+        {
+            return _accommodationService.SaveCascadeImages(accommodation);
+        }
         public void Delete(Accommodation accommodation)
         {
             _accommodationService.Delete(accommodation);

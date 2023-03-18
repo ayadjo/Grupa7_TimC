@@ -24,7 +24,8 @@ namespace InitialProject.View
     /// </summary>
     public partial class AddNewImageWindow : Window, INotifyPropertyChanged
     {
-        public ImageController _imageController;
+
+        public ObservableCollection<Image> AllImages { get; set; }
 
         #region NotifyProperties
         private string _url;
@@ -72,20 +73,24 @@ namespace InitialProject.View
 
 
         public ImageResource Resource { get; set; }
+        public List<Image> SaveImages { get; set; }
 
        
-        public AddNewImageWindow( ImageResource resource)
+        public AddNewImageWindow(ImageResource resource, List<Image> saveImages)
         {
             InitializeComponent();
             this.DataContext = this;
-            _imageController = new ImageController();
             Resource = resource;
+
+            AllImages = new ObservableCollection<Image>();
+            SaveImages = saveImages;
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             Image image = new Image(-1, Url, -1, Description, Resource);
-            _imageController.Save(image);
+            AllImages.Add(image);
+            SaveImages.Add(image);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -93,9 +98,6 @@ namespace InitialProject.View
             Close();
         }
 
-        private void AddMoreImages_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

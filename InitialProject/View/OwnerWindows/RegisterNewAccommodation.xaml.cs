@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using Image = InitialProject.Model.Image;
 
 namespace InitialProject.View.OwnerView
 {
@@ -30,9 +31,12 @@ namespace InitialProject.View.OwnerView
     {
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
+        public ObservableCollection<AccommodationType> AccommodationTypes { get; set; }
         
         public LocationController _locationController;
         public AccommodationController _accommodationController;
+
+        public List<Image> AllImages { get; set; }
 
         #region NotifyProperties
         private string _name;
@@ -154,6 +158,12 @@ namespace InitialProject.View.OwnerView
 
             Countries = new ObservableCollection<string>(_locationController.GetAllCountries()); 
             Cities = new ObservableCollection<string>();
+            AccommodationTypes = new ObservableCollection<AccommodationType>();
+            AccommodationTypes.Add(AccommodationType.apartment);
+            AccommodationTypes.Add(AccommodationType.house);
+            AccommodationTypes.Add(AccommodationType.cottage);
+
+            AllImages = new List<Image>();
 
             
         }
@@ -164,8 +174,8 @@ namespace InitialProject.View.OwnerView
 
             Accommodation accommodation = new Accommodation() { Name=Naame, Location = location, 
             Type = SelectedType, MaxGuests = MaxGuests, MinDaysForReservation = MinDaysForReservation,
-            CancelationPeriod = CancelationPeriod, Owner = user};
-            _accommodationController.Save(accommodation);
+            CancelationPeriod = CancelationPeriod, Owner = user, Images = AllImages};
+            _accommodationController.SaveCascadeImages(accommodation);
             Close();
         }
         //treba da sacuva listu slika i potom kad pravim smestaj hocu da mu ucitam tu listu
@@ -187,11 +197,10 @@ namespace InitialProject.View.OwnerView
 
         private void AddImages_Click(object sender, RoutedEventArgs e)
         {
-            AddNewImageWindow NewImage = new AddNewImageWindow(ImageResource.accommodation);
+            AddNewImageWindow NewImage = new AddNewImageWindow(ImageResource.accommodation, AllImages);
             NewImage.Show();
         }
 
-        
-
+       
     }
 }

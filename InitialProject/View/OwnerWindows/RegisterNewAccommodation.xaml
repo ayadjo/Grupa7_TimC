@@ -45,18 +45,15 @@
                       Grid.Row="1" Grid.Column="1" Height="20" Margin="10,10,100,10" IsEditable="False" ToolTip="This field is required!"/>
             <ComboBox x:Name="CityComboBox" ItemsSource="{Binding Cities}" SelectedItem="{Binding SelectedCity}" Grid.Row="2"  Grid.Column="1"
                      IsEditable="False" Height="20" Margin="10,10,100,10" ToolTip="This field is required!"/>
-            <StackPanel Grid.Row="3" Grid.Column="1"  Orientation="Horizontal" Margin="10">
-                <RadioButton x:Name="ApartmentRadioButton" GroupName="AccommodationType" Content="Apartman     "   IsChecked="{Binding Path=SelectedType}"/>
-                <RadioButton x:Name="HouseRadioButton" GroupName="AccommodationType" Content="Kuća     "  IsChecked="{Binding Path=SelectedType}"/>
-                <RadioButton x:Name="CottageRadioButton" GroupName="AccommodationType" Content="Koliba"  IsChecked="{Binding Path=SelectedType}"/>
-            </StackPanel>
+            <ComboBox x:Name="AccommodationTypeComboBox" ItemsSource="{Binding AccommodationTypes}" SelectedItem="{Binding SelectedType}"
+                      Grid.Row="3" Grid.Column="1" Height="20" Margin="10,10,100,10" IsEditable="False" />
             <TextBox x:Name="MaxGuestTxt"  Grid.Row="4" Grid.Column="1" Text="{Binding Path=MaxGuests, Mode=OneWayToSource}" Margin="10,12,328,12"
                      Height="20" RenderTransformOrigin="-2.504,0.546"/>
             <TextBox x:Name="MinDaysForReservationTxt"  Grid.Row="5" Grid.Column="1" Text="{Binding Path=MinDaysForReservation,Mode=OneWayToSource}" 
                      Margin="10,12,328,12" Height="20" ToolTip="This field is required!"/>
             <TextBox x:Name="CancelationPeriodTxt" Grid.Row="6" Grid.Column="1" Text="{Binding Path=CancelationPeriod, Mode=OneWayToSource}"
                      Margin="10,12,328,12" Height="20" ToolTip="This field is required!"/>
-            <Button x:Name="AddImages" Click="AddImages_Click" Content="+" Grid.Row="7" Grid.Column="1" Width="20" Height="20" HorizontalAlignment="Left" Margin="10"/>
+            <Button x:Name="AddImages" Click="AddImages_Click" Content="+" Grid.Row="7" Grid.Column="1" Width="20" Height="20" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top"/>
         </Grid>
         <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Margin="10,0,10,10" VerticalAlignment="Center" Orientation="Horizontal">
             <Button x:Name="SubmitButton" Content="Završi registraciju" Click="SubmitButton_Click"  Height="20" Width="100" />

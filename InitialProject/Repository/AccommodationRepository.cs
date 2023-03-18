@@ -14,7 +14,7 @@ namespace InitialProject.Repository
 
         
         private static AccommodationRepository instance = null;
-
+        private ImageRepository _imageRepository;
 
         private readonly Serializer<Accommodation> _serializer;
 
@@ -24,6 +24,7 @@ namespace InitialProject.Repository
         {
             _serializer = new Serializer<Accommodation>();
             _accommodations = _serializer.FromCSV(FilePath);
+            _imageRepository = ImageRepository.GetInstance();
         }
         public static AccommodationRepository GetInstance()
         {
@@ -60,11 +61,28 @@ namespace InitialProject.Repository
         public Accommodation Save(Accommodation accommodation)
         {
             accommodation.Id = NextId();
-            //_accommodations = _serializer.FromCSV(FilePath);
+            //_accommodations = _serializer.FromCSV(FilePath
             _accommodations.Add(accommodation);
             _serializer.ToCSV(FilePath, _accommodations);
             return accommodation;
         }
+
+        public Accommodation SaveCascadeImages(Accommodation accommodation)
+        {
+            accommodation.Id = NextId();
+            
+            foreach(Image image in accommodation.Images)
+            {
+                image.ResourceId = accommodation.Id;
+                _imageRepository.Save(image);
+            }
+
+            _accommodations.Add(accommodation);
+            _serializer.ToCSV(FilePath, _accommodations);
+            return accommodation;
+        }
+
+
         public int NextId()
         {
             //_accommodations = _serializer.FromCSV(FilePath);
