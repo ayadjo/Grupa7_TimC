@@ -13,8 +13,6 @@ namespace InitialProject.Repository
         private const string FilePath = "../../../Resources/Data/locations.csv";
         private static LocationRepository instance = null;
 
-        private static LocationRepository instance = null;
-
         private readonly Serializer<Location> _serializer;
 
         private List<Location> _locations;
