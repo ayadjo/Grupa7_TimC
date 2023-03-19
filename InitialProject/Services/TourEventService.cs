@@ -19,6 +19,7 @@ namespace InitialProject.Services
         public TourEventService()
         {
             _tourEventRepository = TourEventRepository.GetInstance();
+            _tourReservationRepository = TourReservationRepository.GetInstance();
         }
 
         public List<TourEvent> GetAll()
@@ -63,7 +64,7 @@ namespace InitialProject.Services
             {
                 if (tourReservation.TourEvent.Id == tourEvent.Id)
                 {
-                    numOfPeople += tourReservation.NumberOfPeople;
+                    numOfPeople += tourReservation.NumberOfPeople;   
                 }
             }
             return numOfPeople;

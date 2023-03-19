@@ -10,7 +10,7 @@ namespace InitialProject.Repository
 {
     public class TourReservationRepository
     {
-        private const string FilePath = "../../../Resources/Data/tourreservation.csv";
+        private const string FilePath = "../../../Resources/Data/tourReservation.csv";
 
         private static TourReservationRepository instance = null;
 

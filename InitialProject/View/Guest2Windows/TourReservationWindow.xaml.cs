@@ -14,13 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using InitialProject.Model;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace InitialProject.View.Guest2Window
 {
     /// <summary>
     /// Interaction logic for TourReservationWindow.xaml
     /// </summary>
-    public partial class TourReservationWindow : Window
+    public partial class TourReservationWindow : Window,INotifyPropertyChanged
     {
         
 
@@ -29,9 +30,26 @@ namespace InitialProject.View.Guest2Window
 
         public string AvailableSpotsText { get; set; }
         public int AvailableSpots { get; set; }
-        public TourEvent SelectedTourEvent { get; set; }
+        
 
-        public string NumberOfPeople { get; set; }
+        private TourEvent _selectedTourEvent;
+
+        
+
+        public TourEvent SelectedTourEvent
+        {
+            get => _selectedTourEvent;
+            set
+            {
+                if (_selectedTourEvent != value)
+                {
+                    _selectedTourEvent = value;
+                    OnPropertyChanged("SelectedTourEvent");
+                }
+            }
+        }
+
+        public int NumberOfPeople { get; set; }
 
         public ObservableCollection<TourEvent> TourEvents { get; set; }
 
@@ -42,7 +60,7 @@ namespace InitialProject.View.Guest2Window
 
             tourReservationController = new TourReservationController();
 
-            NumberOfPeople = "";
+            //NumberOfPeople = "";
             _tourEventController = new TourEventController();
 
             TourEvents = new ObservableCollection<TourEvent>(_tourEventController.GetAllTourEventsForTour(tour));
@@ -58,6 +76,32 @@ namespace InitialProject.View.Guest2Window
             Close();
         }
 
-       
+        private void Check_Availability_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedTourEvent == null)
+            {
+                return;
+            }
+            int reservedSpots = _tourEventController.CheckAvailability(SelectedTourEvent);
+            AvailableSpots = SelectedTourEvent.Tour.MaxGuests - reservedSpots;
+            if (AvailableSpots < NumberOfPeople)
+            {
+                AvailableSpotsText = "Nema dovolnjo mesta";
+            }
+            else
+            {
+                AvailableSpotsText = "Uspesno rezervisano";
+            }
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+
     }
 }
