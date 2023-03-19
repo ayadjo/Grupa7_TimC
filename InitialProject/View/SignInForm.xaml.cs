@@ -4,6 +4,7 @@ using InitialProject.Repository;
 using InitialProject.View;
 using InitialProject.View.OwnerView;
 using InitialProject.View.OwnerWindows;
+using InitialProject.View.Guest2Window;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -48,13 +49,53 @@ namespace InitialProject
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
+            User user = _repository.GetByUsername(Username);
 
-            OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
-            OwnerMainWindow.Show();
-            //AccommodationsOverview accommodationsOverview = new AccommodationsOverview();
-            //accommodationsOverview.Show();
-            Close();
+            
 
+            if (user != null)
+            {
+                if (user.Password == txtPassword.Password)
+                {
+                    //CommentsOverview commentsOverview = new CommentsOverview(user);
+                    //commentsOverview.Show();
+                    if (ComboBoxRoles.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("You didn't select the role!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    }
+                    else if (ComboBoxRoles.SelectedIndex == 0)
+                    {
+                        // OwnerWindow
+                        MessageBox.Show("Owner Window!");
+
+                    }
+                    else if (ComboBoxRoles.SelectedIndex == 1)
+                    {
+                        // GuideWindow.Show();
+                        MessageBox.Show("Guide Window!");
+                    }
+                    else if (ComboBoxRoles.SelectedIndex == 2)
+                    {
+                        // Guest1Window.Show();
+                        MessageBox.Show("Guest1 Window!");
+                    }
+                    else if (ComboBoxRoles.SelectedIndex == 3)
+                    {
+                        ToursOverviewWindow toursOverview = new ToursOverviewWindow();
+                        toursOverview.Show();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Wrong password!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wrong username!");
+            }
+            
         }
    }  
 }

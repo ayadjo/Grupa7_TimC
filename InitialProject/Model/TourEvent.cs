@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InitialProject.Serializer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Xml.Linq;
 
 namespace InitialProject.Model
 {
-    public class TourEvent
+    public class TourEvent : ISerializable
     {
 
         public int Id { get; set; } 
@@ -17,8 +18,9 @@ namespace InitialProject.Model
 
         public TourEvent() { }
 
-        public TourEvent(Tour tour, DateTime startTime)
+        public TourEvent(int id, Tour tour, DateTime startTime)
         {
+            Id = id;    
             Tour = tour;
             StartTime = startTime;
         }

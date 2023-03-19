@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Repository
 {
-    internal class TourPointRepository
+    public class TourPointRepository
     {
 
         private const string FilePath = "../../../Resources/Data/tourPoints.csv";
+
+        private static TourPointRepository instance = null;
 
         private readonly Serializer<TourPoint> _serializer;
 
@@ -24,6 +26,31 @@ namespace InitialProject.Repository
             _tourPoints = _serializer.FromCSV(FilePath);
         }
 
+        public static TourPointRepository GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new TourPointRepository();
+            }
+            return instance;
+        }
+
+        public void BindTourPointTour()
+        {
+            foreach (TourPoint tourPoint in _tourPoints)
+            {
+                int tourId = tourPoint.Tour.Id;
+                Tour tour = TourRepository.GetInstance().Get(tourId);
+                if (tour != null)
+                {
+                    tourPoint.Tour = tour;
+                }
+                else
+                {
+                    Console.WriteLine("Error in tourPointTourLocation binding");
+                }
+            }
+        }
         public TourPoint Save(TourPoint tourPoint)
         {
             tourPoint.Id = NextId();

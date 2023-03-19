@@ -1,4 +1,4 @@
-﻿using InitialProject.Model;
+using InitialProject.Model;
 using InitialProject.Serializer;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +35,6 @@ namespace InitialProject.Repository
            // _users = _serializer.FromCSV(FilePath);
             return _users.FirstOrDefault(u => u.Username == username);
         }
-
-
         public User Get(int id)
         {
             return _users.Find(u => u.Id == id);

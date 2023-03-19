@@ -23,6 +23,10 @@ namespace InitialProject
             AccommodationRepository.GetInstance().BindAccomodationLocation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
+            TourRepository.GetInstance();
+
+            AccommodationRepository.GetInstance().BindAccomodationLocation();
+            TourRepository.GetInstance().BindTourLocation();
         }
     }
 }

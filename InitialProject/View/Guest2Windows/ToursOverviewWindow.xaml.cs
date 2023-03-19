@@ -1,4 +1,5 @@
-﻿using InitialProject.Model;
+﻿using InitialProject.Controller;
+using InitialProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,31 +14,48 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InitialProject.Enumerations;
 
 namespace InitialProject.View.Guest2Window
 {
     /// <summary>
     /// Interaction logic for ToursOverviewWindow.xaml
     /// </summary>
-    public partial class ToursOverviewWindow : Window//,IObserver
+    public partial class ToursOverviewWindow : Window
     {
-        //private readonly TourController _tourcontroller;
+       
 
-        // public ObservableCollection<Tour> Tours { get; set; }
+        public ObservableCollection<Tour> Tours { get; set; }
 
-        //public Tour SelectedTour { get; set; }
+        public TourController _tourController;
+
+        public string Country { get; set; }
+
+        public string City { get; set; }
+
+        public string Languages { get; set; }
+
+        public string Duration { get; set; }
+        
+        public string NumberOfPeople { get; set; }
+
+
+        public Tour SelectedTour { get; set; }
         public ToursOverviewWindow()
         {
             InitializeComponent();
 
-            DataContext = this;
-            var app = Application.Current as App;
+            this.DataContext = this;
 
-            /*_tourcontroller = new TourController();
-            _tourcontroller.Subscribe(this);
+            _tourController = new TourController();
 
-            Tours = new ObservableCollection<Tour>(_tourcontroller.GetAllTours());
-            */
+            Tours = new ObservableCollection<Tour>(_tourController.GetAll());
+            Country = "";
+            City = "";
+            Languages = "";
+            Duration = "";
+            NumberOfPeople = "";
+            
         }
 
         private void UpdateToursList()
@@ -51,41 +69,37 @@ namespace InitialProject.View.Guest2Window
 
         public void Update()
         {
-                UpdateToursList();
+            UpdateToursList();
         }
 
 
         private void buttonReserve_Click(object sender, RoutedEventArgs e)
         {
-            /* if (SelectedTour != null)
+             if (SelectedTour != null)
              {
-                 TourReservation tourReservation = new TourReservation();
-                 tourReservation.Show()
+                 TourReservationWindow tourReservation = new TourReservationWindow(SelectedTour);
+                 tourReservation.Show();
              }
              else
              {
                  MessageBox.Show("Morate odabrati turu", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
-             }*/
+             }
+        }
+
+        private void RefreshTours(List<Tour> tours)
+        {
+            Tours.Clear();
+            foreach(Tour tour in tours)
+            {
+                Tours.Add(tour);
+            }
         }
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            string location = cbLocation.Text;
-            //int numberOfPeople = tbNumberOfPeople.Text;
-            string language = tbLanguage.Text;
 
-
-            // Load the tour from the CSV file
-            List<Tour> tours = _tourcontroller.GetAllTous();
-
-            // Filter the tours by both location and language
-            List<Tour> filteredTours = tours.Where(t => t.location.StartsWith(location, StringComparison.OrdinalIgnoreCase)
-                                                                 && t.language.StartsWith(language, StringComparison.OrdinalIgnoreCase))
-                                                       .ToList();
-
-            // Display the filtered tours in the DataGridView
-            tourOverview.ItemsSource = filteredTours;*/
+            List<Tour> searchedTours = _tourController.TourSearch(Country,City,Languages,NumberOfPeople,Duration);
+            RefreshTours(searchedTours);
         }
     }
 }

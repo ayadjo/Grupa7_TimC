@@ -19,8 +19,9 @@ namespace InitialProject.Model
 
         public TourPoint() { }
 
-        public TourPoint(String name, Tour tour, int order, Boolean active)
+        public TourPoint(int id, String name, Tour tour, int order, Boolean active)
         {
+            Id = id;    
             Name = name;
             Tour = tour;
             Order = order;

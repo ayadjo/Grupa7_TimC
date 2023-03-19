@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InitialProject.View
+namespace InitialProject.View.GuideWindows
 {
     /// <summary>
-    /// Interaction logic for CreateTour.xaml
+    /// Interaction logic for GuideOverviewWindow.xaml
     /// </summary>
-    public partial class CreateTour : Window
+    public partial class GuideOverviewWindow : Window
     {
-        public CreateTour()
+        public GuideOverviewWindow()
         {
             InitializeComponent();
         }

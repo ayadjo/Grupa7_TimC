@@ -14,7 +14,7 @@ namespace InitialProject.Model
         public string Name { get; set; }
         public Location Location { get; set; }
         public String Description { get; set; }
-        public String Languages { get; set; }
+        public string Languages { get; set; }
         public int MaxGuests { get; set; }
         public int Duration { get; set; }
 
@@ -32,8 +32,9 @@ namespace InitialProject.Model
 
         }
 
-        public Tour(String name, Location location, String description, String languages, int maxGuests, int duration, User guide) { 
+        public Tour(int id, String name, Location location, String description, string languages, int maxGuests, int duration, User guide) { 
         
+            Id = id;    
             Name = name;    
             Location = location;    
             Description = description;  
@@ -56,7 +57,7 @@ namespace InitialProject.Model
                Name,
                Location.Id.ToString(),
                Description,
-               Languages,
+               Languages.ToString(),
                MaxGuests.ToString(),   
                Duration.ToString(),
                Guide.Id.ToString()
@@ -71,7 +72,7 @@ namespace InitialProject.Model
         {
             Id = Convert.ToInt32(values[0]);
             Name = values[1];
-            Location = new Location() { Id = Convert.ToInt32(values[2]) };
+            Location = new Location() { Id = Convert.ToInt32(values[2]) }; 
             Description = values[3];
             Languages = values[4];
             MaxGuests = Convert.ToInt32(values[5]); 

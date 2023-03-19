@@ -50,7 +50,6 @@ namespace InitialProject.Repository
                 }
             }
         }
-
         public List<Accommodation> GetAll()
         {
             return _accommodations;
