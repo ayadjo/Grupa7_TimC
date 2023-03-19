@@ -84,14 +84,7 @@ namespace InitialProject.Repository
         {
             return _accommodationReservations.Find(ar => ar.Id == id);
         }
-        public AccommodationReservation Create(AccommodationReservation accommodationReservation)
-        {
-            accommodationReservation.Id = NextId();
-            //_accommodationReservations = _serializer.FromCSV(FilePath);
-            _accommodationReservations.Add(accommodationReservation);
-            _serializer.ToCSV(FilePath, _accommodationReservations);
-            return accommodationReservation;
-        }
+  
         public int NextId()
         {
             //_accommodationReservations = _serializer.FromCSV(FilePath);

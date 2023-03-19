@@ -24,6 +24,7 @@ namespace InitialProject.View.OwnerWindows
     public partial class GuestReviewWindow : Window, INotifyPropertyChanged
     {
         public GuestReviewController _guestReviewController;
+        public AccommodationReservationController _accommodationReservationController;
 
         #region NotifyProperties
         private int _cleanliness;
@@ -85,16 +86,20 @@ namespace InitialProject.View.OwnerWindows
             this.DataContext = this;
 
             _guestReviewController = new GuestReviewController();
-             reservation = accommodationReservation;
+            _accommodationReservationController = new AccommodationReservationController();
+            reservation = accommodationReservation;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void AddReviewButton_Click(object sender, RoutedEventArgs e)
         {
-            GuestReview guestReview = new GuestReview() {Reservation=reservation ,Cleanliness = Cleanliness, Behaviour = Behaviour, Comment = Comment };
+            GuestReview guestReview = new GuestReview() {Reservation=reservation, Cleanliness = Cleanliness, Behaviour = Behaviour, Comment = Comment };
             _guestReviewController.Save(guestReview);
-            Close();
+            //reservation.Review = guestReview;
+            //_accommodationReservationController.Update(reservation);
+
+        Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

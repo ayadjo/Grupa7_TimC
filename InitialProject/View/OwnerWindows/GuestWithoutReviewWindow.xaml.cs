@@ -21,11 +21,12 @@ namespace InitialProject.View.OwnerWindows
     /// <summary>
     /// Interaction logic for GuestWithoutReviewWindow.xaml
     /// </summary>
-    public partial class GuestWithoutReviewWindow : Window
+    public partial class GuestWithoutReviewWindow : Window, INotifyPropertyChanged
     {
         public ObservableCollection<AccommodationReservation> AccommodationReservations { get; set; }
         public AccommodationReservationController _accommodationReservationController;
 
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public AccommodationReservation SelectedAccommodationReservation { get; set; }
         public GuestWithoutReviewWindow()
@@ -42,6 +43,7 @@ namespace InitialProject.View.OwnerWindows
         {
             GuestReviewWindow GuestReview = new GuestReviewWindow(SelectedAccommodationReservation);
             GuestReview.Show();
+            Close();
         }
     }
 }

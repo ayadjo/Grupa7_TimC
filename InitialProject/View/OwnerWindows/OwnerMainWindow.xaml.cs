@@ -38,6 +38,7 @@ namespace InitialProject.View.OwnerWindows
         {
             GuestWithoutReviewWindow GuestWithoutReview = new GuestWithoutReviewWindow();
             GuestWithoutReview.Show();
+            
         }
 
         private void NotificationButton_Click(object sender, RoutedEventArgs e)
