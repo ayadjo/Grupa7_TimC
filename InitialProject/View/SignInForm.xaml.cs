@@ -48,19 +48,41 @@ namespace InitialProject
         {
             User user = _repository.GetByUsername(Username);
 
-            ToursOverviewWindow toursOverview = new ToursOverviewWindow();
-            toursOverview.Show();
+            
 
             if (user != null)
             {
-                if(user.Password == txtPassword.Password)
+                if (user.Password == txtPassword.Password)
                 {
-                    CommentsOverview commentsOverview = new CommentsOverview(user);
-                    commentsOverview.Show();
-                    Close();
-                    
+                    //CommentsOverview commentsOverview = new CommentsOverview(user);
+                    //commentsOverview.Show();
+                    if (ComboBoxRoles.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("You didn't select the role!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                } 
+                    }
+                    else if (ComboBoxRoles.SelectedIndex == 0)
+                    {
+                        // OwnerWindow
+                        MessageBox.Show("Owner Window!");
+
+                    }
+                    else if (ComboBoxRoles.SelectedIndex == 1)
+                    {
+                        // GuideWindow.Show();
+                        MessageBox.Show("Guide Window!");
+                    }
+                    else if (ComboBoxRoles.SelectedIndex == 2)
+                    {
+                        // Guest1Window.Show();
+                        MessageBox.Show("Guest1 Window!");
+                    }
+                    else if (ComboBoxRoles.SelectedIndex == 3)
+                    {
+                        ToursOverviewWindow toursOverview = new ToursOverviewWindow();
+                        toursOverview.Show();
+                    }
+                }
                 else
                 {
                     MessageBox.Show("Wrong password!");

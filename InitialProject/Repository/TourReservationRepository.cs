@@ -57,7 +57,7 @@ namespace InitialProject.Repository
             foreach (TourReservation tourReservation in _tourReservations)
             {
                 int tourEventId = tourReservation.TourEvent.Id;
-                TourEvent tourEvent = null;// = TourEventRepository.GetInstance().Get(tourEventId);
+                TourEvent tourEvent = TourEventRepository.GetInstance().Get(tourEventId);
                 if (tourEvent != null)
                 {
                     tourReservation.TourEvent = tourEvent;
