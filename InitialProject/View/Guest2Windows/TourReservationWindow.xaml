@@ -6,41 +6,74 @@
         xmlns:local="clr-namespace:InitialProject.View.Guest2Window"
         mc:Ignorable="d"
         Title="Rezervacija tura" Height="450" Width="800">
-    <StackPanel>
+    <DockPanel>
+        <TextBlock Background="AntiqueWhite"
+                   DockPanel.Dock="Left" Width="261">
+            <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="300*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="370"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <WrapPanel Margin="50" >
-            <Image Source="/Resources/Images/location.png"  Height="124" Width="168" Margin="70,30,120,30"></Image>
+            <Grid Grid.Row="0" Grid.Column="0" Margin="30,2,30,3" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <DataGrid DockPanel.Dock="Right"
-                      ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding Path=SelectedTour,UpdateSourceTrigger=PropertyChanged}"
-                      AutoGenerateColumns="False" IsReadOnly="True"
-                      x:Name="tourOverview" >
+                <TextBlock Text="Location:" FontWeight="Bold" Margin="0,32,4,0"/>
+        <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.City}" Margin="87,32,16,2" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Maximum Guests:" FontWeight="Bold" Margin="0,37,4,0" Grid.Row="1"/>
+        <TextBlock Text="{Binding SelectedTourEvent.Tour.MaxGuests}" Grid.Column="1" Margin="34,37,-34,2" Grid.Row="1"/>
+
+        <TextBlock Text="Number of People:" FontWeight="Bold" Margin="0,41,40,55" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding NumberOfPeople}" Margin="34,37,-48,10" Grid.Row="2" Grid.Column="1"/>
+
+        <TextBlock Text="{Binding AvailableSpotsText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Margin="0,10,5,0" Grid.Row="3"/>
+        <TextBlock Text="{Binding AvailableSpots, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="42,15,-41,5" Grid.Row="3"/>
+
+            </Grid>
+            <WrapPanel Grid.Row="1"  FlowDirection="LeftToRight" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="90,0,0,0" >
+                <Button x:Name="Reserve" Content="Rezervisi" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20, 5, 20, 5"
+              Click="Reserve_Click"/>
+                
+               
+            </WrapPanel>
+            <Button Grid.Column="1" x:Name="Cancel" Content="Otkazi" IsCancel="True" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Row="1"
+                    Click="Cancel_Click"/>
+        </Grid>
+    </Grid>
+        </TextBlock>
+        <StackPanel  DockPanel.Dock="Right">
+            <DataGrid DockPanel.Dock="Bottom"
+                       SelectionMode="Single"
+                  ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  Width="550" Height="360" >
+                <!--SelectionChanged="DataGrid_SelectionChanged"-->
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Opis" Binding="{Binding Description}" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Jezik" Binding="{Binding Languages}" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Broj ljudi" Binding="{Binding MaxGuests}" ></DataGridTextColumn>
+                    <DataGridTextColumn  Header="State" Binding="{Binding Location.Country}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="City" Binding="{Binding Location.City}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="Languages" Binding="{Binding Languages}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="MaxGuests" Binding="{Binding MaxGuests}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="Duration" Binding="{Binding Duration}" Width="*"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </WrapPanel>
+        </StackPanel>
+        <Button Content="Button" Width="NaN"/>
 
-        <WrapPanel>
-            <Label VerticalAlignment="Center" Margin="340,0,0,0">Broj ljudi</Label>
-            <TextBox x:Name="tbNumberOfPeople" Text="{Binding Path=NumberOfPeople,UpdateSourceTrigger=PropertyChanged}"  Height="30" Width="50" VerticalContentAlignment="Center" Margin="2,0,0,0"></TextBox>
-            <Button x:Name="MoreInfo" BorderBrush="Transparent" Background="Transparent"  Margin="100,-50,0,0" Height="30" Width="100"  Click="MoreInfo_Click">
-                <TextBlock TextDecorations="Underline" >
-                    Vise informacija
-                </TextBlock>
-            </Button>
-        </WrapPanel>
-
-
-        <Button x:Name="Reserve" Content="Rezervisi" Width="111" Height="45" Margin="10" Click="Reserve_Click"/>
-        <Button x:Name="Cancel" Content="Otkazi" Width="60" Height="25" Click="Cancel_Click" />
-
-
-    </StackPanel>
+    </DockPanel>
 </Window>

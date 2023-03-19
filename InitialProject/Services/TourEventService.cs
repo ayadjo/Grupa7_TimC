@@ -6,12 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace InitialProject.Services
 {
     public class TourEventService
     {
 
         private TourEventRepository _tourEventRepository;
+        private TourReservationRepository _tourReservationRepository;
 
         public TourEventService()
         {
@@ -52,5 +55,62 @@ namespace InitialProject.Services
 
             return _tourEventRepository.GetByTour(id);
         }
+
+        public int CheckAvailability(TourEvent tourEvent)
+        {
+            int numOfPeople = 0;
+            foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if (tourReservation.TourEvent.Id == tourEvent.Id)
+                {
+                    numOfPeople += tourReservation.NumberOfPeople;
+                }
+            }
+            return numOfPeople;
+        }
+
+        public List<TourReservation> GetAllTourReservationForTourEvent(TourEvent tourEvent)
+        {
+            List<TourReservation> tourReservationList = new List<TourReservation>();
+            foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if (tourReservation.TourEvent.Id == tourEvent.Id)
+                {
+                    tourReservationList.Add(tourReservation);
+                }
+            }
+            return tourReservationList;
+        }
+
+        public List<TourEvent> GetTourEventsForLocation(Location location)
+        {
+            List<TourEvent> tourEvents = new List<TourEvent>();
+
+
+            foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
+            {
+                if (tourEvent.StartTime > DateTime.Now && tourEvent.Tour.Location.City == location.City && tourEvent.Tour.Location.Country == location.Country)
+                {
+                    tourEvents.Add(tourEvent);
+                }
+            }
+            return tourEvents;
+        }
+
+        public List<TourEvent> GetAllTourEventsForTour(Tour tour)
+        {
+            List<TourEvent> tourEvents = new List<TourEvent>();
+
+            foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
+            {
+                if (tourEvent.Tour.Id == tour.Id)
+                {
+                    tourEvents.Add(tourEvent);
+                }
+            }
+            return tourEvents;
+        }
+
+        
     }
 }

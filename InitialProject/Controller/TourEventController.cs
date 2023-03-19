@@ -54,5 +54,24 @@ namespace InitialProject.Controller
             return _tourEventService.GetByTour(id);
         }
 
+        public int CheckAvailability(TourEvent tourEvent)
+        {
+            return _tourEventService.CheckAvailability(tourEvent);
+        }
+
+        public List<TourReservation> GetAllTourReservationForTourEvent(TourEvent tourEvent)
+        {
+            return _tourEventService.GetAllTourReservationForTourEvent(tourEvent);
+        }
+
+        public List<TourEvent> GetTourEventsForLocation(Location location)
+        {
+            return _tourEventService.GetTourEventsForLocation(location);
+        }
+
+        public List<TourEvent> GetAllTourEventsForTour(Tour tour)
+        {
+            return _tourEventService.GetAllTourEventsForTour(tour);
+        }
     }
 }
