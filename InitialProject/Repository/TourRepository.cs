@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace InitialProject.Repository
 {
@@ -19,10 +20,15 @@ namespace InitialProject.Repository
 
         private List<Tour> _tours;
 
-        public TourRepository() {
+        private ImageRepository _imageRepository;
+        private TourPointRepository _tourPointRepository;
+
+        private TourRepository() {
 
             _serializer = new Serializer<Tour>();
             _tours = _serializer.FromCSV(FilePath);
+            _imageRepository = ImageRepository.GetInstance();
+            _tourPointRepository = TourPointRepository.GetInstance();
         }
 
         public static TourRepository GetInstance()
@@ -107,6 +113,55 @@ namespace InitialProject.Repository
             return _tours.FindAll(t => t.Guide.Id == guideId);
         }
 
+        public Tour SaveCascadeImages(Tour tour)
+        {
+            tour.Id = NextId();
+
+            foreach (Image image in tour.Images)
+            {
+                image.ResourceId = tour.Id;
+                _imageRepository.Save(image);
+            }
+
+            _tours.Add(tour);
+            _serializer.ToCSV(FilePath, _tours);
+            return tour;
+        }
+        public Tour SaveCascadeTourPoints(Tour tour)
+        {
+            tour.Id = NextId();
+
+            foreach (TourPoint tourPoint in tour.TourPoints)
+            {
+                tourPoint.Tour = tour;
+                _tourPointRepository.Save(tourPoint);
+            }
+
+            _tours.Add(tour);
+            _serializer.ToCSV(FilePath, _tours);
+            return tour;
+        }
+
+        public Tour SaveCascadeImagesTourPoints(Tour tour)
+        {
+            tour.Id = NextId();
+
+            foreach (Image image in tour.Images)
+            {
+                image.ResourceId = tour.Id;
+                _imageRepository.Save(image);
+
+            }
+            foreach (TourPoint tourPoint in tour.TourPoints)
+            {
+                tourPoint.Tour = tour;
+                _tourPointRepository.Save(tourPoint);
+            }
+
+            _tours.Add(tour);
+            _serializer.ToCSV(FilePath, _tours);
+            return tour;
+        }
 
 
     }

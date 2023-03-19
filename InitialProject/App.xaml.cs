@@ -18,8 +18,10 @@ namespace InitialProject
         {
             AccommodationRepository.GetInstance();
             LocationRepository.GetInstance();
+            TourRepository.GetInstance();
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
+            TourRepository.GetInstance().BindTourLocation();
         }
     }
 }

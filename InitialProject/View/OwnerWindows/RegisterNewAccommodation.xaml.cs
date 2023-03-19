@@ -173,8 +173,7 @@ namespace InitialProject.View.OwnerView
 
         private void AddImages_Click(object sender, RoutedEventArgs e)
         {
-            AddNewImageWindow NewImage = new AddNewImageWindow();
-            NewImage.Show();
+          
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

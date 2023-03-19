@@ -1,6 +1,8 @@
 ﻿using InitialProject.Forms;
 using InitialProject.Model;
 using InitialProject.Repository;
+using InitialProject.View;
+using InitialProject.View.GuideWindows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -46,12 +48,14 @@ namespace InitialProject
         private void SignIn(object sender, RoutedEventArgs e)
         {
             User user = _repository.GetByUsername(Username);
+            GuideMainWindow guideMainWindow = new GuideMainWindow();
+            guideMainWindow.Show();
+
             if (user != null)
             {
                 if(user.Password == txtPassword.Password)
                 {
-                    CommentsOverview commentsOverview = new CommentsOverview(user);
-                    commentsOverview.Show();
+                   
                     Close();
                 } 
                 else

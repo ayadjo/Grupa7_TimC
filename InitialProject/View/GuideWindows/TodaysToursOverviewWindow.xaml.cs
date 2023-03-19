@@ -12,16 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace InitialProject.View
+namespace InitialProject.View.GuideWindows
 {
     /// <summary>
-    /// Interaction logic for AddNewImageWindow.xaml
+    /// Interaction logic for TodaysToursOverviewWindow.xaml
     /// </summary>
-    public partial class AddNewImageWindow : Window
+    public partial class TodaysToursOverviewWindow : Window
     {
-        public AddNewImageWindow()
+        public TodaysToursOverviewWindow()
         {
             InitializeComponent();
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            TourPointsWindow tourPointsWindow = new TourPointsWindow();
+            tourPointsWindow.Show();
         }
     }
 }

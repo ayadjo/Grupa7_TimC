@@ -1,4 +1,5 @@
-﻿using InitialProject.Model;
+﻿using InitialProject.Enumerations;
+using InitialProject.Model;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -71,5 +72,40 @@ namespace InitialProject.Repository
             _images = _serializer.FromCSV(FilePath);
             return _images.FindAll(i => i.ResourceId == ResourceId);
         }
+
+        private static ImageRepository instance = null;
+
+        
+
+       
+        public static ImageRepository GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ImageRepository();
+            }
+            return instance;
+        }
+
+        public void BindImageResource()
+        {
+            foreach (Image image in _images)
+            {
+                if (image.Resource == ImageResource.tour)
+                {
+                    Tour tour = TourRepository.GetInstance().Get(image.ResourceId);
+                    tour.Images.Add(image);
+                }
+                else
+                {
+                    Accommodation accommodation = AccommodationRepository.GetInstance().Get(image.ResourceId);
+                    accommodation.Images.Add(image);
+                }
+
+            }
+        }
+
+
+
     }
 }
