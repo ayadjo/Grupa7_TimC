@@ -59,7 +59,7 @@ namespace InitialProject.View
             AllImages = new List<Image>();
             AllTourPoints = new List<TourPoint>();
 
-
+            SelectedDate = DateTime.Now;
         }
 
         #region NotifyProperties
@@ -270,7 +270,7 @@ namespace InitialProject.View
             }
             else if (LanguageComboBox.SelectedIndex == 3)
             {
-                Languages = "italijanski";
+                Languages = "korejski";
             }
             else if(LanguageComboBox.SelectedIndex == 4)
             {

@@ -14,18 +14,19 @@
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
         <Label x:Name="TodaysTours" Content="Danasnje ture" FontSize="25"/>
-        <DataGrid ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedTour, UpdateSourceTrigger=PropertyChanged}"
+        <DataGrid ItemsSource="{Binding Path=TodaysEvents, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
                   Margin="10,0,10,349" AutoGenerateColumns="False"
                   x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Opis" Binding="{Binding Description}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Jezici" Binding="{Binding Languages}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Max gostiju" Binding="{Binding MaxGuests}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Tour.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Država" Binding="{Binding Tour.Location.Country}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Grad" Binding="{Binding Tour.Location.City}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opis" Binding="{Binding Tour.Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Jezici" Binding="{Binding Tour.Languages}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Max gostiju" Binding="{Binding Tour.MaxGuests}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Tour.Duration}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pocetak" Binding="{Binding StartTime}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="0,327,10,0" VerticalAlignment="Top" Orientation="Horizontal">

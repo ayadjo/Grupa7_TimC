@@ -44,6 +44,7 @@ namespace InitialProject.Repository
                 if (tour != null)
                 {
                     tourPoint.Tour = tour;
+                    tour.TourPoints.Add(tourPoint);
                 }
                 else
                 {
@@ -54,7 +55,7 @@ namespace InitialProject.Repository
         public TourPoint Save(TourPoint tourPoint)
         {
             tourPoint.Id = NextId();
-            _tourPoints = _serializer.FromCSV(FilePath);
+            //_tourPoints = _serializer.FromCSV(FilePath);
             _tourPoints.Add(tourPoint);
             _serializer.ToCSV(FilePath, _tourPoints);
             return tourPoint;
@@ -63,7 +64,7 @@ namespace InitialProject.Repository
 
         public int NextId()
         {
-            _tourPoints = _serializer.FromCSV(FilePath);
+            //_tourPoints = _serializer.FromCSV(FilePath);
             if (_tourPoints.Count < 1)
             {
                 return 1;
@@ -73,7 +74,7 @@ namespace InitialProject.Repository
 
         public void Delete(TourPoint tourPoint)
         {
-            _tourPoints = _serializer.FromCSV(FilePath);
+            //_tourPoints = _serializer.FromCSV(FilePath);
             TourPoint founded = _tourPoints.Find(tp => tp.Id == tourPoint.Id);
             _tourPoints.Remove(founded);
             _serializer.ToCSV(FilePath, _tourPoints);
@@ -81,7 +82,7 @@ namespace InitialProject.Repository
 
         public TourPoint Update(TourPoint tourPoint)
         {
-            _tourPoints = _serializer.FromCSV(FilePath);
+            //_tourPoints = _serializer.FromCSV(FilePath);
             TourPoint current = _tourPoints.Find(tp => tp.Id == tourPoint.Id);
             int index = _tourPoints.IndexOf(current);
             _tourPoints.Remove(current);
@@ -107,7 +108,7 @@ namespace InitialProject.Repository
 
         public List<TourPoint> GetByTour(int tourId)
         {
-            _tourPoints = _serializer.FromCSV(FilePath);
+           // _tourPoints = _serializer.FromCSV(FilePath);
             return _tourPoints.FindAll(t => t.Tour.Id == tourId);
         }
 

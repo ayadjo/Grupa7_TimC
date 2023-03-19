@@ -70,11 +70,11 @@
                 <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity}" HorizontalAlignment="Left" ItemsSource="{Binding Cities}" LostFocus="CityComboBox_LostFocus" Grid.Row="3" Width="200" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!" RenderTransformOrigin="0.576,0.532"/>
                 <TextBox Grid.Row="4" x:Name="DescriptionTextBox" Margin="10,10,10,10" HorizontalAlignment="Left" Width="200" Height="25" Text="{Binding Path=Description,Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}"  ToolTip="This field is required!"/>
                 <ComboBox x:Name="LanguageComboBox" Grid.Row="5 " HorizontalAlignment="Left" Margin="10,10,10,10" Width="200" Height="25" ToolTip="This field is required!" LostFocus="LanguageComboBox_LostFocus">
-                    <ComboBoxItem>Serbian</ComboBoxItem>
-                    <ComboBoxItem>English</ComboBoxItem>
-                    <ComboBoxItem>Italian</ComboBoxItem>
-                    <ComboBoxItem>Korean</ComboBoxItem>
-                    <ComboBoxItem>Japanese</ComboBoxItem>
+                    <ComboBoxItem>srpski</ComboBoxItem>
+                    <ComboBoxItem>engleski</ComboBoxItem>
+                    <ComboBoxItem>italijanski</ComboBoxItem>
+                    <ComboBoxItem>korejski</ComboBoxItem>
+                    <ComboBoxItem>japanski</ComboBoxItem>
                 </ComboBox>
                 <DockPanel VerticalAlignment="Center" Margin="10" Grid.Row="6">
                     <TextBox Text="{Binding ElementName=MaxGuestsSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />

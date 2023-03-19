@@ -1,5 +1,7 @@
-﻿using System;
+﻿using InitialProject.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,15 @@ namespace InitialProject.View.GuideWindows
     /// </summary>
     public partial class TourPointsWindow : Window
     {
-        public TourPointsWindow()
+
+        public ObservableCollection<TourPoint> TourPoints { get; set; }
+        public TourPointsWindow(TourEvent SelectedTourEvent)
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            TourPoints = new ObservableCollection<TourPoint>(SelectedTourEvent.Tour.TourPoints);
+            TourPoints.ElementAt(0).Active = true;
         }
 
         private void ActivateButton_Click(object sender, RoutedEventArgs e)

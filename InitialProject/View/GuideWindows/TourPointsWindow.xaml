@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
-        <Label x:Name="TourPoints" Content="Kljucne tacke" FontSize="25"/>
+        <Label x:Name="TourPointsLabel" Content="Kljucne tacke" FontSize="25"/>
 
         <DataGrid ItemsSource="{Binding Path=TourPoints, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTourPoint, UpdateSourceTrigger=PropertyChanged}"
@@ -21,6 +21,7 @@
                   x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Stigao" Binding="{Binding Active}" Width="*" ></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="0,327,10,0" VerticalAlignment="Top" Orientation="Horizontal">
