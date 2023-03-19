@@ -96,10 +96,10 @@ namespace InitialProject.View.OwnerWindows
         {
             GuestReview guestReview = new GuestReview() {Reservation=reservation, Cleanliness = Cleanliness, Behaviour = Behaviour, Comment = Comment };
             _guestReviewController.Save(guestReview);
-            //reservation.Review = guestReview;
-            //_accommodationReservationController.Update(reservation);
+             reservation.Review = guestReview;
+             _accommodationReservationController.Update(reservation);
 
-        Close();
+             Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

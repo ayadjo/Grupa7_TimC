@@ -11,7 +11,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Path=AccommodationReservations, UpdateSourceTrigger=PropertyChanged}"
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Path=AccommodationReservations, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                   SelectedItem="{Binding Path=SelectedAccommodationReservation, UpdateSourceTrigger=PropertyChanged}"
                   Margin="130,10,177,67" AutoGenerateColumns="False"
                   x:Name="AccommodationReservationsDataGrid" IsReadOnly="True" SelectionMode="Single">
