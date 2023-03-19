@@ -77,7 +77,7 @@ namespace InitialProject.View.Guest2Window
         {
              if (SelectedTour != null)
              {
-                 TourReservationWindow tourReservation = new TourReservationWindow();
+                 TourReservationWindow tourReservation = new TourReservationWindow(SelectedTour);
                  tourReservation.Show();
              }
              else
