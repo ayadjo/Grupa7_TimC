@@ -1,0 +1,29 @@
+﻿<Window x:Class="InitialProject.View.OwnerWindows.GuestWithoutReviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.View.OwnerWindows"
+        mc:Ignorable="d"
+        Title="GuestWithoutReviewWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Path=AccommodationReservations, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedAccommodationReservation, UpdateSourceTrigger=PropertyChanged}"
+                  Margin="130,10,177,67" AutoGenerateColumns="False"
+                  x:Name="AccommodationReservationsDataGrid" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ime gosta" Binding="{Binding Guest.FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Prezime gosta" Binding="{Binding Guest.LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv smeštaja" Binding="{Binding Accommodation.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Od" Binding="{Binding Start}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="Do" Binding="{Binding End}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button  x:Name="goToGuestReview" Height="30" Width="100" Content="Oceni gosta" Click="goToGuestReview_Click"></Button>
+    </Grid>
+</Window>

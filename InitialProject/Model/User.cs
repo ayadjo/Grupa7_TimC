@@ -35,8 +35,8 @@ namespace InitialProject.Model
         public void FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
-            /*FirstName = values[1];
-            LastName = values[2];*/
+            FirstName = values[1];
+            LastName = values[2];
             Username = values[1];
             Password = values[2];
             //type

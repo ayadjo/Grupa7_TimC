@@ -44,7 +44,7 @@ namespace InitialProject.Model
             Reservation = new AccommodationReservation() { Id = Convert.ToInt32(values[1]) };
             Cleanliness = Convert.ToInt32(values[2]);
             Behaviour = Convert.ToInt32(values[3]);
-            Comment = values[7];
+            Comment = values[4];
         }
     }
 }

@@ -52,6 +52,22 @@ namespace InitialProject.Services
 
         }
 
+
+        public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        {
+            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
+            {
+                if (accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
+                           && DateTime.Now <= accommodationReservation.End.AddDays(5))
+                {
+                    accommodationReservations.Add(accommodationReservation);
+                }
+            }
+
+            return accommodationReservations;
+        }
+
         /*
         public List<Accommodation> GetByOwner(int id)
         {
@@ -59,4 +75,6 @@ namespace InitialProject.Services
         }
         */
     }
+
+    
 }

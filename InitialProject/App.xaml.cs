@@ -19,10 +19,13 @@ namespace InitialProject
         {
             AccommodationRepository.GetInstance();
             LocationRepository.GetInstance();
+            AccommodationReservationRepository.GetInstance();
+            GuestReviewRepository.GetInstance();
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
+            GuestReviewRepository.GetInstance().BindGuestReviewWithAccommodationReservation();
         }
     }
 }
