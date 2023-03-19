@@ -56,6 +56,7 @@ namespace InitialProject.Services
         public List<AccommodationReservation> GetAllReservationsWithoutReview()
         {
             List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+
             foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
             {
                 if (accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
