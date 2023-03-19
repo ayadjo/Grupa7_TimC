@@ -19,14 +19,23 @@ namespace InitialProject
         {
             AccommodationRepository.GetInstance();
             LocationRepository.GetInstance();
+            TourRepository.GetInstance();
+            TourEventRepository.GetInstance();
+            TourPointRepository.GetInstance(); 
+            ImageRepository.GetInstance();
+            TourRepository.GetInstance();
+            
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
-            TourRepository.GetInstance();
 
-            AccommodationRepository.GetInstance().BindAccomodationLocation();
             TourRepository.GetInstance().BindTourLocation();
+            TourPointRepository.GetInstance().BindTourPointTour();
+            TourEventRepository.GetInstance().BindTourEventTour();
+            ImageRepository.GetInstance().BindImageResource();
+            
+
         }
     }
 }

@@ -64,5 +64,20 @@ namespace InitialProject.Controller
         {
             return _tourService.TourSearch(country, city, language, numberOfPeople, duration);
         }
+        public Tour SaveCascadeImages(Tour tour)
+        {
+            return _tourService.SaveCascadeImages(tour);
+        }
+
+        public Tour SaveCascadeTourPoints(Tour tour)
+        {
+            return _tourService.SaveCascadeTourPoints(tour);
+        }
+
+        public Tour SaveCascadeImagesTourPoints(Tour tour)
+        {
+
+            return _tourService.SaveCascadeImagesTourPoints(tour);
+        }
     }
 }

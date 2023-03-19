@@ -33,23 +33,8 @@ namespace InitialProject.Repository
             return instance;
         }
 
-        public void BindImageResource()
-        {
-            foreach(Image image in _images)
-            {
-                if(image.Resource == ImageResource.tour)
-                {
-                   // Tour tour = TourRepository.GetInstance().Get(image.ResourceId);
-                   // tour.Images.Add(image);
-                }
-                else
-                {
-                    Accommodation accommodation = AccommodationRepository.GetInstance().Get(image.ResourceId);
-                    accommodation.Images.Add(image);
-                }
-                
-            }   
-        }
+        
+          
 
 
         public List<Image> GetAll()
@@ -63,7 +48,6 @@ namespace InitialProject.Repository
         public Image Save(Image image)
         {
             image.Id = NextId();
-            //_images = _serializer.FromCSV(FilePath);
             _images.Add(image);
             _serializer.ToCSV(FilePath, _images);
             return image;
@@ -96,6 +80,33 @@ namespace InitialProject.Repository
             return image;
         }
 
-       
+        public List<Image> GetByResource(int ResourceId)    //returs list of Images that belongs to some resource(acc. for example)
+        {
+            //_images = _serializer.FromCSV(FilePath);
+            return _images.FindAll(i => i.ResourceId == ResourceId);
+        }
+
+   
+
+        public void BindImageResource()
+        {
+            foreach (Image image in _images)
+            {
+                if (image.Resource == ImageResource.tour)
+                {
+                    Tour tour = TourRepository.GetInstance().Get(image.ResourceId);
+                    tour.Images.Add(image);
+                }
+                else
+                {
+                    Accommodation accommodation = AccommodationRepository.GetInstance().Get(image.ResourceId);
+                    accommodation.Images.Add(image);
+                }
+
+            }
+        }
+
+
+
     }
 }

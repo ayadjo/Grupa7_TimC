@@ -1,5 +1,6 @@
 ﻿using InitialProject.Model;
 using InitialProject.Repository;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,5 +108,18 @@ namespace InitialProject.Services
             return _tourRepository.GetAll().Where(t => SearchCondition(t, country, city, language, numberOfPeople, duration));
         }
 
+        public Tour SaveCascadeImages(Tour tour)
+        {
+            return _tourRepository.SaveCascadeImages(tour);
+        }
+        public Tour SaveCascadeTourPoints(Tour tour)
+        {
+            return _tourRepository.SaveCascadeTourPoints(tour);
+        }
+
+        public Tour SaveCascadeImagesTourPoints(Tour tour) {
+
+            return _tourRepository.SaveCascadeImagesTourPoints(tour);
+        }
     }
 }

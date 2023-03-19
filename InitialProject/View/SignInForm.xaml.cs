@@ -5,6 +5,7 @@ using InitialProject.View;
 using InitialProject.View.OwnerView;
 using InitialProject.View.OwnerWindows;
 using InitialProject.View.Guest2Window;
+using InitialProject.View.GuideWindows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;

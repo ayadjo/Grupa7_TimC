@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InitialProject.Services
+namespace InitialProject.Service
 {
     public class LocationService
     {
@@ -39,13 +39,6 @@ namespace InitialProject.Services
             _locationRepository.Delete(location);
         }
 
-        /*
-        public List<Accommodation> GetByOwner(int id)
-        {
-
-            return _accommodationRepository.GetByOwner(id);
-        }
-        */
         public List<string> GetAllCountries()
         {
             List<string> countries = new List<string>();
@@ -53,7 +46,7 @@ namespace InitialProject.Services
             {
                 countries.Add(location.Country);
             }
-            return countries.Distinct().ToList();
+            return countries.Distinct().ToList(); ;
         }
 
         public List<string> GetCitiesByCountry(string country)
@@ -69,7 +62,6 @@ namespace InitialProject.Services
             return cities;
         }
 
-
         public Location FindLocationByCountryCity(string country, string city)
         {
             foreach (Location location in _locationRepository.GetAll())
@@ -81,5 +73,8 @@ namespace InitialProject.Services
             }
             return null;
         }
+
+
+
     }
 }
