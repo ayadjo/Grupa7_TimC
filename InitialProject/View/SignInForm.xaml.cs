@@ -73,7 +73,8 @@ namespace InitialProject
                     }
                     else if (ComboBoxRoles.SelectedIndex == 1)
                     {
-                        // GuideWindow.Show();
+                        GuideMainWindow  guideMainWindow = new GuideMainWindow();
+                        guideMainWindow.Show(); 
                         MessageBox.Show("Guide Window!");
                     }
                     else if (ComboBoxRoles.SelectedIndex == 2)
