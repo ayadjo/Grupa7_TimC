@@ -44,6 +44,7 @@ namespace InitialProject.Repository
                 if (tour != null)
                 {
                     tourPoint.Tour = tour;
+                    tour.TourPoints.Add(tourPoint);
                 }
                 else
                 {
@@ -107,7 +108,7 @@ namespace InitialProject.Repository
 
         public List<TourPoint> GetByTour(int tourId)
         {
-            //_tourPoints = _serializer.FromCSV(FilePath);
+           // _tourPoints = _serializer.FromCSV(FilePath);
             return _tourPoints.FindAll(t => t.Tour.Id == tourId);
         }
 

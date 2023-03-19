@@ -1,6 +1,7 @@
 ﻿using InitialProject.Model;
 using InitialProject.Repository;
 using InitialProject.Services;
+using InitialProject.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,22 +28,6 @@ namespace InitialProject.Controller
         {
             return _locationService.Get(id);
         }
-
-       
-
-        /*
-        public List<Accommodation> GetByOwner(int id)
-        {
-
-            return _accommodationService.GetByOwner(id);
-        }
-
-        
-        public List<Tour> TourSearch(string country, string city, string language, string numberOfPeople, string duration)
-        {
-            return _tourService.TourSearch(country, city, language, numberOfPeople, duration);
-        }
-        */
         public Location Save(Location location)
         {
             return _locationService.Save(location);

@@ -44,6 +44,7 @@ namespace InitialProject.Repository
                 if (tour != null)
                 {
                     tourEvent.Tour = tour;
+                    tour.TourEvents.Add(tourEvent);
                 }
                 else
                 {
@@ -54,7 +55,7 @@ namespace InitialProject.Repository
         public TourEvent Save(TourEvent tourEvent)
         {
             tourEvent.Id = NextId();
-            _tourEvents = _serializer.FromCSV(FilePath);
+            //_tourEvents = _serializer.FromCSV(FilePath);
             _tourEvents.Add(tourEvent);
             _serializer.ToCSV(FilePath, _tourEvents);
             return tourEvent;
@@ -63,7 +64,7 @@ namespace InitialProject.Repository
 
         public int NextId()
         {
-            _tourEvents = _serializer.FromCSV(FilePath);
+            //_tourEvents = _serializer.FromCSV(FilePath);
             if (_tourEvents.Count < 1)
             {
                 return 1;
@@ -73,7 +74,7 @@ namespace InitialProject.Repository
 
         public void Delete(TourEvent tourEvent)
         {
-            _tourEvents = _serializer.FromCSV(FilePath);
+            //_tourEvents = _serializer.FromCSV(FilePath);
             TourEvent founded = _tourEvents.Find(tp => tp.Id == tourEvent.Id);
             _tourEvents.Remove(founded);
             _serializer.ToCSV(FilePath, _tourEvents);
@@ -81,7 +82,7 @@ namespace InitialProject.Repository
 
         public TourEvent Update(TourEvent tourEvent)
         {
-            _tourEvents = _serializer.FromCSV(FilePath);
+            //_tourEvents = _serializer.FromCSV(FilePath);
             TourEvent current = _tourEvents.Find(te => te.Id == tourEvent.Id);
             int index = _tourEvents.IndexOf(current);
             _tourEvents.Remove(current);
@@ -107,7 +108,7 @@ namespace InitialProject.Repository
 
         public List<TourEvent> GetByTour(int tourId)
         {
-            _tourEvents = _serializer.FromCSV(FilePath);
+            //_tourEvents = _serializer.FromCSV(FilePath);
             return _tourEvents.FindAll(t => t.Tour.Id == tourId);
         }
 

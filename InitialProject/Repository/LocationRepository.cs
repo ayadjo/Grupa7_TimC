@@ -59,7 +59,7 @@ namespace InitialProject.Repository
         }
           public void Delete(Location location)
         {
-            //_locations = _serializer.FromCSV(FilePath);
+           // _locations = _serializer.FromCSV(FilePath);
             Location founded = _locations.Find(l => l.Id == location.Id);
             _locations.Remove(founded);
             _serializer.ToCSV(FilePath, _locations);
@@ -67,7 +67,7 @@ namespace InitialProject.Repository
 
         public Location Update(Location location)
         {
-           // _locations = _serializer.FromCSV(FilePath);
+            //_locations = _serializer.FromCSV(FilePath);
             Location current = _locations.Find(l => l.Id == location.Id);
             int index = _locations.IndexOf(current);
             _locations.Remove(current);

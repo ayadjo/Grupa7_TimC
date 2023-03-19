@@ -15,13 +15,18 @@ using System.Windows.Shapes;
 namespace InitialProject.View.GuideWindows
 {
     /// <summary>
-    /// Interaction logic for GuideOverviewWindow.xaml
+    /// Interaction logic for GuestsForTour.xaml
     /// </summary>
-    public partial class GuideOverviewWindow : Window
+    public partial class GuestsForTour : Window
     {
-        public GuideOverviewWindow()
+        public GuestsForTour()
         {
             InitializeComponent();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

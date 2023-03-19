@@ -5,6 +5,7 @@ using InitialProject.View;
 using InitialProject.View.OwnerView;
 using InitialProject.View.OwnerWindows;
 using InitialProject.View.Guest2Window;
+using InitialProject.View.GuideWindows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -72,7 +73,8 @@ namespace InitialProject
                     }
                     else if (ComboBoxRoles.SelectedIndex == 1)
                     {
-                        // GuideWindow.Show();
+                        GuideMainWindow  guideMainWindow = new GuideMainWindow();
+                        guideMainWindow.Show(); 
                         MessageBox.Show("Guide Window!");
                     }
                     else if (ComboBoxRoles.SelectedIndex == 2)

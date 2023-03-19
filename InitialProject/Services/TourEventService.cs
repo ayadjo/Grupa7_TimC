@@ -113,5 +113,17 @@ namespace InitialProject.Services
         }
 
         
+        public List<TourEvent> GetTourEventsForNow()
+        {
+            List<TourEvent> _tourEventsForNow = new List<TourEvent>();
+
+            foreach (TourEvent tourEvent in _tourEventRepository.GetAll()) {
+
+                if (tourEvent.StartTime.Date == DateTime.Today) {
+                    _tourEventsForNow.Add(tourEvent);
+                }
+            }
+            return _tourEventsForNow ;
+        }
     }
 }
