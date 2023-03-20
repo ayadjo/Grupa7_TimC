@@ -83,14 +83,15 @@ namespace InitialProject.Services
             return tourReservationList;
         }
 
-        public List<TourEvent> GetTourEventsForLocation(Location location)
+        public List<TourEvent> GetAvailableTourEventsForLocation(Location location, int numberOfPeople)
         {
             List<TourEvent> tourEvents = new List<TourEvent>();
 
 
             foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
             {
-                if (tourEvent.StartTime > DateTime.Now && tourEvent.Tour.Location.City == location.City && tourEvent.Tour.Location.Country == location.Country)
+                int freePlaces = tourEvent.Tour.MaxGuests - CheckAvailability(tourEvent);
+                if (tourEvent.StartTime > DateTime.Now && tourEvent.Tour.Location.City == location.City && tourEvent.Tour.Location.Country == location.Country && freePlaces > numberOfPeople)
                 {
                     tourEvents.Add(tourEvent);
                 }

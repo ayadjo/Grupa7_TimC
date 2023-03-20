@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using InitialProject.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.Metrics;
 
 namespace InitialProject.View.Guest2Window
 {
@@ -96,12 +97,23 @@ namespace InitialProject.View.Guest2Window
             User user = new User() { Id = 1};
             TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user);
             tourReservationController.Create(tourReservation);
+            MessageBox.Show("Uspesno ste izvrsili rezervaciju");
+            Close();
 
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void RefreshTours(List<TourEvent> tourEvents)
+        {
+            TourEvents.Clear();
+            foreach (TourEvent tourEvent in tourEvents)
+            {
+                TourEvents.Add(tourEvent);
+            }
         }
 
         private void Check_Availability_Button_Click(object sender, RoutedEventArgs e)
@@ -114,11 +126,13 @@ namespace InitialProject.View.Guest2Window
             AvailableSpots = SelectedTourEvent.Tour.MaxGuests - reservedSpots;
             if (AvailableSpots < NumberOfPeople)
             {
-                AvailableSpotsText = "Nema dovolnjo mesta";
+                AvailableSpotsText = "Nema dovoljno mesta";
+                //TourEvents = new ObservableCollection<TourEvent>(_tourEventController.GetAll());
+               
             }
             else
             {
-                AvailableSpotsText = "Uspesno rezervisano";
+                AvailableSpotsText = "Broj slobodnih:";
             }
         }
 
@@ -129,7 +143,14 @@ namespace InitialProject.View.Guest2Window
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-
-
+        private void Predlozi_Click(object sender, RoutedEventArgs e)
+        {
+            if(SelectedTourEvent == null)
+            {
+                return;
+            }
+            List<TourEvent> tourEventsForLocation = _tourEventController.GetAvailableTourEventsForLocation(SelectedTourEvent.Tour.Location, NumberOfPeople);
+            RefreshTours(tourEventsForLocation);
+        }
     }
 }

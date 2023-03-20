@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.View.Guest2Window"
         mc:Ignorable="d"
-        Title="Rezervacija tura" Height="450" Width="800">
+        Title="Rezervacija tura" Height="500" Width="800">
     <DockPanel>
         <TextBlock Background="AntiqueWhite"
                    DockPanel.Dock="Left" Width="261">
@@ -49,6 +49,7 @@
                 <Button x:Name="Reserve" Content="Rezervisi" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20, 5, 20, 5"
               Click="Reserve_Click"/>
                 <Button Content="Proveri dostupnost" Width="98" Height="27" Click="Check_Availability_Button_Click"/>
+                <Button Content="Predlozi sloodne za lokaciju" Width="98" Height="27" Click="Predlozi_Click"/>
                 
                
             </WrapPanel>
@@ -76,6 +77,7 @@
             </DataGrid>
         </StackPanel>
         
+
 
 
     </DockPanel>
