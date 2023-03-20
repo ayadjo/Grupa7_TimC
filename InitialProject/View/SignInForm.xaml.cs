@@ -1,4 +1,5 @@
-﻿using InitialProject.Forms;
+﻿using InitialProject.Controller;
+using InitialProject.Forms;
 using InitialProject.Model;
 using InitialProject.Repository;
 using InitialProject.View;
@@ -17,6 +18,8 @@ namespace InitialProject
     {
 
         private readonly UserRepository _repository;
+        //tamara
+        public AccommodationReservationController _accommodationReservationController;
 
         private string _username;
         public string Username
@@ -44,13 +47,21 @@ namespace InitialProject
             InitializeComponent();
             DataContext = this;
             _repository = UserRepository.GetInstance();
+            //tamara
+            _accommodationReservationController = new AccommodationReservationController();
         }
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
-
+            int NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
             OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
             OwnerMainWindow.Show();
+            if (NumberOfGuestsWithoutReview > 0)
+            {
+                GuestsWithoutReviewNotificationWindow Notification = new GuestsWithoutReviewNotificationWindow();
+                Notification.Show();
+                Close();
+            }
             //AccommodationsOverview accommodationsOverview = new AccommodationsOverview();
             //accommodationsOverview.Show();
             Close();

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.View.OwnerWindows"
         mc:Ignorable="d"
-        Title="GuestWithoutReviewWindow" Height="450" Width="800">
+        Title="GuestWithoutReviewWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -14,7 +14,7 @@
         <DataGrid Grid.Row="1" ItemsSource="{Binding Path=AccommodationReservations, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                   SelectedItem="{Binding Path=SelectedAccommodationReservation, UpdateSourceTrigger=PropertyChanged}"
                   Margin="130,10,177,67" AutoGenerateColumns="False"
-                  x:Name="AccommodationReservationsDataGrid" IsReadOnly="True" SelectionMode="Single">
+                  x:Name="AccommodationReservationsDataGrid" IsReadOnly="True" SelectionMode="Single" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ime gosta" Binding="{Binding Guest.FirstName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Prezime gosta" Binding="{Binding Guest.LastName}"></DataGridTextColumn>

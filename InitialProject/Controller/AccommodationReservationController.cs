@@ -65,5 +65,10 @@ namespace InitialProject.Controller
         {
             return _accommodationReservationService.GetAllReservationsWithoutReview();
         }
+
+        public int FindNumberOfGuestsWithoutReview()
+        {
+            return _accommodationReservationService.FindNumberOfGuestsWithoutReview();
+        }
     }
 }

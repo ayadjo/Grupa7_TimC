@@ -1,4 +1,5 @@
 ﻿using InitialProject.Controller;
+using InitialProject.Enumerations;
 using InitialProject.Model;
 using System;
 using System.Collections.Generic;
@@ -23,33 +24,35 @@ namespace InitialProject.View.OwnerWindows
     /// </summary>
     public partial class GuestReviewWindow : Window, INotifyPropertyChanged
     {
+        public ObservableCollection<int> Grades { get; set; }
         public GuestReviewController _guestReviewController;
         public AccommodationReservationController _accommodationReservationController;
 
         #region NotifyProperties
-        private int _cleanliness;
-        public int Cleanliness
+        private int _selectedCleanliness;
+        public int SelectedCleanliness
         {
-            get => _cleanliness;
+            get => _selectedCleanliness;
             set
             {
-                if (value != _cleanliness)
+                if (value != _selectedCleanliness)
                 {
-                    _cleanliness = value;
-                    OnPropertyChanged("Cleanliness");
+                    _selectedCleanliness = value;
+                    OnPropertyChanged("SelectedCleanliness");
                 }
             }
         }
-        private int _beahviour;
-        public int Behaviour
+
+        private int _selectedBehaviour;
+        public int SelectedBehaviour
         {
-            get => _beahviour;
+            get => _selectedBehaviour;
             set
             {
-                if (value != _beahviour)
+                if (value != _selectedBehaviour)
                 {
-                    _beahviour = value;
-                    OnPropertyChanged("Behaviour");
+                    _selectedBehaviour = value;
+                    OnPropertyChanged("SelectedBehaviour");
                 }
             }
         }
@@ -67,6 +70,7 @@ namespace InitialProject.View.OwnerWindows
                 }
             }
         }
+
         #endregion
 
         #region PropertyChangedNotifier
@@ -88,16 +92,22 @@ namespace InitialProject.View.OwnerWindows
             _guestReviewController = new GuestReviewController();
             _accommodationReservationController = new AccommodationReservationController();
             reservation = accommodationReservation;
+            Grades = new ObservableCollection<int>();
+            Grades.Add(1);
+            Grades.Add(2);
+            Grades.Add(3);
+            Grades.Add(4);
+            Grades.Add(5);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void AddReviewButton_Click(object sender, RoutedEventArgs e)
         {
-            GuestReview guestReview = new GuestReview() {Reservation=reservation, Cleanliness = Cleanliness, Behaviour = Behaviour, Comment = Comment };
+            GuestReview guestReview = new GuestReview() {Reservation=reservation, Cleanliness = SelectedCleanliness, Behaviour = SelectedBehaviour, Comment = Comment };
             _guestReviewController.Save(guestReview);
-             reservation.Review = guestReview;
-             _accommodationReservationController.Update(reservation);
+            reservation.Review = guestReview;
+            _accommodationReservationController.Update(reservation);
 
              Close();
         }

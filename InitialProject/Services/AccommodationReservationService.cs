@@ -66,7 +66,7 @@ namespace InitialProject.Services
 
             return accommodationReservations;
         }*/
-        public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        /*public List<AccommodationReservation> GetAllReservationsWithoutReview()
         {
             List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
 
@@ -80,6 +80,35 @@ namespace InitialProject.Services
             }
 
             return accommodationReservations;
+        }*/
+        private bool IsGuestWithoutReview(AccommodationReservation accommodationReservation)
+        {
+            bool retVal = accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
+                           && DateTime.Now <= accommodationReservation.End.AddDays(5);
+
+            return retVal;
+        }
+
+        public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        {
+            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
+            {
+                if (IsGuestWithoutReview(accommodationReservation))
+                {
+                    accommodationReservations.Add(accommodationReservation);
+                }
+            }
+
+            return accommodationReservations;
+        }
+
+        public int FindNumberOfGuestsWithoutReview()
+        {
+            int number;
+            List<AccommodationReservation> accommodationReservations = GetAllReservationsWithoutReview();
+            return number = accommodationReservations.Count;
+
         }
 
     }

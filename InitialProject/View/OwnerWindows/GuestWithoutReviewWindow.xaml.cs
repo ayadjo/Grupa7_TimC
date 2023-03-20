@@ -43,7 +43,7 @@ namespace InitialProject.View.OwnerWindows
         {
             GuestReviewWindow GuestReview = new GuestReviewWindow(SelectedAccommodationReservation);
             GuestReview.Show();
-            //Close();
+            Close();
         }
     }
 }
