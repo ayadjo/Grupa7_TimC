@@ -69,10 +69,7 @@ namespace InitialProject.Controller
             return _tourEventService.GetTourEventsForLocation(location);
         }
 
-        public List<TourEvent> GetAllTourEventsForTour(Tour tour)
-        {
-            return _tourEventService.GetAllTourEventsForTour(tour);
-        }
+        
         public List<TourEvent> GetTourEventsForNow()
         {
             return _tourEventService.GetTourEventsForNow(); 

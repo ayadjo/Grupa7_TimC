@@ -52,7 +52,8 @@ namespace InitialProject
         {
             User user = _repository.GetByUsername(Username);
 
-            
+            ToursOverviewWindow toursOverview = new ToursOverviewWindow();
+            toursOverview.Show();
 
             if (user != null)
             {
@@ -84,8 +85,8 @@ namespace InitialProject
                     }
                     else if (ComboBoxRoles.SelectedIndex == 3)
                     {
-                        ToursOverviewWindow toursOverview = new ToursOverviewWindow();
-                        toursOverview.Show();
+                        //ToursOverviewWindow toursOverview = new ToursOverviewWindow();
+                        //toursOverview.Show();
                     }
                 }
                 else

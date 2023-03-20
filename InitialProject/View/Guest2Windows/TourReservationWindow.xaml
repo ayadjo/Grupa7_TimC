@@ -48,9 +48,11 @@
             <WrapPanel Grid.Row="1"  FlowDirection="LeftToRight" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="90,0,0,0" >
                 <Button x:Name="Reserve" Content="Rezervisi" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20, 5, 20, 5"
               Click="Reserve_Click"/>
+                <Button Content="Proveri dostupnost" Width="98" Height="27" Click="Check_Availability_Button_Click"/>
                 
                
             </WrapPanel>
+            
             <Button Grid.Column="1" x:Name="Cancel" Content="Otkazi" IsCancel="True" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Row="1"
                     Click="Cancel_Click"/>
         </Grid>
@@ -62,18 +64,19 @@
                   ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True"
-                  Width="550" Height="360" >
+                  Width="467" Height="363" >
                 <!--SelectionChanged="DataGrid_SelectionChanged"-->
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Header="State" Binding="{Binding Location.Country}" Width="200"></DataGridTextColumn>
-                    <DataGridTextColumn  Header="City" Binding="{Binding Location.City}" Width="200"></DataGridTextColumn>
-                    <DataGridTextColumn  Header="Languages" Binding="{Binding Languages}" Width="200"></DataGridTextColumn>
-                    <DataGridTextColumn  Header="MaxGuests" Binding="{Binding MaxGuests}" Width="200"></DataGridTextColumn>
-                    <DataGridTextColumn  Header="Duration" Binding="{Binding Duration}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="State" Binding="{Binding Tour.Location.Country}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="City" Binding="{Binding Tour.Location.City}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="Languages" Binding="{Binding Tour.Languages}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="MaxGuests" Binding="{Binding Tour.MaxGuests}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="Duration" Binding="{Binding Tour.Duration}" Width="*"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-        <Button Content="Button" Width="NaN"/>
+        
+
 
     </DockPanel>
 </Window>

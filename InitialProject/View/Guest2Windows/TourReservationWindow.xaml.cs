@@ -28,13 +28,38 @@ namespace InitialProject.View.Guest2Window
         public TourReservationController tourReservationController;
         public TourEventController _tourEventController;
 
-        public string AvailableSpotsText { get; set; }
-        public int AvailableSpots { get; set; }
+        private string _availableSpotsText { get; set; }
+        private int _availableSpots { get; set; }
         
 
         private TourEvent _selectedTourEvent;
 
-        
+        public string AvailableSpotsText
+        {
+            get => _availableSpotsText;
+            set
+            {
+                if (_availableSpotsText != value)
+                {
+                    _availableSpotsText = value;
+                    OnPropertyChanged("AvailableSpotsText");
+                }
+            }
+        }
+
+        public int AvailableSpots
+        {
+            get => _availableSpots;
+            set
+            {
+                if (_availableSpots != value)
+                {
+                    _availableSpots = value;
+                    OnPropertyChanged("AvailableSpots");
+                }
+            }
+        }
+
 
         public TourEvent SelectedTourEvent
         {
@@ -63,12 +88,15 @@ namespace InitialProject.View.Guest2Window
             //NumberOfPeople = "";
             _tourEventController = new TourEventController();
 
-            TourEvents = new ObservableCollection<TourEvent>(_tourEventController.GetAllTourEventsForTour(tour));
+            TourEvents = new ObservableCollection<TourEvent>(tour.TourEvents);
         }
 
         private void Reserve_Click(object sender, RoutedEventArgs e)
         {
-            AvailableSpots = _tourEventController.CheckAvailability(SelectedTourEvent);
+            User user = new User() { Id = 1};
+            TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user);
+            tourReservationController.Create(tourReservation);
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

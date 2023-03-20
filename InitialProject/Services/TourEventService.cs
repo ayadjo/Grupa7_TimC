@@ -98,20 +98,7 @@ namespace InitialProject.Services
             return tourEvents;
         }
 
-        public List<TourEvent> GetAllTourEventsForTour(Tour tour)
-        {
-            List<TourEvent> tourEvents = new List<TourEvent>();
-
-            foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
-            {
-                if (tourEvent.Tour.Id == tour.Id)
-                {
-                    tourEvents.Add(tourEvent);
-                }
-            }
-            return tourEvents;
-        }
-
+        
         
         public List<TourEvent> GetTourEventsForNow()
         {
