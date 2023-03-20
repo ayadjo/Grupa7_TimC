@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.View.OwnerWindows"
         mc:Ignorable="d"
-        Title="OwnerMainWindow" Height="450" Width="800">
+        Title="OwnerMainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -30,11 +30,10 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="MyAppartmentsButton" Content="Apartmani" Click="MyAppartmentsButton_Click"
-                            Grid.Row="0" FontSize="20" Background="White" BorderBrush="White" />
-                    <Button x:Name="GuestReviewsButton" Content="Recenzije gostiju" Click="GuestReviewsButton_Click" 
-                            Grid.Row="1" FontSize="20" Background="White" BorderBrush="White"/>
-                    <Button x:Name="NotificationButton" Content="Obaveštenja" Click="NotificationButton_Click" 
-                            Grid.Row="2" FontSize="20" Background="White" BorderBrush="White"/>
+                            Grid.Row="0" FontSize="20"  BorderBrush="White" />
+                    <Button x:Name="GuestWithoutReviewButton" Content="Neocenjeni gosti" Click="GuestsReviewButton_Click" 
+                            Grid.Row="1" FontSize="20"  BorderBrush="White" />
+                    
                 </Grid>
             </Grid>
         </Grid>

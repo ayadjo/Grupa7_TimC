@@ -1,4 +1,5 @@
-﻿using InitialProject.Forms;
+﻿using InitialProject.Controller;
+using InitialProject.Forms;
 using InitialProject.Model;
 using InitialProject.Repository;
 using InitialProject.View;
@@ -19,6 +20,8 @@ namespace InitialProject
     {
 
         private readonly UserRepository _repository;
+       
+        public AccommodationReservationController _accommodationReservationController; //ne brisatiiii
 
         private string _username;
         public string Username
@@ -46,14 +49,14 @@ namespace InitialProject
             InitializeComponent();
             DataContext = this;
             _repository = UserRepository.GetInstance();
+            
+            _accommodationReservationController = new AccommodationReservationController(); //tamara je, ne brisatiiiiiiiii
         }
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
             User user = _repository.GetByUsername(Username);
 
-            ToursOverviewWindow toursOverview = new ToursOverviewWindow();
-            toursOverview.Show();
 
             if (user != null)
             {
@@ -69,7 +72,16 @@ namespace InitialProject
                     else if (ComboBoxRoles.SelectedIndex == 0)
                     {
                         // OwnerWindow
-                        MessageBox.Show("Owner Window!");
+                        int NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
+                        OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
+                        OwnerMainWindow.Show();
+                        if (NumberOfGuestsWithoutReview > 0)
+                        {
+                            GuestsWithoutReviewNotificationWindow Notification = new GuestsWithoutReviewNotificationWindow();
+                            Notification.Show();
+                            Close();
+                       }
+                        Close();
 
                     }
                     else if (ComboBoxRoles.SelectedIndex == 1)
@@ -85,8 +97,9 @@ namespace InitialProject
                     }
                     else if (ComboBoxRoles.SelectedIndex == 3)
                     {
-                        //ToursOverviewWindow toursOverview = new ToursOverviewWindow();
-                        //toursOverview.Show();
+                        
+                        ToursOverviewWindow toursOverview = new ToursOverviewWindow();
+                        toursOverview.Show();
                     }
                 }
                 else

@@ -52,11 +52,66 @@ namespace InitialProject.Services
 
         }
 
-        /*
-        public List<Accommodation> GetByOwner(int id)
+        /*public List<AccommodationReservation> GetAllReservationsWithoutReview() 
         {
-            return _accommodationRepository.GetByOwner(id);
+            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
+            {
+                if (accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
+                    && DateTime.Now <= accommodationReservation.End.AddDays(5))
+                {
+                    accommodationReservations.Add(accommodationReservation);
+                }
+            }
+
+            return accommodationReservations;
+        }*/
+        /*public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        {
+            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+
+            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
+            {
+                if (accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
+                           && DateTime.Now <= accommodationReservation.End.AddDays(5))
+                {
+                    accommodationReservations.Add(accommodationReservation);
+                }
+            }
+
+            return accommodationReservations;
+        }*/
+        private bool IsGuestWithoutReview(AccommodationReservation accommodationReservation)
+        {
+            bool retVal = accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
+                           && DateTime.Now <= accommodationReservation.End.AddDays(5);
+
+            return retVal;
         }
-        */
+
+        public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        {
+            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
+            {
+                if (IsGuestWithoutReview(accommodationReservation))
+                {
+                    accommodationReservations.Add(accommodationReservation);
+                }
+            }
+
+            return accommodationReservations;
+        }
+
+        public int FindNumberOfGuestsWithoutReview()
+        {
+            int number;
+            List<AccommodationReservation> accommodationReservations = GetAllReservationsWithoutReview();
+            return number = accommodationReservations.Count;
+
+        }
+
     }
+
+    
 }

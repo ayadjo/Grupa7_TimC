@@ -41,10 +41,10 @@ namespace InitialProject.View.OwnerWindows
             RegisterNewAccommodation NewAccommodation = new RegisterNewAccommodation();
             NewAccommodation.Show();
             Close();
-            Update();
+            //Update();
         }
-
-        private void UpdateAccommodationsList()
+        //mislim da je ovo bespotrebno
+        /*private void UpdateAccommodationsList()
         {
         
             foreach (var accommodation in _accommodationController.GetAll())
@@ -56,6 +56,6 @@ namespace InitialProject.View.OwnerWindows
         public void Update()
         {
             UpdateAccommodationsList();
-        }
+        }*/
     }
 }
