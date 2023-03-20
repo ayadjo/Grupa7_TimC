@@ -18,8 +18,8 @@ namespace InitialProject
     {
 
         private readonly UserRepository _repository;
-        //tamara
-        public AccommodationReservationController _accommodationReservationController;
+       
+        public AccommodationReservationController _accommodationReservationController; //ne brisatiiii
 
         private string _username;
         public string Username
@@ -47,12 +47,13 @@ namespace InitialProject
             InitializeComponent();
             DataContext = this;
             _repository = UserRepository.GetInstance();
-            //tamara
-            _accommodationReservationController = new AccommodationReservationController();
+            
+            _accommodationReservationController = new AccommodationReservationController(); //tamara je, ne brisatiiiiiiiii
         }
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
+            //tamara, nemojte ovo brisati deo je funkcionalnosti
             int NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
             OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
             OwnerMainWindow.Show();
@@ -62,6 +63,7 @@ namespace InitialProject
                 Notification.Show();
                 Close();
             }
+            //*****************************************************
             //AccommodationsOverview accommodationsOverview = new AccommodationsOverview();
             //accommodationsOverview.Show();
             Close();
