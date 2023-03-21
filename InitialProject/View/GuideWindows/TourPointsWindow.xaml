@@ -25,7 +25,10 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="0,327,10,0" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button x:Name="AddGuestButton" Content="Dodaj gosta" Click="AddGuestButton_Click" Height="40" Width="100" Margin="10"/>
             <Button x:Name="ActivateButton" Content="Aktiviraj" Click="ActivateButton_Click" Height="40" Width="100" Margin="10"/>
+            <Button x:Name="EndButton" Content="Zavrsi" Click="EndButton_Click" Height="40" Width="100" Margin="10"/>
+           
         </StackPanel>
     </Grid>
 </Window>

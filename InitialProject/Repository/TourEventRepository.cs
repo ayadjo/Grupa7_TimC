@@ -48,7 +48,7 @@ namespace InitialProject.Repository
                 }
                 else
                 {
-                    Console.WriteLine("Error in accommodationLocation binding");
+                    Console.WriteLine("Error in tourEventTour binding");
                 }
             }
         }

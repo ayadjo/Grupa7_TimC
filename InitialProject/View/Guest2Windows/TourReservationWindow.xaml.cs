@@ -77,6 +77,8 @@ namespace InitialProject.View.Guest2Window
 
         public int NumberOfPeople { get; set; }
 
+        public TourPoint tourPointWhenGuestCame;
+
         public ObservableCollection<TourEvent> TourEvents { get; set; }
 
         public TourReservationWindow(Tour tour)
@@ -95,7 +97,7 @@ namespace InitialProject.View.Guest2Window
         private void Reserve_Click(object sender, RoutedEventArgs e)
         {
             User user = new User() { Id = 1};
-            TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user);
+            TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, tourPointWhenGuestCame);
             tourReservationController.Create(tourReservation);
             MessageBox.Show("Uspesno ste izvrsili rezervaciju");
             Close();
@@ -143,7 +145,7 @@ namespace InitialProject.View.Guest2Window
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void Predlozi_Click(object sender, RoutedEventArgs e)
+        private void Suggest_Click(object sender, RoutedEventArgs e)
         {
             if(SelectedTourEvent == null)
             {
