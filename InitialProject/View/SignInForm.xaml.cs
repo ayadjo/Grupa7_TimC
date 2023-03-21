@@ -1,5 +1,5 @@
 ﻿using InitialProject.Controller;
-using InitialProject.Forms;
+//using InitialProject.Forms;
 using InitialProject.Model;
 using InitialProject.Repository;
 using InitialProject.View;
@@ -62,8 +62,7 @@ namespace InitialProject
             {
                 if (user.Password == txtPassword.Password)
                 {
-                    //CommentsOverview commentsOverview = new CommentsOverview(user);
-                    //commentsOverview.Show();
+                  
                     if (ComboBoxRoles.SelectedIndex == -1)
                     {
                         MessageBox.Show("You didn't select the role!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
