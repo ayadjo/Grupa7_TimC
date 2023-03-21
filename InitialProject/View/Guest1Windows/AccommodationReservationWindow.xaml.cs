@@ -30,14 +30,16 @@ namespace InitialProject.View
         private readonly AccommodationReservationRepository accommodationReservationRepository;
         public Accommodation accommodation;
         public int us;
+        public User guest;
+        public GuestReview guestReview = new GuestReview { Id = -1 };
 
         bool isAvailable = true;
 
-        public AccommodationReservationWindow(Accommodation a, int user)
+        public AccommodationReservationWindow(Accommodation a, User user)
         {
             InitializeComponent();
             accommodation = a;
-            us = user;
+            guest = user;
             accommodationReservationRepository = new AccommodationReservationRepository();
         }
 
@@ -98,7 +100,7 @@ namespace InitialProject.View
                 {
                     // Check if the selected dates overlap with the reservation dates
                     if (
-                        reservation.AccommodationId == accommodation.Id &&
+                        reservation.Accommodation.Id == accommodation.Id &&
                         ((start >= reservation.Start && start < reservation.End) ||
                         (end > reservation.Start && start <= reservation.End) ||
                         (start < reservation.Start && end > reservation.End))
@@ -111,7 +113,8 @@ namespace InitialProject.View
 
                 if (isAvailable)
                 {
-                    accommodationReservationRepository.AddReservedAccommodations(accommodation, us, start, end);
+                    //GuestReview guestReview = new GuestReview { Id = -1 };
+                    accommodationReservationRepository.AddReservedAccommodations(accommodation, guest, start, end, guestReview);
                     MessageBox.Show("Uspešno ste rezervisali smeštaj!", "Rezervisano!", MessageBoxButton.OK);
                 }
                 else
@@ -137,11 +140,12 @@ namespace InitialProject.View
             {
                 string[] line = reader.ReadLine().Split('|');
                 int id = Convert.ToInt32(line[0]);
-                int guestId = Convert.ToInt32(line[1]);
-                int accommodationId = Convert.ToInt32(line[2]);
+                Accommodation accommodation = new Accommodation() { Id = Convert.ToInt32(line[1]) };
+                User guest = new User() { Id = Convert.ToInt32(line[2]) };
                 DateTime start = DateTime.Parse(line[3]);
                 DateTime end = DateTime.Parse(line[4]);
-                AccommodationReservation reservation = new AccommodationReservation(id, guestId, accommodationId, start, end);
+                GuestReview guestReview = new GuestReview() { Id = Convert.ToInt32(line[5]) };
+                AccommodationReservation reservation = new AccommodationReservation(id, accommodation, guest, start, end, guestReview);
                 reservations.Add(reservation);
             }
             reader.Close();

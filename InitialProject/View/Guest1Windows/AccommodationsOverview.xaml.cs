@@ -1,4 +1,5 @@
 ﻿using InitialProject.Controller;
+using InitialProject.Enumerations;
 using InitialProject.Model;
 using InitialProject.View.Guest2Window;
 using System;
@@ -30,14 +31,17 @@ namespace InitialProject.View
         public ObservableCollection<Accommodation> Accommodations { get; set; }
         public Accommodation SelectedAccommodation { get; set; }
 
+        public User guest { get; set; }
+
         public int userId;
 
-        public AccommodationsOverview(int id)
+        public AccommodationsOverview(User user)
         {
             InitializeComponent();
             DataContext = this;
 
-            userId = id;
+            //userId = id;
+            guest = user;
 
             _accommodationController = new AccommodationController();
             //_accommodationController.Subscribe(this);
@@ -146,7 +150,7 @@ namespace InitialProject.View
         {
             if (SelectedAccommodation != null)
             {
-                AccommodationReservationWindow accommodationReservation = new AccommodationReservationWindow(SelectedAccommodation, userId);
+                AccommodationReservationWindow accommodationReservation = new AccommodationReservationWindow(SelectedAccommodation, guest);
                 accommodationReservation.Show();
             }
             else

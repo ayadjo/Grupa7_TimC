@@ -12,9 +12,7 @@ namespace InitialProject.Model
     {
         public int Id { get; set; }
         public User Guest { get; set; }
-        public int GuestId { get; set; }
         public Accommodation Accommodation { get; set; }
-        public int AccommodationId { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
 
@@ -25,13 +23,14 @@ namespace InitialProject.Model
 
         }
 
-        public AccommodationReservation(int id, int guestId, int accommodationId, DateTime start, DateTime end)
+        public AccommodationReservation(int id, Accommodation accommodation, User guest, DateTime start, DateTime end, GuestReview guestReview)
         {
             Id = id;
-            GuestId = guestId;
-            AccommodationId = accommodationId;
+            Accommodation = accommodation;
+            Guest = guest;
             Start = start;
             End = end;
+            Review = guestReview;
         }
 
 
@@ -40,10 +39,11 @@ namespace InitialProject.Model
             string[] csvValues =
             {
                 Id.ToString(),
-                AccommodationId.ToString(),
-                GuestId.ToString(),
+                Accommodation.Id.ToString(),
+                Guest.Id.ToString(),
                 Start.ToString(),
-                End.ToString()
+                End.ToString(),
+                Review.Id.ToString()
             };
             return csvValues;
         }
@@ -51,11 +51,11 @@ namespace InitialProject.Model
         void ISerializable.FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
-            AccommodationId = Convert.ToInt32(values[1]);
-            GuestId = Convert.ToInt32(values[2]);
+            Accommodation = new Accommodation() { Id = Convert.ToInt32(values[1]) };
+            Guest = new User() { Id = Convert.ToInt32(values[2]) };
             Start = Convert.ToDateTime(values[3]);
             End = Convert.ToDateTime(values[4]);
-
+            Review = new GuestReview() { Id = Convert.ToInt32(values[5]) };
         }
     }
 }

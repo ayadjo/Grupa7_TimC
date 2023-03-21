@@ -51,9 +51,10 @@ namespace InitialProject.Repository
                 }
             }
         }
-        
+        */
 
-        
+
+
         public void BindAccomodationReservationAccommodation()
         {
             foreach (AccommodationReservation accommodationReservation in _accommodationReservations)
@@ -87,7 +88,7 @@ namespace InitialProject.Repository
                 }
             }
         }
-        */
+        
 
         public AccommodationReservation Save(AccommodationReservation accommodationReservation)
         {
@@ -122,7 +123,7 @@ namespace InitialProject.Repository
         }
         public int NextId()
         {
-            _accommodationReservations = _serializer.FromCSV(FilePath);
+            //_accommodationReservations = _serializer.FromCSV(FilePath);
 
             if (_accommodationReservations.Count < 1)
             {
@@ -133,7 +134,7 @@ namespace InitialProject.Repository
 
         public void Delete(AccommodationReservation accommodationReservation)
         {
-            _accommodationReservations = _serializer.FromCSV(FilePath);
+            //_accommodationReservations = _serializer.FromCSV(FilePath);
             AccommodationReservation founded = _accommodationReservations.Find(ar => ar.Id == accommodationReservation.Id);
             _accommodationReservations.Remove(founded);
             _serializer.ToCSV(FilePath, _accommodationReservations);
@@ -141,7 +142,7 @@ namespace InitialProject.Repository
 
         public AccommodationReservation Update(AccommodationReservation accommodationReservation)
         {
-            _accommodationReservations = _serializer.FromCSV(FilePath);
+            //_accommodationReservations = _serializer.FromCSV(FilePath);
             AccommodationReservation current = _accommodationReservations.Find(ar => ar.Id == accommodationReservation.Id);
             int index = _accommodationReservations.IndexOf(current);
             _accommodationReservations.Remove(current);
@@ -159,12 +160,14 @@ namespace InitialProject.Repository
         */
 
 
-        public void AddReservedAccommodations(Accommodation a, int us, DateTime start, DateTime end)
+        public void AddReservedAccommodations(Accommodation accommodation, User guest, DateTime start, DateTime end, GuestReview guestReview)
         {
             List<AccommodationReservation> accommodationReservation = _serializer.FromCSV(FilePath);
             // User u = userRepository.GetAllUsers().Find(u => u.Id == us);
             int id = NextId();
-            AccommodationReservation ar = new AccommodationReservation(id, a.Id, us, start, end);
+            //GuestReview guestReview = new GuestReview { Id = -1};
+            guestReview.Id = -1;
+            AccommodationReservation ar = new AccommodationReservation(id, accommodation, guest, start, end, guestReview);
 
             accommodationReservation.Add(ar);
             _serializer.ToCSV(FilePath, accommodationReservation);
