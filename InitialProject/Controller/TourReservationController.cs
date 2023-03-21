@@ -44,6 +44,15 @@ namespace InitialProject.Controller
             return _tourReservationService.Update(tourReservation);
         }
 
+        public List<User> AllGuestsThatDidntComeYet(TourEvent tourEvent) {
+
+            return _tourReservationService.AllGuestsThatDidntComeYet(tourEvent);
+        }
+
+        public TourReservation FindTourReservationForUserAndTourEvent(User user, TourEvent tourEvent)
+        {
+            return _tourReservationService.FindTourReservationForUserAndTourEvent(user, tourEvent);
+        }
 
     }
 }

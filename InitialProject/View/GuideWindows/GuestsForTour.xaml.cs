@@ -1,5 +1,8 @@
-﻿using System;
+﻿using InitialProject.Controller;
+using InitialProject.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +22,32 @@ namespace InitialProject.View.GuideWindows
     /// </summary>
     public partial class GuestsForTour : Window
     {
-        public GuestsForTour()
+        public TourReservationController _tourReservationController { get; set; }
+        public ObservableCollection<User> Guests2 { get; set; }
+
+        public User SelectedGuest { get; set; }
+        public TourPoint CurrentTourPoint { get; set; }
+        public TourEvent CurrentTourEvent { get; set; }
+        public GuestsForTour(TourEvent tourEvent, TourPoint tourPoint)
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            CurrentTourEvent = tourEvent;
+            CurrentTourPoint = tourPoint;
+
+            _tourReservationController = new TourReservationController();
+            Guests2 = new ObservableCollection<User> (_tourReservationController.AllGuestsThatDidntComeYet(tourEvent));
+
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            TourReservation tourReservation = _tourReservationController.FindTourReservationForUserAndTourEvent(SelectedGuest, CurrentTourEvent);
+            tourReservation.TourPointWhenGuestCame = CurrentTourPoint;
 
+            _tourReservationController.Update(tourReservation);
+            Close();
         }
     }
 }

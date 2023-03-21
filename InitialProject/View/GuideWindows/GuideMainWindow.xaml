@@ -33,8 +33,6 @@
                             Grid.Row="0" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left" />
                     <Button x:Name="TodaysToursButton" Content="Današnje ture" Click="TodaysToursButton_Click" 
                             Grid.Row="1" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
-                    <Button x:Name="NotificationButton" Content="Obaveštenja" Click="NotificationButton_Click" 
-                            Grid.Row="2" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
                 </Grid>
             </Grid>
         </Grid>

@@ -23,7 +23,7 @@ namespace InitialProject
             TourEventRepository.GetInstance();
             TourPointRepository.GetInstance(); 
             ImageRepository.GetInstance();
-            TourRepository.GetInstance();
+            TourReservationRepository.GetInstance();
             
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
@@ -34,6 +34,10 @@ namespace InitialProject
             TourPointRepository.GetInstance().BindTourPointTour();
             TourEventRepository.GetInstance().BindTourEventTour();
             ImageRepository.GetInstance().BindImageResource();
+
+            TourReservationRepository.GetInstance().BindTourReservationTourPoint();
+            TourReservationRepository.GetInstance().BindTourReservationTourEvent();
+            TourReservationRepository.GetInstance().BindTourReservationUser();  
             
 
         }

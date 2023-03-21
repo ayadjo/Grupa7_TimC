@@ -19,17 +19,20 @@ namespace InitialProject.Model
 
         public User Guest { get; set; }
 
+        public TourPoint TourPointWhenGuestCame { get; set; }    
+
         public TourReservation()
         {
             
         }
 
-        public TourReservation(int id, int numberOfPeople,TourEvent tourEvent, User guest)
+        public TourReservation(int id, int numberOfPeople,TourEvent tourEvent, User guest, TourPoint tourPointWhenGuestCame)
         {
             Id = id;
             NumberOfPeople = numberOfPeople;
             TourEvent = tourEvent;
             Guest = guest;
+            TourPointWhenGuestCame = tourPointWhenGuestCame;
 
         }
 
@@ -40,7 +43,8 @@ namespace InitialProject.Model
                 Id.ToString(),
                 NumberOfPeople.ToString(),
                 TourEvent.Id.ToString(),
-                Guest.Id.ToString()
+                Guest.Id.ToString(),
+                TourPointWhenGuestCame.Id.ToString()
             };
             return csvValues;
         }
@@ -51,6 +55,7 @@ namespace InitialProject.Model
             NumberOfPeople = Convert.ToInt32(values[1]);
             TourEvent = new TourEvent() { Id = Convert.ToInt32(values[2]) };
             Guest = new User() { Id = Convert.ToInt32(values[3]) };
+            TourPointWhenGuestCame = new TourPoint() { Id= Convert.ToInt32(values[4]) };
         }
     }
 }
