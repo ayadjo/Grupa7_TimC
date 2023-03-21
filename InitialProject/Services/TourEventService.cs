@@ -64,7 +64,7 @@ namespace InitialProject.Services
             {
                 if (tourReservation.TourEvent.Id == tourEvent.Id)
                 {
-                    numOfPeople += tourReservation.NumberOfPeople;   
+                    numOfPeople += tourReservation.NumberOfPeople;    
                 }
             }
             return numOfPeople;
