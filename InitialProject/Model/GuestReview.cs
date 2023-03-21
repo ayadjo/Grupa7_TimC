@@ -25,7 +25,7 @@ namespace InitialProject.Model
             Comment = comment;
         }
 
-        string[] ISerializable.ToCSV()
+        public string[] ToCSV()
         {
             string[] csvValues =
             {   Id.ToString(),
@@ -38,13 +38,13 @@ namespace InitialProject.Model
             
         }
 
-        void ISerializable.FromCSV(string[] values)
+        public void FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
             Reservation = new AccommodationReservation() { Id = Convert.ToInt32(values[1]) };
             Cleanliness = Convert.ToInt32(values[2]);
             Behaviour = Convert.ToInt32(values[3]);
-            Comment = values[7];
+            Comment = values[4];
         }
     }
 }

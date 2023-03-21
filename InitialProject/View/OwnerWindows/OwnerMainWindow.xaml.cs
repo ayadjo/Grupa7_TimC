@@ -34,9 +34,11 @@ namespace InitialProject.View.OwnerWindows
 
 
 
-        private void GuestReviewsButton_Click(object sender, RoutedEventArgs e)
+        private void GuestsReviewButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            GuestWithoutReviewWindow GuestWithoutReview = new GuestWithoutReviewWindow();
+            GuestWithoutReview.Show();
+            
         }
 
         private void NotificationButton_Click(object sender, RoutedEventArgs e)

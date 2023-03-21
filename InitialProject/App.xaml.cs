@@ -25,6 +25,8 @@ namespace InitialProject
             ImageRepository.GetInstance();
             TourRepository.GetInstance();
             
+            AccommodationReservationRepository.GetInstance();
+            GuestReviewRepository.GetInstance();
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
@@ -36,6 +38,7 @@ namespace InitialProject
             ImageRepository.GetInstance().BindImageResource();
             
 
+            GuestReviewRepository.GetInstance().BindGuestReviewWithAccommodationReservation();
         }
     }
 }
