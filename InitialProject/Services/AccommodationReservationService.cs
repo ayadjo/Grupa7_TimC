@@ -52,35 +52,13 @@ namespace InitialProject.Services
 
         }
 
-        /*public List<AccommodationReservation> GetAllReservationsWithoutReview() 
+        /*
+        public List<Accommodation> GetByOwner(int id)
         {
-            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
-            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
-            {
-                if (accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
-                    && DateTime.Now <= accommodationReservation.End.AddDays(5))
-                {
-                    accommodationReservations.Add(accommodationReservation);
-                }
-            }
+            return _accommodationRepository.GetByOwner(id);
+        }
+        */
 
-            return accommodationReservations;
-        }*/
-        /*public List<AccommodationReservation> GetAllReservationsWithoutReview()
-        {
-            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
-
-            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
-            {
-                if (accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
-                           && DateTime.Now <= accommodationReservation.End.AddDays(5))
-                {
-                    accommodationReservations.Add(accommodationReservation);
-                }
-            }
-
-            return accommodationReservations;
-        }*/
         private bool IsGuestWithoutReview(AccommodationReservation accommodationReservation)
         {
             bool retVal = accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
@@ -110,8 +88,5 @@ namespace InitialProject.Services
             return number = accommodationReservations.Count;
 
         }
-
     }
-
-    
 }

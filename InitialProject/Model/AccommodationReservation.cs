@@ -12,44 +12,50 @@ namespace InitialProject.Model
     {
         public int Id { get; set; }
         public User Guest { get; set; }
+        public int GuestId { get; set; }
         public Accommodation Accommodation { get; set; }
+        public int AccommodationId { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
-   
+
         public GuestReview Review { get; set; }
 
-        public AccommodationReservation() { }
-        public AccommodationReservation(int id, User guest, Accommodation accommodation, DateTime start, DateTime end,GuestReview review)
+        public AccommodationReservation()
         {
-            Id = id; 
-            Guest = guest;
-            Accommodation = accommodation;
-            Start = start;
-            End = end;
-            Review = review;
+
         }
 
-        public string[] ToCSV()
+        public AccommodationReservation(int id, int guestId, int accommodationId, DateTime start, DateTime end)
+        {
+            Id = id;
+            GuestId = guestId;
+            AccommodationId = accommodationId;
+            Start = start;
+            End = end;
+        }
+
+
+        string[] ISerializable.ToCSV()
         {
             string[] csvValues =
-            {   Id.ToString(),
-                Guest.Id.ToString(),
-                Accommodation.Id.ToString(),
+            {
+                Id.ToString(),
+                AccommodationId.ToString(),
+                GuestId.ToString(),
                 Start.ToString(),
-                End.ToString(),
-                Review.Id.ToString(),
+                End.ToString()
             };
             return csvValues;
         }
 
-        public void FromCSV(string[] values)
+        void ISerializable.FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
-            Guest = new User() { Id = Convert.ToInt32(values[1]) };
-            Accommodation = new Accommodation() { Id = Convert.ToInt32(values[2]) };
-            Start = DateTime.Parse(values[3]);
-            End = DateTime.Parse(values[4]);
-            Review = new GuestReview() { Id = Convert.ToInt32(values[5]) };
+            AccommodationId = Convert.ToInt32(values[1]);
+            GuestId = Convert.ToInt32(values[2]);
+            Start = Convert.ToDateTime(values[3]);
+            End = Convert.ToDateTime(values[4]);
+
         }
     }
 }

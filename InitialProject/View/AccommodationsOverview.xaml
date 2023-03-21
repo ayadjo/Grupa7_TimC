@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.View"
         mc:Ignorable="d"
-        Title="AccommodationsOverview" Height="550" Width="800">
-    <Grid Margin="0,0,0,-16">
+        Title="AccommodationsOverview" Height="570" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,-142,-16">
         <DataGrid ItemsSource="{Binding Accommodations, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedAccommodation, UpdateSourceTrigger=PropertyChanged}"
-                  Margin="10,10,240,200" AutoGenerateColumns="False" x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single">
+                  Margin="11,132,152,106" AutoGenerateColumns="False" x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}"></DataGridTextColumn>
@@ -19,31 +19,33 @@
                 <DataGridTextColumn Header="Min dana za rezervaciju" Binding="{Binding MinDaysForReservation}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Dana za otkazivanje" Binding="{Binding CancelationPeriod}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Slika" Binding="{Binding Images}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Vlasnik" Binding="{Binding Owner.Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Vlasnik" Binding="{Binding Owner.Id}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Pretraga po nazivu:" HorizontalAlignment="Left" Margin="588,10,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="588,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="44" Name="AccommodationSearchByNameTextBox"/>
+        <Label Content="Pretraga po nazivu:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="25" Name="AccommodationSearchByNameTextBox"/>
 
-        <Label HorizontalAlignment="Left" Margin="588,80,0,0" VerticalAlignment="Top" Content="Pretraga po drzavi:"/>
-        <TextBox HorizontalAlignment="Left" Margin="588,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="43" Name="AccommodationSearchByCountryTextBox"/>
+        <Label HorizontalAlignment="Left" Margin="199,5,0,0" VerticalAlignment="Top" Content="Pretraga po državi:"/>
+        <TextBox HorizontalAlignment="Left" Margin="199,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="24" Name="AccommodationSearchByCountryTextBox"/>
 
-        <Label HorizontalAlignment="Left" Margin="590,154,0,0" VerticalAlignment="Top" Content="Pretraga po gradu:"/>
-        <TextBox HorizontalAlignment="Left" Margin="588,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="37" Name="AccommodationSearchByCityTextBox"/>
-        
-        <Label HorizontalAlignment="Left" Margin="588,209,0,0" VerticalAlignment="Top" Content="Pretraga po tipu smeštaja:" />
-        <TextBox HorizontalAlignment="Left" Margin="588,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="35" Name="AccommodationSearchByTypeTextBox"/>
+        <Label HorizontalAlignment="Left" Margin="392,4,0,0" VerticalAlignment="Top" Content="Pretraga po gradu:"/>
+        <TextBox HorizontalAlignment="Left" Margin="392,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="25" Name="AccommodationSearchByCityTextBox"/>
 
-        <Label HorizontalAlignment="Left" Margin="588,274,0,0" VerticalAlignment="Top" Content="Pretraga po broju gostiju:"/>
-        <TextBox HorizontalAlignment="Left" Margin="588,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="40" Name="AccommodationSearchByNumberOfGuestsTextBox"/>
+        <Label HorizontalAlignment="Left" Margin="616,-1,0,0" VerticalAlignment="Top" Content="Pretraga po tipu smeštaja:" />
+        <TextBox HorizontalAlignment="Left" Margin="616,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="25" Name="AccommodationSearchByTypeTextBox"/>
 
-        <Label HorizontalAlignment="Left" Margin="588,345,0,0" VerticalAlignment="Top" Content="Pretraga po broju dana za rezervaciju:"/>
-        <TextBox HorizontalAlignment="Left" Margin="588,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="41" Name="AccommodationSearchByNumerOfDaysForReservationTextBox"/>
+        <Label HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Content="Pretraga po broju gostiju:"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="26" Name="AccommodationSearchByNumberOfGuestsTextBox"/>
+
+        <Label HorizontalAlignment="Left" Margin="199,61,0,0" VerticalAlignment="Top" Content="Pretraga po broju dana za rezervaciju:"/>
+        <TextBox HorizontalAlignment="Left" Margin="199,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="26" Name="AccommodationSearchByNumerOfDaysForReservationTextBox"/>
 
 
-        <Button Margin="616,441,38,60" Content="PRETRAZI" RenderTransformOrigin="1.17,0.661" Click="SearchButton_Click"></Button>
-        
+        <Button Margin="471,80,183,420" Content="PRETRAZI" RenderTransformOrigin="1.17,0.661" Click="SearchButton_Click"></Button>
+
+        <Button Content="Rezervisi" HorizontalAlignment="Left" Margin="285,467,0,0" VerticalAlignment="Top" Height="51" Width="231" Click="ReserveButton_Click"/>
+
 
 
 

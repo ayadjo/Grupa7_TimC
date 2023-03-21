@@ -14,6 +14,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace InitialProject.View
@@ -29,10 +30,14 @@ namespace InitialProject.View
         public ObservableCollection<Accommodation> Accommodations { get; set; }
         public Accommodation SelectedAccommodation { get; set; }
 
-        public AccommodationsOverview()
+        public int userId;
+
+        public AccommodationsOverview(int id)
         {
             InitializeComponent();
             DataContext = this;
+
+            userId = id;
 
             _accommodationController = new AccommodationController();
             //_accommodationController.Subscribe(this);
@@ -60,7 +65,7 @@ namespace InitialProject.View
         {
             UpdateAccommodationsList();
         }
-        
+
 
         /*
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -108,19 +113,13 @@ namespace InitialProject.View
             {
                 numberOfGuests = Convert.ToInt32(AccommodationSearchByNumberOfGuestsTextBox.Text);
             }
-            catch
-            {
-
-            }
+            catch { }
 
             try
             {
                 numberOfDaysForReservation = Convert.ToInt32(AccommodationSearchByNumerOfDaysForReservationTextBox.Text);
             }
-            catch
-            {
-
-            }
+            catch { }
 
             // Load the accommodations from the CSV file
             List<Accommodation> accommodations = _accommodationController.GetAll();
@@ -142,6 +141,22 @@ namespace InitialProject.View
             // Display the filtered accommodations in the DataGridView
             AccommodationsDataGrid.ItemsSource = filteredAccommodations;
         }
+
+        private void ReserveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedAccommodation != null)
+            {
+                AccommodationReservationWindow accommodationReservation = new AccommodationReservationWindow(SelectedAccommodation, userId);
+                accommodationReservation.Show();
+            }
+            else
+            {
+                MessageBox.Show("Prvo morate odabrati smeštaj!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+
 
 
 
