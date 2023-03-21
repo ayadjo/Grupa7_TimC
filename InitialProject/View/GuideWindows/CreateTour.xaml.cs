@@ -213,7 +213,7 @@ namespace InitialProject.View
            
             _tourController.SaveCascadeImagesTourPoints(tour);  
 
-            TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate);
+            TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, false);
             _tourEventController.Save(tourEvent);
 
             

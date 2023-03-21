@@ -16,13 +16,16 @@ namespace InitialProject.Model
         public Tour Tour { get; set; }
         public DateTime StartTime { get; set; }
 
+        public Boolean Done { get; set; }    
+
         public TourEvent() { }
 
-        public TourEvent(int id, Tour tour, DateTime startTime)
+        public TourEvent(int id, Tour tour, DateTime startTime, Boolean done)
         {
             Id = id;    
             Tour = tour;
             StartTime = startTime;
+            Done = done;    
         }
 
         public string[] ToCSV()
@@ -34,6 +37,7 @@ namespace InitialProject.Model
                Id.ToString(),
                Tour.Id.ToString(),
                StartTime.ToString(),
+               Done.ToString(),
 
            };
 
@@ -46,6 +50,7 @@ namespace InitialProject.Model
             Id = Convert.ToInt32(values[0]);
             Tour = new Tour() { Id = Convert.ToInt32(values[1]) };
             StartTime = DateTime.Parse(values[2]);
+            Done = Boolean.Parse(values[3]);
 
         }
 
