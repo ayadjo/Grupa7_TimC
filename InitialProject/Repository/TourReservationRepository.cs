@@ -88,7 +88,7 @@ namespace InitialProject.Repository
         }
         public int NextId()
         {
-            _tourReservations = _serializer.FromCSV(FilePath);
+            //_tourReservations = _serializer.FromCSV(FilePath);
             if (_tourReservations.Count < 1)
             {
                 return 1;
