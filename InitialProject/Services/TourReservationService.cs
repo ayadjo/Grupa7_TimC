@@ -43,5 +43,35 @@ namespace InitialProject.Services
             return _tourReservationRepository.Update(tourReservation);
         }
 
+        public List<User> AllGuestsThatDidntComeYet(TourEvent tourEvent)
+        {
+            List<User> users = new List<User>();
+
+            foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if (tourReservation.TourPointWhenGuestCame.Id == -1 && tourReservation.TourEvent.Id == tourEvent.Id )
+                {
+                    users.Add(tourReservation.Guest);
+                    
+                }
+
+            }
+
+            return users;
+        }
+
+        public TourReservation FindTourReservationForUserAndTourEvent(User user, TourEvent tourEvent)
+        {
+            foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if (tourReservation.Guest.Id == user.Id && tourReservation.TourEvent.Id == tourEvent.Id)
+                {
+                    return tourReservation;
+
+                }
+            }
+            return null;
+        }
+
     }
 }

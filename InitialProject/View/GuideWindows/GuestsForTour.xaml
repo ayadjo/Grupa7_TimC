@@ -16,11 +16,11 @@
         <Label x:Name="AddGuests" Content="Dodaj goste" FontSize="25"/>
 
         <DataGrid ItemsSource="{Binding Path=Guests2, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedGuest2, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedGuest, UpdateSourceTrigger=PropertyChanged}"
                   Margin="10,0,10,349" AutoGenerateColumns="False"
                   x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ime" Binding="{Binding Name}" Width="200" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" Binding="{Binding FirstName}" Width="200" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width="200" ></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

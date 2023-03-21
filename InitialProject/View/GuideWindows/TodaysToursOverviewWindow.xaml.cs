@@ -37,7 +37,7 @@ namespace InitialProject.View.GuideWindows
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if(SelectedTourEvent != null)
+            if(SelectedTourEvent != null && SelectedTourEvent.Done == false)
             {
                 TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
                 tourPointsWindow.Show();

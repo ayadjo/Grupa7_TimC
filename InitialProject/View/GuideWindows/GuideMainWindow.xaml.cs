@@ -32,10 +32,7 @@ namespace InitialProject.View.GuideWindows
 
         
 
-        private void NotificationButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
 
         private void TodaysToursButton_Click(object sender, RoutedEventArgs e)
         {
