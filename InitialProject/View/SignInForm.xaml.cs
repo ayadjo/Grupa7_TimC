@@ -1,5 +1,4 @@
 ﻿using InitialProject.Controller;
-//using InitialProject.Forms;
 using InitialProject.Model;
 using InitialProject.Repository;
 using InitialProject.View;
@@ -21,7 +20,7 @@ namespace InitialProject
 
         private readonly UserRepository _repository;
        
-        public AccommodationReservationController _accommodationReservationController; //ne brisatiiii
+        public AccommodationReservationController _accommodationReservationController;
 
         private string _username;
         public string Username
@@ -50,7 +49,7 @@ namespace InitialProject
             DataContext = this;
             _repository = UserRepository.GetInstance();
             
-            _accommodationReservationController = new AccommodationReservationController(); //tamara je, ne brisatiiiiiiiii
+            _accommodationReservationController = new AccommodationReservationController();
         }
 
         private void SignIn(object sender, RoutedEventArgs e)
@@ -62,7 +61,7 @@ namespace InitialProject
             {
                 if (user.Password == txtPassword.Password)
                 {
-                  
+
                     if (ComboBoxRoles.SelectedIndex == -1)
                     {
                         MessageBox.Show("You didn't select the role!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -70,7 +69,6 @@ namespace InitialProject
                     }
                     else if (ComboBoxRoles.SelectedIndex == 0)
                     {
-                        // OwnerWindow
                         int NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
                         OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
                         OwnerMainWindow.Show();
@@ -91,8 +89,8 @@ namespace InitialProject
                     }
                     else if (ComboBoxRoles.SelectedIndex == 2)
                     {
-                        // Guest1Window.Show();
-                        MessageBox.Show("Guest1 Window!");
+                        AccommodationsOverview accommodationsOverview = new AccommodationsOverview(user);
+                        accommodationsOverview.Show();
                     }
                     else if (ComboBoxRoles.SelectedIndex == 3)
                     {

@@ -96,12 +96,18 @@ namespace InitialProject.View.Guest2Window
 
         private void Reserve_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User() { Id = 1};
-            TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, tourPointWhenGuestCame);
-            tourReservationController.Create(tourReservation);
-            MessageBox.Show("Uspesno ste izvrsili rezervaciju");
-            Close();
-
+            if (AvailableSpots >= NumberOfPeople)
+            {
+                User user = new User() { Id = 1 };
+                TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, tourPointWhenGuestCame);
+                tourReservationController.Create(tourReservation);
+                MessageBox.Show("Uspesno ste izvrsili rezervaciju");
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Nema dovoljno mesta");
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

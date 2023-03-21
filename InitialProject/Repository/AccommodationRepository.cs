@@ -12,20 +12,18 @@ namespace InitialProject.Repository
     {
         private const string FilePath = "../../../Resources/Data/accommodations.csv";
 
-        
         private static AccommodationRepository instance = null;
-        private ImageRepository _imageRepository;
 
         private readonly Serializer<Accommodation> _serializer;
 
         private List<Accommodation> _accommodations;
 
-        private AccommodationRepository()
+        public AccommodationRepository()
         {
             _serializer = new Serializer<Accommodation>();
             _accommodations = _serializer.FromCSV(FilePath);
-            _imageRepository = ImageRepository.GetInstance();
         }
+
         public static AccommodationRepository GetInstance()
         {
             if (instance == null)
@@ -34,6 +32,7 @@ namespace InitialProject.Repository
             }
             return instance;
         }
+
         public void BindAccomodationLocation()
         {
             foreach (Accommodation accommodation in _accommodations)
@@ -50,6 +49,16 @@ namespace InitialProject.Repository
                 }
             }
         }
+
+        public Accommodation Save(Accommodation accommodation)
+        {
+            accommodation.Id = NextId();
+            _accommodations = _serializer.FromCSV(FilePath);
+            _accommodations.Add(accommodation);
+            _serializer.ToCSV(FilePath, _accommodations);
+            return accommodation;
+        }
+
         public List<Accommodation> GetAll()
         {
             return _accommodations;
@@ -58,34 +67,17 @@ namespace InitialProject.Repository
         {
             return _accommodations.Find(a => a.Id == id);
         }
-        public Accommodation Save(Accommodation accommodation)
+        public Accommodation Create(Accommodation accommodation)
         {
             accommodation.Id = NextId();
-            //_accommodations = _serializer.FromCSV(FilePath
+            _accommodations = _serializer.FromCSV(FilePath);
             _accommodations.Add(accommodation);
             _serializer.ToCSV(FilePath, _accommodations);
             return accommodation;
         }
-
-        public Accommodation SaveCascadeImages(Accommodation accommodation)
-        {
-            accommodation.Id = NextId();
-            
-            foreach(Image image in accommodation.Images)
-            {
-                image.ResourceId = accommodation.Id;
-                _imageRepository.Save(image);
-            }
-
-            _accommodations.Add(accommodation);
-            _serializer.ToCSV(FilePath, _accommodations);
-            return accommodation;
-        }
-
-
         public int NextId()
         {
-            //_accommodations = _serializer.FromCSV(FilePath);
+            _accommodations = _serializer.FromCSV(FilePath);
             if (_accommodations.Count < 1)
             {
                 return 1;
@@ -94,7 +86,7 @@ namespace InitialProject.Repository
         }
         public void Delete(Accommodation accommodation)
         {
-            //_accommodations = _serializer.FromCSV(FilePath);
+            _accommodations = _serializer.FromCSV(FilePath);
             Accommodation founded = _accommodations.Find(a => a.Id == accommodation.Id);
             _accommodations.Remove(founded);
             _serializer.ToCSV(FilePath, _accommodations);
@@ -102,7 +94,7 @@ namespace InitialProject.Repository
 
         public Accommodation Update(Accommodation accommodation)
         {
-            //_accommodations = _serializer.FromCSV(FilePath);
+            _accommodations = _serializer.FromCSV(FilePath);
             Accommodation current = _accommodations.Find(a => a.Id == accommodation.Id);
             int index = _accommodations.IndexOf(current);
             _accommodations.Remove(current);
@@ -113,7 +105,7 @@ namespace InitialProject.Repository
 
         public List<Accommodation> GetByOwner(int ownerId)
         {
-            //_accommodations = _serializer.FromCSV(FilePath);
+            _accommodations = _serializer.FromCSV(FilePath);
             return _accommodations.FindAll(i => i.Owner.Id == ownerId);
         }
     }
