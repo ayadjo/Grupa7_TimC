@@ -145,7 +145,7 @@ namespace InitialProject.View.Guest2Window
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void Predlozi_Click(object sender, RoutedEventArgs e)
+        private void Suggest_Click(object sender, RoutedEventArgs e)
         {
             if(SelectedTourEvent == null)
             {
