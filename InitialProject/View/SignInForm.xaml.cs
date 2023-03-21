@@ -93,7 +93,8 @@ namespace InitialProject
                     else if (ComboBoxRoles.SelectedIndex == 2)
                     {
                         // Guest1Window.Show();
-                        MessageBox.Show("Guest1 Window!");
+                        AccommodationsOverview accommodationsOverview = new AccommodationsOverview(user.Id);
+                        accommodationsOverview.Show();
                     }
                     else if (ComboBoxRoles.SelectedIndex == 3)
                     {

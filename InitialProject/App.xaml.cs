@@ -29,8 +29,8 @@ namespace InitialProject
             GuestReviewRepository.GetInstance();
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
-            AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
-            AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
+            //AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
+            //AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
 
             TourRepository.GetInstance().BindTourLocation();
             TourPointRepository.GetInstance().BindTourPointTour();
