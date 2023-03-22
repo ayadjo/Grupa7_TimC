@@ -52,13 +52,6 @@ namespace InitialProject.Services
 
         }
 
-        /*
-        public List<Accommodation> GetByOwner(int id)
-        {
-            return _accommodationRepository.GetByOwner(id);
-        }
-        */
-
         private bool IsGuestWithoutReview(AccommodationReservation accommodationReservation)
         {
             bool retVal = accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End

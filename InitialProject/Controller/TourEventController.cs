@@ -59,10 +59,10 @@ namespace InitialProject.Controller
             return _tourEventService.CheckAvailability(tourEvent);
         }
 
-        public List<TourReservation> GetAllTourReservationForTourEvent(TourEvent tourEvent)
+       /* public List<TourReservation> GetAllTourReservationForTourEvent(TourEvent tourEvent)
         {
             return _tourEventService.GetAllTourReservationForTourEvent(tourEvent);
-        }
+        }*/
 
         public List<TourEvent> GetAvailableTourEventsForLocation(Location location, int numberOfPeople)
         {

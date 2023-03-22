@@ -24,7 +24,12 @@ namespace InitialProject.Model
         }
         public string[] ToCSV()
         {
-            string[] csvValues = { Id.ToString(), Country, City };
+            string[] csvValues =
+            { 
+                Id.ToString(), 
+                Country,
+                City 
+            };
             return csvValues;
         }
 

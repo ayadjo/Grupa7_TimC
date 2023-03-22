@@ -27,9 +27,9 @@ namespace InitialProject.Services
             return _tourReservationRepository.Get(id);
         }
 
-        public TourReservation Create(TourReservation tourReservation)
+        public TourReservation Save(TourReservation tourReservation)
         {
-            return _tourReservationRepository.Create(tourReservation);
+            return _tourReservationRepository.Save(tourReservation);
         }
 
 
@@ -43,7 +43,7 @@ namespace InitialProject.Services
             return _tourReservationRepository.Update(tourReservation);
         }
 
-        public List<User> AllGuestsThatDidntComeYet(TourEvent tourEvent)
+        public List<User> FindGuestsThatDidntComeYet(TourEvent tourEvent)
         {
             List<User> users = new List<User>();
 

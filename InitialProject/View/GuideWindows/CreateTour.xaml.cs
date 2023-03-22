@@ -211,7 +211,7 @@ namespace InitialProject.View
                 TourPoints = AllTourPoints
             };
            
-            _tourController.SaveCascadeImagesTourPoints(tour);  
+            _tourController.SaveImagesTourPoints(tour);  
 
             TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, false);
             _tourEventController.Save(tourEvent);

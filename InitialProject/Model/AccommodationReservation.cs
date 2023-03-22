@@ -34,7 +34,7 @@ namespace InitialProject.Model
         }
 
 
-        string[] ISerializable.ToCSV()
+        public string[] ToCSV()
         {
             string[] csvValues =
             {
@@ -48,7 +48,7 @@ namespace InitialProject.Model
             return csvValues;
         }
 
-        void ISerializable.FromCSV(string[] values)
+        public void FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
             Accommodation = new Accommodation() { Id = Convert.ToInt32(values[1]) };

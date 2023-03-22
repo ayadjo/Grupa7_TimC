@@ -41,21 +41,7 @@ namespace InitialProject.View.OwnerWindows
             RegisterNewAccommodation NewAccommodation = new RegisterNewAccommodation();
             NewAccommodation.Show();
             Close();
-            //Update();
         }
-        //mislim da je ovo bespotrebno
-        /*private void UpdateAccommodationsList()
-        {
         
-            foreach (var accommodation in _accommodationController.GetAll())
-            {
-                Accommodations.Add(accommodation);
-            }
-        }
-
-        public void Update()
-        {
-            UpdateAccommodationsList();
-        }*/
     }
 }

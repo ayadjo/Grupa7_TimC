@@ -26,7 +26,7 @@ namespace InitialProject.View.OwnerWindows
             
         }
 
-        private void MyAppartmentsButton_Click(object sender, RoutedEventArgs e)
+        private void MyAccommodationButton_Click(object sender, RoutedEventArgs e)
         {
             AccommodationOverviewWindow AccommodationOverview = new AccommodationOverviewWindow();
             AccommodationOverview.Show();
@@ -38,11 +38,6 @@ namespace InitialProject.View.OwnerWindows
         {
             GuestWithoutReviewWindow GuestWithoutReview = new GuestWithoutReviewWindow();
             GuestWithoutReview.Show();
-            
-        }
-
-        private void NotificationButton_Click(object sender, RoutedEventArgs e)
-        {
 
         }
        

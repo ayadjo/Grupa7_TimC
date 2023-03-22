@@ -28,9 +28,9 @@ namespace InitialProject.Controller
             return _tourReservationService.Get(id);
         }
 
-        public TourReservation Create(TourReservation tourReservation)
+        public TourReservation Save(TourReservation tourReservation)
         {
-            return _tourReservationService.Create(tourReservation);
+            return _tourReservationService.Save(tourReservation);
         }
 
 
@@ -44,9 +44,9 @@ namespace InitialProject.Controller
             return _tourReservationService.Update(tourReservation);
         }
 
-        public List<User> AllGuestsThatDidntComeYet(TourEvent tourEvent) {
+        public List<User> FindGuestsThatDidntComeYet(TourEvent tourEvent) {
 
-            return _tourReservationService.AllGuestsThatDidntComeYet(tourEvent);
+            return _tourReservationService.FindGuestsThatDidntComeYet(tourEvent);
         }
 
         public TourReservation FindTourReservationForUserAndTourEvent(User user, TourEvent tourEvent)

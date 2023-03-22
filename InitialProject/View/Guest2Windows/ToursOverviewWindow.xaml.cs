@@ -21,10 +21,8 @@ namespace InitialProject.View.Guest2Window
     /// <summary>
     /// Interaction logic for ToursOverviewWindow.xaml
     /// </summary>
-    public partial class ToursOverviewWindow : Window
+    public partial class ToursOverviewWindow : Window   
     {
-       
-
         public ObservableCollection<Tour> Tours { get; set; }
 
         public TourController _tourController;
@@ -38,7 +36,6 @@ namespace InitialProject.View.Guest2Window
         public string Duration { get; set; }
         
         public string NumberOfPeople { get; set; }
-
 
         public Tour SelectedTour { get; set; }
         public ToursOverviewWindow()
@@ -57,21 +54,6 @@ namespace InitialProject.View.Guest2Window
             NumberOfPeople = "";
             
         }
-
-        private void UpdateToursList()
-        {/*
-            Tours.Clear();
-            foreach (var tour in _tourcontroller.GetAllTours())
-            {
-                Tours.Add(tour);
-            }*/
-        }
-
-        public void Update()
-        {
-            UpdateToursList();
-        }
-
 
         private void buttonReserve_Click(object sender, RoutedEventArgs e)
         {
@@ -98,7 +80,7 @@ namespace InitialProject.View.Guest2Window
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
 
-            List<Tour> searchedTours = _tourController.TourSearch(Country,City,Languages,NumberOfPeople,Duration);
+            List<Tour> searchedTours = _tourController.SearchTours(Country,City,Languages,NumberOfPeople,Duration);
             RefreshTours(searchedTours);
         }
     }

@@ -64,24 +64,13 @@ namespace InitialProject.Services
             {
                 if (tourReservation.TourEvent.Id == tourEvent.Id)
                 {
-                    numOfPeople += tourReservation.NumberOfPeople;   
+                    numOfPeople += tourReservation.NumberOfPeople;    
                 }
             }
             return numOfPeople;
         }
 
-        public List<TourReservation> GetAllTourReservationForTourEvent(TourEvent tourEvent)
-        {
-            List<TourReservation> tourReservationList = new List<TourReservation>();
-            foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
-            {
-                if (tourReservation.TourEvent.Id == tourEvent.Id)
-                {
-                    tourReservationList.Add(tourReservation);
-                }
-            }
-            return tourReservationList;
-        }
+      
 
         public List<TourEvent> GetAvailableTourEventsForLocation(Location location, int numberOfPeople)
         {
@@ -113,5 +102,19 @@ namespace InitialProject.Services
             }
             return _tourEventsForNow ;
         }
+
+        /*
+       public List<TourReservation> GetAllTourReservationForTourEvent(TourEvent tourEvent)
+       {
+          List<TourReservation> tourReservationList = new List<TourReservation>();
+          foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
+          {
+              if (tourReservation.TourEvent.Id == tourEvent.Id)
+              {
+                  tourReservationList.Add(tourReservation);
+              }
+          }
+          return tourReservationList;
+      }*/
     }
 }

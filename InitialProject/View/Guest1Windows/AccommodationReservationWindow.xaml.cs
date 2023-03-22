@@ -40,7 +40,8 @@ namespace InitialProject.View
             InitializeComponent();
             accommodation = a;
             guest = user;
-            accommodationReservationRepository = new AccommodationReservationRepository();
+            //accommodationReservationRepository = new AccommodationReservationRepository();
+            accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
         }
 
         DateTime start;

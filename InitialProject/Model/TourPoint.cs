@@ -12,14 +12,14 @@ namespace InitialProject.Model
     public class TourPoint : ISerializable
     {
         public int Id { get; set; } 
-        public String Name { get; set; }
+        public string Name { get; set; }
         public Tour Tour { get; set; }
         public int Order { get; set; }
         public Boolean Active { get; set; }
 
         public TourPoint() { }
 
-        public TourPoint(int id, String name, Tour tour, int order, Boolean active)
+        public TourPoint(int id, string name, Tour tour, int order, Boolean active)
         {
             Id = id;    
             Name = name;

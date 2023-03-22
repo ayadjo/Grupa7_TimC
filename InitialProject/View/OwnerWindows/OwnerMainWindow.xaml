@@ -29,7 +29,7 @@
                         <RowDefinition Height="55"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="MyAppartmentsButton" Content="Apartmani" Click="MyAppartmentsButton_Click"
+                    <Button x:Name="MyAccommodationButton" Content="Smestaj" Click="MyAccommodationButton_Click"
                             Grid.Row="0" FontSize="20"  BorderBrush="White" />
                     <Button x:Name="GuestWithoutReviewButton" Content="Neocenjeni gosti" Click="GuestsReviewButton_Click" 
                             Grid.Row="1" FontSize="20"  BorderBrush="White" />
