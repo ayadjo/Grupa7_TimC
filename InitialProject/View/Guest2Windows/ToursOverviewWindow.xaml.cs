@@ -21,7 +21,7 @@ namespace InitialProject.View.Guest2Window
     /// <summary>
     /// Interaction logic for ToursOverviewWindow.xaml
     /// </summary>
-    public partial class ToursOverviewWindow : Window
+    public partial class ToursOverviewWindow : Window   
     {
         public ObservableCollection<Tour> Tours { get; set; }
 
@@ -36,7 +36,6 @@ namespace InitialProject.View.Guest2Window
         public string Duration { get; set; }
         
         public string NumberOfPeople { get; set; }
-
 
         public Tour SelectedTour { get; set; }
         public ToursOverviewWindow()

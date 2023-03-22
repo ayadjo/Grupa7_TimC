@@ -43,7 +43,7 @@ namespace InitialProject.Services
             return _tourReservationRepository.Update(tourReservation);
         }
 
-        public List<User> AllGuestsThatDidntComeYet(TourEvent tourEvent)
+        public List<User> FindGuestsThatDidntComeYet(TourEvent tourEvent)
         {
             List<User> users = new List<User>();
 

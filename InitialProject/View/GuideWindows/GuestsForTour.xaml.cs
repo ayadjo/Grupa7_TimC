@@ -37,7 +37,7 @@ namespace InitialProject.View.GuideWindows
             CurrentTourPoint = tourPoint;
 
             _tourReservationController = new TourReservationController();
-            Guests2 = new ObservableCollection<User> (_tourReservationController.AllGuestsThatDidntComeYet(tourEvent));
+            Guests2 = new ObservableCollection<User> (_tourReservationController.FindGuestsThatDidntComeYet(tourEvent));
 
         }
 

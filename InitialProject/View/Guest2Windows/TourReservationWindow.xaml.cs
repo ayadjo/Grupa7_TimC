@@ -76,7 +76,7 @@ namespace InitialProject.View.Guest2Window
 
         public int NumberOfPeople { get; set; }
 
-        public TourPoint tourPointWhenGuestCame;
+        public TourPoint TourPointWhenGuestCame { get; set; }
 
         public ObservableCollection<TourEvent> TourEvents { get; set; }
 
@@ -90,22 +90,26 @@ namespace InitialProject.View.Guest2Window
             //NumberOfPeople = "";
             _tourEventController = new TourEventController();
 
-            TourEvents = new ObservableCollection<TourEvent>(tour.TourEvents);
+            
+
+
+        TourEvents = new ObservableCollection<TourEvent>(tour.TourEvents);
         }
 
         private void Reserve_Click(object sender, RoutedEventArgs e)
         {
-            if (AvailableSpots >= NumberOfPeople)
+            if (AvailableSpots >= NumberOfPeople && SelectedTourEvent.StartTime>=DateTime.Now)
             {
                 User user = new User() { Id = 1 };
-                TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, tourPointWhenGuestCame);
+                TourPointWhenGuestCame = new TourPoint { Id = -1 };
+                TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame);
                 tourReservationController.Save(tourReservation);
                 MessageBox.Show("Uspesno ste izvrsili rezervaciju");
                 Close();
             }
             else
             {
-                MessageBox.Show("Nema dovoljno mesta");
+                MessageBox.Show("Nije moguce izvrsiti rezervaciju");
             }
         }
 
@@ -129,13 +133,13 @@ namespace InitialProject.View.Guest2Window
             {
                 return;
             }
+
             int reservedSpots = _tourEventController.CheckAvailability(SelectedTourEvent);
             AvailableSpots = SelectedTourEvent.Tour.MaxGuests - reservedSpots;
+
             if (AvailableSpots < NumberOfPeople)
             {
                 AvailableSpotsText = "Nema dovoljno mesta";
-                //TourEvents = new ObservableCollection<TourEvent>(_tourEventController.GetAll());
-               
             }
             else
             {
