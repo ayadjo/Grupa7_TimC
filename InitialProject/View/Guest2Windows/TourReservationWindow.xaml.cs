@@ -24,7 +24,6 @@ namespace InitialProject.View.Guest2Window
     /// </summary>
     public partial class TourReservationWindow : Window,INotifyPropertyChanged
     {
-        
 
         public TourReservationController tourReservationController;
         public TourEventController _tourEventController;
@@ -100,7 +99,7 @@ namespace InitialProject.View.Guest2Window
             {
                 User user = new User() { Id = 1 };
                 TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, tourPointWhenGuestCame);
-                tourReservationController.Create(tourReservation);
+                tourReservationController.Save(tourReservation);
                 MessageBox.Show("Uspesno ste izvrsili rezervaciju");
                 Close();
             }

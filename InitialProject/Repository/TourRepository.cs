@@ -59,7 +59,6 @@ namespace InitialProject.Repository
         public Tour Save(Tour tour)
         {
             tour.Id = NextId();
-            //_tours = _serializer.FromCSV(FilePath);
             _tours.Add(tour);
             _serializer.ToCSV(FilePath, _tours);
             return tour;
@@ -68,7 +67,6 @@ namespace InitialProject.Repository
 
         public int NextId()
         {
-            //_tours = _serializer.FromCSV(FilePath);
             if (_tours.Count < 1)
             {
                 return 1;
@@ -78,7 +76,6 @@ namespace InitialProject.Repository
 
         public void Delete(Tour tour)
         {
-            //_tours = _serializer.FromCSV(FilePath);
             Tour founded = _tours.Find(t => t.Id == tour.Id);
             _tours.Remove(founded);
             _serializer.ToCSV(FilePath, _tours);
@@ -86,7 +83,6 @@ namespace InitialProject.Repository
 
         public Tour Update(Tour tour)
         {
-           // _tours = _serializer.FromCSV(FilePath);
             Tour current = _tours.Find(t => t.Id == tour.Id);
             int index = _tours.IndexOf(current);
             _tours.Remove(current);
@@ -109,11 +105,10 @@ namespace InitialProject.Repository
 
         public List<Tour> GetByGuide(int guideId)
         {
-            //_tours = _serializer.FromCSV(FilePath);
             return _tours.FindAll(t => t.Guide.Id == guideId);
         }
 
-        public Tour SaveCascadeImages(Tour tour)
+       /* public Tour SaveCascadeImages(Tour tour)
         {
             tour.Id = NextId();
 
@@ -141,8 +136,9 @@ namespace InitialProject.Repository
             _serializer.ToCSV(FilePath, _tours);
             return tour;
         }
+       */
 
-        public Tour SaveCascadeImagesTourPoints(Tour tour)
+        public Tour SaveImagesTourPoints(Tour tour)
         {
             tour.Id = NextId();
 

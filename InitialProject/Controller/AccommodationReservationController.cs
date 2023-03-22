@@ -53,14 +53,6 @@ namespace InitialProject.Controller
 
         }
 
-        /*
-        public List<Accommodation> GetByOwner(int id)
-        {
-
-            return _accommodationService.GetByOwner(id);
-        }
-        */
-
         public List<AccommodationReservation> GetAllReservationsWithoutReview()
         {
             return _accommodationReservationService.GetAllReservationsWithoutReview();

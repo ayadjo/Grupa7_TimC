@@ -32,7 +32,6 @@ namespace InitialProject.Repository
 
         public User GetByUsername(string username)
         {
-           // _users = _serializer.FromCSV(FilePath);
             return _users.FirstOrDefault(u => u.Username == username);
         }
         public User Get(int id)

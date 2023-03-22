@@ -34,10 +34,10 @@ namespace InitialProject.Services
             return _accommodationRepository.Save(accommodation);
         }
 
-        public Accommodation SaveCascadeImages(Accommodation accommodation)
+        public Accommodation SaveImages(Accommodation accommodation)
         {
 
-            return _accommodationRepository.Save(accommodation);
+            return _accommodationRepository.SaveImages(accommodation);
         }
 
         public void Delete(Accommodation accommodation)
@@ -65,58 +65,6 @@ namespace InitialProject.Services
             return _accommodationRepository.GetByOwner(id);
         }
 
-        /*
-        private bool SearchCondition(Accommodation accommodation, string name, string country, string city, string type, string maxGuests, string minDaysForReservation)
-        {
-            bool retVal = accommodation.Location.Country.Contains(country) && accommodation.Location.City.Contains(city) && accommodation.Type.ToString().Contains(type);
-
-            if (maxGuests != null && maxGuests != "")
-            {
-                int maxGuestsNum = Convert.ToInt32(maxGuests);
-                retVal = retVal && accommodation.MaxGuests > maxGuestsNum;
-            }
-
-            if (minDaysForReservation != null && minDaysForReservation != "")
-            {
-                int minDaysForReservationNum = Convert.ToInt32(minDaysForReservation);
-                retVal = retVal && accommodation.MinDaysForReservation > minDaysForReservationNum;
-            }
-            return retVal;
-
-        }
-
-        public List<Accommodation> AccommodationSearch(string name, string country, string city, string type, string maxGuests, string minDaysForReservation)
-        {
-            try
-            {
-                List<Accommodation> accommodations = AccommodationSearchLogic(name, country, city, type, maxGuests, minDaysForReservation);
-                return accommodations;
-            }
-            catch (Exception e)
-            {
-                return new List<Accommodation>();
-            }
-        }
-
-        private List<Accommodation> AccommodationSearchLogic(string name, string country, string city, string type, string maxGuests, string minDaysForReservation)
-        {
-            List<Accommodation> accommodations = new List<Accommodation>();
-
-            foreach (Accommodation accommodation in _accommodationRepository.GetAll())
-            {
-                if (SearchCondition(accommodation, name, country, city, type, maxGuests, minDaysForReservation))
-                {
-                    accommodations.Add(accommodation);
-                }
-            }
-            return accommodations;
-        }
-
-        public IEnumerable<Accommodation> AccommodationSearchLINQ(string name, string country, string city, string type, string maxGuests, string minDaysForReservation)
-        {
-
-            return _accommodationRepository.GetAll().Where(a => SearchCondition(a, name, country, city, type, maxGuests, minDaysForReservation));
-        }
-        */
+     
     }
 }

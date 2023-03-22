@@ -47,7 +47,6 @@ namespace InitialProject.Controller
         }
         public List<string> GetCitiesByCountry(string country)
         {
-            
             return _locationService.GetCitiesByCountry(country);
         }
 

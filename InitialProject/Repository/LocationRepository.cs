@@ -43,23 +43,20 @@ namespace InitialProject.Repository
         {
 
             location.Id = NextId();
-            //_locations = _serializer.FromCSV(FilePath);
             _locations.Add(location);
             _serializer.ToCSV(FilePath, _locations);
             return location;
         }
         public int NextId()
         {
-            //_locations = _serializer.FromCSV(FilePath);
             if (_locations.Count < 1)
             {
                 return 1;
             }
             return _locations.Max(l => l.Id) + 1;
         }
-          public void Delete(Location location)
+        public void Delete(Location location)
         {
-           // _locations = _serializer.FromCSV(FilePath);
             Location founded = _locations.Find(l => l.Id == location.Id);
             _locations.Remove(founded);
             _serializer.ToCSV(FilePath, _locations);
@@ -67,7 +64,6 @@ namespace InitialProject.Repository
 
         public Location Update(Location location)
         {
-            //_locations = _serializer.FromCSV(FilePath);
             Location current = _locations.Find(l => l.Id == location.Id);
             int index = _locations.IndexOf(current);
             _locations.Remove(current);

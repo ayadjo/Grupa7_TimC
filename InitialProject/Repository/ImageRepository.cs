@@ -19,7 +19,7 @@ namespace InitialProject.Repository
 
         private List<Image> _images;
 
-        public ImageRepository()
+        private ImageRepository()
         {
             _serializer = new Serializer<Image>();
             _images = _serializer.FromCSV(FilePath);
@@ -33,10 +33,7 @@ namespace InitialProject.Repository
             return instance;
         }
 
-        
-          
-
-
+ 
         public List<Image> GetAll()
         {
             return _images;
@@ -54,7 +51,6 @@ namespace InitialProject.Repository
         }
         public int NextId()
         {
-            //_images = _serializer.FromCSV(FilePath);
             if (_images.Count < 1)
             {
                 return 1;
@@ -63,7 +59,6 @@ namespace InitialProject.Repository
         }
         public void Delete(Image image)
         {
-            //_images = _serializer.FromCSV(FilePath);
             Image founded = _images.Find(i => i.Id == image.Id);
             _images.Remove(founded);
             _serializer.ToCSV(FilePath, _images);
@@ -71,7 +66,6 @@ namespace InitialProject.Repository
 
         public Image Update(Image image)
         {
-            //_images = _serializer.FromCSV(FilePath);
             Image current = _images.Find(i => i.Id == image.Id);
             int index = _images.IndexOf(current);
             _images.Remove(current);
@@ -79,13 +73,6 @@ namespace InitialProject.Repository
             _serializer.ToCSV(FilePath, _images);
             return image;
         }
-
-        public List<Image> GetByResource(int ResourceId)    //returs list of Images that belongs to some resource(acc. for example)
-        {
-            //_images = _serializer.FromCSV(FilePath);
-            return _images.FindAll(i => i.ResourceId == ResourceId);
-        }
-
    
 
         public void BindImageResource()

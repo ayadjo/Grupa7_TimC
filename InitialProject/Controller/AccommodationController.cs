@@ -35,9 +35,9 @@ namespace InitialProject.Controller
             return _accommodationService.Save(accommodation);
         }
 
-        public Accommodation SaveCascadeImages(Accommodation accommodation)
+        public Accommodation SaveImages(Accommodation accommodation)
         {
-            return _accommodationService.SaveCascadeImages(accommodation);
+            return _accommodationService.SaveImages(accommodation);
         }
 
         public void Delete(Accommodation accommodation)
@@ -65,11 +65,5 @@ namespace InitialProject.Controller
             return _accommodationService.GetByOwner(id);
         }
 
-        /*
-        public List<Accommodation> AccommodationSearch(string name, string country, string city, string type, string maxGuests, string minDaysForReservation)
-        {
-            return _accommodationService.AccommodationSearch(name, country, city, type, maxGuests, minDaysForReservation);
-        }
-        */
     }
 }

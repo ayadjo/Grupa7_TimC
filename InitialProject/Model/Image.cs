@@ -11,12 +11,12 @@ namespace InitialProject.Model
     public class Image : ISerializable
     {
         public int Id { get; set; }
-        public String Url { get; set; }
+        public string Url { get; set; }
         public int ResourceId { get; set; }
-        public String Description { get; set; }
+        public string Description { get; set; }
         public ImageResource Resource { get; set; }
         public Image() { }
-        public Image(int id, String url, int resourceId, String description, ImageResource resource)
+        public Image(int id, string url, int resourceId, string description, ImageResource resource)
         {
             Id = id; 
             Url = url;
@@ -27,7 +27,14 @@ namespace InitialProject.Model
 
         public string[] ToCSV()
         {
-            string[] csvValues = { Id.ToString(), Url, ResourceId.ToString(), Description, Resource.ToString() };
+            string[] csvValues =
+            { 
+                    Id.ToString(), 
+                    Url, 
+                    ResourceId.ToString(),
+                    Description, 
+                    Resource.ToString()
+            };
             return csvValues;
         }
 

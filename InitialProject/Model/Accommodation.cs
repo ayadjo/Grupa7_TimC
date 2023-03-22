@@ -27,7 +27,7 @@ namespace InitialProject.Model
             Images = new List<Image>();
         }
 
-        public Accommodation(int id,String name, Location location, AccommodationType type, int maxGuests, int minDaysForReservation, int cancelationPeriod, User owner)
+        public Accommodation(int id, string name, Location location, AccommodationType type, int maxGuests, int minDaysForReservation, int cancelationPeriod, User owner)
         {
             Id = id; 
             Name = name;

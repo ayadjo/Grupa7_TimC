@@ -27,9 +27,9 @@ namespace InitialProject.Services
             return _tourReservationRepository.Get(id);
         }
 
-        public TourReservation Create(TourReservation tourReservation)
+        public TourReservation Save(TourReservation tourReservation)
         {
-            return _tourReservationRepository.Create(tourReservation);
+            return _tourReservationRepository.Save(tourReservation);
         }
 
 

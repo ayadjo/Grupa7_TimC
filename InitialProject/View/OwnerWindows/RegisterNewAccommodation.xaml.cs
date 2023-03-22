@@ -175,7 +175,7 @@ namespace InitialProject.View.OwnerView
             Accommodation accommodation = new Accommodation() { Name=Naame, Location = location, 
             Type = SelectedType, MaxGuests = MaxGuests, MinDaysForReservation = MinDaysForReservation,
             CancelationPeriod = CancelationPeriod, Owner = user, Images = AllImages};
-            _accommodationController.SaveCascadeImages(accommodation);
+            _accommodationController.SaveImages(accommodation);
             Close();
         }
         //treba da sacuva listu slika i potom kad pravim smestaj hocu da mu ucitam tu listu

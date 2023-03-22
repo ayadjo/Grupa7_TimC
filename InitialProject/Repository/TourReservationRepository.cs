@@ -79,7 +79,7 @@ namespace InitialProject.Repository
         {
             return _tourReservations.Find(t => t.Id == id);
         }
-        public TourReservation Create(TourReservation tourreservation)
+        public TourReservation Save(TourReservation tourreservation)
         {
             tourreservation.Id = NextId();
             _tourReservations.Add(tourreservation);
@@ -88,7 +88,6 @@ namespace InitialProject.Repository
         }
         public int NextId()
         {
-            //_tourReservations = _serializer.FromCSV(FilePath);
             if (_tourReservations.Count < 1)
             {
                 return 1;
@@ -97,7 +96,6 @@ namespace InitialProject.Repository
         }
         public void Delete(TourReservation tourreservation)
         {
-            //_tourReservations = _serializer.FromCSV(FilePath);
             TourReservation founded = _tourReservations.Find(t => t.Id == tourreservation.Id);
             _tourReservations.Remove(founded);
             _serializer.ToCSV(FilePath, _tourReservations);
@@ -105,7 +103,6 @@ namespace InitialProject.Repository
 
         public TourReservation Update(TourReservation tourreservation)
         {
-            //_tourReservations = _serializer.FromCSV(FilePath);
             TourReservation current = _tourReservations.Find(a => a.Id == tourreservation.Id);
             int index = _tourReservations.IndexOf(current);
             _tourReservations.Remove(current);
@@ -116,7 +113,6 @@ namespace InitialProject.Repository
 
         public List<TourReservation> GetByGuest(int guestId)
         {
-            //_tourReservations = _serializer.FromCSV(FilePath);
             return _tourReservations.FindAll(i => i.Guest.Id == guestId);
         }
 

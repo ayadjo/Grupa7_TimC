@@ -56,7 +56,7 @@ namespace InitialProject.Services
            return _tourRepository.GetByGuide(id);
         }
 
-        private bool SearchCondition(Tour tour, string country, string city, string language, string numberOfPeople, string duration)
+        private bool IsConditionValid(Tour tour, string country, string city, string language, string numberOfPeople, string duration)
         {
             bool retVal = tour.Location.Country.Contains(country, StringComparison.OrdinalIgnoreCase) && tour.Location.City.Contains(city, StringComparison.OrdinalIgnoreCase) && tour.Languages.Contains(language, StringComparison.OrdinalIgnoreCase);
 
@@ -75,11 +75,11 @@ namespace InitialProject.Services
 
         }
 
-        public List<Tour> TourSearch(string country, string city, string language, string numberOfPeople, string duration)
+        public List<Tour> SearchTours(string country, string city, string language, string numberOfPeople, string duration)
         {
             try
             {
-                List<Tour> tours = TourSearchLogic(country, city, language, numberOfPeople, duration);
+                List<Tour> tours = SearchToursLogic(country, city, language, numberOfPeople, duration);
                 return tours;
             }
             catch (Exception e)
@@ -88,13 +88,13 @@ namespace InitialProject.Services
             }
         }
 
-        private List<Tour> TourSearchLogic(string country, string city, string language, string numberOfPeople, string duration)
+        private List<Tour> SearchToursLogic(string country, string city, string language, string numberOfPeople, string duration)
         {
             List<Tour> tours = new List<Tour>();
 
             foreach(Tour tour in _tourRepository.GetAll())
             {
-                if(SearchCondition(tour, country, city, language, numberOfPeople, duration))
+                if(IsConditionValid(tour, country, city, language, numberOfPeople, duration))
                 {
                     tours.Add(tour);
                 }
@@ -102,24 +102,19 @@ namespace InitialProject.Services
             return tours;
         }
 
-        /*public IEnumerable<Tour> TourSearchLINQ(string country, string city, string language, string numberOfPeople, string duration)
-        {
 
-            return _tourRepository.GetAll().Where(t => SearchCondition(t, country, city, language, numberOfPeople, duration));
-        }*/
-
-        public Tour SaveCascadeImages(Tour tour)
+  /*      public Tour SaveCascadeImages(Tour tour)
         {
             return _tourRepository.SaveCascadeImages(tour);
         }
         public Tour SaveCascadeTourPoints(Tour tour)
         {
             return _tourRepository.SaveCascadeTourPoints(tour);
-        }
+        }*/
 
-        public Tour SaveCascadeImagesTourPoints(Tour tour) {
+        public Tour SaveImagesTourPoints(Tour tour) {
 
-            return _tourRepository.SaveCascadeImagesTourPoints(tour);
+            return _tourRepository.SaveImagesTourPoints(tour);
         }
     }
 }

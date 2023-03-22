@@ -15,20 +15,20 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="RegisterNewAccommodation" Content="Registrujte novi smeštaj"/>
         <Button x:Name="RegistenNewAccommodationButton" Content="+" FontSize="30"
-                Grid.Row="0" Click="RegistenNewAccommodationButton_Click" Margin="33,30,733,10"/>
+                Grid.Row="0" Click="RegistenNewAccommodationButton_Click" Margin="33,26,733,10"/>
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Accommodations, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedAccommodation, UpdateSourceTrigger=PropertyChanged}"
-                  Margin="130,10,177,67" AutoGenerateColumns="False"
+                  Margin="71,10,53,67" AutoGenerateColumns="False"
                   x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tip" Binding="{Binding Type}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Max broj gostiju" Binding="{Binding MaxGuests}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Min dana za rezervaciju" Binding="{Binding MinDaysForReservation}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Dana za otkazivanje" Binding="{Binding CancelationPeriod}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}" Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}" Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tip" Binding="{Binding Type}" Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Max broj gostiju" Binding="{Binding MaxGuests}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Min dana za rezervaciju" Binding="{Binding MinDaysForReservation}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Dana za otkazivanje" Binding="{Binding CancelationPeriod}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
 
         </DataGrid>

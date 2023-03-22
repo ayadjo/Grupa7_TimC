@@ -13,7 +13,7 @@ namespace InitialProject.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public Location Location { get; set; }
-        public String Description { get; set; }
+        public string Description { get; set; }
         public string Languages { get; set; }
         public int MaxGuests { get; set; }
         public int Duration { get; set; }
@@ -32,7 +32,7 @@ namespace InitialProject.Model
 
         }
 
-        public Tour(int id, String name, Location location, String description, string languages, int maxGuests, int duration, User guide) { 
+        public Tour(int id, string name, Location location, string description, string languages, int maxGuests, int duration, User guide) { 
         
             Id = id;    
             Name = name;    
