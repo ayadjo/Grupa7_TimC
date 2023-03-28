@@ -18,8 +18,6 @@
                 <DataGridTextColumn Header="Max broj gostiju" Binding="{Binding MaxGuests}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Min dana za rezervaciju" Binding="{Binding MinDaysForReservation}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Dana za otkazivanje" Binding="{Binding CancelationPeriod}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Slika" Binding="{Binding Images}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Vlasnik" Binding="{Binding Owner.Id}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
