@@ -54,7 +54,7 @@ namespace InitialProject.Services
 
         private bool IsGuestWithoutReview(AccommodationReservation accommodationReservation)
         {
-            bool retVal = accommodationReservation.Review.Id == -1 && DateTime.Now >= accommodationReservation.End
+            bool retVal = accommodationReservation.GuestReview.Id == -1 && DateTime.Now >= accommodationReservation.End
                            && DateTime.Now <= accommodationReservation.End.AddDays(5);
 
             return retVal;

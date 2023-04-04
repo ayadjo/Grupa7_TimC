@@ -106,7 +106,7 @@ namespace InitialProject.View.OwnerWindows
         {
             GuestReview guestReview = new GuestReview() {Reservation=reservation, Cleanliness = SelectedCleanliness, Behaviour = SelectedBehaviour, Comment = Comment };
             _guestReviewController.Save(guestReview);
-            reservation.Review = guestReview;
+            reservation.GuestReview = guestReview;
             _accommodationReservationController.Update(reservation);
 
              Close();
