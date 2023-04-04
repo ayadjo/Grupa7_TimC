@@ -32,6 +32,7 @@ namespace InitialProject.View
         public int us;
         public User guest;
         public GuestReview guestReview = new GuestReview { Id = -1 };
+        public AccommodationOwnerReview accommodationReview = new AccommodationOwnerReview { Id = -1 };
 
         bool isAvailable = true;
 
@@ -102,7 +103,7 @@ namespace InitialProject.View
             else
             {
                 int id = 0;
-                AccommodationReservation accommodationReservation = new AccommodationReservation(id, accommodation, guest, start, start.AddDays(numberOfDaysForReservation), guestReview);
+                AccommodationReservation accommodationReservation = new AccommodationReservation(id, accommodation, guest, start, start.AddDays(numberOfDaysForReservation), guestReview, accommodationReview);
                 if (accommodationReservationRepository.AvailableAccommodation(accommodationReservation, numberOfDaysForReservation))
                 {
                     accommodationReservationRepository.Save(accommodationReservation);
@@ -128,7 +129,8 @@ namespace InitialProject.View
                 DateTime start = DateTime.Parse(line[3]);
                 DateTime end = DateTime.Parse(line[4]);
                 GuestReview guestReview = new GuestReview() { Id = Convert.ToInt32(line[5]) };
-                AccommodationReservation reservation = new AccommodationReservation(id, accommodation, guest, start, end, guestReview);
+                AccommodationOwnerReview accommodationReview = new AccommodationOwnerReview() { Id = Convert.ToInt32(line[6]) };
+                AccommodationReservation reservation = new AccommodationReservation(id, accommodation, guest, start, end, guestReview, accommodationReview);
                 reservations.Add(reservation);
             }
             reader.Close();
