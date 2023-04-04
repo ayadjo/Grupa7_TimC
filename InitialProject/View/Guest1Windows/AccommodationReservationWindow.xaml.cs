@@ -32,6 +32,7 @@ namespace InitialProject.View
         public int us;
         public User guest;
         public GuestReview guestReview = new GuestReview { Id = -1 };
+        public AccommodationOwnerReview accommodationReview = new AccommodationOwnerReview { Id = -1 };
 
         bool isAvailable = true;
 
@@ -95,43 +96,25 @@ namespace InitialProject.View
             {
                 MessageBox.Show("Uneli ste više gostiju nego što je moguće za ovaj smeštaj!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            else if (end < start.AddDays(numberOfDaysForReservation))
+            {
+                MessageBox.Show("Broj dana prevazilazi opseg datuma!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else
             {
-                foreach (AccommodationReservation reservation in reservations)
+                int id = 0;
+                AccommodationReservation accommodationReservation = new AccommodationReservation(id, accommodation, guest, start, start.AddDays(numberOfDaysForReservation), guestReview, accommodationReview);
+                if (accommodationReservationRepository.AvailableAccommodation(accommodationReservation, numberOfDaysForReservation))
                 {
-                    // Check if the selected dates overlap with the reservation dates
-                    if (
-                        reservation.Accommodation.Id == accommodation.Id &&
-                        ((start >= reservation.Start && start < reservation.End) ||
-                        (end > reservation.Start && start <= reservation.End) ||
-                        (start < reservation.Start && end > reservation.End))
-                        )
-                    {
-                        isAvailable = false;
-                        break;
-                    }
-                }
-
-                if (isAvailable)
-                {
-                    //GuestReview guestReview = new GuestReview { Id = -1 };
-                    accommodationReservationRepository.AddReservedAccommodations(accommodation, guest, start, end, guestReview);
+                    accommodationReservationRepository.Save(accommodationReservation);
                     MessageBox.Show("Uspešno ste rezervisali smeštaj!", "Rezervisano!", MessageBoxButton.OK);
                 }
                 else
                 {
-                    MessageBox.Show("Smeštaj je tada zauzet!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    accommodationReservationRepository.GetFirstAvailableDate(accommodationReservation);
                 }
-
             }
         }
-
-
-
-
-
-
-
 
         public static List<AccommodationReservation> ReadCSV(string filePath)
         {
@@ -146,7 +129,8 @@ namespace InitialProject.View
                 DateTime start = DateTime.Parse(line[3]);
                 DateTime end = DateTime.Parse(line[4]);
                 GuestReview guestReview = new GuestReview() { Id = Convert.ToInt32(line[5]) };
-                AccommodationReservation reservation = new AccommodationReservation(id, accommodation, guest, start, end, guestReview);
+                AccommodationOwnerReview accommodationReview = new AccommodationOwnerReview() { Id = Convert.ToInt32(line[6]) };
+                AccommodationReservation reservation = new AccommodationReservation(id, accommodation, guest, start, end, guestReview, accommodationReview);
                 reservations.Add(reservation);
             }
             reader.Close();
@@ -154,8 +138,5 @@ namespace InitialProject.View
         }
 
         List<AccommodationReservation> reservations = ReadCSV("../../../Resources/Data/accommodationReservations.csv");
-
-
-
     }
 }

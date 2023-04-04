@@ -17,13 +17,14 @@ namespace InitialProject.Model
         public DateTime End { get; set; }
 
         public GuestReview Review { get; set; }
+        public AccommodationOwnerReview AccommodationReview { get; set; }
 
         public AccommodationReservation()
         {
 
         }
 
-        public AccommodationReservation(int id, Accommodation accommodation, User guest, DateTime start, DateTime end, GuestReview guestReview)
+        public AccommodationReservation(int id, Accommodation accommodation, User guest, DateTime start, DateTime end, GuestReview guestReview, AccommodationOwnerReview accommodationReview)
         {
             Id = id;
             Accommodation = accommodation;
@@ -31,6 +32,7 @@ namespace InitialProject.Model
             Start = start;
             End = end;
             Review = guestReview;
+            AccommodationReview = accommodationReview;
         }
 
 
@@ -43,7 +45,8 @@ namespace InitialProject.Model
                 Guest.Id.ToString(),
                 Start.ToString(),
                 End.ToString(),
-                Review.Id.ToString()
+                Review.Id.ToString(),
+                AccommodationReview.Id.ToString()
             };
             return csvValues;
         }
@@ -56,6 +59,7 @@ namespace InitialProject.Model
             Start = Convert.ToDateTime(values[3]);
             End = Convert.ToDateTime(values[4]);
             Review = new GuestReview() { Id = Convert.ToInt32(values[5]) };
+            AccommodationReview = new AccommodationOwnerReview() { Id = Convert.ToInt32(values[6]) };
         }
     }
 }
