@@ -108,6 +108,7 @@ namespace InitialProject.WPF.Views
                 {
                     accommodationReservationRepository.Save(accommodationReservation);
                     MessageBox.Show("Uspešno ste rezervisali smeštaj!", "Rezervisano!", MessageBoxButton.OK);
+                    this.Close();
                 }
                 else
                 {
@@ -138,5 +139,10 @@ namespace InitialProject.WPF.Views
         }
 
         List<AccommodationReservation> reservations = ReadCSV("../../../Resources/Data/accommodationReservations.csv");
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

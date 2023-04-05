@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using InitialProject.Domain.Models;
+using InitialProject.WPF.Views.Guest1Windows;
 
 namespace InitialProject
 {
@@ -89,8 +90,8 @@ namespace InitialProject
                     }
                     else if (ComboBoxRoles.SelectedIndex == 2)
                     {
-                        AccommodationsOverview accommodationsOverview = new AccommodationsOverview(user);
-                        accommodationsOverview.Show();
+                        Guest1MainWindow guest1MainWindow = new Guest1MainWindow(user);
+                        guest1MainWindow.Show();
                     }
                     else if (ComboBoxRoles.SelectedIndex == 3)
                     {
