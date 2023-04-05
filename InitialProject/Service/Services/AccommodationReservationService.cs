@@ -81,5 +81,19 @@ namespace InitialProject.Service.Services
             return number = accommodationReservations.Count;
 
         }
+
+        public List<AccommodationReservation> GetByUserId(int guest)
+        {
+            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
+            {
+                if (accommodationReservation.Guest.Id == guest)
+                {
+                    accommodationReservations.Add(accommodationReservation);
+                }
+            }
+
+            return accommodationReservations;
+        }
     }
 }
