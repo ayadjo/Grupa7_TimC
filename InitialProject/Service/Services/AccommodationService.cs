@@ -1,69 +1,70 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Repositories;
-using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InitialProject.Controller
+namespace InitialProject.Service.Services
 {
-    public class AccommodationController
+    public class AccommodationService
     {
-        private readonly AccommodationService _accommodationService;
+        private AccommodationRepository _accommodationRepository;
 
-        public AccommodationController()
+        public AccommodationService()
         {
-            _accommodationService = new AccommodationService();
+            _accommodationRepository = AccommodationRepository.GetInstance();
         }
 
         public List<Accommodation> GetAll()
         {
-            return _accommodationService.GetAll();
+            return _accommodationRepository.GetAll();
         }
-
 
         public Accommodation Get(int id)
         {
-            return _accommodationService.Get(id);
+            return _accommodationRepository.Get(id);
         }
 
         public Accommodation Save(Accommodation accommodation)
         {
 
-            return _accommodationService.Save(accommodation);
+            return _accommodationRepository.Save(accommodation);
         }
 
         public Accommodation SaveImages(Accommodation accommodation)
         {
-            return _accommodationService.SaveImages(accommodation);
+
+            return _accommodationRepository.SaveImages(accommodation);
         }
 
         public void Delete(Accommodation accommodation)
         {
 
-            _accommodationService.Delete(accommodation);
+            _accommodationRepository.Delete(accommodation);
 
         }
 
         public Accommodation Update(Accommodation accommodation)
         {
-            return _accommodationService.Update(accommodation);
+            return _accommodationRepository.Update(accommodation);
         }
 
         public int NextId()
         {
 
-            return _accommodationService.NextId();
+            return _accommodationRepository.NextId();
 
         }
 
         public List<Accommodation> GetByOwner(int id)
         {
 
-            return _accommodationService.GetByOwner(id);
+            return _accommodationRepository.GetByOwner(id);
         }
 
+     
     }
 }

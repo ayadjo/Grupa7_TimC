@@ -1,6 +1,6 @@
-﻿using InitialProject.Model;
-using InitialProject.Repository;
-using InitialProject.Services;
+﻿using InitialProject.Domain.Models;
+using InitialProject.Repositories;
+using InitialProject.Service.Services;
 using InitialProject.Service;
 using System;
 using System.Collections.Generic;
