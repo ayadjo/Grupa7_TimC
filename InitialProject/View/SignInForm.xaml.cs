@@ -9,8 +9,9 @@ using InitialProject.View.GuideWindows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using InitialProject.Enumerations;
 
-namespace InitialProject
+namespace InitialProject.View
 {
     /// <summary>
     /// Interaction logic for SignInForm.xaml
@@ -21,6 +22,14 @@ namespace InitialProject
         private readonly UserRepository _repository;
        
         public AccommodationReservationController _accommodationReservationController;
+
+        private static User loggedUser;
+
+        public static User LoggedUser
+        {
+            get => loggedUser;
+            
+        }
 
         private string _username;
         public string Username
@@ -61,12 +70,8 @@ namespace InitialProject
             {
                 if (user.Password == txtPassword.Password)
                 {
-                    if (ComboBoxRoles.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("You didn't select the role!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    }
-                    else if (ComboBoxRoles.SelectedIndex == 0)
+                    loggedUser = user;
+                    if (user.Type == UserType.Owner)
                     {
                         int NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
                         OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
@@ -80,18 +85,18 @@ namespace InitialProject
                         Close();
 
                     }
-                    else if (ComboBoxRoles.SelectedIndex == 1)
+                    else if(user.Type == UserType.Guide)
                     {
                         GuideMainWindow  guideMainWindow = new GuideMainWindow();
                         guideMainWindow.Show(); 
                         
                     }
-                    else if (ComboBoxRoles.SelectedIndex == 2)
+                    else if (user.Type == UserType.Guest1)
                     {
                         AccommodationsOverview accommodationsOverview = new AccommodationsOverview(user);
                         accommodationsOverview.Show();
                     }
-                    else if (ComboBoxRoles.SelectedIndex == 3)
+                    else if (user.Type == UserType.Guest2)
                     {
                         
                         ToursOverviewWindow toursOverview = new ToursOverviewWindow();

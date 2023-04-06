@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Enumerations
 {
-    public enum UserType
+    public enum TourEventStatus
     {
-        Owner,
-        Guest1,
-        Guest2,
-        Guide
+        NotStarted,
+        Started, 
+        Finished
     }
 }

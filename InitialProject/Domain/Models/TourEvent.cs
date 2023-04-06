@@ -1,4 +1,5 @@
-﻿using InitialProject.Serializer;
+﻿using InitialProject.Enumerations;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +17,16 @@ namespace InitialProject.Domain.Models
         public Tour Tour { get; set; }
         public DateTime StartTime { get; set; }
 
-        public Boolean Done { get; set; }    
+        public TourEventStatus Status { get; set; }    
 
         public TourEvent() { }
 
-        public TourEvent(int id, Tour tour, DateTime startTime, Boolean done)
+        public TourEvent(int id, Tour tour, DateTime startTime, TourEventStatus status)
         {
             Id = id;    
             Tour = tour;
             StartTime = startTime;
-            Done = done;    
+            Status = status;  
         }
 
         public string[] ToCSV()
@@ -37,7 +38,7 @@ namespace InitialProject.Domain.Models
                Id.ToString(),
                Tour.Id.ToString(),
                StartTime.ToString(),
-               Done.ToString(),
+               Status.ToString(),
 
            };
 
@@ -50,7 +51,8 @@ namespace InitialProject.Domain.Models
             Id = Convert.ToInt32(values[0]);
             Tour = new Tour() { Id = Convert.ToInt32(values[1]) };
             StartTime = DateTime.Parse(values[2]);
-            Done = Boolean.Parse(values[3]);
+            Status = (TourEventStatus)Enum.Parse(typeof(TourEventStatus), values[3]);
+
 
         }
 

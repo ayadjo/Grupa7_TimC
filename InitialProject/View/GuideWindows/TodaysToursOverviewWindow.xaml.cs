@@ -1,5 +1,6 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
+using InitialProject.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,7 +38,7 @@ namespace InitialProject.View.GuideWindows
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if(SelectedTourEvent != null && SelectedTourEvent.Done == false)
+            if(SelectedTourEvent != null && SelectedTourEvent.Status == TourEventStatus.NotStarted)
             {
                 TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
                 tourPointsWindow.Show();

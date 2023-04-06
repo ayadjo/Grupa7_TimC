@@ -1,4 +1,5 @@
-﻿using InitialProject.Domain.Models;
+﻿using InitialProject.Controller;
+using InitialProject.Domain.Models;
 using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace InitialProject.Service.Services
 
         private TourEventRepository _tourEventRepository;
         private TourReservationRepository _tourReservationRepository;
+        private TourPointRepository _tourPointRepository;
 
         public TourEventService()
         {
             _tourEventRepository = TourEventRepository.GetInstance();
             _tourReservationRepository = TourReservationRepository.GetInstance();
+            _tourPointRepository = TourPointRepository.GetInstance();
         }
 
         public List<TourEvent> GetAll()
@@ -100,6 +103,15 @@ namespace InitialProject.Service.Services
                 }
             }
             return _tourEventsForNow ;
+        }
+
+        public void StartTourEvent(TourEvent tourEvent)
+        {
+            TourPoint tourPoint = tourEvent.Tour.TourPoints.ElementAt(0);
+            tourPoint.Active = true;
+            _tourPointRepository.Update(tourPoint);
+            tourEvent.Status = Enumerations.TourEventStatus.Started;
+            Update(tourEvent);
         }
 
         /*

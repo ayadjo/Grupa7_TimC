@@ -100,7 +100,7 @@ namespace InitialProject.View.Guest2Window
         {
             if (AvailableSpots >= NumberOfPeople && SelectedTourEvent.StartTime>=DateTime.Now)
             {
-                User user = new User() { Id = 1 };
+                User user = SignInForm.LoggedUser;
                 TourPointWhenGuestCame = new TourPoint { Id = -1 };
                 TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame);
                 tourReservationController.Save(tourReservation);

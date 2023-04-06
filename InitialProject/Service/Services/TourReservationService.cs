@@ -73,5 +73,18 @@ namespace InitialProject.Service.Services
             return null;
         }
 
+        public List<TourEvent> UsersTourEvents(int userId)
+        {
+            List<TourEvent> tourEvents = new List<TourEvent>();
+            foreach(TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if(tourReservation.Guest.Id == userId)
+                {
+                    tourEvents.Add(tourReservation.TourEvent);
+                }
+            }
+            return tourEvents;
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
+using InitialProject.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,9 +42,11 @@ namespace InitialProject.View.GuideWindows
 
             SelectedTourEvent = selectedTourEvent;
 
+            _tourEventController.StartTourEvent(selectedTourEvent);
+
             TourPoints = new ObservableCollection<TourPoint>(SelectedTourEvent.Tour.TourPoints);
-            TourPoints.ElementAt(0).Active = true;
             SelectedTourPoint = TourPoints.ElementAt(0);
+
         }
 
 
@@ -78,7 +81,7 @@ namespace InitialProject.View.GuideWindows
 
             if(TourPoints.ElementAt(TourPoints.Count - 1).Active)
             {
-                SelectedTourEvent.Done = true;
+                SelectedTourEvent.Status = TourEventStatus.Finished;
                 _tourEventController.Update(SelectedTourEvent);
                 Close();
             }
@@ -88,7 +91,7 @@ namespace InitialProject.View.GuideWindows
 
         private void EndButton_Click(object sender, RoutedEventArgs e)
         {
-            SelectedTourEvent.Done = true;
+            SelectedTourEvent.Status = TourEventStatus.Finished;
             _tourEventController.Update(SelectedTourEvent);
             Close();
         }
