@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace InitialProject.View.OwnerWindows
 {
     /// <summary>
-    /// Interaction logic for AccommodationReviewsOverviewWindow.xaml
+    /// Interaction logic for AccommodationReviewsWindow.xaml
     /// </summary>
-    public partial class AccommodationReviewsOverviewWindow : Window
+    public partial class AccommodationReviewsWindow : Window
     {
-        public AccommodationReviewsOverviewWindow()
+        public AccommodationReviewsWindow()
         {
             InitializeComponent();
         }
