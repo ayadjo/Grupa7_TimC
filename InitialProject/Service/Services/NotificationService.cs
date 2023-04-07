@@ -22,7 +22,6 @@ namespace InitialProject.Service.Services
             return _notificationRepository.GetAll();
         }
 
-
         public Notification Save(Notification notification)
         {
             return _notificationRepository.Save(notification);
@@ -49,6 +48,7 @@ namespace InitialProject.Service.Services
                     notification.IsDelivered = true;
                     _notificationRepository.Update(notification);
                     notificationList.Add(notification);
+                    return notificationList;  //??
                 }
             }
             return notificationList;

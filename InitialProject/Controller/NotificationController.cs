@@ -17,6 +17,11 @@ namespace InitialProject.Controller
             _notificationService = new NotificationService();
         }
 
+        public List<Notification> GetAll()
+        {
+            return _notificationService.GetAll();
+        }
+
         public Notification Save(Notification notification)
         {
 
@@ -26,6 +31,12 @@ namespace InitialProject.Controller
         public void Delete(Notification notification)
         {
             _notificationService.Delete(notification);
+        }
+
+        //???
+        public void Update(Notification notification)
+        {
+            _notificationService.Update(notification);
         }
 
         public List<Notification> GetNotificationForUser(int userId)

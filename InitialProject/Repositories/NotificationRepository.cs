@@ -68,11 +68,11 @@ namespace InitialProject.Repositories
             {
                 return 1;
             }
-            return _notifications.Max(l => l.Id) + 1;
+            return _notifications.Max(n => n.Id) + 1;
         }
         public void Delete(Notification notification)
         {
-            Notification founded = _notifications.Find(l => l.Id == notification.Id);
+            Notification founded = _notifications.Find(n => n.Id == notification.Id);
             _notifications.Remove(founded);
             _serializer.ToCSV(FilePath, _notifications);
         }
