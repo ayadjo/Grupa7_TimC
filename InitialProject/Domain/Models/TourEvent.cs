@@ -52,8 +52,6 @@ namespace InitialProject.Domain.Models
             Tour = new Tour() { Id = Convert.ToInt32(values[1]) };
             StartTime = DateTime.Parse(values[2]);
             Status = (TourEventStatus)Enum.Parse(typeof(TourEventStatus), values[3]);
-
-
         }
 
     }

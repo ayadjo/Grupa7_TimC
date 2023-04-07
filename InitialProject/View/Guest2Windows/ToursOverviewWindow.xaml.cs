@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using InitialProject.Enumerations;
+using InitialProject.View.Guest2Windows;
 
 namespace InitialProject.View.Guest2Window
 {
@@ -82,6 +83,12 @@ namespace InitialProject.View.Guest2Window
 
             List<Tour> searchedTours = _tourController.SearchTours(Country,City,Languages,NumberOfPeople,Duration);
             RefreshTours(searchedTours);
+        }
+
+        private void buttonMyTour_Click(object sender, RoutedEventArgs e)
+        {
+            MyToursWindow myToursWindow = new MyToursWindow();
+            myToursWindow.Show();
         }
     }
 }

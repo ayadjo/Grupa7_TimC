@@ -78,8 +78,6 @@ namespace InitialProject.Domain.Models
             MaxGuests = Convert.ToInt32(values[5]); 
             Duration = Convert.ToInt32(values[6]);
             Guide = new User() { Id = Convert.ToInt32(values[7]) };
-
-           
         }
 
     }

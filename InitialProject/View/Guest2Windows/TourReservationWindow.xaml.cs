@@ -92,8 +92,7 @@ namespace InitialProject.View.Guest2Window
 
             
 
-
-        TourEvents = new ObservableCollection<TourEvent>(tour.TourEvents);
+            TourEvents = new ObservableCollection<TourEvent>(tour.TourEvents);
         }
 
         private void Reserve_Click(object sender, RoutedEventArgs e)

@@ -10,6 +10,9 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using InitialProject.Enumerations;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System;
 
 namespace InitialProject.View
 {
@@ -22,6 +25,7 @@ namespace InitialProject.View
         private readonly UserRepository _repository;
        
         public AccommodationReservationController _accommodationReservationController;
+        public NotificationController _notificationController;
 
         private static User loggedUser;
 
@@ -59,6 +63,7 @@ namespace InitialProject.View
             _repository = UserRepository.GetInstance();
             
             _accommodationReservationController = new AccommodationReservationController();
+            _notificationController = new NotificationController();
         }
 
         private void SignIn(object sender, RoutedEventArgs e)
@@ -98,7 +103,16 @@ namespace InitialProject.View
                     }
                     else if (user.Type == UserType.Guest2)
                     {
-                        
+                       
+                        List<Notification> notifications = _notificationController.GetNotificationForUser(loggedUser.Id);
+                        foreach (Notification notification in notifications)
+                        {
+                            
+                            string tourName = notification.TourReservation.TourEvent.Tour.Name;
+                            MessageBoxResult result = MessageBox.Show(this, "You have been added to " + tourName);
+                            
+                        }
+                       
                         ToursOverviewWindow toursOverview = new ToursOverviewWindow();
                         toursOverview.Show();
                     }
