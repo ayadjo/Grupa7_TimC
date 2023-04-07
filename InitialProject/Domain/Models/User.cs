@@ -12,23 +12,23 @@ namespace InitialProject.Domain.Models
         public string LastName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        //public UserType Type { get; set; }
+        public UserType Type { get; set; }
 
         public User() { }
 
-        public User(int id, string firstName, string lastName, string username, string password)
+        public User(int id, string firstName, string lastName, string username, string password, UserType type)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
             Username = username;
             Password = password;
-            //Type = type;
+            Type = type;
         }
 
         public string[] ToCSV()
         {
-            string[] csvValues = { Id.ToString(), FirstName, LastName, Username, Password };
+            string[] csvValues = { Id.ToString(), FirstName, LastName, Username, Password, Type.ToString() };
             return csvValues;
         }
 
@@ -39,7 +39,7 @@ namespace InitialProject.Domain.Models
             LastName = values[2];
             Username = values[3];
             Password = values[4];
-            //type
+            Type = (UserType)Enum.Parse(typeof(UserType), values[5]);
         }
     }
 }

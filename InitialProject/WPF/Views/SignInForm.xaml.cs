@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using InitialProject.Domain.Models;
 using InitialProject.WPF.Views.Guest1Windows;
+using InitialProject.Enumerations;
 
 namespace InitialProject
 {
@@ -20,8 +21,16 @@ namespace InitialProject
     {
 
         private readonly UserRepository _repository;
-       
+
         public AccommodationReservationController _accommodationReservationController;
+
+        private static User loggedUser;
+
+        public static User LoggedUser
+        {
+            get => loggedUser;
+
+        }
 
         private string _username;
         public string Username
@@ -49,7 +58,7 @@ namespace InitialProject
             InitializeComponent();
             DataContext = this;
             _repository = UserRepository.GetInstance();
-            
+
             _accommodationReservationController = new AccommodationReservationController();
         }
 
@@ -62,13 +71,8 @@ namespace InitialProject
             {
                 if (user.Password == txtPassword.Password)
                 {
-
-                    if (ComboBoxRoles.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("You didn't select the role!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    }
-                    else if (ComboBoxRoles.SelectedIndex == 0)
+                    loggedUser = user;
+                    if (user.Type == UserType.Owner)
                     {
                         int NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
                         OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
@@ -78,24 +82,24 @@ namespace InitialProject
                             GuestsWithoutReviewNotificationWindow Notification = new GuestsWithoutReviewNotificationWindow();
                             Notification.Show();
                             Close();
-                       }
+                        }
                         Close();
 
                     }
-                    else if (ComboBoxRoles.SelectedIndex == 1)
+                    else if (user.Type == UserType.Guide)
                     {
-                        GuideMainWindow  guideMainWindow = new GuideMainWindow();
-                        guideMainWindow.Show(); 
-                        
+                        GuideMainWindow guideMainWindow = new GuideMainWindow();
+                        guideMainWindow.Show();
+
                     }
-                    else if (ComboBoxRoles.SelectedIndex == 2)
+                    else if (user.Type == UserType.Guest1)
                     {
                         Guest1MainWindow guest1MainWindow = new Guest1MainWindow(user);
                         guest1MainWindow.Show();
                     }
-                    else if (ComboBoxRoles.SelectedIndex == 3)
+                    else if (user.Type == UserType.Guest2)
                     {
-                        
+
                         ToursOverviewWindow toursOverview = new ToursOverviewWindow();
                         toursOverview.Show();
                     }
@@ -109,7 +113,6 @@ namespace InitialProject
             {
                 MessageBox.Show("Wrong username!");
             }
-            
         }
-   }  
+    }
 }

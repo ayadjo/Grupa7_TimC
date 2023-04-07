@@ -8,9 +8,9 @@ namespace InitialProject.Enumerations
 {
     public enum UserType
     {
-        owner,
-        guest1,
-        guest2,
-        guide
+        Owner,
+        Guest1,
+        Guest2,
+        Guide
     }
 }
