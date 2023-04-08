@@ -22,6 +22,11 @@ namespace InitialProject.Controller
             return _notificationService.GetAll();
         }
 
+        public Notification Get(int id)
+        {
+            return _notificationService.Get(id);
+        }
+
         public Notification Save(Notification notification)
         {
 

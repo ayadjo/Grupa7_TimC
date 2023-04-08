@@ -22,6 +22,11 @@ namespace InitialProject.Service.Services
             return _notificationRepository.GetAll();
         }
 
+        public Notification Get(int id)
+        {
+            return _notificationRepository.Get(id);
+        }
+
         public Notification Save(Notification notification)
         {
             return _notificationRepository.Save(notification);
@@ -37,6 +42,7 @@ namespace InitialProject.Service.Services
             _notificationRepository.Update(notification);
         }
 
+        /*
         public List<Notification> GetNotificationForUser(int userId)
         {
             
@@ -48,12 +54,30 @@ namespace InitialProject.Service.Services
                     notification.IsDelivered = true;
                     _notificationRepository.Update(notification);
                     notificationList.Add(notification);
-                    return notificationList;  //??
                 }
             }
             return notificationList;
            
+        }*/
+
+        public List<Notification> GetNotificationForUser(int userId)
+        {
+            List<Notification> notificationList = new List<Notification>();
+            List<Notification> notifications = _notificationRepository.GetAll().ToList();  //??
+
+            foreach (Notification notification in notifications)
+            {
+                if (notification.TourReservation.Guest.Id == userId)
+                {
+                    notification.IsDelivered = true;
+                    _notificationRepository.Update(notification);
+                    notificationList.Add(notification);
+                }
+            }
+
+            return notificationList;
         }
+
 
     }
 }

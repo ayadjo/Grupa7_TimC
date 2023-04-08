@@ -36,6 +36,12 @@ namespace InitialProject.Repositories
             return _notifications;
         }
 
+        public Notification Get(int id)
+        {
+            return _notifications.Find(n => n.Id == id);
+
+        }
+
         //?????
         public void BindNotificationTourReservation()
         {
