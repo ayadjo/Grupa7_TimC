@@ -1,4 +1,4 @@
-﻿using InitialProject.Repository;
+﻿using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -6,7 +6,6 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using InitialProject.Repository;
 
 namespace InitialProject
 {
@@ -27,6 +26,7 @@ namespace InitialProject
             
             AccommodationReservationRepository.GetInstance();
             GuestReviewRepository.GetInstance();
+            AccommodationOwnerReviewRepository.GetInstance();
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
@@ -43,6 +43,7 @@ namespace InitialProject
             
 
             GuestReviewRepository.GetInstance().BindGuestReviewWithAccommodationReservation();
+            AccommodationOwnerReviewRepository.GetInstance().BindAccommodationOwnerReviewWithAccommodationReservation();
         }
     }
 }

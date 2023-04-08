@@ -1,5 +1,5 @@
-﻿using InitialProject.Model;
-using InitialProject.Services;
+﻿using InitialProject.Domain.Models;
+using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +37,11 @@ namespace InitialProject.Controller
         public void Update(AccommodationOwnerReview accommodationOwnerReview)
         {
             _accommodationOwnerReviewService.Update(accommodationOwnerReview);
+        }
+
+        public List<AccommodationOwnerReview> GetAllValidReviews(Accommodation accommodation)
+        {
+            return _accommodationOwnerReviewService.GetAllValidReviews(accommodation);
         }
     }
 }

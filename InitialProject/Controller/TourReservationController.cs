@@ -1,11 +1,11 @@
-﻿using InitialProject.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InitialProject.Repository;
-using InitialProject.Services;
+using InitialProject.Repositories;
+using InitialProject.Domain.Models;
+using InitialProject.Service.Services;
 
 namespace InitialProject.Controller
 {
