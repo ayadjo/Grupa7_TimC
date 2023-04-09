@@ -24,6 +24,6 @@
         </DataGrid>
 
         <Button x:Name="TourPoint" Content="Ključne tačke" Height="30" Margin="472,360,229,44" Click="TourPoint_Click" />
-        <Button x:Name="Oceni" Content="Oceni" Height="30" Margin="618,360,107,44"/>
+        <Button x:Name="Rate" Content="Oceni" Height="30" Margin="618,360,107,44" Click="Rate_Click"/>
     </Grid>
 </Window>

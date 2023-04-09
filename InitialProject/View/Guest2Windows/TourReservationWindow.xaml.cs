@@ -78,6 +78,8 @@ namespace InitialProject.View.Guest2Window
 
         public TourPoint TourPointWhenGuestCame { get; set; }
 
+        public GuideReview GuideReview { get; set; }
+
         public ObservableCollection<TourEvent> TourEvents { get; set; }
 
         public TourReservationWindow(Tour tour)
@@ -90,7 +92,6 @@ namespace InitialProject.View.Guest2Window
             //NumberOfPeople = "";
             _tourEventController = new TourEventController();
 
-            
 
             TourEvents = new ObservableCollection<TourEvent>(tour.TourEvents);
         }
@@ -101,7 +102,8 @@ namespace InitialProject.View.Guest2Window
             {
                 User user = SignInForm.LoggedUser;
                 TourPointWhenGuestCame = new TourPoint { Id = -1 };
-                TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame);
+                GuideReview = new GuideReview { Id = -1 };  //??
+                TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame,GuideReview);
                 tourReservationController.Save(tourReservation);
                 MessageBox.Show("Uspesno ste izvrsili rezervaciju");
                 Close();
@@ -145,6 +147,8 @@ namespace InitialProject.View.Guest2Window
                 AvailableSpotsText = "Broj slobodnih:";
             }
         }
+
+        
 
         protected void OnPropertyChanged(string propertyName)
         {

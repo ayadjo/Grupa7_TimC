@@ -40,12 +40,30 @@ namespace InitialProject.Repositories
         {
             return _guideReviews.Find(gR => gR.Id == id);
         }
-        public GuideReview Save(GuideReview guestReview)
+
+        public void BindGuideReviewWithTourReservation()
         {
-            guestReview.Id = NextId();
-            _guideReviews.Add(guestReview);
+            foreach (GuideReview guideReview in _guideReviews)
+            {
+                int tourReservationId = guideReview.Reservation.Id;
+                TourReservation reservation = TourReservationRepository.GetInstance().Get(tourReservationId);
+                if (reservation != null)
+                {
+                    guideReview.Reservation = reservation;
+                }
+                else
+                {
+                    Console.WriteLine("Error in guideReviewTourReservation binding");
+                }
+            }
+        }
+
+        public GuideReview Save(GuideReview guideReview)
+        {
+            guideReview.Id = NextId();
+            _guideReviews.Add(guideReview);
             _serializer.ToCSV(FilePath, _guideReviews);
-            return guestReview;
+            return guideReview;
         }
         public int NextId()
         {

@@ -50,7 +50,9 @@ namespace InitialProject.View.Guest2Windows
             _tourEventController = new TourEventController();
             _tourReservationController = new TourReservationController();
 
+            
             TourEvents = new ObservableCollection<TourEvent>(_tourReservationController.UsersTourEvents(SignInForm.LoggedUser.Id));
+            
         }
 
         private void TourPoint_Click(object sender, RoutedEventArgs e)
@@ -63,11 +65,29 @@ namespace InitialProject.View.Guest2Windows
             tourPointsWindow.Show();
         }
 
+        private void Rate_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (_selectedTourEvent != null)
+            {
+                TourReservation tourReservation = new TourReservation();
+                tourReservation.TourEvent = SelectedTourEvent;
+                
+                GuideReviewWindow guideReviewWindow = new GuideReviewWindow(tourReservation);
+                guideReviewWindow.Show();
+                
+            }
+
+            //return;
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        
     }
 }

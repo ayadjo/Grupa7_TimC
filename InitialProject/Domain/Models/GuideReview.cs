@@ -13,23 +13,23 @@ namespace InitialProject.Domain.Models
         public TourReservation Reservation { get; set; }
         public int Knowledge { get; set; }
         public int Language { get; set; }
-        public int Interesting { get; set; }
+        public int Interestingness { get; set; }
         public string Comment { get; set; }
-        public List<Image> Images { get; set; }
+        //public List<Image> Images { get; set; }
 
         public GuideReview()
         {
-            Images = new List<Image>();
+            //Images = new List<Image>();
         }
-        public GuideReview(int id, TourReservation reservation, int knowledge, int language, int interesting, string comment)
+        public GuideReview(int id, TourReservation reservation, int knowledge, int language, int interestingness, string comment)
         {
             Id = id;
             Reservation = reservation;
             Knowledge = knowledge;
             Language = language;
-            Interesting = interesting;
+            Interestingness = interestingness;
             Comment = comment;
-            Images = new List<Image>();
+            //Images = new List<Image>();
         }
 
         public string[] ToCSV()
@@ -40,7 +40,7 @@ namespace InitialProject.Domain.Models
                 Reservation.Id.ToString(),
                 Knowledge.ToString(),
                 Language.ToString(),
-                Interesting.ToString(),
+                Interestingness.ToString(),
                 Comment
             };
             return csvValues;
@@ -53,7 +53,7 @@ namespace InitialProject.Domain.Models
             Reservation = new TourReservation() { Id = Convert.ToInt32(values[1]) };
             Knowledge = Convert.ToInt32(values[2]);
             Knowledge = Convert.ToInt32(values[3]);
-            Interesting = Convert.ToInt32(values[4]);
+            Interestingness = Convert.ToInt32(values[4]);
             Comment = values[5];
         }
     }

@@ -17,7 +17,9 @@ namespace InitialProject.Domain.Models
         public Tour Tour { get; set; }
         public DateTime StartTime { get; set; }
 
-        public TourEventStatus Status { get; set; }    
+        public TourEventStatus Status { get; set; }
+
+        //public GuideReview Review { get; set; }
 
         public TourEvent() { }
 
@@ -27,6 +29,7 @@ namespace InitialProject.Domain.Models
             Tour = tour;
             StartTime = startTime;
             Status = status;  
+            //Review = review;
         }
 
         public string[] ToCSV()
@@ -39,7 +42,7 @@ namespace InitialProject.Domain.Models
                Tour.Id.ToString(),
                StartTime.ToString(),
                Status.ToString(),
-
+               //Review.Id.ToString()
            };
 
             return csvValues;
@@ -52,6 +55,7 @@ namespace InitialProject.Domain.Models
             Tour = new Tour() { Id = Convert.ToInt32(values[1]) };
             StartTime = DateTime.Parse(values[2]);
             Status = (TourEventStatus)Enum.Parse(typeof(TourEventStatus), values[3]);
+           // Review = (GuideReview)Enum.Parse(typeof(GuideReview), values[4]);
         }
 
     }

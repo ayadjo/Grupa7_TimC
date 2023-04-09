@@ -86,7 +86,7 @@ namespace InitialProject.View
                             GuestsWithoutReviewNotificationWindow Notification = new GuestsWithoutReviewNotificationWindow();
                             Notification.Show();
                             Close();
-                       }
+                        }
                         Close();
 
                     }
