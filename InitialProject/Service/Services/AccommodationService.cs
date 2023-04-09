@@ -65,6 +65,5 @@ namespace InitialProject.Service.Services
             return _accommodationRepository.GetByOwner(id);
         }
 
-
     }
 }

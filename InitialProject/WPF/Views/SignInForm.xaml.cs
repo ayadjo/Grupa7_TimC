@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using InitialProject.Domain.Models;
 using InitialProject.WPF.Views.Guest1Windows;
+
 using InitialProject.Enumerations;
 using System.Collections.Generic;
 

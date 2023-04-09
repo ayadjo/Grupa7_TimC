@@ -55,10 +55,23 @@ namespace InitialProject.Controller
             return _tourReservationService.FindTourReservationForUserAndTourEvent(user, tourEvent);
         }
 
+
         public List<TourEvent> UsersTourEvents(int userId)
         {
 
             return _tourReservationService.UsersTourEvents(userId);
+        }
+
+        public void CancelTourReservation(TourReservation tourReservation)
+        {
+            _tourReservationService.CancelTourReservation(tourReservation);
+        }
+
+
+        public void CancelAllTourReservationsForTourEvent(int tourEventId)
+        {
+            _tourReservationService.CancelAllTourReservationsForTourEvent(tourEventId);
+
         }
 
     }

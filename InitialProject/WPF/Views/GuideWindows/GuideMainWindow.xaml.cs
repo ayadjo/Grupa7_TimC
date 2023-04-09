@@ -40,5 +40,19 @@ namespace InitialProject.WPF.Views.GuideWindows
             todaysToursOverviewWindow.Show();   
 
         }
+
+        private void ScheduledToursButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            ScheduledTours scheduledTours = new ScheduledTours();
+            scheduledTours.Show();
+
+        }
+
+        private void ReviewsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Reviews reviews = new Reviews();
+            reviews.Show();
+        }
     }
 }

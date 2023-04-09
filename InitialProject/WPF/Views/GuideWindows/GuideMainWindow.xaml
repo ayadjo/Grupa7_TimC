@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.GuideWindows"
         mc:Ignorable="d"
-        Title="GuideMainWindow" Height="750" Width="430">
+        Title="GuideMainWindow" Height="750" Width="430" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -33,6 +33,10 @@
                             Grid.Row="0" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left" />
                     <Button x:Name="TodaysToursButton" Content="Današnje ture" Click="TodaysToursButton_Click" 
                             Grid.Row="1" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
+                    <Button x:Name="ScheduledToursButton" Content="Zakazane ture" Click="ScheduledToursButton_Click" 
+                            Grid.Row="2" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
+                    <Button x:Name="ReviewsButton" Content="Recenzije" Click="ReviewsButton_Click" 
+                            Grid.Row="3" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
                 </Grid>
             </Grid>
         </Grid>

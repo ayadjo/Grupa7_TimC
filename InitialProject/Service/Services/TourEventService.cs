@@ -15,13 +15,21 @@ namespace InitialProject.Service.Services
 
         private TourEventRepository _tourEventRepository;
         private TourReservationRepository _tourReservationRepository;
+
         private TourPointRepository _tourPointRepository;
+
+        private TourReservationService _reservationService;
+
 
         public TourEventService()
         {
             _tourEventRepository = TourEventRepository.GetInstance();
             _tourReservationRepository = TourReservationRepository.GetInstance();
+
             _tourPointRepository = TourPointRepository.GetInstance();
+
+            _reservationService = new TourReservationService();
+
         }
 
         public List<TourEvent> GetAll()
@@ -114,6 +122,27 @@ namespace InitialProject.Service.Services
             _tourPointRepository.Update(tourPoint);
             tourEvent.Status = Enumerations.TourEventStatus.Started;
             Update(tourEvent);
+        }
+
+        public List<TourEvent> GetTourEventsInFuture()
+        {
+            List<TourEvent> _tourEventsForNow = new List<TourEvent>();
+
+            foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
+            {
+                if (tourEvent.StartTime.Date > DateTime.Today.AddDays(2))
+                {
+                    _tourEventsForNow.Add(tourEvent);
+                }
+            }
+            return _tourEventsForNow;
+        }
+
+        public void CancelTourEvent(TourEvent tourEvent)
+        {
+            _reservationService.CancelAllTourReservationsForTourEvent(tourEvent.Id);
+            _tourEventRepository.Delete(tourEvent);
+
         }
 
         /*
