@@ -1,8 +1,5 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
-using InitialProject.WPF.Views.OwnerView;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 

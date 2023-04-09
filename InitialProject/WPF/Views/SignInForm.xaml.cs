@@ -1,7 +1,5 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Repositories;
-using InitialProject.WPF.Views;
-using InitialProject.WPF.Views.OwnerView;
 using InitialProject.WPF.Views.OwnerWindows;
 using InitialProject.WPF.Views.Guest2Window;
 using InitialProject.WPF.Views.GuideWindows;
