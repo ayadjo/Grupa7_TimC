@@ -61,8 +61,4 @@
     <Content Remove="C:\Users\Codin\.nuget\packages\bootstrap\5.2.3\contentFiles\any\any\wwwroot\js\bootstrap.min.js.map" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Domain\RepositoryInterfaces\" />
-  </ItemGroup>
-
 </Project>

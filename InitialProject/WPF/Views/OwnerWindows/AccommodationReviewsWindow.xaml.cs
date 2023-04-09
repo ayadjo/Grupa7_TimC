@@ -28,7 +28,6 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public Accommodation SelectedAccommodationReview { get; set; }
 
         public AccommodationReviewsWindow(Accommodation accommodation)
         {

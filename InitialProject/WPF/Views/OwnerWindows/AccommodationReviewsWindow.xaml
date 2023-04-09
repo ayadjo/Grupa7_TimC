@@ -20,8 +20,7 @@
         <Label Grid.Row="0" Grid.Column="1" Height="50" FontSize="24" Margin="0,90,0,0" Content="Recenzije"/>
         <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="False" x:Name="AccommodationReviewsDataGrid" 
                   IsReadOnly="True" SelectionMode="Single"
-                  ItemsSource="{Binding Path=AccommodationReviews, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedAccommodationReview, UpdateSourceTrigger=PropertyChanged}">
+                  ItemsSource="{Binding Path=AccommodationReviews, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ime" Binding="{Binding Reservation.Guest.FirstName}" Width="130"></DataGridTextColumn>
                 <DataGridTextColumn Header="Prezime" Binding="{Binding Reservation.Guest.LastName}" Width="130" ></DataGridTextColumn>

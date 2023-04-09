@@ -57,9 +57,9 @@ namespace InitialProject.Service.Services
         public List<AccommodationOwnerReview> GetAllValidReviews(Accommodation accommodation)
         {
             List<AccommodationOwnerReview> reviews = new List<AccommodationOwnerReview>();
-            foreach (AccommodationReservation reservation in _accommodationReservationRepository.GetAll())
+            foreach (AccommodationReservation reservation in _accommodationReservationRepository.GetByAccommodationId(accommodation.Id))
             {
-                if (isValidReview(reservation) && reservation.Accommodation.Id == accommodation.Id)
+                if (isValidReview(reservation))
                 {
                     reviews.Add(reservation.AccommodationReview);
                 }
@@ -68,35 +68,6 @@ namespace InitialProject.Service.Services
             return reviews;
         }
 
-        public int GetReviewsCountForOwner(int ownerId)
-        {
-            int count = 0;
-            foreach (AccommodationOwnerReview ownerReview in _accommodationOwnerReviewRepository.GetAll())
-            {
-                if (ownerReview.Reservation.Accommodation.Owner.Id == ownerId)
-                {
-                    count++;
-                }
-            }
-            return count;
-        }
-
-        public double GetReviewsAverageForOwner(int ownerId)
-        {
-            int count = 0;
-            double averageReview = 0;
-            foreach (AccommodationOwnerReview ownerReview in _accommodationOwnerReviewRepository.GetAll())
-            {
-                if (ownerReview.Reservation.Accommodation.Owner.Id == ownerId)
-                {
-                    count++;
-                    averageReview += (ownerReview.Cleanliness + ownerReview.Correctness) / 2;
-
-                }
-            }
-            return averageReview / count;
-        }
-
-        //napraviti is super Owner
+        
     }
 }

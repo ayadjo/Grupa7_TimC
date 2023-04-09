@@ -90,7 +90,7 @@ namespace InitialProject.Repositories
             return accommodationOwnerReview;
         }
 
-        public List<AccommodationOwnerReview> GetByReservation(int reservationId)
+        public List<AccommodationOwnerReview> GetByReservation(int reservationId) //nema bas nekog smisla
         {
             return _accommodationOwnerReviews.FindAll(aor => aor.Reservation.Id == reservationId);
         }

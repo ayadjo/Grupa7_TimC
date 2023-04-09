@@ -1,4 +1,5 @@
-﻿using InitialProject.WPF.Views.OwnerWindows;
+﻿using InitialProject.Controller;
+using InitialProject.WPF.Views.OwnerWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,22 @@ namespace InitialProject.WPF.Views.OwnerWindows
     /// </summary>
     public partial class OwnerMainWindow : Window
     {
+        //private AccommodationOwnerReviewController _accomodationOwnerReviewController;
+
         public OwnerMainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+           // _accomodationOwnerReviewController = new AccommodationOwnerReviewController();
+
+
+           /* if (!_accomodationOwnerReviewController.IsSuperOwner(SignInForm.LoggedUser.Id))
+            {
+                SuperOwnerLabel.Visibility = Visibility.Hidden;
+            }*/
             
+
+
         }
 
         private void MyAccommodationButton_Click(object sender, RoutedEventArgs e)

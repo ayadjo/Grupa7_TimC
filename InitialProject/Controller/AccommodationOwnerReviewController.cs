@@ -43,5 +43,6 @@ namespace InitialProject.Controller
         {
             return _accommodationOwnerReviewService.GetAllValidReviews(accommodation);
         }
+        
     }
 }
