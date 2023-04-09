@@ -1,4 +1,4 @@
-﻿using InitialProject.Repository;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using InitialProject.Repository;
+using InitialProject.Repositories;
 
 namespace InitialProject
 {
@@ -24,6 +24,7 @@ namespace InitialProject
             TourPointRepository.GetInstance(); 
             ImageRepository.GetInstance();
             TourReservationRepository.GetInstance();
+            VoucherRepository.GetInstance();
             
             AccommodationReservationRepository.GetInstance();
             GuestReviewRepository.GetInstance();
@@ -36,6 +37,7 @@ namespace InitialProject
             TourPointRepository.GetInstance().BindTourPointTour();
             TourEventRepository.GetInstance().BindTourEventTour();
             ImageRepository.GetInstance().BindImageResource();
+            
 
             TourReservationRepository.GetInstance().BindTourReservationTourPoint();
             TourReservationRepository.GetInstance().BindTourReservationTourEvent();
@@ -43,6 +45,7 @@ namespace InitialProject
             
 
             GuestReviewRepository.GetInstance().BindGuestReviewWithAccommodationReservation();
+            VoucherRepository.GetInstance().BindVoucherUser();
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using InitialProject.Model;
-using InitialProject.Repository;
-using InitialProject.Services;
+﻿using InitialProject.Domain.Models;
+using InitialProject.Repositories;
+using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,6 +73,11 @@ namespace InitialProject.Controller
         public List<TourEvent> GetTourEventsForNow()
         {
             return _tourEventService.GetTourEventsForNow(); 
+        }
+
+        public List<TourEvent> GetTourEventsInFuture()
+        {
+            return _tourEventService.GetTourEventsInFuture();
         }
 
     }

@@ -1,0 +1,36 @@
+﻿<Window x:Class="InitialProject.WPF.View.OwnerWindows.AccommodationOverviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.WPF.View.OwnerWindows"
+        mc:Ignorable="d"
+        Title="AccommodationOverviewWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="RegisterNewAccommodation" Content="Registrujte novi smeštaj"/>
+        <Button x:Name="RegistenNewAccommodationButton" Content="+" FontSize="30"
+                Grid.Row="0" Click="RegistenNewAccommodationButton_Click" Margin="33,30,733,10"/>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Accommodations, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedAccommodation, UpdateSourceTrigger=PropertyChanged}"
+                  Margin="130,10,177,67" AutoGenerateColumns="False"
+                  x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tip" Binding="{Binding Type}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Max broj gostiju" Binding="{Binding MaxGuests}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Min dana za rezervaciju" Binding="{Binding MinDaysForReservation}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Dana za otkazivanje" Binding="{Binding CancelationPeriod}"></DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Window>
