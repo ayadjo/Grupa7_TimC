@@ -47,6 +47,11 @@ namespace InitialProject.Controller
         {
             return _accommodationOwnerReviewService.GetAllValidReviews(accommodation);
         }
-        
+
+        public bool IsSuperOwner(int ownerId)
+        {
+            return _accommodationOwnerReviewService.IsSuperOwner(ownerId);
+        }
+
     }
 }

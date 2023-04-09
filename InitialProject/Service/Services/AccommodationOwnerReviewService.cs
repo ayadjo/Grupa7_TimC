@@ -72,6 +72,41 @@ namespace InitialProject.Service.Services
             return reviews;
         }
 
-        
+        public int GetReviewsCountForOwner(int ownerId)
+        {
+            int count = 0;
+            foreach (AccommodationOwnerReview ownerReview in _accommodationOwnerReviewRepository.GetAll())
+            {
+                if (ownerReview.Reservation.Accommodation.Owner.Id == ownerId)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public double GetReviewsAverageForOwner(int ownerId)
+        {
+            int count = 0;
+            double averageReview = 0;
+            foreach (AccommodationOwnerReview ownerReview in _accommodationOwnerReviewRepository.GetAll())
+            {
+                if (ownerReview.Reservation.Accommodation.Owner.Id == ownerId)
+                {
+                    count++;
+                    averageReview += (ownerReview.Cleanliness + ownerReview.Correctness) / 2;
+
+                }
+            }
+            return averageReview / count;
+        }
+        public bool IsSuperOwner(int ownerId)
+        {
+            int count = GetReviewsCountForOwner(ownerId);
+            double average = GetReviewsAverageForOwner(ownerId);
+            return count >= 50 && average >= 9.5;
+        }
+
+
     }
 }

@@ -21,19 +21,19 @@ namespace InitialProject.WPF.Views.OwnerWindows
     /// </summary>
     public partial class OwnerMainWindow : Window
     {
-        //private AccommodationOwnerReviewController _accomodationOwnerReviewController;
+        private AccommodationOwnerReviewController _accomodationOwnerReviewController;
 
         public OwnerMainWindow()
         {
             InitializeComponent();
             this.DataContext = this;
-           // _accomodationOwnerReviewController = new AccommodationOwnerReviewController();
+            _accomodationOwnerReviewController = new AccommodationOwnerReviewController();
 
 
-           /* if (!_accomodationOwnerReviewController.IsSuperOwner(SignInForm.LoggedUser.Id))
+            if (!_accomodationOwnerReviewController.IsSuperOwner(SignInForm.LoggedUser.Id))
             {
                 SuperOwnerLabel.Visibility = Visibility.Hidden;
-            }*/
+            }
             
 
 
