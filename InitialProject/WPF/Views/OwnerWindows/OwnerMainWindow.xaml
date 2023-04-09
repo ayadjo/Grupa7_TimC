@@ -19,6 +19,7 @@
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Label x:Name="SuperOwnerLabel" Content="Super vlasnik"/>
             <Grid Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -29,6 +30,7 @@
                         <RowDefinition Height="55"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    
                     <Button x:Name="MyAccommodationButton" Content="Smestaj" Click="MyAccommodationButton_Click"
                             Grid.Row="0" FontSize="20"  BorderBrush="White" />
                     <Button x:Name="GuestWithoutReviewButton" Content="Neocenjeni gosti" Click="GuestsReviewButton_Click" 

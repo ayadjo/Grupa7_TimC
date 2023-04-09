@@ -1,4 +1,4 @@
-﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.Models;
 using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
@@ -43,5 +43,10 @@ namespace InitialProject.Controller
         {
             return _accommodationOwnerReviewService.SaveImages(accommodationOwnerReview);
         }
+        public List<AccommodationOwnerReview> GetAllValidReviews(Accommodation accommodation)
+        {
+            return _accommodationOwnerReviewService.GetAllValidReviews(accommodation);
+        }
+        
     }
 }

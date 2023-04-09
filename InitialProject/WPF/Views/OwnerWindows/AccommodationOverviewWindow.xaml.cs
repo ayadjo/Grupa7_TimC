@@ -1,6 +1,6 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
-using InitialProject.WPF.Views.OwnerView;
+using InitialProject.WPF.Views.OwnerWindows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,6 +26,8 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         public ObservableCollection<Accommodation> Accommodations { get; set; }
         public AccommodationController _accommodationController;
+
+        public Accommodation SelectedAccommodation { get; set; }
         public AccommodationOverviewWindow()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
             _accommodationController = new AccommodationController();
 
-            Accommodations = new ObservableCollection<Accommodation>(_accommodationController.GetAll());
+            Accommodations = new ObservableCollection<Accommodation>(_accommodationController.GetByOwner(SignInForm.LoggedUser.Id)); //??
         }
 
         private void RegistenNewAccommodationButton_Click(object sender, RoutedEventArgs e)
@@ -42,6 +44,16 @@ namespace InitialProject.WPF.Views.OwnerWindows
             NewAccommodation.Show();
             Close();
         }
-        
+
+        private void AccommodationReviewsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(SelectedAccommodation == null)
+            {
+                return;
+            }
+            AccommodationReviewsWindow AccommodationReviews = new AccommodationReviewsWindow(SelectedAccommodation);
+            AccommodationReviews.Show();
+            Close();
+        }
     }
 }

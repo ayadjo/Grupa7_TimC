@@ -16,7 +16,7 @@
         <Label x:Name="RegisterNewAccommodation" Content="Registrujte novi smeštaj"/>
         <Button x:Name="RegistenNewAccommodationButton" Content="+" FontSize="30"
                 Grid.Row="0" Click="RegistenNewAccommodationButton_Click" Margin="33,26,733,10"/>
-
+        <Button x:Name="AccommodationReviewsButton" Content="Recenzije" Height="20"  Width="60" Margin="663,26,77,34" Click="AccommodationReviewsButton_Click"/>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Accommodations, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedAccommodation, UpdateSourceTrigger=PropertyChanged}"
                   Margin="71,10,53,67" AutoGenerateColumns="False"

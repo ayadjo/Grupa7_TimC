@@ -1,28 +1,13 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
-using InitialProject.Repositories;
-using InitialProject.WPF.Views.OwnerWindows;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Xml.Linq;
 using Image = InitialProject.Domain.Models.Image;
 
-namespace InitialProject.WPF.Views.OwnerView
+namespace InitialProject.WPF.Views.OwnerWindows
 {
     /// <summary>
     /// Interaction logic for RegisterNewAccommodation.xaml
@@ -170,7 +155,7 @@ namespace InitialProject.WPF.Views.OwnerView
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
-            User user = new User() { Id = 1 };
+            User user = SignInForm.LoggedUser;
 
             Accommodation accommodation = new Accommodation() { Name=Naame, Location = location, 
             Type = SelectedType, MaxGuests = MaxGuests, MinDaysForReservation = MinDaysForReservation,

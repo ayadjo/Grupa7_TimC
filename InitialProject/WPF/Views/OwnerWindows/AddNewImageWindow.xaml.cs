@@ -17,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace InitialProject.WPF.Views
+namespace InitialProject.WPF.Views.OwnerWindows
 {
     /// <summary>
     /// Interaction logic for AddNewImageWindow.xaml

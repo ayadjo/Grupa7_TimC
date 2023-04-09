@@ -12,7 +12,7 @@ using InitialProject.Domain.Models;
 using InitialProject.WPF.Views.Guest1Windows;
 using InitialProject.Enumerations;
 
-namespace InitialProject
+namespace InitialProject.WPF.Views
 {
     /// <summary>
     /// Interaction logic for SignInForm.xaml

@@ -44,6 +44,7 @@ namespace InitialProject.Repositories
                 if (reservation != null)
                 {
                     accommodationOwnerReview.Reservation = reservation;
+                    reservation.AccommodationReview = accommodationOwnerReview;
                 }
                 else
                 {
@@ -51,6 +52,7 @@ namespace InitialProject.Repositories
                 }
             }
         }
+
         public List<AccommodationOwnerReview> GetAll()
         {
             return _accommodationOwnerReviews;
@@ -91,7 +93,7 @@ namespace InitialProject.Repositories
             return accommodationOwnerReview;
         }
 
-        public List<AccommodationOwnerReview> GetByReservation(int reservationId)
+        public List<AccommodationOwnerReview> GetByReservation(int reservationId) //nema bas nekog smisla
         {
             return _accommodationOwnerReviews.FindAll(aor => aor.Reservation.Id == reservationId);
         }
