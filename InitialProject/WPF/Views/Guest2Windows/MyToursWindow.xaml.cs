@@ -68,17 +68,18 @@ namespace InitialProject.WPF.Views.Guest2Windows
         private void Rate_Click(object sender, RoutedEventArgs e)
         {
 
-            if (_selectedTourEvent != null)
+            if (_selectedTourEvent != null && _selectedTourEvent.Status == Enumerations.TourEventStatus.Finished)
             {
-                TourReservation tourReservation = new TourReservation();
-                tourReservation.TourEvent = SelectedTourEvent;
                 
-                GuideReviewWindow guideReviewWindow = new GuideReviewWindow(tourReservation);
+                GuideReviewWindow guideReviewWindow = new GuideReviewWindow(_tourReservationController.GetTourReservationForTourEventAndUser(SelectedTourEvent.Id,SignInForm.LoggedUser.Id));
                 guideReviewWindow.Show();
                 
             }
-
-            //return;
+            else
+            {
+                MessageBox.Show("Mozete samo da ocenite ture koje su zavrsene");
+            }
+            
         }
 
         protected void OnPropertyChanged(string propertyName)

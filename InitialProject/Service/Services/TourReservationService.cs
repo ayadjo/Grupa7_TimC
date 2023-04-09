@@ -89,7 +89,7 @@ namespace InitialProject.Service.Services
             return tourEvents;
         }
 
-        public TourReservation GetTourBookingForTourEventAndUser(int tourEventId, int userId)
+        public TourReservation GetTourReservationForTourEventAndUser(int tourEventId, int userId)
         {
             foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
             {

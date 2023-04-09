@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
-        Title="MyToursWindow" Height="450" Width="800">
-    <Grid>
+        Title="MyToursWindow" Height="454" Width="785">
+    <Grid Margin="0,0,-27,-16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="793*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
         <DataGrid 
                   ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True"
-                  Width="750" Height="200" x:Name="myTourOverview">
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="28,88,31,146">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Tour.Name}" Width="100"></DataGridTextColumn>
                 <DataGridTextColumn Header="Država" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
@@ -23,7 +26,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="TourPoint" Content="Ključne tačke" Height="30" Margin="472,360,229,44" Click="TourPoint_Click" />
-        <Button x:Name="Rate" Content="Oceni" Height="30" Margin="618,360,107,44" Click="Rate_Click"/>
+        <Button x:Name="TourPoint" Content="Ključne tačke" Margin="373,320,306,86" Click="TourPoint_Click" />
+        <Button x:Name="Rate" Content="Oceni" Margin="532,320,171,86" Click="Rate_Click"/>
     </Grid>
 </Window>

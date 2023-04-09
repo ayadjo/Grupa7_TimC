@@ -29,7 +29,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
         public TourReservationController _tourReservationController;
         //public ImageController _imageController;
 
-        public TourReservation TourReservation { get; set; }
+        public TourReservation SelectedTourReservation { get; set; }
 
         private int _selectedKnowledge;
         public int SelectedKnowledge
@@ -88,7 +88,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
         }
 
 
-        public GuideReviewWindow(TourReservation selectedReservation)
+        public GuideReviewWindow(TourReservation tourReservation)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -104,17 +104,21 @@ namespace InitialProject.WPF.Views.Guest2Windows
             Grades.Add(4);
             Grades.Add(5);
 
-            
+            SelectedTourReservation = tourReservation;
+            SelectedKnowledge = 0;
+            SelectedLanguage = 0;
+            SelectedInterestingness = 0;
+
+
+
 
         }
 
         private void AddReviewButton_Click(object sender, RoutedEventArgs e)
         {
-            GuideReview guideReview = new GuideReview() { Reservation = TourReservation, Knowledge = SelectedKnowledge, Language = SelectedLanguage, Interestingness = SelectedInterestingness, Comment = Comment };
+            GuideReview guideReview = new GuideReview(-1,SelectedTourReservation,SelectedKnowledge,SelectedLanguage,SelectedInterestingness,Comment);  //??
             _guideReviewController.Save(guideReview);
-            TourReservation.GuideReview = guideReview;
-            _tourReservationController.Update(TourReservation);
-
+            MessageBox.Show("Uspešno ste ocenili!");
             Close();
         }
 

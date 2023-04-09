@@ -42,6 +42,8 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
             SelectedTourEvent = selectedTourEvent;
 
+            _tourPointController = new TourPointController();
+
             TourPoints = new ObservableCollection<TourPoint>(SelectedTourEvent.Tour.TourPoints);
         }
 
