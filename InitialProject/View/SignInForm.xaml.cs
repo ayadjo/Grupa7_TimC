@@ -115,6 +115,7 @@ namespace InitialProject.View
                        
                         ToursOverviewWindow toursOverview = new ToursOverviewWindow();
                         toursOverview.Show();
+                        return;
                     }
                 }
                 else

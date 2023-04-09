@@ -29,7 +29,7 @@ namespace InitialProject.View.Guest2Windows
         public TourReservationController _tourReservationController;
         //public ImageController _imageController;
 
-        public TourReservation TourReservation{ get; set; }
+        public TourReservation TourReservation { get; set; }
 
         private int _selectedKnowledge;
         public int SelectedKnowledge

@@ -63,18 +63,17 @@ namespace InitialProject.Service.Services
         public List<Notification> GetNotificationForUser(int userId)
         {
             List<Notification> notificationList = new List<Notification>();
-            List<Notification> notifications = _notificationRepository.GetAll().ToList();  //??
-
-            foreach (Notification notification in notifications)
+            var allNotifications = _notificationRepository.GetAll();
+            for (int i = 0; i < allNotifications.Count(); i++)
             {
-                if (notification.TourReservation.Guest.Id == userId)
+                var notification = allNotifications.ElementAt(i);
+                if (!notification.IsDelivered && notification.TourReservation.Guest.Id == userId)
                 {
                     notification.IsDelivered = true;
                     _notificationRepository.Update(notification);
                     notificationList.Add(notification);
                 }
             }
-
             return notificationList;
         }
 

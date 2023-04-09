@@ -18,9 +18,12 @@ namespace InitialProject.Repositories
         
         private List<GuideReview> _guideReviews;
 
+        private ImageRepository _imageRepository;
+
         private GuideReviewRepository()
         {
             _serializer = new Serializer<GuideReview>();
+            _imageRepository = ImageRepository.GetInstance();
             _guideReviews = _serializer.FromCSV(FilePath);
         }
         public static GuideReviewRepository GetInstance()

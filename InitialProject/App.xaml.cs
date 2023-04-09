@@ -26,6 +26,7 @@ namespace InitialProject
             NotificationRepository.GetInstance();
             AccommodationReservationRepository.GetInstance();
             GuestReviewRepository.GetInstance();
+            GuideReviewRepository.GetInstance();
             //UserRepository.GetInstance();
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
@@ -43,6 +44,7 @@ namespace InitialProject
             
 
             GuestReviewRepository.GetInstance().BindGuestReviewWithAccommodationReservation();
+            GuideReviewRepository.GetInstance().BindGuideReviewWithTourReservation();
 
             NotificationRepository.GetInstance().BindNotificationTourReservation();
         }

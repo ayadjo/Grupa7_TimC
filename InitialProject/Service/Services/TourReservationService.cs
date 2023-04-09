@@ -86,5 +86,17 @@ namespace InitialProject.Service.Services
             return tourEvents;
         }
 
+        public TourReservation GetTourBookingForTourEventAndUser(int tourEventId, int userId)
+        {
+            foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if (tourReservation.Guest.Id == userId && tourReservation.TourEvent.Id == tourEventId)
+                {
+                    return tourReservation;
+                }
+            }
+            return null;
+        }
+
     }
 }

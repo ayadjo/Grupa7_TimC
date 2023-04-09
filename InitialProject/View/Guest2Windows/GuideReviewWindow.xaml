@@ -10,27 +10,30 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Margin="0,50,0,10">
                 <Label Content="Znanje vodiča" Width="100"></Label>
-                <RadioButton Content="1" GroupName="RadioButtonKnowledge" IsChecked="{Binding SelectedKnowledge, Converter={StaticResource IntToBoolConverter}, ConverterParameter=1}" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
+                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedKnowledge, UpdateSourceTrigger=PropertyChanged}" Width="45"></ComboBox>
+            <!--    <RadioButton Content="1" GroupName="RadioButtonKnowledge" IsChecked="{Binding SelectedKnowledge, Converter={StaticResource IntToBoolConverter}, ConverterParameter=1}" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="2" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5" ></RadioButton>
                 <RadioButton Content="3" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5" ></RadioButton>
                 <RadioButton Content="4" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="5" GroupName="RadioButtonKnowledge" Height="21" Width="32"/>
+                <RadioButton Content="5" GroupName="RadioButtonKnowledge" Height="21" Width="32"/>-->
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10" >
                 <Label Content="Jezik vodiča" Width="100"></Label>
-                <RadioButton Content="1" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
+                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedLanguage, UpdateSourceTrigger=PropertyChanged}" Width="45"></ComboBox>
+            <!--    <RadioButton Content="1" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="2" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="3" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="4" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="5" GroupName="RadioButtonLanguage" Height="21" Width="32"/>
+                <RadioButton Content="5" GroupName="RadioButtonLanguage" Height="21" Width="32"/>-->
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
                 <Label Content="Zanimljivost ture" Width="100"></Label>
-                <RadioButton Content="1" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
+                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedInterestingness, UpdateSourceTrigger=PropertyChanged}" Width="45"></ComboBox>
+            <!--    <RadioButton Content="1" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="2" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="3" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="4" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="5" GroupName="RadioButtonInterestingness" Height="21" Width="32"/>
+                <RadioButton Content="5" GroupName="RadioButtonInterestingness" Height="21" Width="32"/>-->
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
                 <Label Content="Dodaj sliku" Width="100"></Label>
@@ -43,13 +46,13 @@
                   AutoGenerateColumns="False" IsReadOnly="True"
                   x:Name="myImagesOverview" Width="199" Margin="100,0,0,0" Height="82">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Url" Binding="{Binding Url}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Url" Binding="{Binding Url, UpdateSourceTrigger=PropertyChanged }" Width="*"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
                 <Label Content="Komentar" Width="100"></Label>
-                <TextBox Width="200" Height="59"></TextBox>
+                <TextBox Width="200" Height="59" Text="{Binding Path=Comment, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             </StackPanel>
             <Button x:Name="AddReviewButton" Content="Oceni" Width="80" Height="30" HorizontalAlignment="Right" Margin="0,0,50,0" Click="AddReviewButton_Click" ></Button>
         </StackPanel>

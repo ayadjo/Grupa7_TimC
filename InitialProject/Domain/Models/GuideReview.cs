@@ -15,11 +15,12 @@ namespace InitialProject.Domain.Models
         public int Language { get; set; }
         public int Interestingness { get; set; }
         public string Comment { get; set; }
-        //public List<Image> Images { get; set; }
+        
+        public List<Image> Images { get; set; }
 
         public GuideReview()
         {
-            //Images = new List<Image>();
+            Images = new List<Image>();
         }
         public GuideReview(int id, TourReservation reservation, int knowledge, int language, int interestingness, string comment)
         {
@@ -29,7 +30,7 @@ namespace InitialProject.Domain.Models
             Language = language;
             Interestingness = interestingness;
             Comment = comment;
-            //Images = new List<Image>();
+            Images = new List<Image>();
         }
 
         public string[] ToCSV()
