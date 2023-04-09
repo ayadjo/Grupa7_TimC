@@ -42,5 +42,10 @@ namespace InitialProject.Service.Services
         {
             return _accommodationOwnerReviewRepository.GetByReservation(accommodationOwnerReview.Reservation.Id);
         }
+
+        public AccommodationOwnerReview SaveImages(AccommodationOwnerReview accommodationOwnerReview)
+        {
+            return _accommodationOwnerReviewRepository.SaveImages(accommodationOwnerReview);
+        }
     }
 }

@@ -38,5 +38,10 @@ namespace InitialProject.Controller
         {
             _accommodationOwnerReviewService.Update(accommodationOwnerReview);
         }
+
+        public AccommodationOwnerReview SaveImages(AccommodationOwnerReview accommodationOwnerReview)
+        {
+            return _accommodationOwnerReviewService.SaveImages(accommodationOwnerReview);
+        }
     }
 }

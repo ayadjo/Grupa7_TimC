@@ -9,6 +9,7 @@ namespace InitialProject.Enumerations
     public enum ImageResource
     {
         accommodation,
-        tour
+        tour,
+        reservation
     }
 }

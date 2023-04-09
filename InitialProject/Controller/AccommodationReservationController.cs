@@ -66,5 +66,10 @@ namespace InitialProject.Controller
         {
             return _accommodationReservationService.GetByUserId(guest);
         }
+
+        public List<AccommodationReservation> GetAllReservationsWithoutAccommodationOwnerReview(int guest)
+        {
+            return _accommodationReservationService.GetAllReservationsWithoutAccommodationOwnerReview(guest);
+        }
     }
 }

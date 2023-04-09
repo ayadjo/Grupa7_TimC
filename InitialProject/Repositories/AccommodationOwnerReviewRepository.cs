@@ -17,11 +17,14 @@ namespace InitialProject.Repositories
 
         private readonly Serializer<AccommodationOwnerReview> _serializer;
 
+        private ImageRepository _imageRepository;
+
         private List<AccommodationOwnerReview> _accommodationOwnerReviews;
 
         private AccommodationOwnerReviewRepository()
         {
             _serializer = new Serializer<AccommodationOwnerReview>();
+            _imageRepository = ImageRepository.GetInstance();
             _accommodationOwnerReviews = _serializer.FromCSV(FilePath);
         }
         public static AccommodationOwnerReviewRepository GetInstance()
@@ -91,6 +94,21 @@ namespace InitialProject.Repositories
         public List<AccommodationOwnerReview> GetByReservation(int reservationId)
         {
             return _accommodationOwnerReviews.FindAll(aor => aor.Reservation.Id == reservationId);
+        }
+
+        public AccommodationOwnerReview SaveImages(AccommodationOwnerReview accommodationOwnerReview)
+        {
+            accommodationOwnerReview.Id = NextId();
+
+            foreach (Image image in accommodationOwnerReview.Images)
+            {
+                image.ResourceId = accommodationOwnerReview.Id;
+                _imageRepository.Save(image);
+            }
+
+            _accommodationOwnerReviews.Add(accommodationOwnerReview);
+            _serializer.ToCSV(FilePath, _accommodationOwnerReviews);
+            return accommodationOwnerReview;
         }
     }
 }

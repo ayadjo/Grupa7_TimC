@@ -95,5 +95,29 @@ namespace InitialProject.Service.Services
 
             return accommodationReservations;
         }
+
+        public List<AccommodationReservation> GetAllReservationsWithoutAccommodationOwnerReview(int guest)
+        {
+            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
+            {
+                if (accommodationReservation.Guest.Id == guest)
+                {
+                    if (IsAccommodationWithoutReview(accommodationReservation))
+                    {
+                        accommodationReservations.Add(accommodationReservation);
+                    }
+                }
+            }
+            return accommodationReservations;
+        }
+
+        private bool IsAccommodationWithoutReview(AccommodationReservation accommodationReservation)
+        {
+            bool retVal = accommodationReservation.AccommodationReview.Id == -1 /*&& DateTime.Now >= accommodationReservation.End
+                           && DateTime.Now <= accommodationReservation.End.AddDays(5)*/;
+
+            return retVal;
+        }
     }
 }

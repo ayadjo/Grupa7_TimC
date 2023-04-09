@@ -37,7 +37,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void AccommodationOwnerReviewSelection_Click(object sender, RoutedEventArgs e)
         {
-            AccommodationOwnerReviewSelectionWindow accommodationOwnerReviewSelectionWindow = new AccommodationOwnerReviewSelectionWindow();
+            AccommodationOwnerReviewSelectionWindow accommodationOwnerReviewSelectionWindow = new AccommodationOwnerReviewSelectionWindow(guest);
             accommodationOwnerReviewSelectionWindow.Show();
         }
 
