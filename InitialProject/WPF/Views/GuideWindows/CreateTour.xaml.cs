@@ -1,14 +1,14 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
-using InitialProject.WPF.Views.GuideWindows;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-//using System.Windows.Controls;
+
 using Image = InitialProject.Domain.Models.Image;
 
 namespace InitialProject.WPF.Views.GuideWindows
