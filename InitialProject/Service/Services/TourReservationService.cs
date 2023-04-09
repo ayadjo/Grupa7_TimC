@@ -73,5 +73,30 @@ namespace InitialProject.Service.Services
             return null;
         }
 
+        public List<TourEvent> UsersTourEvents(int userId)
+        {
+            List<TourEvent> tourEvents = new List<TourEvent>();
+            foreach(TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if(tourReservation.Guest.Id == userId)
+                {
+                    tourEvents.Add(tourReservation.TourEvent);
+                }
+            }
+            return tourEvents;
+        }
+
+        public TourReservation GetTourBookingForTourEventAndUser(int tourEventId, int userId)
+        {
+            foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if (tourReservation.Guest.Id == userId && tourReservation.TourEvent.Id == tourEventId)
+                {
+                    return tourReservation;
+                }
+            }
+            return null;
+        }
+
     }
 }

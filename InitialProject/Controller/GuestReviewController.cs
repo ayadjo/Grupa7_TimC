@@ -26,14 +26,17 @@ namespace InitialProject.Controller
         {
             return _guestReviewService.Get(id);
         }
+
         public GuestReview Save(GuestReview guestReview)
         {
             return _guestReviewService.Save(guestReview);
         }
+
         public void Delete(GuestReview guestReview)
         {
             _guestReviewService.Delete(guestReview);
         }
+
         public void Update(GuestReview guestReview)
         {
             _guestReviewService.Update(guestReview);

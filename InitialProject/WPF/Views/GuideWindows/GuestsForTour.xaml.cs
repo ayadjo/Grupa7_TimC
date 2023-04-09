@@ -46,6 +46,10 @@ namespace InitialProject.WPF.Views.GuideWindows
             TourReservation tourReservation = _tourReservationController.FindTourReservationForUserAndTourEvent(SelectedGuest, CurrentTourEvent);
             tourReservation.TourPointWhenGuestCame = CurrentTourPoint;
 
+            //Obavestenje ob = new Obavestenje(reservation, false);
+            //obavestenejController.dodaj(ob);
+            
+
             _tourReservationController.Update(tourReservation);
             Close();
         }

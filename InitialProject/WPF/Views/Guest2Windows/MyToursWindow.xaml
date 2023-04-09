@@ -1,0 +1,29 @@
+﻿<Window x:Class="InitialProject.WPF.Views.Guest2Windows.MyToursWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
+        mc:Ignorable="d"
+        Title="MyToursWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid 
+                  ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  Width="750" Height="200" x:Name="myTourOverview">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Tour.Name}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Država" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Grad" Binding="{Binding Tour.Location.City}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Jezik" Binding="{Binding Tour.Languages}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Datum i vreme" Binding="{Binding StartTime}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Tour.Duration}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="TourPoint" Content="Ključne tačke" Height="30" Margin="472,360,229,44" Click="TourPoint_Click" />
+        <Button x:Name="Rate" Content="Oceni" Height="30" Margin="618,360,107,44" Click="Rate_Click"/>
+    </Grid>
+</Window>

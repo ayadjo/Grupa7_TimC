@@ -1,10 +1,21 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
+using InitialProject.Repositories;
+using InitialProject.WPF.Views.OwnerWindows;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Xml.Linq;
 using Image = InitialProject.Domain.Models.Image;
 
 namespace InitialProject.WPF.Views.OwnerWindows

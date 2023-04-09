@@ -1,4 +1,4 @@
-﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
 using System;
 using System.Collections.Generic;

@@ -16,6 +16,7 @@ namespace InitialProject.Domain.Models
 
         public User() { }
 
+
         public User(int id, string firstName, string lastName, string username, string password, UserType type)
         {
             Id = id;

@@ -21,19 +21,21 @@ namespace InitialProject.Domain.Models
 
         public TourPoint TourPointWhenGuestCame { get; set; }
 
+        public GuideReview GuideReview { get; set; }
         public TourReservation()
         {
 
         }
 
-        public TourReservation(int id, int numberOfPeople, TourEvent tourEvent, User guest, TourPoint tourPointWhenGuestCame)
+
+        public TourReservation(int id, int numberOfPeople,TourEvent tourEvent, User guest, TourPoint tourPointWhenGuestCame, GuideReview guideReview)
         {
             Id = id;
             NumberOfPeople = numberOfPeople;
             TourEvent = tourEvent;
             Guest = guest;
             TourPointWhenGuestCame = tourPointWhenGuestCame;
-
+            GuideReview = guideReview;
         }
 
         public string[] ToCSV()
@@ -44,7 +46,8 @@ namespace InitialProject.Domain.Models
                 NumberOfPeople.ToString(),
                 TourEvent.Id.ToString(),
                 Guest.Id.ToString(),
-                TourPointWhenGuestCame.Id.ToString()
+                TourPointWhenGuestCame.Id.ToString(),
+                GuideReview.Id.ToString()
             };
             return csvValues;
         }
@@ -55,7 +58,8 @@ namespace InitialProject.Domain.Models
             NumberOfPeople = Convert.ToInt32(values[1]);
             TourEvent = new TourEvent() { Id = Convert.ToInt32(values[2]) };
             Guest = new User() { Id = Convert.ToInt32(values[3]) };
-            TourPointWhenGuestCame = new TourPoint() { Id = Convert.ToInt32(values[4]) };
+            TourPointWhenGuestCame = new TourPoint() { Id= Convert.ToInt32(values[4]) };
+            GuideReview = new GuideReview() { Id = Convert.ToInt32(values[5]) };
         }
     }
 }

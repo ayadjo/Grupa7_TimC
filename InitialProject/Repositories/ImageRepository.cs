@@ -1,5 +1,5 @@
-﻿using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
+using InitialProject.Domain.Models;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;

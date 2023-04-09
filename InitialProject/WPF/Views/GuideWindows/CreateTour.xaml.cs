@@ -213,7 +213,7 @@ namespace InitialProject.WPF.Views
            
             _tourController.SaveImagesTourPoints(tour);  
 
-            TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, false);
+            TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, TourEventStatus.NotStarted);
             _tourEventController.Save(tourEvent);
 
             

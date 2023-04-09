@@ -74,6 +74,7 @@
                     <DataGridTextColumn  Header="Vreme pocetka" Binding="{Binding StartTime}" Width="*"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
+
         </StackPanel>
 
 

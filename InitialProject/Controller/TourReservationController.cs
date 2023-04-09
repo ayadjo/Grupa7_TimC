@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InitialProject.Repositories;
 using InitialProject.Service.Services;
 using InitialProject.Domain.Models;
+
 
 namespace InitialProject.Controller
 {
@@ -52,6 +53,12 @@ namespace InitialProject.Controller
         public TourReservation FindTourReservationForUserAndTourEvent(User user, TourEvent tourEvent)
         {
             return _tourReservationService.FindTourReservationForUserAndTourEvent(user, tourEvent);
+        }
+
+        public List<TourEvent> UsersTourEvents(int userId)
+        {
+
+            return _tourReservationService.UsersTourEvents(userId);
         }
 
     }

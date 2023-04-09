@@ -1,0 +1,19 @@
+﻿<Window x:Class="InitialProject.WPF.Views.Guest2Windows.TourPointsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
+        mc:Ignorable="d"
+        Title="TourPointsWindow" Height="450" Width="400">
+    <Grid Margin="0,52,-482,0">
+        <DataGrid 
+                  ItemsSource="{Binding Path=TourPoints, UpdateSourceTrigger=PropertyChanged}"
+ 
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="25,117,546,111">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Tour.Name}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
