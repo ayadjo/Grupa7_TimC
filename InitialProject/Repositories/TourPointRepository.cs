@@ -48,7 +48,7 @@ namespace InitialProject.Repositories
                 }
                 else
                 {
-                    Console.WriteLine("Error in tourPointTourLocation binding");
+                    Console.WriteLine("Error in tourPointTour binding");
                 }
             }
         }

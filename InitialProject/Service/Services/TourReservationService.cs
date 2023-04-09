@@ -11,10 +11,12 @@ namespace InitialProject.Service.Services
     internal class TourReservationService
     {
         private TourReservationRepository _tourReservationRepository;
+        private VoucherRepository _voucherRepository;
 
         public TourReservationService()
         {
             _tourReservationRepository = TourReservationRepository.GetInstance();
+            _voucherRepository = VoucherRepository.GetInstance();
         }
 
         public List<TourReservation> GetAll()
@@ -71,6 +73,26 @@ namespace InitialProject.Service.Services
                 }
             }
             return null;
+        }
+
+        public void CancelTourReservation(TourReservation tourReservation)
+        {
+            Voucher voucher = new Voucher(-1, tourReservation.Guest, false, 365);
+            _voucherRepository.Save(voucher);
+
+            _tourReservationRepository.Delete(tourReservation);
+        }
+
+        public void CancelAllTourReservationsForTourEvent(int tourEventId)
+        {
+            foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
+            {
+                if (tourReservation.TourEvent.Id == tourEventId)
+                {
+                    CancelTourReservation(tourReservation);
+
+                }
+            }
         }
 
     }

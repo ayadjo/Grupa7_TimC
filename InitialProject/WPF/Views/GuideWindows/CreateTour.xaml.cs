@@ -6,23 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 //using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml.Linq;
 using Image = InitialProject.Domain.Models.Image;
 
-namespace InitialProject.WPF.Views
+namespace InitialProject.WPF.Views.GuideWindows
 {
     /// <summary>
     /// Interaction logic for CreateTour.xaml
@@ -215,6 +204,8 @@ namespace InitialProject.WPF.Views
 
             TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, false);
             _tourEventController.Save(tourEvent);
+
+            
 
             
 

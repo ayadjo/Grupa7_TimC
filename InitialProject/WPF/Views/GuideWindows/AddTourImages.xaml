@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.GuideWindows"
         mc:Ignorable="d"
         d:DesignHeight="750" d:DesignWidth="430"
-        Title="Dodaj sliku za turu" SizeToContent ="WidthAndHeight">
+        Title="Dodaj sliku za turu" SizeToContent ="WidthAndHeight" WindowStartupLocation="CenterScreen">
     <ScrollViewer VerticalScrollBarVisibility="Hidden">
         <Grid>
 

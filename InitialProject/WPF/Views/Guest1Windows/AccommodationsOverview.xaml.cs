@@ -1,4 +1,4 @@
-﻿using InitialProject.Controller;
+using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
 using InitialProject.WPF.Views.Guest2Window;

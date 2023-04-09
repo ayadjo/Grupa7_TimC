@@ -29,7 +29,6 @@ namespace InitialProject.WPF.Views.GuideWindows
             CreateTour createTour = new CreateTour();
             createTour.Show();
             Close();
-            Update();
         }
 
         private void UpdateToursList()

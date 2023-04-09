@@ -75,5 +75,10 @@ namespace InitialProject.Controller
             return _tourEventService.GetTourEventsForNow(); 
         }
 
+        public List<TourEvent> GetTourEventsInFuture()
+        {
+            return _tourEventService.GetTourEventsInFuture();
+        }
+
     }
 }
