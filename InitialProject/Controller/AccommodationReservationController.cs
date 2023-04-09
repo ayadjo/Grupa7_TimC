@@ -1,5 +1,5 @@
-﻿using InitialProject.Model;
-using InitialProject.Services;
+﻿using InitialProject.Domain.Models;
+using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +61,15 @@ namespace InitialProject.Controller
         public int FindNumberOfGuestsWithoutReview()
         {
             return _accommodationReservationService.FindNumberOfGuestsWithoutReview();
+        }
+        public List<AccommodationReservation> GetByUserId(int guest)
+        {
+            return _accommodationReservationService.GetByUserId(guest);
+        }
+
+        public List<AccommodationReservation> GetAllReservationsWithoutAccommodationOwnerReview(int guest)
+        {
+            return _accommodationReservationService.GetAllReservationsWithoutAccommodationOwnerReview(guest);
         }
     }
 }

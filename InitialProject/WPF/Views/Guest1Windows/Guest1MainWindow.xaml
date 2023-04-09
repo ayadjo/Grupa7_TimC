@@ -1,0 +1,23 @@
+﻿<Window x:Class="InitialProject.WPF.Views.Guest1Windows.Guest1MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest1Windows"
+        mc:Ignorable="d"
+        Title="Guest1MainWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+    <Grid>
+        
+        <Label Content="POČETNA STRANICA" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="(ovo je glavni meni. klikom na određeno dugme, biće prikazan prozor izabrane radnje)" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top"/>
+        
+        <Button Content="PRIKAZ, PRETRAGA I REZERVACIJA SMEŠTAJA" HorizontalAlignment="Left" Margin="116,108,0,0" VerticalAlignment="Top" Height="132" Width="369" Click="AccommodationsOverview_Click"/>
+
+        <Button Content="OCENJIVANJE SMEŠTAJA I VLASNIKA" HorizontalAlignment="Left" Margin="561,108,0,0" VerticalAlignment="Top" Height="132" Width="369" Click="AccommodationOwnerReviewSelection_Click"/>
+        
+        <Button Content="OTKAZIVANJE REZERVACIJE" HorizontalAlignment="Left" Margin="116,444,0,0" VerticalAlignment="Top" Width="369" Height="132" Click="AccommodationReservationCancellation_Click"/>
+
+        <Button Content="Odjavi se" HorizontalAlignment="Left" Margin="943,674,0,0" VerticalAlignment="Top" Click="SignOut_Click"/>
+        <Label Content="(klikom na ovo dugme bićete odjavljeni sa sistema)" HorizontalAlignment="Left" Margin="722,694,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
