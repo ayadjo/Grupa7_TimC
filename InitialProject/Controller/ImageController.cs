@@ -1,5 +1,5 @@
-﻿using InitialProject.Model;
-using InitialProject.Services;
+﻿using InitialProject.Domain.Models;
+using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

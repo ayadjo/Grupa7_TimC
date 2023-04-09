@@ -1,6 +1,6 @@
-﻿using InitialProject.Model;
-using InitialProject.Repository;
-using InitialProject.Services;
+﻿using InitialProject.Domain.Models;
+using InitialProject.Repositories;
+using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,10 +59,10 @@ namespace InitialProject.Controller
             return _tourEventService.CheckAvailability(tourEvent);
         }
 
-        public List<TourReservation> GetAllTourReservationForTourEvent(TourEvent tourEvent)
+       /* public List<TourReservation> GetAllTourReservationForTourEvent(TourEvent tourEvent)
         {
             return _tourEventService.GetAllTourReservationForTourEvent(tourEvent);
-        }
+        }*/
 
         public List<TourEvent> GetAvailableTourEventsForLocation(Location location, int numberOfPeople)
         {

@@ -1,6 +1,6 @@
-﻿using InitialProject.Model;
-using InitialProject.Repository;
-using InitialProject.Services;
+﻿using InitialProject.Domain.Models;
+using InitialProject.Repositories;
+using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,11 +60,11 @@ namespace InitialProject.Controller
             return _tourService.GetByGuide(id);
         }
 
-        public List<Tour> TourSearch(string country, string city, string language, string numberOfPeople, string duration)
+        public List<Tour> SearchTours(string country, string city, string language, string numberOfPeople, string duration)
         {
-            return _tourService.TourSearch(country, city, language, numberOfPeople, duration);
+            return _tourService.SearchTours(country, city, language, numberOfPeople, duration);
         }
-        public Tour SaveCascadeImages(Tour tour)
+        /*public Tour SaveCascadeImages(Tour tour)
         {
             return _tourService.SaveCascadeImages(tour);
         }
@@ -72,12 +72,12 @@ namespace InitialProject.Controller
         public Tour SaveCascadeTourPoints(Tour tour)
         {
             return _tourService.SaveCascadeTourPoints(tour);
-        }
+        }*/
 
-        public Tour SaveCascadeImagesTourPoints(Tour tour)
+        public Tour SaveImagesTourPoints(Tour tour)
         {
 
-            return _tourService.SaveCascadeImagesTourPoints(tour);
+            return _tourService.SaveImagesTourPoints(tour);
         }
     }
 }
