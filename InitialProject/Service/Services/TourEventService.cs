@@ -181,7 +181,7 @@ namespace InitialProject.Service.Services
 
             foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
             {
-                if(tourEvent.Done == false)
+                if(tourEvent.Status != Enumerations.TourEventStatus.Finished)
                 {
                     continue;
                 }

@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -74,7 +75,7 @@ namespace InitialProject.Repositories
             foreach (TourReservation tourReservation in _tourReservations)
             {
                 int voucherId = tourReservation.Voucher.Id;
-                Voucher voucher = VoucherRepository.GetInstance().Get(voucherId);
+                Voucher voucher = Injector.Injector.CreateInstance<IVoucherRepository>().Get(voucherId);
                 if (voucher != null)
                 {
                     tourReservation.Voucher = voucher;
