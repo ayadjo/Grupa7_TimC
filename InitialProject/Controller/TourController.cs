@@ -79,5 +79,9 @@ namespace InitialProject.Controller
 
             return _tourService.SaveImagesTourPoints(tour);
         }
+
+        public List<Tour> GetAllToursForGuide(int guideId) {
+            return _tourService.GetAllToursForGuide(guideId);
+        }
     }
 }

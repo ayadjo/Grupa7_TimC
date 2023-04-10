@@ -1,4 +1,4 @@
-﻿using InitialProject.Serializer;
+using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,7 +67,7 @@ namespace InitialProject.Domain.Models
             User = new User() { Id = Convert.ToInt32(values[2]) };
             Used = bool.Parse(values[3]);
             Duration = Convert.ToInt32(values[4]);
-            ExpirationDate = Convert.ToDateTime(values[5]);
+            ExpirationDate = Convert.ToDateTime(values[5]); 
 
         }
     }

@@ -40,6 +40,23 @@ namespace InitialProject.Repositories
             return instance;
         }
 
+        public void BindTourGuide()
+        {
+            foreach (Tour tour in _tours)
+            {
+                int guideId = tour.Guide.Id;
+                User guide = UserRepository.GetInstance().Get(guideId);
+                if (guide != null)
+                {
+                    tour.Guide = guide;
+                }
+                else
+                {
+                    Console.WriteLine("Error in tourGuide binding");
+                }
+            }
+        }
+
         public void BindTourLocation()
         {
             foreach (Tour tour in _tours)

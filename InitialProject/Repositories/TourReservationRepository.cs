@@ -69,7 +69,24 @@ namespace InitialProject.Repositories
             }
         }
 
-        
+        public void BindTourReservationVoucher()
+        {
+            foreach (TourReservation tourReservation in _tourReservations)
+            {
+                int voucherId = tourReservation.Voucher.Id;
+                Voucher voucher = VoucherRepository.GetInstance().Get(voucherId);
+                if (voucher != null)
+                {
+                    tourReservation.Voucher = voucher;
+                }
+                else
+                {
+                    Console.WriteLine("Error in tourReservationVoucher binding");
+                }
+            }
+        }
+
+
 
         public List<TourReservation> GetAll()
         {

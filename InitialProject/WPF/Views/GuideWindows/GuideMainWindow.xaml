@@ -37,6 +37,8 @@
                             Grid.Row="2" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
                     <Button x:Name="ReviewsButton" Content="Recenzije" Click="ReviewsButton_Click" 
                             Grid.Row="3" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
+                    <Button x:Name="TourStatisticsButton" Content="Statistika ture" Click="TourStatisticsButton_Click" 
+                            Grid.Row="4" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
                 </Grid>
             </Grid>
         </Grid>
