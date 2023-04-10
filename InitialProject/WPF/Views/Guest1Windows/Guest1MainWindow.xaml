@@ -14,7 +14,9 @@
         <Button Content="PRIKAZ, PRETRAGA I REZERVACIJA SMEŠTAJA" HorizontalAlignment="Left" Margin="116,108,0,0" VerticalAlignment="Top" Height="132" Width="369" Click="AccommodationsOverview_Click"/>
 
         <Button Content="OCENJIVANJE SMEŠTAJA I VLASNIKA" HorizontalAlignment="Left" Margin="561,108,0,0" VerticalAlignment="Top" Height="132" Width="369" Click="AccommodationOwnerReviewSelection_Click"/>
-        
+
+        <Button Content="POMERANJE REZERVACIJE" HorizontalAlignment="Left" Margin="561,274,0,0" VerticalAlignment="Top" Width="369" Height="132" Click="AccommodationReservationReschedulingRequest_Click"/>
+
         <Button Content="OTKAZIVANJE REZERVACIJE" HorizontalAlignment="Left" Margin="116,444,0,0" VerticalAlignment="Top" Width="369" Height="132" Click="AccommodationReservationCancellation_Click"/>
 
         <Button Content="Odjavi se" HorizontalAlignment="Left" Margin="943,674,0,0" VerticalAlignment="Top" Click="SignOut_Click"/>

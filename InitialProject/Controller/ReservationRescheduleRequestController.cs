@@ -48,5 +48,20 @@ namespace InitialProject.Controller
         {
             return _reservationRescheduleRequestService.NextId();
         }
+
+        public List<ReservationRescheduleRequest> GetStandBy()
+        {
+            return _reservationRescheduleRequestService.GetStandBy();
+        }
+
+        public List<ReservationRescheduleRequest> GetApproved()
+        {
+            return _reservationRescheduleRequestService.GetApproved();
+        }
+
+        public List<ReservationRescheduleRequest> GetDeclined()
+        {
+            return _reservationRescheduleRequestService.GetDeclined();
+        }
     }
 }
