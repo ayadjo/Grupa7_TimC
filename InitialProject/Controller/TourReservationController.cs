@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InitialProject.Repositories;
 using InitialProject.Service.Services;
 using InitialProject.Domain.Models;
+using InitialProject.Domain.Dto;
 
 namespace InitialProject.Controller
 {
@@ -63,6 +64,14 @@ namespace InitialProject.Controller
         public void CancelAllTourReservationsForTourEvent(int tourEventId)
         {
             _tourReservationService.CancelAllTourReservationsForTourEvent(tourEventId);
+        }
+
+        public TourAgeGroupStatistic GetAgeStatisticsForTourEvent(int eventId) {
+            return _tourReservationService.GetAgeStatisticsForTourEvent(eventId);
+        }
+
+        public TourPercentageOfGuestsVouchers GetPercentageOfGuestsWithVouchersForTourEvent(int eventId) {
+            return _tourReservationService.GetPercentageOfGuestsWithVouchersForTourEvent(eventId);
         }
 
     }

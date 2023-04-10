@@ -18,7 +18,12 @@ namespace InitialProject.Service.Services
 
         }
 
+        public Voucher Get(int id)
+        {
 
+            return _voucherRepository.Get(id);
+
+        }
 
         public Voucher Save(Voucher voucher)
         {

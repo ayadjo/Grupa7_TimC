@@ -17,6 +17,8 @@ namespace InitialProject.Domain.Models
         public bool Used { get; set; }
         public int Duration { get; set; }
 
+        public DateTime Expires { get; set; }
+
 
 
         public Voucher()
@@ -25,14 +27,14 @@ namespace InitialProject.Domain.Models
 
         }
 
-        public Voucher(int id, User userr, bool used, int duration)
+        public Voucher(int id, User userr, bool used, int duration,DateTime expires)
         {
 
             Id = id;
             User = userr;
             Used = used;
             Duration = duration;
-
+            Expires = expires;
 
         }
 
@@ -45,7 +47,8 @@ namespace InitialProject.Domain.Models
                Id.ToString(),
                User.Id.ToString(),
                Used.ToString(),
-               Duration.ToString()
+               Duration.ToString(),
+               Expires.ToString()
 
 
             };
@@ -61,6 +64,7 @@ namespace InitialProject.Domain.Models
             User = new User() { Id = Convert.ToInt32(values[1]) };
             Used = bool.Parse(values[2]);
             Duration = Convert.ToInt32(values[3]);
+            Expires = DateTime.Parse(values[4]);
 
 
 

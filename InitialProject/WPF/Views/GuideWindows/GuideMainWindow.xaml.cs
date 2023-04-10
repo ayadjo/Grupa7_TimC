@@ -54,5 +54,11 @@ namespace InitialProject.WPF.Views.GuideWindows
             Reviews reviews = new Reviews();
             reviews.Show();
         }
+
+        private void TourStatisticsButton_Click(object sender, RoutedEventArgs e)
+        {
+            TourStatistics tourStatistics = new TourStatistics();
+            tourStatistics.Show();
+        }
     }
 }

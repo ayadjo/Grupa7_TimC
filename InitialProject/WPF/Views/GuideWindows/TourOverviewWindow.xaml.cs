@@ -21,7 +21,7 @@ namespace InitialProject.WPF.Views.GuideWindows
 
             _tourController = new TourController();
 
-            Tours = new ObservableCollection<Tour>(_tourController.GetAll());
+            Tours = new ObservableCollection<Tour>(_tourController.GetAllToursForGuide(SignInForm.LoggedUser.Id));
         }
 
         private void CreateToursButton_Click(object sender, RoutedEventArgs e)
@@ -31,10 +31,11 @@ namespace InitialProject.WPF.Views.GuideWindows
             Close();
         }
 
+
         private void UpdateToursList()
         {
 
-            foreach (var tour in _tourController.GetAll())
+            foreach (var tour in _tourController.GetAllToursForGuide(SignInForm.LoggedUser.Id))
             {
                 Tours.Add(tour);
             }

@@ -102,7 +102,8 @@ namespace InitialProject.WPF.Views.Guest2Window
             {
                 User user = new User() { Id = 1 };
                 TourPointWhenGuestCame = new TourPoint { Id = -1 };
-                TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame);
+                Voucher voucher = new Voucher();
+                TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame, voucher);
                 tourReservationController.Save(tourReservation);
                 MessageBox.Show("Uspesno ste izvrsili rezervaciju");
                 Close();

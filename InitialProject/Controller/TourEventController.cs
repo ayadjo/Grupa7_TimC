@@ -80,5 +80,19 @@ namespace InitialProject.Controller
             return _tourEventService.GetTourEventsInFuture();
         }
 
+        public List<int> YearsOfTourEvents(int guideId)
+        {
+            return _tourEventService.YearsOfTourEvents(guideId);
+        }
+        
+        public TourEvent MostVisitedTourEvent(int year = -1) {
+            return _tourEventService.MostVisitedTourEvent(year);
+        }
+
+        public List<TourEvent> GetAllTourEvents(int guideId)
+        {
+            return _tourEventService.GetAllTourEvents(guideId);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using InitialProject.Domain.Models;
+﻿using InitialProject.Domain.Dto;
+using InitialProject.Domain.Models;
 using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -140,5 +141,61 @@ namespace InitialProject.Service.Services
           }
           return tourReservationList;
       }*/
+
+        public TourEvent MostVisitedTourEvent(int year = -1)
+        {
+            TourEvent mostVisitedTourEvent = null;
+            int maxPeopleCame = -1;
+
+            foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
+            {
+                if(tourEvent.Done == false)
+                {
+                    continue;
+                }
+                if(year != -1)
+                {
+                    if(tourEvent.StartTime.Year != year)
+                    {
+                        continue;
+                    }
+                }
+                int peopleCame = _reservationService.GetAllTourReservationsForTourEventWherePeopleShowed(tourEvent.Id).Count();
+                if (peopleCame > maxPeopleCame)
+                {
+                    mostVisitedTourEvent = tourEvent;
+                    maxPeopleCame = peopleCame;
+                }
+            }
+            return mostVisitedTourEvent;
+        }
+
+        public List<int> YearsOfTourEvents(int guideId)
+        {
+            List<int> years = new List<int>();
+            foreach(TourEvent tourEvent in _tourEventRepository.GetAll())
+            {
+                if(tourEvent.Tour.Guide.Id == guideId)
+                {
+                    years.Add(tourEvent.StartTime.Year);
+                }
+            }
+            return years.Distinct().ToList();
+        }
+
+        public List<TourEvent> GetAllTourEvents(int guideId)
+        {
+            List<TourEvent> _allTourEvents = new List<TourEvent>();
+
+            foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
+            {
+                if (tourEvent.Tour.Guide.Id == guideId)
+                {
+                    _allTourEvents.Add(tourEvent);
+                }
+            }
+            return _allTourEvents;
+        }
+
     }
 }

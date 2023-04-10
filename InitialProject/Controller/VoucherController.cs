@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Repositories;
 using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,12 @@ namespace InitialProject.Controller
             _voucherService = new VoucherService();
         }
 
-       
+        public Voucher Get(int id)
+        {
+
+            return _voucherService.Get(id);
+
+        }
         public Voucher Save(Voucher voucher)
         {
 
