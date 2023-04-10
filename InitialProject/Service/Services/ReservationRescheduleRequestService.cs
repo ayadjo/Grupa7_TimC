@@ -1,5 +1,7 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +50,25 @@ namespace InitialProject.Service.Services
         public int NextId()
         {
             return _reservationRescheduleRequestRepository.NextId();
+        }
+
+        private bool IsRequestOnStandby(ReservationRescheduleRequest reservationRescheduleRequest)
+        {
+            return reservationRescheduleRequest.Status == Enumerations.RequestStatusType.Standby;
+        }
+
+        public List<ReservationRescheduleRequest> GetAllRequestsForHandling()
+        {
+            List<ReservationRescheduleRequest> reservationRescheduleRequests= new List<ReservationRescheduleRequest>();
+            foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
+            {
+                if (IsRequestOnStandby(reservationRescheduleRequest) && SignInForm.LoggedUser.Id == reservationRescheduleRequest.Reservation.Accommodation.Owner.Id)
+                {
+                    reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                }
+            }
+
+            return reservationRescheduleRequests;
         }
     }
 }

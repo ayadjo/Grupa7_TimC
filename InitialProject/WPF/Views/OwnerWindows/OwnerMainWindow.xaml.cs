@@ -53,6 +53,11 @@ namespace InitialProject.WPF.Views.OwnerWindows
             GuestWithoutReview.Show();
 
         }
-       
+
+        private void ReservationRescheduleRequestsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReservationRescheduleRequestsWindow ReservationRescheduleRequests = new ReservationRescheduleRequestsWindow();
+            ReservationRescheduleRequests.Show();
+        }
     }
 }

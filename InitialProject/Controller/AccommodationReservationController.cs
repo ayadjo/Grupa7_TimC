@@ -71,5 +71,10 @@ namespace InitialProject.Controller
         {
             return _accommodationReservationService.GetAllReservationsWithoutAccommodationOwnerReview(guest);
         }
+
+        public bool IsReschedulePossible(ReservationRescheduleRequest reservationRescheduleRequest)
+        {
+            return _accommodationReservationService.IsReschedulePossible(reservationRescheduleRequest);
+        }
     }
 }

@@ -119,5 +119,32 @@ namespace InitialProject.Service.Services
 
             return retVal;
         }
+
+        public bool DatesIntertwine(DateTime StartFirst, DateTime EndFirst, DateTime StartSecond, DateTime EndSecond)
+        {
+            return (StartSecond.Date <= EndFirst.Date && EndSecond.Date >= StartFirst.Date);
+        }
+
+        public bool IsReschedulePossible(ReservationRescheduleRequest reservationRescheduleRequest)
+        {
+            List<AccommodationReservation> reservations = _accommodationReservationRepository.GetByAccommodationId(reservationRescheduleRequest.Reservation.Accommodation.Id);
+            foreach (AccommodationReservation reservation in reservations)
+            {
+                if (reservation.Id == reservationRescheduleRequest.Reservation.Id)
+                {
+                    reservations.Remove(reservation);
+                    break;
+                }
+            }
+            foreach (AccommodationReservation reservation in reservations)
+            {
+                if (DatesIntertwine(reservation.Start, reservation.End, reservationRescheduleRequest.NewStart, reservationRescheduleRequest.NewEnd))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

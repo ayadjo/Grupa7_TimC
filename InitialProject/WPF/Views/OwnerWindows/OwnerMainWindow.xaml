@@ -35,7 +35,8 @@
                             Grid.Row="0" FontSize="20"  BorderBrush="White" />
                     <Button x:Name="GuestWithoutReviewButton" Content="Neocenjeni gosti" Click="GuestsReviewButton_Click" 
                             Grid.Row="1" FontSize="20"  BorderBrush="White" />
-                    
+                    <Button x:Name="ReservationRescheduleRequestsButton" Content="Zahtevi" Click="ReservationRescheduleRequestsButton_Click"
+                            Grid.Row="2" FontSize="20"  BorderBrush="White" />
                 </Grid>
             </Grid>
         </Grid>
