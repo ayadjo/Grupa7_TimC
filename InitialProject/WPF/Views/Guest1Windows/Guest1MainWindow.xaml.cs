@@ -41,6 +41,12 @@ namespace InitialProject.WPF.Views.Guest1Windows
             accommodationOwnerReviewSelectionWindow.Show();
         }
 
+        private void AccommodationReservationReschedulingRequest_Click(object sender, RoutedEventArgs e)
+        {
+            AccommodationReservationReschedulingOverviewWindow accommodationReservationReschedulingOverviewWindow = new AccommodationReservationReschedulingOverviewWindow(guest);
+            accommodationReservationReschedulingOverviewWindow.Show();
+        }
+
         private void AccommodationReservationCancellation_Click(object sender, RoutedEventArgs e)
         {
             AccommodationReservationCancellationWindow accommodationReservationCancellationWindow = new AccommodationReservationCancellationWindow(guest);
