@@ -1,0 +1,27 @@
+﻿<Window x:Class="InitialProject.WPF.Views.Guest1Windows.AccommodationReservationReschedulingSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest1Windows"
+        mc:Ignorable="d"
+        Title="AccommodationReservationReschedulingSelectionWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Spisak Vaših rezervacija:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <DataGrid ItemsSource="{Binding AccommodationReservations, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedAccommodationReservation, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" x:Name="AccommodationReservationsDataGrid" IsReadOnly="True" SelectionMode="Single" Margin="10,78,10,128">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID smeštaja" Binding="{Binding Accommodation.Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv smeštaja" Binding="{Binding Accommodation.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pocetni datum" Binding="{Binding Start}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Krajnji datum" Binding="{Binding End}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="POŠALJI ZAHTEV ZA POMERANJE" HorizontalAlignment="Center" Margin="0,623,0,0" VerticalAlignment="Top" Height="70" Width="276" Click="AccommodationReservationReschedulingButton_Click"/>
+        <Label Content="(nakon izabrane rezervacije, kliknite na ovo dugme kako biste dobili formu za pravljenje zahteva)" HorizontalAlignment="Center" Margin="0,693,0,0" VerticalAlignment="Top"/>
+
+        <Button Content="Nazad" HorizontalAlignment="Left" Margin="954,691,0,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+    </Grid>
+</Window>

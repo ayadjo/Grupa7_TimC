@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Enumerations;
 using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,48 @@ namespace InitialProject.Service.Services
         public int NextId()
         {
             return _reservationRescheduleRequestRepository.NextId();
+        }
+
+        public List<ReservationRescheduleRequest> GetStandBy()
+        {
+            List<ReservationRescheduleRequest> reservationRescheduleRequests = new List<ReservationRescheduleRequest>();
+            foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
+            {
+                if (reservationRescheduleRequest.Status == RequestStatusType.standby)
+                {
+                    reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                }
+            }
+
+            return reservationRescheduleRequests;
+        }
+
+        public List<ReservationRescheduleRequest> GetApproved()
+        {
+            List<ReservationRescheduleRequest> reservationRescheduleRequests = new List<ReservationRescheduleRequest>();
+            foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
+            {
+                if (reservationRescheduleRequest.Status == RequestStatusType.approved)
+                {
+                    reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                }
+            }
+
+            return reservationRescheduleRequests;
+        }
+
+        public List<ReservationRescheduleRequest> GetDeclined()
+        {
+            List<ReservationRescheduleRequest> reservationRescheduleRequests = new List<ReservationRescheduleRequest>();
+            foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
+            {
+                if (reservationRescheduleRequest.Status == RequestStatusType.declined)
+                {
+                    reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                }
+            }
+
+            return reservationRescheduleRequests;
         }
     }
 }
