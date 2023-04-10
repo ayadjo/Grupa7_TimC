@@ -27,8 +27,6 @@ namespace InitialProject
 
             NotificationRepository.GetInstance();
 
-            VoucherRepository.GetInstance();
-            
 
             AccommodationReservationRepository.GetInstance();
             GuestReviewRepository.GetInstance();
@@ -62,7 +60,9 @@ namespace InitialProject
 
             NotificationRepository.GetInstance().BindNotificationTourReservation();
 
-            VoucherRepository.GetInstance().BindVoucherUser();
+            Injector.Injector.BindComponents();
+
+
         }
     }
 }

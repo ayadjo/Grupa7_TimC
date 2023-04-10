@@ -62,7 +62,7 @@ namespace InitialProject.WPF.Views.Guest2Window
              {
                  TourReservationWindow tourReservation = new TourReservationWindow(SelectedTour);
                  tourReservation.Show();
-                Close();
+                 Close();
              }
              else
              {
@@ -99,7 +99,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             user.Id = -1;
             SignInForm signInForm = new SignInForm();
             signInForm.Show();
-            
+            this.Close();
 
         }
     }

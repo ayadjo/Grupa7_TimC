@@ -112,6 +112,7 @@ public partial class SignInForm : Window
                    
                     ToursOverviewWindow toursOverview = new ToursOverviewWindow();
                     toursOverview.Show();
+                    
                     return;
                 }
             }

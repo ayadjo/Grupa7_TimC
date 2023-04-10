@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,14 @@ namespace InitialProject.Service.Services
     internal class TourReservationService
     {
         private TourReservationRepository _tourReservationRepository;
-        private VoucherRepository _voucherRepository;
+        private IVoucherRepository _voucherRepository;
 
         public TourReservationService()
         {
             _tourReservationRepository = TourReservationRepository.GetInstance();
-            _voucherRepository = VoucherRepository.GetInstance();
+            _voucherRepository = Injector.Injector.CreateInstance<IVoucherRepository>();
         }
+
 
         public List<TourReservation> GetAll()
         {
