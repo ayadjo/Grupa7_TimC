@@ -20,12 +20,10 @@ namespace InitialProject.Repositories
 
         public VoucherRepository()
         {
-
             _serializer = new Serializer<Voucher>();
             _vouchers = _serializer.FromCSV(FilePath);
         }
-
-        
+      
 
         public List<Voucher> GetAll()
         {

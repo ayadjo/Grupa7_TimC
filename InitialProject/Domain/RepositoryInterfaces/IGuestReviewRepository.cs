@@ -14,6 +14,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
         public GuestReview Save(GuestReview guestReview);
         public void Delete(GuestReview guestReview);
         public GuestReview Update(GuestReview guestReview);
-        public int NextId();
+       // public int NextId();
     }
 }

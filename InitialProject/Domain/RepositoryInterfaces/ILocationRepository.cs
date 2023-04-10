@@ -14,6 +14,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
         public Location Save(Location location);
         public void Delete(Location location);
         public Location Update(Location location);
-        public int NextId();
+        //public int NextId();
     }
 }

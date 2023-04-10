@@ -14,6 +14,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
         public Image Save(Image image);
         public void Delete(Image image);
         public Image Update(Image image);
-        public int NextId();
+        //public int NextId();
     }
 }

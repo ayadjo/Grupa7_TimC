@@ -16,7 +16,6 @@ namespace InitialProject.Service.Services
         public VoucherService()
         {
             _voucherRepository = Injector.Injector.CreateInstance<IVoucherRepository>();
-
         }
 
         public List<Voucher> GetAll()

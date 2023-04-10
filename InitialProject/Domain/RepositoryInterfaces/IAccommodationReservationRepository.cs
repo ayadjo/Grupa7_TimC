@@ -14,6 +14,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
         public AccommodationReservation Save(AccommodationReservation accommodationReservation);
         public void Delete(AccommodationReservation accommodationReservation);
         public AccommodationReservation Update(AccommodationReservation accommodationReservation);
-        public int NextId();
+     //   public int NextId();
     }
 }
