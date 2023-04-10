@@ -25,11 +25,15 @@ namespace InitialProject.WPF.Views.Guest2Windows
     public partial class GuideReviewWindow : Window, INotifyPropertyChanged
     {
         public ObservableCollection<int> Grades { get; set; }
+        public ObservableCollection<string> Images { get; set; }
+
         public GuideReviewController _guideReviewController;
         public TourReservationController _tourReservationController;
-        //public ImageController _imageController;
+        public ImageController _imageController;
 
         public TourReservation SelectedTourReservation { get; set; }
+
+        public string SelectedUrl { get; set; }
 
         private int _selectedKnowledge;
         public int SelectedKnowledge
@@ -87,6 +91,20 @@ namespace InitialProject.WPF.Views.Guest2Windows
             }
         }
 
+        private string _url;
+        public string Url
+        {
+            get => _url;
+            set
+            {
+                if (value != _url)
+                {
+                    _url = value;
+                    OnPropertyChanged("Url");
+                }
+            }
+        }
+
 
         public GuideReviewWindow(TourReservation tourReservation)
         {
@@ -95,7 +113,9 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
             _guideReviewController = new GuideReviewController();
             _tourReservationController = new TourReservationController();
-            //_imageController = new ImageController();
+            _imageController = new ImageController();
+
+            Images = new ObservableCollection<string>();
 
             Grades = new ObservableCollection<int>();
             Grades.Add(1);
@@ -116,7 +136,8 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
         private void AddReviewButton_Click(object sender, RoutedEventArgs e)
         {
-            GuideReview guideReview = new GuideReview(-1,SelectedTourReservation,SelectedKnowledge,SelectedLanguage,SelectedInterestingness,Comment);  //??
+            List<string> images = new List<string>(Images);
+            GuideReview guideReview = new GuideReview(-1,SelectedTourReservation,SelectedKnowledge,SelectedLanguage,SelectedInterestingness,Comment,images);  //??
             _guideReviewController.Save(guideReview);
             MessageBox.Show("Uspešno ste ocenili!");
             Close();
@@ -131,6 +152,23 @@ namespace InitialProject.WPF.Views.Guest2Windows
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
+        }
+
+        private void AddImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            Images.Add(Url);
+            Url = "";
+        }
+
+        private void RemoveImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedUrl == null)
+            {
+                return;
+            }
+                
+            Images.Remove(SelectedUrl);
+            SelectedUrl = null;
         }
     }
 }

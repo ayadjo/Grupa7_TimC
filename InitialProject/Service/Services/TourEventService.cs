@@ -158,5 +158,19 @@ namespace InitialProject.Service.Services
           }
           return tourReservationList;
       }*/
+        public List<TourEvent> GetTourEventsNotPassedForTour(Tour tour)
+        {
+            List<TourEvent> tourEventsNotPassed = new List<TourEvent>();
+
+            foreach(TourEvent tourEvent in tour.TourEvents)
+            {
+                if(tourEvent.StartTime.Date > DateTime.Now.Date)
+                {
+                    tourEventsNotPassed.Add(tourEvent);
+                }
+            }
+
+            return tourEventsNotPassed;
+        }
     }
 }

@@ -35,6 +35,11 @@ namespace InitialProject.Repositories
             return instance;
         }
 
+        public List<Voucher> GetAll()
+        {
+            return _vouchers;
+        }
+
         public int NextId()
         {
             
@@ -54,7 +59,14 @@ namespace InitialProject.Repositories
 
         }
 
-      
+        public void Delete(Voucher voucher)
+        {
+            Voucher founded = _vouchers.Find(t => t.Id == voucher.Id);
+            _vouchers.Remove(founded);
+            _serializer.ToCSV(FilePath, _vouchers);
+        }
+
+
         public Voucher Update(Voucher voucher)
         {
             

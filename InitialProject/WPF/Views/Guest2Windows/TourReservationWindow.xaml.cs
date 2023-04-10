@@ -25,8 +25,9 @@ namespace InitialProject.WPF.Views.Guest2Window
     public partial class TourReservationWindow : Window,INotifyPropertyChanged
     {
 
-        public TourReservationController tourReservationController;
+        public TourReservationController _tourReservationController;
         public TourEventController _tourEventController;
+        public VoucherController _voucherController;
 
         private string _availableSpotsText { get; set; }
         private int _availableSpots { get; set; }
@@ -74,44 +75,87 @@ namespace InitialProject.WPF.Views.Guest2Window
             }
         }
 
+        private Voucher _selectedVoucher;
+
+        public Voucher SelectedVoucher
+        {
+            get => _selectedVoucher;
+            set
+            {
+                if (_selectedVoucher != value)
+                {
+                    _selectedVoucher = value;
+                    OnPropertyChanged("SelectedVoucher");
+                }
+            }
+        }
         public int NumberOfPeople { get; set; }
 
         public TourPoint TourPointWhenGuestCame { get; set; }
 
-        public GuideReview GuideReview { get; set; }
 
         public ObservableCollection<TourEvent> TourEvents { get; set; }
+        public ObservableCollection<Voucher> Vouchers { get; set; }
 
         public TourReservationWindow(Tour tour)
         {
             InitializeComponent();
             this.DataContext = this;
 
-            tourReservationController = new TourReservationController();
-
-            //NumberOfPeople = "";
+            _tourReservationController = new TourReservationController();
             _tourEventController = new TourEventController();
+            _voucherController = new VoucherController();
 
-
-            TourEvents = new ObservableCollection<TourEvent>(tour.TourEvents);
+            TourEvents = new ObservableCollection<TourEvent>(_tourEventController.GetTourEventsNotPassedForTour(tour));
+            Vouchers = new ObservableCollection<Voucher>(_voucherController.VoucherForUser(SignInForm.LoggedUser.Id));
         }
 
         private void Reserve_Click(object sender, RoutedEventArgs e)
         {
-            if (AvailableSpots >= NumberOfPeople && SelectedTourEvent.StartTime>=DateTime.Now)
+
+            if (AvailableSpots >= NumberOfPeople)
             {
+                if (SelectedVoucher == null)
+                {
+                    SelectedVoucher = new Voucher() { Id = -1 };
+                }
+
+             
                 User user = SignInForm.LoggedUser;
-                TourPointWhenGuestCame = new TourPoint { Id = -1 };
-                GuideReview = new GuideReview { Id = -1 };  //??
-                TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame,GuideReview);
-                tourReservationController.Save(tourReservation);
-                MessageBox.Show("Uspesno ste izvrsili rezervaciju");
-                Close();
+
+                TourReservation existingTourReservation = _tourReservationController.GetTourReservationForTourEventAndUser(SelectedTourEvent.Id, user.Id);
+                if (existingTourReservation != null)
+                {
+                    MessageBox.Show("Vec ste rezervisali ovu turu!");
+                }
+                else
+                {
+                    TourPointWhenGuestCame = new TourPoint {  Id = -1 };
+                    
+                    TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame, SelectedVoucher);
+                    _tourReservationController.Save(tourReservation);
+
+                    if (SelectedVoucher.Id != -1)
+                    {
+                        SelectedVoucher.Used = true;
+                        _voucherController.Update(SelectedVoucher);
+                        Vouchers.Remove(SelectedVoucher);
+                        SelectedVoucher = null;
+
+                    }
+
+                    MessageBox.Show("Uspesno ste rezervisali!");
+                }
+
             }
             else
             {
-                MessageBox.Show("Nije moguce izvrsiti rezervaciju");
+                MessageBox.Show("Nema dovoljno mesta!");
             }
+
+
+            return;
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -141,6 +185,12 @@ namespace InitialProject.WPF.Views.Guest2Window
             if (AvailableSpots < NumberOfPeople)
             {
                 AvailableSpotsText = "Nema dovoljno mesta";
+                if (SelectedTourEvent == null)
+                {
+                    return;
+                }
+                List<TourEvent> tourEventsForLocation = _tourEventController.GetAvailableTourEventsForLocation(SelectedTourEvent.Tour.Location, NumberOfPeople);
+                RefreshTours(tourEventsForLocation);
             }
             else
             {

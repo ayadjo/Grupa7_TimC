@@ -85,5 +85,10 @@ namespace InitialProject.Controller
 
         }
 
+        public List<TourEvent> GetTourEventsNotPassedForTour(Tour tour)
+        {
+            return _tourEventService.GetTourEventsNotPassedForTour(tour);
+        }
+
     }
 }

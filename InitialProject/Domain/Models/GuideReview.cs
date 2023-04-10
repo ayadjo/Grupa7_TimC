@@ -16,13 +16,13 @@ namespace InitialProject.Domain.Models
         public int Interestingness { get; set; }
         public string Comment { get; set; }
         
-        public List<Image> Images { get; set; }
+        public List<string> Images { get; set; }
 
         public GuideReview()
         {
-            Images = new List<Image>();
+            Images = new List<string>();
         }
-        public GuideReview(int id, TourReservation reservation, int knowledge, int language, int interestingness, string comment)
+        public GuideReview(int id, TourReservation reservation, int knowledge, int language, int interestingness, string comment, List<string> images)
         {
             Id = id;
             Reservation = reservation;
@@ -30,7 +30,7 @@ namespace InitialProject.Domain.Models
             Language = language;
             Interestingness = interestingness;
             Comment = comment;
-            Images = new List<Image>();
+            Images = images;
         }
 
         public string[] ToCSV()
@@ -42,7 +42,8 @@ namespace InitialProject.Domain.Models
                 Knowledge.ToString(),
                 Language.ToString(),
                 Interestingness.ToString(),
-                Comment
+                Comment,
+                string.Join(",", Images)
             };
             return csvValues;
 
@@ -56,6 +57,7 @@ namespace InitialProject.Domain.Models
             Knowledge = Convert.ToInt32(values[3]);
             Interestingness = Convert.ToInt32(values[4]);
             Comment = values[5];
+            Images = values[6].Split(',').ToList();
         }
     }
 }

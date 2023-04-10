@@ -63,6 +63,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
             }
             TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
             tourPointsWindow.Show();
+            Close();
         }
 
         private void Rate_Click(object sender, RoutedEventArgs e)
@@ -73,6 +74,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
                 
                 GuideReviewWindow guideReviewWindow = new GuideReviewWindow(_tourReservationController.GetTourReservationForTourEventAndUser(SelectedTourEvent.Id,SignInForm.LoggedUser.Id));
                 guideReviewWindow.Show();
+                Close();
                 
             }
             else

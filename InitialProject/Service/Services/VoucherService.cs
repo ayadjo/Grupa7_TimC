@@ -18,7 +18,10 @@ namespace InitialProject.Service.Services
 
         }
 
-
+        public List<Voucher> GetAll()
+        {
+            return _voucherRepository.GetAll();
+        }
 
         public Voucher Save(Voucher voucher)
         {
@@ -32,6 +35,66 @@ namespace InitialProject.Service.Services
             return _voucherRepository.Update(voucher);
         }
 
+        public void Delete(Voucher voucher)
+        {
+
+            _voucherRepository.Delete(voucher);
+
+        }
+
+        public List<Voucher> GetVouchersThatDidntExpire()
+        {
+            List<Voucher> voucherList = new List<Voucher>();
+            var allVouchers = _voucherRepository.GetAll();
+            for (int i = 0; i < allVouchers.Count(); i++)
+            {
+                var voucher = allVouchers.ElementAt(i);
+                if (voucher.ExpirationDate >= DateTime.Now)
+                {
+                    voucherList.Add(voucher);
+                }
+                else
+                {
+                    //ako vaucer nije iskoristen
+                    var expiredVouchers = GetVouchersThatArentUsed(allVouchers);
+                    foreach (Voucher expiredVoucher in expiredVouchers)
+                    {
+                        _voucherRepository.Delete(expiredVoucher);
+                    }
+                    
+                }
+            }
+            return voucherList;
+        }
+
+        public List<Voucher> GetVouchersThatArentUsed(List<Voucher> vouchers)
+        {
+            List<Voucher> voucherList = new List<Voucher>();
+            foreach (Voucher voucher in vouchers)
+            {
+                if (voucher.Used == false)
+                {
+                    voucherList.Add(voucher);
+                }
+            }
+            return voucherList;
+        }
+
+
+        public List<Voucher> VoucherForUser(int userId)
+        {
+            List<Voucher> vouchers = new List<Voucher>();
+            var validVouchers = GetVouchersThatDidntExpire();
+            var unusedValidVouchers = GetVouchersThatArentUsed(validVouchers);
+            foreach (Voucher voucher in unusedValidVouchers)
+            {
+                if (voucher.User.Id == userId)
+                {
+                    vouchers.Add(voucher);
+                }
+            }
+            return vouchers;
+        }
 
 
     }

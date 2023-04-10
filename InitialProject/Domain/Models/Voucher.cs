@@ -13,11 +13,13 @@ namespace InitialProject.Domain.Models
     public class Voucher : ISerializable
     {
         public int Id { get; set; }
+
+        public string Name { get; set; }
         public User User { get; set; }
         public bool Used { get; set; }
         public int Duration { get; set; }
 
-
+        public DateTime ExpirationDate { get; set; }
 
         public Voucher()
         {
@@ -25,13 +27,15 @@ namespace InitialProject.Domain.Models
 
         }
 
-        public Voucher(int id, User userr, bool used, int duration)
+        public Voucher(int id, string name, User user, bool used,int duration, DateTime date)
         {
 
             Id = id;
-            User = userr;
+            Name = name;
+            User = user;
             Used = used;
-            Duration = duration;
+            Duration = duration;    
+            ExpirationDate = date;
 
 
         }
@@ -43,9 +47,11 @@ namespace InitialProject.Domain.Models
             string[] csvValues =
             {
                Id.ToString(),
+               Name,
                User.Id.ToString(),
                Used.ToString(),
-               Duration.ToString()
+               Duration.ToString(),
+               ExpirationDate.ToString()
 
 
             };
@@ -57,12 +63,11 @@ namespace InitialProject.Domain.Models
         public void FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
-
-            User = new User() { Id = Convert.ToInt32(values[1]) };
-            Used = bool.Parse(values[2]);
-            Duration = Convert.ToInt32(values[3]);
-
-
+            Name = values[1];
+            User = new User() { Id = Convert.ToInt32(values[2]) };
+            Used = bool.Parse(values[3]);
+            Duration = Convert.ToInt32(values[4]);
+            ExpirationDate = Convert.ToDateTime(values[5]);
 
         }
     }

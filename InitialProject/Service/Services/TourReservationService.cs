@@ -103,7 +103,9 @@ namespace InitialProject.Service.Services
 
         public void CancelTourReservation(TourReservation tourReservation)
         {
-            Voucher voucher = new Voucher(-1, tourReservation.Guest, false, 365);
+            DateTime date = new DateTime();  ///??
+            String name = new String("bskdd"); //??
+            Voucher voucher = new Voucher(-1, name, tourReservation.Guest, false, 365, date);
             _voucherRepository.Save(voucher);
 
             _tourReservationRepository.Delete(tourReservation);
@@ -121,6 +123,8 @@ namespace InitialProject.Service.Services
             }
 
         }
+
+        
 
     }
 }

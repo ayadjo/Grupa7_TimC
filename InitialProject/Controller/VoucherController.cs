@@ -18,18 +18,40 @@ namespace InitialProject.Controller
             _voucherService = new VoucherService();
         }
 
-       
+        public List<Voucher> GetAll()
+        {
+            return _voucherService.GetAll();
+        }
+
         public Voucher Save(Voucher voucher)
         {
 
             return _voucherService.Save(voucher);
         }
 
+        public void Delete(Voucher voucher)
+        {
+            _voucherService.Delete(voucher);
+        }
 
         public Voucher Update(Voucher voucher)
         {
             return _voucherService.Update(voucher);
         }
 
+        public List<Voucher> GetVouchersThatDidntExpire()
+        {
+            return _voucherService.GetVouchersThatDidntExpire();
+        }
+
+        public List<Voucher> GetVouchersThatArentUsed(List<Voucher> vouchers)
+        {
+            return _voucherService.GetVouchersThatArentUsed(vouchers);
+        }
+
+        public List<Voucher> VoucherForUser(int userId)
+        {
+            return _voucherService.VoucherForUser(userId);
+        }
     }
 }
