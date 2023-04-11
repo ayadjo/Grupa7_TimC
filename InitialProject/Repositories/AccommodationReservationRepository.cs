@@ -128,48 +128,11 @@ namespace InitialProject.Repositories
             accommodationReservation.Add(ar);
             _serializer.ToCSV(FilePath, accommodationReservation);
         }*/
-
+        
         public List<AccommodationReservation> GetByAccommodationId(int id)
         {
             List<AccommodationReservation> reservations = GetAll();
             return reservations.Where(reservation => reservation.Accommodation.Id == id).ToList();
-        }
-
-        public Boolean AvailableAccommodation(AccommodationReservation accommodationReservation, int numberOfDaysForReservation)
-        {
-            List<AccommodationReservation> bookedReservations = GetByAccommodationId(accommodationReservation.Accommodation.Id);
-            foreach (AccommodationReservation bookedReservation in bookedReservations)
-            {
-                if (accommodationReservation.Start >= bookedReservation.Start && accommodationReservation.Start < bookedReservation.End)
-                {
-                    DateTime startSuggestion = bookedReservation.End;
-                    DateTime endSuggestion = bookedReservation.End.AddDays(numberOfDaysForReservation);
-                    MessageBox.Show("Ovaj smeštaj je zauzet u izabranom periodu!\n\nPreporuka za početni datum: " + startSuggestion.ToString("dd.MM.yyyy.") + "\nPreporuka za krajnji datum: " + endSuggestion.ToString("dd.MM.yyyy."), "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return false;
-                }
-            }
-            return true;
-        }
-
-
-        public DateTime GetFirstAvailableDate(AccommodationReservation accommodationReservation)
-        {
-            List<AccommodationReservation> bookedReservations = GetByAccommodationId(accommodationReservation.Accommodation.Id);
-
-            bookedReservations.Sort((r1, r2) => r1.Start.CompareTo(r2.Start));
-
-            DateTime availableDate = accommodationReservation.Start;
-
-            foreach (AccommodationReservation bookedReservation in bookedReservations)
-            {
-                if (availableDate < bookedReservation.Start)
-                {
-                    return availableDate;
-                }
-
-                availableDate = bookedReservation.End;
-            }
-            return availableDate;
         }
     }
 }

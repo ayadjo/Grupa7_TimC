@@ -71,5 +71,15 @@ namespace InitialProject.Controller
         {
             return _accommodationReservationService.GetAllReservationsWithoutAccommodationOwnerReview(guest);
         }
+
+        public Boolean AvailableAccommodation(AccommodationReservation accommodationReservation, int numberOfDaysForReservation)
+        {
+            return _accommodationReservationService.AvailableAccommodation(accommodationReservation, numberOfDaysForReservation);
+        }
+
+        public DateTime GetFirstAvailableDate(AccommodationReservation accommodationReservation)
+        {
+            return _accommodationReservationService.GetFirstAvailableDate(accommodationReservation);
+        }
     }
 }
