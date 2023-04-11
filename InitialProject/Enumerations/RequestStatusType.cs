@@ -8,8 +8,8 @@ namespace InitialProject.Enumerations
 {
     public enum RequestStatusType
     {
-        standby,
-        approved,
-        declined
+        Standby,
+        Approved,
+        Declined
     }
 }

@@ -155,9 +155,9 @@ namespace InitialProject.WPF.Views.OwnerWindows
             Countries = new ObservableCollection<string>(_locationController.GetAllCountries()); 
             Cities = new ObservableCollection<string>();
             AccommodationTypes = new ObservableCollection<AccommodationType>();
-            AccommodationTypes.Add(AccommodationType.apartment);
-            AccommodationTypes.Add(AccommodationType.house);
-            AccommodationTypes.Add(AccommodationType.cottage);
+            AccommodationTypes.Add(AccommodationType.Apartment);
+            AccommodationTypes.Add(AccommodationType.House);
+            AccommodationTypes.Add(AccommodationType.Cottage);
 
             AllImages = new List<Image>();
 
@@ -193,7 +193,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         private void AddImages_Click(object sender, RoutedEventArgs e)
         {
-            AddNewImageWindow NewImage = new AddNewImageWindow(ImageResource.accommodation, AllImages);
+            AddNewImageWindow NewImage = new AddNewImageWindow(ImageResource.Accommodation, AllImages);
             NewImage.Show();
         }
 

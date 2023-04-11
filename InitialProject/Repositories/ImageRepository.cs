@@ -80,7 +80,7 @@ namespace InitialProject.Repositories
         {
             foreach (Image image in _images)
             {
-                if (image.Resource == ImageResource.tour)
+                if (image.Resource == ImageResource.Tour)
                 {
                     Tour tour = TourRepository.GetInstance().Get(image.ResourceId);
                     tour.Images.Add(image);

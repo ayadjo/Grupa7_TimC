@@ -8,8 +8,8 @@ namespace InitialProject.Enumerations
 {
     public enum ImageResource
     {
-        accommodation,
-        tour,
-        reservation
+        Accommodation,
+        Tour,
+        Reservation
     }
 }
