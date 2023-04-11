@@ -133,11 +133,12 @@ namespace InitialProject.Service.Services
                 if (tourReservation.TourEvent.Id == tourEventId)
                 {
                     CancelTourReservation(tourReservation);
-
                 }
             }
 
         }
+
+        
 
         
 
