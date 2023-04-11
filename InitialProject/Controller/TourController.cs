@@ -47,12 +47,6 @@ namespace InitialProject.Controller
             return _tourService.Update(tour);
         }
 
-        public int NextId()
-        {
-
-            return _tourService.NextId();
-
-        }
 
         public List<Tour> GetByGuide(int id)
         {

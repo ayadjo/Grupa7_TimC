@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InitialProject.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,16 @@ namespace InitialProject.WPF.Views.GuideWindows
         {
             TourStatistics tourStatistics = new TourStatistics();
             tourStatistics.Show();
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+
+           
+            SignInForm signInForm = new SignInForm();
+            signInForm.Show();
+            this.Close();
+
         }
     }
 }

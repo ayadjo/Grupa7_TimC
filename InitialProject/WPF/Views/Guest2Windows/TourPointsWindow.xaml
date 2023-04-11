@@ -12,7 +12,7 @@
  
                   AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="25,117,546,111">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Tour.Name}" Width="120"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="120"></DataGridTextColumn>
                 <DataGridTextColumn Header="Status" Binding="{Binding Active}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
