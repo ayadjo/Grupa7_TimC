@@ -193,7 +193,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         private void AddImages_Click(object sender, RoutedEventArgs e)
         {
-            AddNewImageWindow NewImage = new AddNewImageWindow(ImageResource.accommodation, AllImages);
+            AddNewImageWindow NewImage = new AddNewImageWindow(ImageResource.Accommodation, AllImages);
             NewImage.Show();
         }
 

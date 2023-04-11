@@ -115,37 +115,34 @@ namespace InitialProject.WPF.Views.Guest2Window
 
             if (AvailableSpots >= NumberOfPeople)
             {
-                if (SelectedVoucher == null)
-                {
-                    SelectedVoucher = new Voucher() { Id = -1 };
-                }
-
-             
+               
                 User user = SignInForm.LoggedUser;
-
                 TourReservation existingTourReservation = _tourReservationController.GetTourReservationForTourEventAndUser(SelectedTourEvent.Id, user.Id);
+
                 if (existingTourReservation != null)
                 {
                     MessageBox.Show("Vec ste rezervisali ovu turu!");
                 }
                 else
                 {
-                    TourPointWhenGuestCame = new TourPoint {  Id = -1 };
-                    
+                   TourPointWhenGuestCame = new TourPoint {  Id = -1 };
+                   
+
                     TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame, SelectedVoucher);
                     _tourReservationController.Save(tourReservation);
 
-                    if (SelectedVoucher.Id != -1)
+
+                    if (SelectedVoucher != null)
                     {
-                        SelectedVoucher.Used = true;
-                        _voucherController.Update(SelectedVoucher);
                         Vouchers.Remove(SelectedVoucher);
                         SelectedVoucher = null;
-
                     }
+
+
 
                     MessageBox.Show("Uspesno ste rezervisali!");
                 }
+                this.Close();
 
             }
             else

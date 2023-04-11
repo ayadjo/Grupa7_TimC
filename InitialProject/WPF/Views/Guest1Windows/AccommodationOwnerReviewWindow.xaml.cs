@@ -140,7 +140,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void ImagesButton_Click(object sender, RoutedEventArgs e)
         {
-            ImageAddingWindow imageAddingWindow = new ImageAddingWindow(ImageResource.reservation, AllImages);
+            ImageAddingWindow imageAddingWindow = new ImageAddingWindow(ImageResource.Reservation, AllImages);
             imageAddingWindow.Show();
         }
     }

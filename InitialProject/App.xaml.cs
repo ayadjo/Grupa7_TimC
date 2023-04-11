@@ -25,7 +25,6 @@ namespace InitialProject
             ImageRepository.GetInstance();
             TourReservationRepository.GetInstance();
 
-            NotificationRepository.GetInstance();
 
 
             AccommodationReservationRepository.GetInstance();
@@ -59,7 +58,7 @@ namespace InitialProject
 
             GuideReviewRepository.GetInstance().BindGuideReviewWithTourReservation();
 
-            NotificationRepository.GetInstance().BindNotificationTourReservation();
+           
 
             Injector.Injector.BindComponents();
 

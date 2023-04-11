@@ -23,6 +23,7 @@ namespace InitialProject.WPF.Views.GuideWindows
     public partial class GuestsForTour : Window
     {
         public TourReservationController _tourReservationController { get; set; }
+        public NotificationController _notificationController { get; set; }
         public ObservableCollection<User> Guests2 { get; set; }
 
         public User SelectedGuest { get; set; }
@@ -37,6 +38,8 @@ namespace InitialProject.WPF.Views.GuideWindows
             CurrentTourPoint = tourPoint;
 
             _tourReservationController = new TourReservationController();
+            _notificationController = new NotificationController();
+
             Guests2 = new ObservableCollection<User> (_tourReservationController.FindGuestsThatDidntComeYet(tourEvent));
 
         }
@@ -46,8 +49,8 @@ namespace InitialProject.WPF.Views.GuideWindows
             TourReservation tourReservation = _tourReservationController.FindTourReservationForUserAndTourEvent(SelectedGuest, CurrentTourEvent);
             tourReservation.TourPointWhenGuestCame = CurrentTourPoint;
 
-            //Obavestenje ob = new Obavestenje(reservation, false);
-            //obavestenejController.dodaj(ob);
+            Notification notification = new Notification(_notificationController.NextId(), tourReservation, false);
+            _notificationController.Save(notification);
             
 
             _tourReservationController.Update(tourReservation);

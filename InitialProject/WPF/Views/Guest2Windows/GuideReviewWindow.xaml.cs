@@ -128,19 +128,29 @@ namespace InitialProject.WPF.Views.Guest2Windows
             SelectedKnowledge = 0;
             SelectedLanguage = 0;
             SelectedInterestingness = 0;
-
-
-
+            //Comment = ""
 
         }
 
         private void AddReviewButton_Click(object sender, RoutedEventArgs e)
         {
             List<string> images = new List<string>(Images);
-            GuideReview guideReview = new GuideReview(-1,SelectedTourReservation,SelectedKnowledge,SelectedLanguage,SelectedInterestingness,Comment,images,false);  //??
+            GuideReview guideReview = new GuideReview(-1,SelectedTourReservation,SelectedKnowledge,SelectedLanguage,SelectedInterestingness,Comment,images,false);  
+
+            List<GuideReview> userReviews = _guideReviewController.GetReviewsForUser(SelectedTourReservation.Id, SignInForm.LoggedUser.Id);
+
+            foreach (GuideReview userReview in userReviews)
+            {
+                if (guideReview != userReview)
+                {
+                    MessageBox.Show("Vec ste ocenili ovu turu.");
+                    return;
+                }
+            }
+
             _guideReviewController.Save(guideReview);
             MessageBox.Show("Uspešno ste ocenili!");
-            Close();
+            this.Close();
         }
 
 
