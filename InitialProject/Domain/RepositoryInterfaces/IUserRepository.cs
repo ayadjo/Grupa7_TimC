@@ -9,7 +9,7 @@ namespace InitialProject.Domain.RepositoryInterfaces
 {
     public interface IUserRepository
     {
-        public User GetByUsername(string username);
-        public User Get(int id);
+        User GetByUsername(string username);
+        User Get(int id);
     }
 }

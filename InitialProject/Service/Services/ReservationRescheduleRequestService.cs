@@ -1,6 +1,8 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +13,11 @@ namespace InitialProject.Service.Services
 {
     public class ReservationRescheduleRequestService
     {
-        private ReservationRescheduleRequestRepository _reservationRescheduleRequestRepository;
-
+        private IReservationRescheduleRequestRepository _reservationRescheduleRequestRepository;
         public ReservationRescheduleRequestService()
         {
-            _reservationRescheduleRequestRepository = ReservationRescheduleRequestRepository.GetInstance();
+            _reservationRescheduleRequestRepository = Injector.Injector.CreateInstance<IReservationRescheduleRequestRepository>();
+
         }
 
         public List<ReservationRescheduleRequest> GetAll()
@@ -46,9 +48,24 @@ namespace InitialProject.Service.Services
             return _reservationRescheduleRequestRepository.Update(reservationRescheduleRequest);
         }
 
-        public int NextId()
+
+        private bool IsRequestOnStandby(ReservationRescheduleRequest reservationRescheduleRequest)
         {
-            return _reservationRescheduleRequestRepository.NextId();
+            return reservationRescheduleRequest.Status == Enumerations.RequestStatusType.Standby;
+        }
+
+        public List<ReservationRescheduleRequest> GetAllRequestsForHandling()
+        {
+            List<ReservationRescheduleRequest> reservationRescheduleRequests= new List<ReservationRescheduleRequest>();
+            foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
+            {
+                if (IsRequestOnStandby(reservationRescheduleRequest) && SignInForm.LoggedUser.Id == reservationRescheduleRequest.Reservation.Accommodation.Owner.Id)
+                {
+                    reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                }
+            }
+
+            return reservationRescheduleRequests;
         }
 
         public List<ReservationRescheduleRequest> GetStandBy(int guest)

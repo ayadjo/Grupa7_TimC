@@ -1,5 +1,6 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Repositories;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,12 +62,12 @@ namespace InitialProject.Service.Services
             return retVal;
         }
 
-        public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        public List<AccommodationReservation> GetAllReservationsWithoutGuestReview()
         {
             List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
             foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
             {
-                if (IsGuestWithoutReview(accommodationReservation))
+                if (IsGuestWithoutReview(accommodationReservation) && accommodationReservation.Accommodation.Owner.Id == SignInForm.LoggedUser.Id)
                 {
                     accommodationReservations.Add(accommodationReservation);
                 }
@@ -78,7 +79,7 @@ namespace InitialProject.Service.Services
         public int FindNumberOfGuestsWithoutReview()
         {
             int number;
-            List<AccommodationReservation> accommodationReservations = GetAllReservationsWithoutReview();
+            List<AccommodationReservation> accommodationReservations = GetAllReservationsWithoutGuestReview();
             return number = accommodationReservations.Count;
 
         }
@@ -162,6 +163,32 @@ namespace InitialProject.Service.Services
                 availableDate = bookedReservation.End;
             }
             return availableDate;
+        }
+        public bool IsDatesIntertwine(DateTime StartFirst, DateTime EndFirst, DateTime StartSecond, DateTime EndSecond)
+        {
+            return (StartSecond.Date <= EndFirst.Date && EndSecond.Date >= StartFirst.Date);
+        }
+
+        public bool IsReschedulePossible(ReservationRescheduleRequest reservationRescheduleRequest)
+        {
+            List<AccommodationReservation> reservations = _accommodationReservationRepository.GetByAccommodationId(reservationRescheduleRequest.Reservation.Accommodation.Id);
+            foreach (AccommodationReservation reservation in reservations)
+            {
+                if (reservation.Id == reservationRescheduleRequest.Reservation.Id)
+                {
+                    reservations.Remove(reservation);
+                    break;
+                }
+            }
+            foreach (AccommodationReservation reservation in reservations)
+            {
+                if (IsDatesIntertwine(reservation.Start, reservation.End, reservationRescheduleRequest.NewStart, reservationRescheduleRequest.NewEnd))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

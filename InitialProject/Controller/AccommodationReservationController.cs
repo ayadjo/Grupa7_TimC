@@ -53,9 +53,9 @@ namespace InitialProject.Controller
 
         }
 
-        public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        public List<AccommodationReservation> GetAllReservationsWithoutGuestReview()
         {
-            return _accommodationReservationService.GetAllReservationsWithoutReview();
+            return _accommodationReservationService.GetAllReservationsWithoutGuestReview();
         }
 
         public int FindNumberOfGuestsWithoutReview()
@@ -80,6 +80,9 @@ namespace InitialProject.Controller
         public DateTime GetFirstAvailableDate(AccommodationReservation accommodationReservation)
         {
             return _accommodationReservationService.GetFirstAvailableDate(accommodationReservation);
+        public bool IsReschedulePossible(ReservationRescheduleRequest reservationRescheduleRequest)
+        {
+            return _accommodationReservationService.IsReschedulePossible(reservationRescheduleRequest);
         }
     }
 }

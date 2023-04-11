@@ -20,12 +20,19 @@ namespace InitialProject.Injector
 
             VoucherRepository voucherRepository = new VoucherRepository();
             voucherRepository.BindVoucherUser();
+            
             AccommodationOwnerReviewRepository accommodationOwnerReviewRepository = new AccommodationOwnerReviewRepository();
             accommodationOwnerReviewRepository.BindAccommodationOwnerReviewWithAccommodationReservation();
+
+            ReservationRescheduleRequestRepository reservationRescheduleRequestRepository = new ReservationRescheduleRequestRepository();
+            reservationRescheduleRequestRepository.BindReservationRescheduleRequestWithAccommodationReservation();
+            reservationRescheduleRequestRepository.BindReservationRescheduleRequestWithUser();
+
 
 
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
             _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);
+            _implementations.Add(typeof(IReservationRescheduleRequestRepository), reservationRescheduleRequestRepository);
         }
 
         public static T CreateInstance<T>()

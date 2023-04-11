@@ -8,8 +8,8 @@ namespace InitialProject.Enumerations
 {
     public enum AccommodationType
     {
-        apartment,
-        house,
-        cottage
+        Apartment,
+        House,
+        Cottage
     }
 }

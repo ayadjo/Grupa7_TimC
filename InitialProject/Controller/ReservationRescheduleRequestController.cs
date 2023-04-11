@@ -44,9 +44,9 @@ namespace InitialProject.Controller
             return _reservationRescheduleRequestService.Update(reservationRescheduleRequest);
         }
 
-        public int NextId()
+        public List<ReservationRescheduleRequest> GetAllRequestsForHandling()
         {
-            return _reservationRescheduleRequestService.NextId();
+            return _reservationRescheduleRequestService.GetAllRequestsForHandling();
         }
 
         public List<ReservationRescheduleRequest> GetStandBy(int guest)

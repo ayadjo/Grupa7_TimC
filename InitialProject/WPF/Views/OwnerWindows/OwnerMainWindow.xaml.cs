@@ -1,4 +1,5 @@
 ﻿using InitialProject.Controller;
+using InitialProject.Domain.Models;
 using InitialProject.WPF.Views.OwnerWindows;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,20 @@ namespace InitialProject.WPF.Views.OwnerWindows
             GuestWithoutReview.Show();
 
         }
-       
+
+        private void ReservationRescheduleRequestsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReservationRescheduleRequestsWindow ReservationRescheduleRequests = new ReservationRescheduleRequestsWindow();
+            ReservationRescheduleRequests.Show();
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            User user = SignInForm.LoggedUser;
+            user.Id = -1;
+            SignInForm signInForm = new SignInForm();
+            signInForm.Show();
+            this.Close();
+        }
     }
 }

@@ -53,7 +53,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
             }
             AccommodationReviewsWindow AccommodationReviews = new AccommodationReviewsWindow(SelectedAccommodation);
             AccommodationReviews.Show();
-            Close();
+            //Close();
         }
     }
 }

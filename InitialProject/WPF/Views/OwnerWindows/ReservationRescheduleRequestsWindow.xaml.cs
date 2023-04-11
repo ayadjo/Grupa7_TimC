@@ -1,5 +1,9 @@
-﻿using System;
+﻿using InitialProject.Controller;
+using InitialProject.Domain.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,16 +21,32 @@ namespace InitialProject.WPF.Views.OwnerWindows
     /// <summary>
     /// Interaction logic for ReservationRescheduleRequestsWindow.xaml
     /// </summary>
-    public partial class ReservationRescheduleRequestsWindow : Window
+    public partial class ReservationRescheduleRequestsWindow : Window, INotifyPropertyChanged
     {
+        public ObservableCollection<ReservationRescheduleRequest> ReservationRescheduleRequests { get; set; }
+        public ReservationRescheduleRequestController _reservationRescheduleRequestsController;
+
+        public ReservationRescheduleRequest SelectedReservationRescheduleRequest { get; set; }
         public ReservationRescheduleRequestsWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+            _reservationRescheduleRequestsController = new ReservationRescheduleRequestController();
+
+            ReservationRescheduleRequests = new ObservableCollection<ReservationRescheduleRequest>(_reservationRescheduleRequestsController.GetAllRequestsForHandling());
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void RequestHandlingButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (SelectedReservationRescheduleRequest == null)
+            {
+                return;
+            }
+            ReservationRescheduleRequestHandlingWindow ReservationRescheduleRequestHandling = new ReservationRescheduleRequestHandlingWindow(SelectedReservationRescheduleRequest);
+            ReservationRescheduleRequestHandling.Show();
+            Close();
         }
     }
 }

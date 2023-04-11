@@ -37,6 +37,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
             _accommodationOwnerReviewController = new AccommodationOwnerReviewController();
 
             AccommodationReviews = new ObservableCollection<AccommodationOwnerReview>(_accommodationOwnerReviewController.GetAllValidReviews(accommodation));
+           
         }
     }
 }
