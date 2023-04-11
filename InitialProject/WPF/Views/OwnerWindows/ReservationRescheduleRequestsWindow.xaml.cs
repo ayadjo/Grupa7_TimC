@@ -40,6 +40,10 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         private void RequestHandlingButton_Click(object sender, RoutedEventArgs e)
         {
+            if (SelectedReservationRescheduleRequest == null)
+            {
+                return;
+            }
             ReservationRescheduleRequestHandlingWindow ReservationRescheduleRequestHandling = new ReservationRescheduleRequestHandlingWindow(SelectedReservationRescheduleRequest);
             ReservationRescheduleRequestHandling.Show();
             Close();

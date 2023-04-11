@@ -37,7 +37,7 @@
                   Margin="127,10,127,10" AutoGenerateColumns="False"
                   x:Name="AccommodationsDataGrid" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="140"></DataGridTextColumn>
                 <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}" Width="80"></DataGridTextColumn>
                 <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}" Width="80"></DataGridTextColumn>
                 <DataGridTextColumn Header="Tip" Binding="{Binding Type}" Width="100"></DataGridTextColumn>

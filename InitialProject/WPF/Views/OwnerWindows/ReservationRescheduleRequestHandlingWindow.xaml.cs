@@ -94,6 +94,9 @@ namespace InitialProject.WPF.Views.OwnerWindows
         private void AcceptRequestButton_Click(object sender, RoutedEventArgs e)
         {
             rescheduleRequest.Status = Enumerations.RequestStatusType.Approved;
+            rescheduleRequest.Reservation.Start = rescheduleRequest.NewStart;
+            rescheduleRequest.Reservation.End = rescheduleRequest.NewEnd;
+            _accommodationReservationController.Update(rescheduleRequest.Reservation); 
             _reservationRescheduleRequestController.Update(rescheduleRequest);
             Close();
         }

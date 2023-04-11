@@ -74,13 +74,7 @@ namespace InitialProject.Repositories
         {
             return _reservationRescheduleRequests.Find(rrr => rrr.Id == id);
         }
-        public ReservationRescheduleRequest Create(ReservationRescheduleRequest reservationRescheduleRequest)
-        {
-            reservationRescheduleRequest.Id = NextId();
-            _reservationRescheduleRequests.Add(reservationRescheduleRequest);
-            _serializer.ToCSV(FilePath, _reservationRescheduleRequests);
-            return reservationRescheduleRequest;
-        }
+
         public int NextId()
         {
             if (_reservationRescheduleRequests.Count < 1)

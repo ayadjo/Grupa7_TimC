@@ -104,7 +104,7 @@ namespace InitialProject.Service.Services
         {
             int count = GetReviewsCountForOwner(ownerId);
             double average = GetReviewsAverageForOwner(ownerId);
-            return count >= 50 && average >= 9.5;
+            return count >= 50 && average >= 4.5;
         }
 
 
