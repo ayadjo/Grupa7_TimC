@@ -58,7 +58,7 @@ namespace InitialProject.Domain.Models
             Id = Convert.ToInt32(values[0]);
             Reservation = new TourReservation() { Id = Convert.ToInt32(values[1]) };
             Knowledge = Convert.ToInt32(values[2]);
-            Knowledge = Convert.ToInt32(values[3]);
+            Language = Convert.ToInt32(values[3]);
             Interestingness = Convert.ToInt32(values[4]);
             Comment = values[5];
             Images = values[6].Split(',').ToList();
