@@ -51,42 +51,51 @@ namespace InitialProject.Service.Services
             return _reservationRescheduleRequestRepository.NextId();
         }
 
-        public List<ReservationRescheduleRequest> GetStandBy()
+        public List<ReservationRescheduleRequest> GetStandBy(int guest)
         {
             List<ReservationRescheduleRequest> reservationRescheduleRequests = new List<ReservationRescheduleRequest>();
             foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
             {
-                if (reservationRescheduleRequest.Status == RequestStatusType.standby)
+                if (reservationRescheduleRequest.Guest.Id == guest)
                 {
-                    reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                    if (reservationRescheduleRequest.Status == RequestStatusType.standby)
+                    {
+                        reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                    }
                 }
             }
 
             return reservationRescheduleRequests;
         }
 
-        public List<ReservationRescheduleRequest> GetApproved()
+        public List<ReservationRescheduleRequest> GetApproved(int guest)
         {
             List<ReservationRescheduleRequest> reservationRescheduleRequests = new List<ReservationRescheduleRequest>();
             foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
             {
-                if (reservationRescheduleRequest.Status == RequestStatusType.approved)
+                if (reservationRescheduleRequest.Guest.Id == guest)
                 {
-                    reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                    if (reservationRescheduleRequest.Status == RequestStatusType.approved)
+                    {
+                        reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                    }
                 }
             }
 
             return reservationRescheduleRequests;
         }
 
-        public List<ReservationRescheduleRequest> GetDeclined()
+        public List<ReservationRescheduleRequest> GetDeclined(int guest)
         {
             List<ReservationRescheduleRequest> reservationRescheduleRequests = new List<ReservationRescheduleRequest>();
             foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
             {
-                if (reservationRescheduleRequest.Status == RequestStatusType.declined)
+                if (reservationRescheduleRequest.Guest.Id == guest)
                 {
-                    reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                    if (reservationRescheduleRequest.Status == RequestStatusType.declined)
+                    {
+                        reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                    }
                 }
             }
 

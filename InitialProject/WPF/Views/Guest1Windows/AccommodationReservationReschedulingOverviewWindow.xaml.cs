@@ -38,9 +38,9 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
             _reservationRescheduleRequestController = new ReservationRescheduleRequestController();
 
-            StandByReservationRescheduleRequests = new ObservableCollection<ReservationRescheduleRequest>(_reservationRescheduleRequestController.GetStandBy());
-            ApprovedReservationRescheduleRequests = new ObservableCollection<ReservationRescheduleRequest>(_reservationRescheduleRequestController.GetApproved());
-            DeclinedReservationRescheduleRequests = new ObservableCollection<ReservationRescheduleRequest>(_reservationRescheduleRequestController.GetDeclined());
+            StandByReservationRescheduleRequests = new ObservableCollection<ReservationRescheduleRequest>(_reservationRescheduleRequestController.GetStandBy(guest.Id));
+            ApprovedReservationRescheduleRequests = new ObservableCollection<ReservationRescheduleRequest>(_reservationRescheduleRequestController.GetApproved(guest.Id));
+            DeclinedReservationRescheduleRequests = new ObservableCollection<ReservationRescheduleRequest>(_reservationRescheduleRequestController.GetDeclined(guest.Id));
         }
 
         /*

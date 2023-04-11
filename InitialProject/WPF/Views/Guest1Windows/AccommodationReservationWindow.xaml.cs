@@ -82,6 +82,10 @@ namespace InitialProject.WPF.Views
             {
                 MessageBox.Show("Niste uneli krajnji datum!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            else if (end < start)
+            {
+                MessageBox.Show("Krajnji datum ne moze biti pre pocetnog datuma!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else if (string.IsNullOrEmpty(NumberOfDaysTextBox.Text) || numberOfDaysForReservation == 0)
             {
                 MessageBox.Show("Niste uneli broj dana za rezervaciju!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -101,10 +105,6 @@ namespace InitialProject.WPF.Views
             else if (end < start.AddDays(numberOfDaysForReservation))
             {
                 MessageBox.Show("Broj dana prevazilazi opseg datuma!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if (end < start)
-            {
-                MessageBox.Show("Krajnji datum ne moze biti pre pocetnog datuma!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

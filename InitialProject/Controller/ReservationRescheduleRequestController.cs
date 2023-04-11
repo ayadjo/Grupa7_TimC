@@ -49,19 +49,19 @@ namespace InitialProject.Controller
             return _reservationRescheduleRequestService.NextId();
         }
 
-        public List<ReservationRescheduleRequest> GetStandBy()
+        public List<ReservationRescheduleRequest> GetStandBy(int guest)
         {
-            return _reservationRescheduleRequestService.GetStandBy();
+            return _reservationRescheduleRequestService.GetStandBy(guest);
         }
 
-        public List<ReservationRescheduleRequest> GetApproved()
+        public List<ReservationRescheduleRequest> GetApproved(int guest)
         {
-            return _reservationRescheduleRequestService.GetApproved();
+            return _reservationRescheduleRequestService.GetApproved(guest);
         }
 
-        public List<ReservationRescheduleRequest> GetDeclined()
+        public List<ReservationRescheduleRequest> GetDeclined(int guest)
         {
-            return _reservationRescheduleRequestService.GetDeclined();
+            return _reservationRescheduleRequestService.GetDeclined(guest);
         }
     }
 }
