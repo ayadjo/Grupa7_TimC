@@ -109,13 +109,28 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
-            AccommodationOwnerReview accommodationOwnerReview = new AccommodationOwnerReview() { Reservation = reservation, Cleanliness = SelectedCleanliness, Correctness = SelectedCorrectness, Comment = Comment, Images = AllImages };
-            //_accommodationOwnerReviewController.Save(accommodationOwnerReview);
-            _accommodationOwnerReviewController.SaveImages(accommodationOwnerReview);
-            reservation.AccommodationReview = accommodationOwnerReview;
-            _accommodationReservationController.Update(reservation);
-            MessageBox.Show("Uspešno ste ocenili smeštaj i vlasnika!", "Ocenjeno!", MessageBoxButton.OK);
-            this.Close();
+            if (CleanlinessComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Niste uneli ocenu smestaja!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (CorrectnessComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Niste uneli ocenu vlasnika!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (string.IsNullOrEmpty(CommentTextBox.Text))
+            {
+                MessageBox.Show("Niste uneli komentar", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                AccommodationOwnerReview accommodationOwnerReview = new AccommodationOwnerReview() { Reservation = reservation, Cleanliness = SelectedCleanliness, Correctness = SelectedCorrectness, Comment = Comment, Images = AllImages };
+                //_accommodationOwnerReviewController.Save(accommodationOwnerReview);
+                _accommodationOwnerReviewController.SaveImages(accommodationOwnerReview);
+                reservation.AccommodationReview = accommodationOwnerReview;
+                _accommodationReservationController.Update(reservation);
+                MessageBox.Show("Uspešno ste ocenili smeštaj i vlasnika!", "Ocenjeno!", MessageBoxButton.OK);
+                this.Close();
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

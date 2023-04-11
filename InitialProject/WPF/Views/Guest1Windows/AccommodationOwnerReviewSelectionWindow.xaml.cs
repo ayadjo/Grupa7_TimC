@@ -66,14 +66,21 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void Review_Click(object sender, RoutedEventArgs e)
         {
-            if (DateTime.Now > SelectedAccommodationReservation.End.AddDays(5))
+            if (SelectedAccommodationReservation != null)
             {
-                MessageBox.Show("Prošao je poslednji rok za ocenjivanje ovog smeštaja!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (DateTime.Now > SelectedAccommodationReservation.End.AddDays(5))
+                {
+                    MessageBox.Show("Prošao je poslednji rok za ocenjivanje ovog smeštaja!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    AccommodationOwnerReviewWindow accommodationOwnerReviewWindow = new AccommodationOwnerReviewWindow(SelectedAccommodationReservation);
+                    accommodationOwnerReviewWindow.Show();
+                }
             }
             else
             {
-                AccommodationOwnerReviewWindow accommodationOwnerReviewWindow = new AccommodationOwnerReviewWindow(SelectedAccommodationReservation);
-                accommodationOwnerReviewWindow.Show();
+                MessageBox.Show("Prvo morate odabrati rezervaciju!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

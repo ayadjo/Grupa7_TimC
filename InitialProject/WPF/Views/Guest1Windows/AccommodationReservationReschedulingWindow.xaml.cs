@@ -101,12 +101,27 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void SendRescheduleRequestButton_Click(object sender, RoutedEventArgs e)
         {
-            comment = "";
-            status = 0;
-            ReservationRescheduleRequest reservationRescheduleRequest = new ReservationRescheduleRequest() { Reservation = reservation, Guest = guest, NewStart = SelectedNewStartDate, NewEnd = SelectedNewEndDate, Comment = comment, Status = status };
-            _reservationRescheduleRequestController.Save(reservationRescheduleRequest);
-            MessageBox.Show("Uspešno ste poslali zahtev za pomeranje rezervacije smeštaja!", "Poslato!", MessageBoxButton.OK);
-            this.Close();
+            if (NewStartDateDatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Niste uneli novi pocetni datum!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (NewEndDateDatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Niste uneli novi krajnji datum!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (SelectedNewEndDate < SelectedNewStartDate)
+            {
+                MessageBox.Show("Krajnji datum ne moze biti pre pocetnog datuma!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                comment = "";
+                status = 0;
+                ReservationRescheduleRequest reservationRescheduleRequest = new ReservationRescheduleRequest() { Reservation = reservation, Guest = guest, NewStart = SelectedNewStartDate, NewEnd = SelectedNewEndDate, Comment = comment, Status = status };
+                _reservationRescheduleRequestController.Save(reservationRescheduleRequest);
+                MessageBox.Show("Uspešno ste poslali zahtev za pomeranje rezervacije smeštaja!", "Poslato!", MessageBoxButton.OK);
+                this.Close();
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
