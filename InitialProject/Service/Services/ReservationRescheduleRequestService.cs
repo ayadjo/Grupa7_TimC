@@ -12,11 +12,11 @@ namespace InitialProject.Service.Services
 {
     public class ReservationRescheduleRequestService
     {
-        private ReservationRescheduleRequestRepository _reservationRescheduleRequestRepository;
-
+        private IReservationRescheduleRequestRepository _reservationRescheduleRequestRepository;
         public ReservationRescheduleRequestService()
         {
-            _reservationRescheduleRequestRepository = ReservationRescheduleRequestRepository.GetInstance();
+            _reservationRescheduleRequestRepository = Injector.Injector.CreateInstance<IReservationRescheduleRequestRepository>();
+
         }
 
         public List<ReservationRescheduleRequest> GetAll()
@@ -47,10 +47,6 @@ namespace InitialProject.Service.Services
             return _reservationRescheduleRequestRepository.Update(reservationRescheduleRequest);
         }
 
-        public int NextId()
-        {
-            return _reservationRescheduleRequestRepository.NextId();
-        }
 
         private bool IsRequestOnStandby(ReservationRescheduleRequest reservationRescheduleRequest)
         {

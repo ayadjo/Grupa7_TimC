@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.RepositoryInterfaces;
+using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +11,30 @@ namespace InitialProject.Injector
    
         public class Injector
         {
-            private static Dictionary<Type, object> _implementations = new Dictionary<Type, object>
-    {/*
-        { typeof(IUserRepository), new UserFileRepository() },
-        { typeof(IUserService), new UserService() },*/
-        // Add more implementations here
-    };
+        private static Dictionary<Type, object> _implementations = new Dictionary<Type, object>
+        {
+        };
 
-            public static T CreateInstance<T>()
-            {
-                Type type = typeof(T);
+        public static void BindComponents()
+        {
+            ReservationRescheduleRequestRepository reservationRescheduleRequestRepository = new ReservationRescheduleRequestRepository();
+            reservationRescheduleRequestRepository.BindReservationRescheduleRequestWithAccommodationReservation();
+            reservationRescheduleRequestRepository.BindReservationRescheduleRequestWithUser();
 
-                if (_implementations.ContainsKey(type))
-                {
-                    return (T)_implementations[type];
-                }
-
-                throw new ArgumentException($"No implementation found for type {type}");
-            }
+            _implementations.Add(typeof(IReservationRescheduleRequestRepository), reservationRescheduleRequestRepository);
         }
+
+        public static T CreateInstance<T>()
+        {
+            Type type = typeof(T);
+
+            if (_implementations.ContainsKey(type))
+            {
+                return (T)_implementations[type];
+            }
+
+            throw new ArgumentException($"No implementation found for type {type}");
+        }
+    }
     }
 

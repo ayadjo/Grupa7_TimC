@@ -27,7 +27,6 @@ namespace InitialProject
             AccommodationReservationRepository.GetInstance();
             GuestReviewRepository.GetInstance();
             AccommodationOwnerReviewRepository.GetInstance();
-            ReservationRescheduleRequestRepository.GetInstance();
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
@@ -46,8 +45,7 @@ namespace InitialProject
             GuestReviewRepository.GetInstance().BindGuestReviewWithAccommodationReservation();
             AccommodationOwnerReviewRepository.GetInstance().BindAccommodationOwnerReviewWithAccommodationReservation();
 
-            ReservationRescheduleRequestRepository.GetInstance().BindReservationRescheduleRequestWithAccommodationReservation();
-            ReservationRescheduleRequestRepository.GetInstance().BindReservationRescheduleRequestWithUser();
+            Injector.Injector.BindComponents();
         }
     }
 }

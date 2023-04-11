@@ -10,12 +10,11 @@ namespace InitialProject.Domain.RepositoryInterfaces
 {
     public interface IAccommodationOwnerReviewRepository
     {
-        public List<AccommodationOwnerReview> GetAll();
-        public AccommodationOwnerReview Get(int id);
-        public AccommodationOwnerReview Save(AccommodationOwnerReview accommodationOwnerReview);
-        public void Delete(AccommodationOwnerReview accommodationOwnerReview);
-        public AccommodationOwnerReview Update(AccommodationOwnerReview accommodationOwnerReview);
-        public int NextId();
+        List<AccommodationOwnerReview> GetAll();
+        AccommodationOwnerReview Get(int id);
+        AccommodationOwnerReview Save(AccommodationOwnerReview accommodationOwnerReview);
+        void Delete(AccommodationOwnerReview accommodationOwnerReview);
+        AccommodationOwnerReview Update(AccommodationOwnerReview accommodationOwnerReview);
 
     }
 }
