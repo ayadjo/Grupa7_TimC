@@ -57,10 +57,14 @@ namespace InitialProject.Service.Services
                 else
                 {
                     //ako vaucer nije iskoristen
-                    var expiredVouchers = GetVouchersThatArentUsed(allVouchers);
-                    foreach (Voucher expiredVoucher in expiredVouchers)
+
+                    var unusedVouchers = GetVouchersThatArentUsed(allVouchers);
+                    if(voucher.ExpirationDate >= DateTime.Now) 
                     {
-                        _voucherRepository.Delete(expiredVoucher);
+                        foreach (Voucher unusedVoucher in unusedVouchers)
+                        {
+                            _voucherRepository.Delete(unusedVoucher);
+                        }
                     }
                     
                 }

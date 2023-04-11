@@ -21,9 +21,11 @@ namespace InitialProject.Injector
             VoucherRepository voucherRepository = new VoucherRepository();
             voucherRepository.BindVoucherUser();
 
-
+            NotificationRepository notificationRepository = new NotificationRepository();
+            notificationRepository.BindNotificationTourReservation();
 
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
+            _implementations.Add(typeof(INotificationRepository), notificationRepository);
         }
 
         public static T CreateInstance<T>()

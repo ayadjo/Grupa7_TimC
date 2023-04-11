@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -8,28 +9,21 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Repositories
 {
-    public class NotificationRepository
+    public class NotificationRepository : INotificationRepository
     {
         private const string FilePath = "../../../Resources/Data/notifications.csv";
-        private static NotificationRepository instance = null;
+        
 
         private readonly Serializer<Notification> _serializer;
 
         private List<Notification> _notifications;
 
-        private NotificationRepository()
+        public NotificationRepository()
         {
             _serializer = new Serializer<Notification>();
             _notifications = _serializer.FromCSV(FilePath);
         }
-        public static NotificationRepository GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new NotificationRepository();
-            }
-            return instance;
-        }
+       
 
         public List<Notification> GetAll()
         {

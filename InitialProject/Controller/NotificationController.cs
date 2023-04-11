@@ -38,7 +38,7 @@ namespace InitialProject.Controller
             _notificationService.Delete(notification);
         }
 
-        //???
+      
         public void Update(Notification notification)
         {
             _notificationService.Update(notification);
@@ -47,6 +47,11 @@ namespace InitialProject.Controller
         public List<Notification> GetNotificationForUser(int userId)
         {
             return _notificationService.GetNotificationForUser(userId);
+        }
+
+        public int NextId()
+        {
+            return _notificationService.NextId();
         }
 
     }

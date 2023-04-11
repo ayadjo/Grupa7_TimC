@@ -59,10 +59,20 @@ namespace InitialProject.WPF.Views.Guest2Windows
         {
             if(SelectedTourEvent == null)
             {
-                return;
+                MessageBox.Show("Morate selektovati turu!");
+                //return;
             }
-            TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
-            tourPointsWindow.Show();
+            else if(_selectedTourEvent.Status != Enumerations.TourEventStatus.Started)
+            {
+                MessageBox.Show("Nije moguce pregledati kljucne tacke");
+            }
+            else
+            {
+                TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
+                tourPointsWindow.Show();
+            }
+            
+            
             
         }
 

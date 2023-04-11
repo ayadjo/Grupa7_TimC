@@ -18,7 +18,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
 
         void Delete(Voucher voucher);
 
-
         Voucher Update(Voucher voucher);
 
     }

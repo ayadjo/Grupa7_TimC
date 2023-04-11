@@ -125,13 +125,12 @@ namespace InitialProject.WPF.Views.Guest2Window
                 }
                 else
                 {
-                    TourPointWhenGuestCame = new TourPoint {  Id = -1 };
-                    
+                   TourPointWhenGuestCame = new TourPoint {  Id = -1 };
+                   
+
                     TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame, SelectedVoucher);
                     _tourReservationController.Save(tourReservation);
 
-
-                    _tourReservationController.Save(tourReservation);
 
                     if (SelectedVoucher != null)
                     {
@@ -143,6 +142,7 @@ namespace InitialProject.WPF.Views.Guest2Window
 
                     MessageBox.Show("Uspesno ste rezervisali!");
                 }
+                this.Close();
 
             }
             else

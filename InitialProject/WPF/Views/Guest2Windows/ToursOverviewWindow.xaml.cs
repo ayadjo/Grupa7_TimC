@@ -93,8 +93,6 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            User user = SignInForm.LoggedUser;
-            user.Id = -1;
             SignInForm signInForm = new SignInForm();
             signInForm.Show();
             this.Close();
