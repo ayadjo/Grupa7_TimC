@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace InitialProject.Service.Services
 {
@@ -108,23 +109,40 @@ namespace InitialProject.Service.Services
         public void CancelTourReservation(TourReservation tourReservation)
         {
             String name = new String("bskdd");
-            Voucher voucher = new Voucher(-1, name ,tourReservation.Guest, false, 365, DateTime.Now.AddDays(365));
+            Voucher voucher = new Voucher(-1, name, tourReservation.Guest, false, 365, DateTime.Now.AddDays(365));
             _voucherRepository.Save(voucher);
 
             _tourReservationRepository.Delete(tourReservation);
+            
         }
 
-        public void CancelAllTourReservationsForTourEvent(int tourEventId)
+        /*public void CancelAllTourReservationsForTourEvent(int tourEventId)
         {
             foreach (TourReservation tourReservation in _tourReservationRepository.GetAll())
             {
                 if (tourReservation.TourEvent.Id == tourEventId)
                 {
                     CancelTourReservation(tourReservation);
+                    MessageBox.Show("Uspesno2");
 
                 }
             }
+            
+        }*/
 
+        public void CancelAllTourReservationsForTourEvent(int tourEventId)
+        {
+           
+            var allTourReservations = _tourReservationRepository.GetAll();
+            for (int i = 0; i < allTourReservations.Count(); i++)
+            {
+                var tourReservation = allTourReservations.ElementAt(i);
+                if (tourReservation.TourEvent.Id == tourEventId)
+                {
+                    CancelTourReservation(tourReservation);
+                }
+            }
+           
         }
 
         public List<TourReservation> GetAllTourReservationsForTourEventWherePeopleShowed(int tourEventId)
@@ -164,7 +182,7 @@ namespace InitialProject.Service.Services
 
         public TourPercentageOfGuestsVouchers GetPercentageOfGuestsWithVouchersForTourEvent(int eventId)
         {
-            
+
             int guestsWithVoucher = 0;
             int guestWithoutVoucher = 0;
 
@@ -172,12 +190,14 @@ namespace InitialProject.Service.Services
 
             foreach (TourReservation tourReservation in GetAllTourReservationsForTourEventWherePeopleShowed(eventId))
             {
-                if (tourReservation.Voucher.Id != -1 ) {
-
-                    guestsWithVoucher = + 1;
-                }else
+                if (tourReservation.Voucher.Id != -1)
                 {
-                    guestWithoutVoucher += 1;    
+
+                    guestsWithVoucher = +1;
+                }
+                else
+                {
+                    guestWithoutVoucher += 1;
                 }
             }
             double guestsWithVoucherPercentage = (guestsWithVoucher * 100.0) / (guestsWithVoucher + guestWithoutVoucher);

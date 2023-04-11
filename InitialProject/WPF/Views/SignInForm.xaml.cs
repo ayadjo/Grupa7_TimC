@@ -92,6 +92,7 @@ public partial class SignInForm : Window
                 {
                     GuideMainWindow guideMainWindow = new GuideMainWindow();
                     guideMainWindow.Show();
+                    this.Close();
 
                 }
                 else if (user.Type == UserType.Guest1)

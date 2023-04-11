@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -106,6 +107,5 @@ namespace InitialProject.Repositories
         {
             return _tourEvents.FindAll(t => t.Tour.Id == tourId);
         }
-
     }
 }

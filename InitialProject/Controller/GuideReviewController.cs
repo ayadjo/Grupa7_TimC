@@ -41,5 +41,10 @@ namespace InitialProject.Controller
         {
             _guideReviewService.Update(guideReview);
         }
+        public List<GuideReview> GetAllGuideReviews(int guideId, int guestId)
+        {
+            return _guideReviewService.GetAllGuideReviews(guideId,guestId);
+        }
+
     }
 }

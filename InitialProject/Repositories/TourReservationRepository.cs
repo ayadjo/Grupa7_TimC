@@ -51,7 +51,7 @@ namespace InitialProject.Repositories
             }
         }
 
-        
+
 
         public void BindTourReservationTourEvent()
         {
@@ -143,7 +143,7 @@ namespace InitialProject.Repositories
                 if (tourPoint != null)
                 {
                     tourReservation.TourPointWhenGuestCame = tourPoint;
-                    
+
                 }
                 else
                 {

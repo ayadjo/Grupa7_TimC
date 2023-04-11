@@ -1,6 +1,7 @@
 using InitialProject.Controller;
 ﻿using InitialProject.Domain.Dto;
 using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace InitialProject.Service.Services
 {
     public class TourEventService
     {
+
 
         private TourEventRepository _tourEventRepository;
         private TourReservationRepository _tourReservationRepository;
@@ -163,9 +165,9 @@ namespace InitialProject.Service.Services
         {
             List<TourEvent> tourEventsNotPassed = new List<TourEvent>();
 
-            foreach(TourEvent tourEvent in tour.TourEvents)
+            foreach (TourEvent tourEvent in tour.TourEvents)
             {
-                if(tourEvent.StartTime.Date > DateTime.Now.Date)
+                if (tourEvent.StartTime.Date > DateTime.Now.Date)
                 {
                     tourEventsNotPassed.Add(tourEvent);
                 }
@@ -181,13 +183,13 @@ namespace InitialProject.Service.Services
 
             foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
             {
-                if(tourEvent.Status != Enumerations.TourEventStatus.Finished)
+                if (tourEvent.Status != Enumerations.TourEventStatus.Finished)
                 {
                     continue;
                 }
-                if(year != -1)
+                if (year != -1)
                 {
-                    if(tourEvent.StartTime.Year != year)
+                    if (tourEvent.StartTime.Year != year)
                     {
                         continue;
                     }
@@ -205,9 +207,9 @@ namespace InitialProject.Service.Services
         public List<int> YearsOfTourEvents(int guideId)
         {
             List<int> years = new List<int>();
-            foreach(TourEvent tourEvent in _tourEventRepository.GetAll())
+            foreach (TourEvent tourEvent in _tourEventRepository.GetAll())
             {
-                if(tourEvent.Tour.Guide.Id == guideId)
+                if (tourEvent.Tour.Guide.Id == guideId)
                 {
                     years.Add(tourEvent.StartTime.Year);
                 }
