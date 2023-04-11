@@ -80,6 +80,7 @@ namespace InitialProject.Controller
         public DateTime GetFirstAvailableDate(AccommodationReservation accommodationReservation)
         {
             return _accommodationReservationService.GetFirstAvailableDate(accommodationReservation);
+        }
         public bool IsReschedulePossible(ReservationRescheduleRequest reservationRescheduleRequest)
         {
             return _accommodationReservationService.IsReschedulePossible(reservationRescheduleRequest);

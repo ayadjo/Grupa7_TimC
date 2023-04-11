@@ -75,7 +75,7 @@ namespace InitialProject.Service.Services
             {
                 if (reservationRescheduleRequest.Guest.Id == guest)
                 {
-                    if (reservationRescheduleRequest.Status == RequestStatusType.standby)
+                    if (reservationRescheduleRequest.Status == RequestStatusType.Standby)
                     {
                         reservationRescheduleRequests.Add(reservationRescheduleRequest);
                     }
@@ -92,7 +92,7 @@ namespace InitialProject.Service.Services
             {
                 if (reservationRescheduleRequest.Guest.Id == guest)
                 {
-                    if (reservationRescheduleRequest.Status == RequestStatusType.approved)
+                    if (reservationRescheduleRequest.Status == RequestStatusType.Approved)
                     {
                         reservationRescheduleRequests.Add(reservationRescheduleRequest);
                     }
@@ -109,7 +109,7 @@ namespace InitialProject.Service.Services
             {
                 if (reservationRescheduleRequest.Guest.Id == guest)
                 {
-                    if (reservationRescheduleRequest.Status == RequestStatusType.declined)
+                    if (reservationRescheduleRequest.Status == RequestStatusType.Declined)
                     {
                         reservationRescheduleRequests.Add(reservationRescheduleRequest);
                     }

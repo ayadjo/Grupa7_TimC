@@ -83,10 +83,8 @@ public partial class SignInForm : Window
                     {
                         GuestsWithoutReviewNotificationWindow Notification = new GuestsWithoutReviewNotificationWindow();
                         Notification.Show();
-                        Close();
                     }
                     Close();
-
                 }
                 else if (user.Type == UserType.Guide)
                 {
