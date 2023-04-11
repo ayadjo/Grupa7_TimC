@@ -137,7 +137,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
         private void AddReviewButton_Click(object sender, RoutedEventArgs e)
         {
             List<string> images = new List<string>(Images);
-            GuideReview guideReview = new GuideReview(-1,SelectedTourReservation,SelectedKnowledge,SelectedLanguage,SelectedInterestingness,Comment,images);  //??
+            GuideReview guideReview = new GuideReview(-1,SelectedTourReservation,SelectedKnowledge,SelectedLanguage,SelectedInterestingness,Comment,images,false);  //??
             _guideReviewController.Save(guideReview);
             MessageBox.Show("Uspešno ste ocenili!");
             Close();

@@ -21,7 +21,7 @@ namespace InitialProject
             LocationRepository.GetInstance();
             TourRepository.GetInstance();
             TourEventRepository.GetInstance();
-            TourPointRepository.GetInstance(); 
+            TourPointRepository.GetInstance();
             ImageRepository.GetInstance();
             TourReservationRepository.GetInstance();
 
@@ -31,7 +31,7 @@ namespace InitialProject
             AccommodationReservationRepository.GetInstance();
             GuestReviewRepository.GetInstance();
 
-            AccommodationOwnerReviewRepository.GetInstance();
+            //AccommodationOwnerReviewRepository.GetInstance();
 
             GuideReviewRepository.GetInstance();
             //UserRepository.GetInstance();
@@ -42,19 +42,20 @@ namespace InitialProject
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
 
             TourRepository.GetInstance().BindTourLocation();
+            TourRepository.GetInstance().BindTourGuide();
             TourPointRepository.GetInstance().BindTourPointTour();
             TourEventRepository.GetInstance().BindTourEventTour();
             ImageRepository.GetInstance().BindImageResource();
-            
+
 
             TourReservationRepository.GetInstance().BindTourReservationTourPoint();
             TourReservationRepository.GetInstance().BindTourReservationTourEvent();
-            TourReservationRepository.GetInstance().BindTourReservationUser();  
-            
+            TourReservationRepository.GetInstance().BindTourReservationUser();
+
 
             GuestReviewRepository.GetInstance().BindGuestReviewWithAccommodationReservation();
 
-            AccommodationOwnerReviewRepository.GetInstance().BindAccommodationOwnerReviewWithAccommodationReservation();
+            //AccommodationOwnerReviewRepository.GetInstance().BindAccommodationOwnerReviewWithAccommodationReservation();
 
             GuideReviewRepository.GetInstance().BindGuideReviewWithTourReservation();
 
@@ -63,6 +64,8 @@ namespace InitialProject
             Injector.Injector.BindComponents();
 
 
+            //VoucherRepository.GetInstance().BindVoucherUser();
+            TourReservationRepository.GetInstance().BindTourReservationVoucher();
         }
     }
 }

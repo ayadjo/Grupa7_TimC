@@ -66,15 +66,24 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void CancelReservationButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DateTime.Now > SelectedAccommodationReservation.Start.AddDays(-SelectedAccommodationReservation.Accommodation.CancelationPeriod))
+            if (SelectedAccommodationReservation != null)
             {
-                MessageBox.Show("Prošao je krajnji rok za otkazivanje ove rezervacije!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if (SelectedAccommodationReservation.Accommodation.CancelationPeriod == 0)
-            {
-                if (DateTime.Now > SelectedAccommodationReservation.Start.AddDays(-1))
+                if (DateTime.Now > SelectedAccommodationReservation.Start.AddDays(-SelectedAccommodationReservation.Accommodation.CancelationPeriod))
                 {
                     MessageBox.Show("Prošao je krajnji rok za otkazivanje ove rezervacije!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else if (SelectedAccommodationReservation.Accommodation.CancelationPeriod == 0)
+                {
+                    if (DateTime.Now > SelectedAccommodationReservation.Start.AddDays(-1))
+                    {
+                        MessageBox.Show("Prošao je krajnji rok za otkazivanje ove rezervacije!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        _accommodationReservationController.Delete(SelectedAccommodationReservation);
+                        MessageBox.Show("Uspešno ste otkazali smeštaj!", "Otkazano!", MessageBoxButton.OK);
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -85,9 +94,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
             }
             else
             {
-                _accommodationReservationController.Delete(SelectedAccommodationReservation);
-                MessageBox.Show("Uspešno ste otkazali smeštaj!", "Otkazano!", MessageBoxButton.OK);
-                this.Close();
+                MessageBox.Show("Prvo morate izabrati rezervaciju!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

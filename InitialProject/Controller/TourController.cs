@@ -47,12 +47,6 @@ namespace InitialProject.Controller
             return _tourService.Update(tour);
         }
 
-        public int NextId()
-        {
-
-            return _tourService.NextId();
-
-        }
 
         public List<Tour> GetByGuide(int id)
         {
@@ -78,6 +72,10 @@ namespace InitialProject.Controller
         {
 
             return _tourService.SaveImagesTourPoints(tour);
+        }
+
+        public List<Tour> GetAllToursForGuide(int guideId) {
+            return _tourService.GetAllToursForGuide(guideId);
         }
     }
 }

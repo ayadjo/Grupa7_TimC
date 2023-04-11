@@ -9,11 +9,10 @@ namespace InitialProject.Domain.RepositoryInterfaces
 {
     public interface IGuestReviewRepository
     {
-        public List<GuestReview> GetAll();
-        public GuestReview Get(int id);
-        public GuestReview Save(GuestReview guestReview);
-        public void Delete(GuestReview guestReview);
-        public GuestReview Update(GuestReview guestReview);
-       // public int NextId();
+        List<GuestReview> GetAll();
+        GuestReview Get(int id);
+        GuestReview Save(GuestReview guestReview);
+        void Delete(GuestReview guestReview);
+        GuestReview Update(GuestReview guestReview);
     }
 }

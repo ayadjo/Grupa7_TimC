@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -8,29 +9,19 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Repositories
 {
-    public class ReservationRescheduleRequestRepository
+    public class ReservationRescheduleRequestRepository : IReservationRescheduleRequestRepository
     {
         private const string FilePath = "../../../Resources/Data/reservationRescheduleRequests.csv";
 
-        private static ReservationRescheduleRequestRepository instance = null;
 
         private readonly Serializer<ReservationRescheduleRequest> _serializer;
 
         private List<ReservationRescheduleRequest> _reservationRescheduleRequests;
 
-        private ReservationRescheduleRequestRepository()
+        public ReservationRescheduleRequestRepository()
         {
             _serializer = new Serializer<ReservationRescheduleRequest>();
             _reservationRescheduleRequests = _serializer.FromCSV(FilePath);
-        }
-
-        public static ReservationRescheduleRequestRepository GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new ReservationRescheduleRequestRepository();
-            }
-            return instance;
         }
 
         public void BindReservationRescheduleRequestWithUser()
@@ -83,13 +74,7 @@ namespace InitialProject.Repositories
         {
             return _reservationRescheduleRequests.Find(rrr => rrr.Id == id);
         }
-        public ReservationRescheduleRequest Create(ReservationRescheduleRequest reservationRescheduleRequest)
-        {
-            reservationRescheduleRequest.Id = NextId();
-            _reservationRescheduleRequests.Add(reservationRescheduleRequest);
-            _serializer.ToCSV(FilePath, _reservationRescheduleRequests);
-            return reservationRescheduleRequest;
-        }
+
         public int NextId()
         {
             if (_reservationRescheduleRequests.Count < 1)

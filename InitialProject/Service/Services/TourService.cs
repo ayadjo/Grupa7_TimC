@@ -1,11 +1,14 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace InitialProject.Service.Services
 {
@@ -119,6 +122,22 @@ namespace InitialProject.Service.Services
         {
 
             return _tourRepository.SaveImagesTourPoints(tour);
+        }
+
+        public List<Tour> GetAllToursForGuide(int guideId)
+        {
+
+            List<Tour> tours = new List<Tour>();
+
+            foreach (Tour tour in _tourRepository.GetAll())
+            {
+                if (tour.Guide.Id == guideId)
+                {
+                    tours.Add(tour);
+                }
+            }
+            return tours;
+
         }
     }
 }

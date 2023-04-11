@@ -21,9 +21,8 @@ namespace InitialProject.Domain.Models
 
         public TourPoint TourPointWhenGuestCame { get; set; }
 
-        public Voucher Voucher { get; set; }
+        public Voucher Voucher { get; set; }    
 
-       // public GuideReview GuideReview { get; set; }  //ipak ne treba
         public TourReservation()
         {
 

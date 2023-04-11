@@ -9,11 +9,10 @@ namespace InitialProject.Domain.RepositoryInterfaces
 {
     public interface ILocationRepository
     {
-        public List<Location> GetAll();
-        public Location Get(int id);
-        public Location Save(Location location);
-        public void Delete(Location location);
-        public Location Update(Location location);
-        //public int NextId();
+        List<Location> GetAll();
+        Location Get(int id);
+        Location Save(Location location);
+        void Delete(Location location);
+        Location Update(Location location);
     }
 }

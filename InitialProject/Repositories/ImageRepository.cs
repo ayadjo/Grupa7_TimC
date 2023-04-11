@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using InitialProject.Domain.RepositoryInterfaces;
 
 namespace InitialProject.Repositories
 {
@@ -33,14 +34,14 @@ namespace InitialProject.Repositories
             return instance;
         }
 
- 
-  
+
+
         public List<Image> GetAll()
         {
             return _images;
         }
         public Image Get(int id)
-        { 
+        {
             return _images.Find(i => i.Id == id);
         }
         public Image Save(Image image)
@@ -74,7 +75,7 @@ namespace InitialProject.Repositories
             _serializer.ToCSV(FilePath, _images);
             return image;
         }
-   
+
 
         public void BindImageResource()
         {

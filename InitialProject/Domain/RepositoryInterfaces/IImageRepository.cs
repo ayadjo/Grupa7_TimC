@@ -9,11 +9,10 @@ namespace InitialProject.Domain.RepositoryInterfaces
 {
     public interface IImageRepository
     {
-        public List<Image> GetAll();
-        public Image Get(int id);
-        public Image Save(Image image);
-        public void Delete(Image image);
-        public Image Update(Image image);
-        //public int NextId();
+        List<Image> GetAll();
+        Image Get(int id);
+        Image Save(Image image);
+        void Delete(Image image);
+        Image Update(Image image);
     }
 }

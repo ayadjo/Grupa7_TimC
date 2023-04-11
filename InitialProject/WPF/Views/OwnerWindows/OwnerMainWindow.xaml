@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.OwnerWindows"
         mc:Ignorable="d"
-        Title="OwnerMainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="OwnerMainWindow" Height="626" Width="1065" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,7 +19,7 @@
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label x:Name="SuperOwnerLabel" Content="Super vlasnik"/>
+            <Label x:Name="SuperOwnerLabel" Content="Super vlasnik" FontSize="30" FontWeight="Bold" VerticalContentAlignment="Center"/>
             <Grid Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -35,7 +35,9 @@
                             Grid.Row="0" FontSize="20"  BorderBrush="White" />
                     <Button x:Name="GuestWithoutReviewButton" Content="Neocenjeni gosti" Click="GuestsReviewButton_Click" 
                             Grid.Row="1" FontSize="20"  BorderBrush="White" />
-                    
+                    <Button x:Name="ReservationRescheduleRequestsButton" Content="Zahtevi" Click="ReservationRescheduleRequestsButton_Click"
+                            Grid.Row="2" FontSize="20"  BorderBrush="White" />
+                    <Button x:Name="LogOutButton" Content="Odjavi se" Grid.Row="5" Margin="33,155,34,46" FontSize="17" Click="LogOutButton_Click"/>
                 </Grid>
             </Grid>
         </Grid>

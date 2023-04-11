@@ -27,7 +27,8 @@ namespace InitialProject.WPF.Views
     /// </summary>
     public partial class AccommodationReservationWindow : Window
     {
-        private readonly AccommodationReservationRepository accommodationReservationRepository;
+        //private readonly AccommodationReservationRepository accommodationReservationRepository;
+        private readonly AccommodationReservationController _accommodationReservationController;
         public Accommodation accommodation;
         public int us;
         public User guest;
@@ -41,8 +42,9 @@ namespace InitialProject.WPF.Views
             InitializeComponent();
             accommodation = a;
             guest = user;
+            _accommodationReservationController = new AccommodationReservationController();
             //accommodationReservationRepository = new AccommodationReservationRepository();
-            accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
+            //accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
         }
 
         DateTime start;
@@ -80,6 +82,10 @@ namespace InitialProject.WPF.Views
             {
                 MessageBox.Show("Niste uneli krajnji datum!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            else if (end < start)
+            {
+                MessageBox.Show("Krajnji datum ne moze biti pre pocetnog datuma!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else if (string.IsNullOrEmpty(NumberOfDaysTextBox.Text) || numberOfDaysForReservation == 0)
             {
                 MessageBox.Show("Niste uneli broj dana za rezervaciju!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -104,15 +110,15 @@ namespace InitialProject.WPF.Views
             {
                 int id = 0;
                 AccommodationReservation accommodationReservation = new AccommodationReservation(id, accommodation, guest, start, start.AddDays(numberOfDaysForReservation), guestReview, accommodationReview);
-                if (accommodationReservationRepository.AvailableAccommodation(accommodationReservation, numberOfDaysForReservation))
+                if (_accommodationReservationController.AvailableAccommodation(accommodationReservation, numberOfDaysForReservation))
                 {
-                    accommodationReservationRepository.Save(accommodationReservation);
+                    _accommodationReservationController.Save(accommodationReservation);
                     MessageBox.Show("Uspešno ste rezervisali smeštaj!", "Rezervisano!", MessageBoxButton.OK);
                     this.Close();
                 }
                 else
                 {
-                    accommodationReservationRepository.GetFirstAvailableDate(accommodationReservation);
+                    _accommodationReservationController.GetFirstAvailableDate(accommodationReservation);
                 }
             }
         }

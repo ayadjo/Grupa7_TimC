@@ -40,6 +40,12 @@ namespace InitialProject.Repositories
             return _vouchers.Max(t => t.Id) + 1;
         }
 
+        public Voucher Get(int id)
+        {
+
+            return _vouchers.Find(x => x.Id == id);
+
+        }
         public Voucher Save(Voucher voucher)
         {
             voucher.Id = NextId();

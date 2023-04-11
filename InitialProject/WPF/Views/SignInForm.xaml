@@ -7,15 +7,7 @@
         mc:Ignorable="d"
         Title="Sign in" Height="250" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <DockPanel>
-        <ComboBox x:Name="ComboBoxRoles" DockPanel.Dock="Top" HorizontalAlignment="Center" Width="100" Margin="25,20,10,10">
-            <ComboBoxItem>Owner</ComboBoxItem>
-            <ComboBoxItem>Guide</ComboBoxItem>
-            <ComboBoxItem>Guest1</ComboBoxItem>
-            <ComboBoxItem>Guest2</ComboBoxItem>
-        </ComboBox>
-
-
-
+        
         <Button DockPanel.Dock="Bottom" Click="SignIn" Margin="10,10,10,10" Content="Sign in" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="60"/>
 
         <Grid Height="124" >

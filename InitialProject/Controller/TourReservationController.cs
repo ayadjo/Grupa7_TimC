@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InitialProject.Repositories;
 using InitialProject.Service.Services;
 using InitialProject.Domain.Models;
+using InitialProject.Domain.Dto;
 
 
 namespace InitialProject.Controller
@@ -77,6 +78,14 @@ namespace InitialProject.Controller
         public TourReservation GetTourReservationForTourEventAndUser(int tourEventId, int userId)
         {
             return _tourReservationService.GetTourReservationForTourEventAndUser(tourEventId, userId);
+        }
+
+        public TourAgeGroupStatistic GetAgeStatisticsForTourEvent(int eventId) {
+            return _tourReservationService.GetAgeStatisticsForTourEvent(eventId);
+        }
+
+        public TourPercentageOfGuestsVouchers GetPercentageOfGuestsWithVouchersForTourEvent(int eventId) {
+            return _tourReservationService.GetPercentageOfGuestsWithVouchersForTourEvent(eventId);
         }
 
     }

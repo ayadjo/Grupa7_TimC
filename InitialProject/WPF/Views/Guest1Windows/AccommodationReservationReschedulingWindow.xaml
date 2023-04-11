@@ -1,0 +1,24 @@
+﻿<Window x:Class="InitialProject.WPF.Views.Guest1Windows.AccommodationReservationReschedulingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest1Windows"
+        mc:Ignorable="d"
+        Title="AccommodationReservationReschedulingWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="SLANJE ZAHTEVA ZA POMERANJE REZERVACIJE" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="(unesite novi početni i krajnji datum Vaše rezervacije izabranog smeštaja)" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Unesite novi početni datum:" HorizontalAlignment="Left" Margin="137,106,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <DatePicker Name="NewStartDateDatePicker" HorizontalAlignment="Left" Margin="137,148,0,0" VerticalAlignment="Top" Width="258" SelectedDateChanged="NewStartDate_SelectedDateChanged"/>
+
+        <Label Content="Unesite novi krajnji datum:" HorizontalAlignment="Left" Margin="628,106,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <DatePicker Name="NewEndDateDatePicker" HorizontalAlignment="Left" Margin="628,143,0,0" VerticalAlignment="Top" Width="258" SelectedDateChanged="NewEndDate_SelectedDateChanged"/>
+
+        <Button Content="POŠALJI ZAHTEV" HorizontalAlignment="Center" Margin="0,471,0,0" VerticalAlignment="Top" Height="90" Width="292" Click="SendRescheduleRequestButton_Click"/>
+        <Label Content="(klikom na ovo dugme, Vaš zahtev biće kreiran i poslat vlasniku)" HorizontalAlignment="Center" Margin="0,566,0,0" VerticalAlignment="Top"/>
+
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="933,686,0,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+    </Grid>
+</Window>

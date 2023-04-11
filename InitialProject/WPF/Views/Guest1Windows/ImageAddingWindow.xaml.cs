@@ -85,9 +85,20 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void AddImageButton_Click(object sender, RoutedEventArgs e)
         {
-            Domain.Models.Image image = new Domain.Models.Image(-1, Url, -1, Description, Resource);
-            AllImages.Add(image);
-            SaveImages.Add(image);
+            if (string.IsNullOrEmpty(UrlTextBox.Text))
+            {
+                MessageBox.Show("Niste uneli URL slike!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (string.IsNullOrEmpty(DescriptionTextBox.Text))
+            {
+                MessageBox.Show("Niste uneli opis slike!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Domain.Models.Image image = new Domain.Models.Image(-1, Url, -1, Description, Resource);
+                AllImages.Add(image);
+                SaveImages.Add(image);
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

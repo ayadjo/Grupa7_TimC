@@ -185,7 +185,7 @@ namespace InitialProject.WPF.Views.GuideWindows
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
-            User user = new User() { Id = 1 };
+            User user = SignInForm.LoggedUser;
 
             Tour tour = new Tour()
             {

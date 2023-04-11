@@ -44,9 +44,24 @@ namespace InitialProject.Controller
             return _reservationRescheduleRequestService.Update(reservationRescheduleRequest);
         }
 
-        public int NextId()
+        public List<ReservationRescheduleRequest> GetAllRequestsForHandling()
         {
-            return _reservationRescheduleRequestService.NextId();
+            return _reservationRescheduleRequestService.GetAllRequestsForHandling();
+        }
+
+        public List<ReservationRescheduleRequest> GetStandBy(int guest)
+        {
+            return _reservationRescheduleRequestService.GetStandBy(guest);
+        }
+
+        public List<ReservationRescheduleRequest> GetApproved(int guest)
+        {
+            return _reservationRescheduleRequestService.GetApproved(guest);
+        }
+
+        public List<ReservationRescheduleRequest> GetDeclined(int guest)
+        {
+            return _reservationRescheduleRequestService.GetDeclined(guest);
         }
     }
 }

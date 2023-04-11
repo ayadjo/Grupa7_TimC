@@ -37,9 +37,11 @@
                             Grid.Row="2" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
                     <Button x:Name="ReviewsButton" Content="Recenzije" Click="ReviewsButton_Click" 
                             Grid.Row="3" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
+                    <Button x:Name="TourStatisticsButton" Content="Statistika ture" Click="TourStatisticsButton_Click" 
+                            Grid.Row="4" FontSize="20" Background="White" BorderBrush="White" HorizontalAlignment="Left"/>
                 </Grid>
             </Grid>
         </Grid>
-
+        <Button x:Name="LogOutButton" DockPanel.Dock="Bottom" Content="Odjavi se" Click="LogOutButton_Click" Margin="84,453,25,245" Grid.Column="1" RenderTransformOrigin="0.473,-2.363" />
     </Grid>
 </Window>

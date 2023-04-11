@@ -1,0 +1,68 @@
+﻿<Window x:Class="InitialProject.WPF.Views.Guest1Windows.AccommodationReservationReschedulingOverviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest1Windows"
+        mc:Ignorable="d"
+        Title="AccommodationReservationReschedulingOverviewWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="PRIKAZ ZAHTEVA ZA POMERANJE REZERVACIJE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="0,10,0,0"/>
+        <Label Content="(u tabeli ispod Vas prikazani su zahtevi za pomeranje koje ste do sada napravili. oni su podeljeni u tri kategorije, koje možete da menjate)" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top"/>
+
+        <TabControl Margin="0,78,0,0">
+
+            <TabItem Header="Na čekanju">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,140">
+                    <DataGrid ItemsSource="{Binding StandByReservationRescheduleRequests, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" x:Name="StandByRequestsDataGrid" IsReadOnly="True" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID zahteva" Binding="{Binding Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="ID rezervacije" Binding="{Binding Reservation.Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Novi početni datum" Binding="{Binding NewStart}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Novi krajnji datum" Binding="{Binding NewEnd}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Odobreni">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,140">
+                    <DataGrid ItemsSource="{Binding ApprovedReservationRescheduleRequests, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" x:Name="ApprovedRequestsDataGrid" IsReadOnly="True" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID zahteva" Binding="{Binding Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="ID rezervacije" Binding="{Binding Reservation.Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Novi početni datum" Binding="{Binding NewStart}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Novi krajnji datum" Binding="{Binding NewEnd}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Odbijeni">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,140">
+                    <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                    <DataGrid ItemsSource="{Binding DeclinedReservationRescheduleRequests, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" x:Name="DeclinedRequestsDataGrid" IsReadOnly="True" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID zahteva" Binding="{Binding Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="ID rezervacije" Binding="{Binding Reservation.Id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Novi početni datum" Binding="{Binding NewStart}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Novi krajnji datum" Binding="{Binding NewEnd}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+        <Button Content="NAPRAVI NOVI ZAHTEV" Margin="392,624,392,62" Click="AccommodationReservationReschedulingSelectionButton_Click"/>
+        <Label Content="(klik na ovo dugme odvešće Vas na odabir rezervacija)" HorizontalAlignment="Center" Margin="0,690,0,0" VerticalAlignment="Top"/>
+
+        <Button Content="Nazad" HorizontalAlignment="Left" Margin="943,683,0,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+    </Grid>
+</Window>

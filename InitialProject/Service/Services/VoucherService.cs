@@ -22,6 +22,12 @@ namespace InitialProject.Service.Services
         {
             return _voucherRepository.GetAll();
         }
+        public Voucher Get(int id)
+        {
+
+            return _voucherRepository.Get(id);
+
+        }
 
         public Voucher Save(Voucher voucher)
         {
@@ -61,7 +67,7 @@ namespace InitialProject.Service.Services
                     {
                         _voucherRepository.Delete(expiredVoucher);
                     }
-                    
+
                 }
             }
             return voucherList;

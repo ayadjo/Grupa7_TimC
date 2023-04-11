@@ -9,11 +9,11 @@ namespace InitialProject.Domain.RepositoryInterfaces
 {
     public interface IAccommodationReservationRepository
     {
-        public List<AccommodationReservation> GetAll();
-        public AccommodationReservation Get(int id);
-        public AccommodationReservation Save(AccommodationReservation accommodationReservation);
-        public void Delete(AccommodationReservation accommodationReservation);
-        public AccommodationReservation Update(AccommodationReservation accommodationReservation);
-     //   public int NextId();
+        List<AccommodationReservation> GetAll();
+        AccommodationReservation Get(int id);
+        AccommodationReservation Save(AccommodationReservation accommodationReservation);
+        void Delete(AccommodationReservation accommodationReservation);
+        AccommodationReservation Update(AccommodationReservation accommodationReservation);
+   
     }
 }

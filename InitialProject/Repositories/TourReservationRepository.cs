@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace InitialProject.Repositories
             }
         }
 
-        
+
 
         public void BindTourReservationTourEvent()
         {
@@ -69,7 +70,24 @@ namespace InitialProject.Repositories
             }
         }
 
-        
+        public void BindTourReservationVoucher()
+        {
+            foreach (TourReservation tourReservation in _tourReservations)
+            {
+                int voucherId = tourReservation.Voucher.Id;
+                Voucher voucher = Injector.Injector.CreateInstance<IVoucherRepository>().Get(voucherId);
+                if (voucher != null)
+                {
+                    tourReservation.Voucher = voucher;
+                }
+                else
+                {
+                    Console.WriteLine("Error in tourReservationVoucher binding");
+                }
+            }
+        }
+
+
 
         public List<TourReservation> GetAll()
         {
@@ -125,7 +143,7 @@ namespace InitialProject.Repositories
                 if (tourPoint != null)
                 {
                     tourReservation.TourPointWhenGuestCame = tourPoint;
-                    
+
                 }
                 else
                 {

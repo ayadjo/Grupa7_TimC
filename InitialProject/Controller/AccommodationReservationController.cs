@@ -53,9 +53,9 @@ namespace InitialProject.Controller
 
         }
 
-        public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        public List<AccommodationReservation> GetAllReservationsWithoutGuestReview()
         {
-            return _accommodationReservationService.GetAllReservationsWithoutReview();
+            return _accommodationReservationService.GetAllReservationsWithoutGuestReview();
         }
 
         public int FindNumberOfGuestsWithoutReview()
@@ -70,6 +70,20 @@ namespace InitialProject.Controller
         public List<AccommodationReservation> GetAllReservationsWithoutAccommodationOwnerReview(int guest)
         {
             return _accommodationReservationService.GetAllReservationsWithoutAccommodationOwnerReview(guest);
+        }
+
+        public Boolean AvailableAccommodation(AccommodationReservation accommodationReservation, int numberOfDaysForReservation)
+        {
+            return _accommodationReservationService.AvailableAccommodation(accommodationReservation, numberOfDaysForReservation);
+        }
+
+        public DateTime GetFirstAvailableDate(AccommodationReservation accommodationReservation)
+        {
+            return _accommodationReservationService.GetFirstAvailableDate(accommodationReservation);
+        }
+        public bool IsReschedulePossible(ReservationRescheduleRequest reservationRescheduleRequest)
+        {
+            return _accommodationReservationService.IsReschedulePossible(reservationRescheduleRequest);
         }
     }
 }

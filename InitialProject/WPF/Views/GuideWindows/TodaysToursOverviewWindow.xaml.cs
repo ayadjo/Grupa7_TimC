@@ -38,10 +38,12 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if(SelectedTourEvent != null && SelectedTourEvent.Status == TourEventStatus.NotStarted)
+            if (SelectedTourEvent != null && SelectedTourEvent.Status == TourEventStatus.NotStarted && SelectedTourEvent.Tour.TourPoints.Count()>=2)
             {
                 TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
                 tourPointsWindow.Show();
+                SelectedTourEvent.Status = TourEventStatus.Started;
+                _tourEventController.Update(SelectedTourEvent);
             }
         }
     }

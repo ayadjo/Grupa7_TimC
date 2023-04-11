@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,8 @@ namespace InitialProject.Repositories
         private ImageRepository _imageRepository;
         private TourPointRepository _tourPointRepository;
 
-        private TourRepository() {
+        private TourRepository()
+        {
 
             _serializer = new Serializer<Tour>();
             _tours = _serializer.FromCSV(FilePath);
@@ -38,6 +40,23 @@ namespace InitialProject.Repositories
                 instance = new TourRepository();
             }
             return instance;
+        }
+
+        public void BindTourGuide()
+        {
+            foreach (Tour tour in _tours)
+            {
+                int guideId = tour.Guide.Id;
+                User guide = UserRepository.GetInstance().Get(guideId);
+                if (guide != null)
+                {
+                    tour.Guide = guide;
+                }
+                else
+                {
+                    Console.WriteLine("Error in tourGuide binding");
+                }
+            }
         }
 
         public void BindTourLocation()
@@ -86,19 +105,21 @@ namespace InitialProject.Repositories
             Tour current = _tours.Find(t => t.Id == tour.Id);
             int index = _tours.IndexOf(current);
             _tours.Remove(current);
-            _tours.Insert(index, tour);        
+            _tours.Insert(index, tour);
             _serializer.ToCSV(FilePath, _tours);
             return tour;
         }
 
-        public List<Tour> GetAll() { 
-            
-            return _tours;  
-        
+        public List<Tour> GetAll()
+        {
+
+            return _tours;
+
         }
 
-        public Tour Get(int id) {
-        
+        public Tour Get(int id)
+        {
+
             return _tours.Find(x => x.Id == id);
 
         }
@@ -108,35 +129,35 @@ namespace InitialProject.Repositories
             return _tours.FindAll(t => t.Guide.Id == guideId);
         }
 
-       /* public Tour SaveCascadeImages(Tour tour)
-        {
-            tour.Id = NextId();
+        /* public Tour SaveCascadeImages(Tour tour)
+         {
+             tour.Id = NextId();
 
-            foreach (Image image in tour.Images)
-            {
-                image.ResourceId = tour.Id;
-                _imageRepository.Save(image);
-            }
+             foreach (Image image in tour.Images)
+             {
+                 image.ResourceId = tour.Id;
+                 _imageRepository.Save(image);
+             }
 
-            _tours.Add(tour);
-            _serializer.ToCSV(FilePath, _tours);
-            return tour;
-        }
-        public Tour SaveCascadeTourPoints(Tour tour)
-        {
-            tour.Id = NextId();
+             _tours.Add(tour);
+             _serializer.ToCSV(FilePath, _tours);
+             return tour;
+         }
+         public Tour SaveCascadeTourPoints(Tour tour)
+         {
+             tour.Id = NextId();
 
-            foreach (TourPoint tourPoint in tour.TourPoints)
-            {
-                tourPoint.Tour = tour;
-                _tourPointRepository.Save(tourPoint);
-            }
+             foreach (TourPoint tourPoint in tour.TourPoints)
+             {
+                 tourPoint.Tour = tour;
+                 _tourPointRepository.Save(tourPoint);
+             }
 
-            _tours.Add(tour);
-            _serializer.ToCSV(FilePath, _tours);
-            return tour;
-        }
-       */
+             _tours.Add(tour);
+             _serializer.ToCSV(FilePath, _tours);
+             return tour;
+         }
+        */
 
         public Tour SaveImagesTourPoints(Tour tour)
         {

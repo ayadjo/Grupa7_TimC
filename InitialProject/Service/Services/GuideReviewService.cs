@@ -42,5 +42,22 @@ namespace InitialProject.Service.Services
         {
             return _guideReviewRepository.GetByReservation(guideReview.Reservation.Id);
         }
+
+        public List<GuideReview> GetAllGuideReviews(int guideId, int guestId)
+
+        {
+
+            List<GuideReview> guideReviews = new List<GuideReview>();
+
+            foreach (GuideReview guideReview in _guideReviewRepository.GetAll())
+            {
+                if (guideReview.Reservation.Guest.Id == guestId && guideReview.Reservation.TourEvent.Tour.Guide.Id == guideId)
+                {
+                    guideReviews.Add(guideReview);
+                }
+            }
+            return guideReviews;
+
+        }
     }
 }

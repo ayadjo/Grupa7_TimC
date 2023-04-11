@@ -13,15 +13,15 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
-        <Label x:Name="Review" Content="Recenzije" FontSize="25"/>
+        <Label x:Name="GuideReviews" Content="Recenzije" FontSize="25"/>
         <DataGrid ItemsSource="{Binding Path=Guests, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedGuest, UpdateSourceTrigger=PropertyChanged}"
                   Margin="10,0,10,349" AutoGenerateColumns="False"
                   x:Name="GuestsDataGrid" IsReadOnly="True" SelectionMode="Single" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ime" Binding="{Binding User.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Prezime" Binding="{Binding User.LastName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Validnost" Binding="{Binding User.Valid}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Reservation.Guest.FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Reservation.Guest.LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Validnost" Binding="{Binding Validity}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,327,10,0" VerticalAlignment="Top" Orientation="Horizontal">

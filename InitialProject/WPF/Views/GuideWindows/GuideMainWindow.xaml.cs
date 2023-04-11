@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InitialProject.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,22 @@ namespace InitialProject.WPF.Views.GuideWindows
         {
             Reviews reviews = new Reviews();
             reviews.Show();
+        }
+
+        private void TourStatisticsButton_Click(object sender, RoutedEventArgs e)
+        {
+            TourStatistics tourStatistics = new TourStatistics();
+            tourStatistics.Show();
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+
+           
+            SignInForm signInForm = new SignInForm();
+            signInForm.Show();
+            this.Close();
+
         }
     }
 }
