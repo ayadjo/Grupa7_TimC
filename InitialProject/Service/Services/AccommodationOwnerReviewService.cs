@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
 using InitialProject.WPF.Views;
 using System;
@@ -13,13 +14,16 @@ namespace InitialProject.Service.Services
 {
     public class AccommodationOwnerReviewService
     {
-        private AccommodationOwnerReviewRepository _accommodationOwnerReviewRepository;
+        //private AccommodationOwnerReviewRepository _accommodationOwnerReviewRepository;
+        private IAccommodationOwnerReviewRepository _accommodationOwnerReviewRepository;
 
         private AccommodationReservationRepository _accommodationReservationRepository;
 
         public AccommodationOwnerReviewService()
         {
-            _accommodationOwnerReviewRepository = AccommodationOwnerReviewRepository.GetInstance();
+            //_accommodationOwnerReviewRepository = AccommodationOwnerReviewRepository.GetInstance();
+            _accommodationOwnerReviewRepository = Injector.Injector.CreateInstance<IAccommodationOwnerReviewRepository>();
+
             _accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
         }
 

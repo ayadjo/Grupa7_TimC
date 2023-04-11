@@ -20,10 +20,12 @@ namespace InitialProject.Injector
 
             VoucherRepository voucherRepository = new VoucherRepository();
             voucherRepository.BindVoucherUser();
-
+            AccommodationOwnerReviewRepository accommodationOwnerReviewRepository = new AccommodationOwnerReviewRepository();
+            accommodationOwnerReviewRepository.BindAccommodationOwnerReviewWithAccommodationReservation();
 
 
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
+            _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);
         }
 
         public static T CreateInstance<T>()

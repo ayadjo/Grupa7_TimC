@@ -16,6 +16,7 @@ namespace InitialProject.Domain.RepositoryInterfaces
         public void Delete(AccommodationOwnerReview accommodationOwnerReview);
         public AccommodationOwnerReview Update(AccommodationOwnerReview accommodationOwnerReview);
         public int NextId();
-
+        public List<AccommodationOwnerReview> GetByReservation(int reservationId);
+        public AccommodationOwnerReview SaveImages(AccommodationOwnerReview accommodationOwnerReview);
     }
 }

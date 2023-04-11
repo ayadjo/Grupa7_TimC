@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Repositories
 {
-    public class AccommodationOwnerReviewRepository
+    public class AccommodationOwnerReviewRepository : IAccommodationOwnerReviewRepository
     {
         private const string FilePath = "../../../Resources/Data/accommodationOwnerReviews.csv";
 
-        private static AccommodationOwnerReviewRepository instance = null;
+        //private static AccommodationOwnerReviewRepository instance = null;
 
         private readonly Serializer<AccommodationOwnerReview> _serializer;
 
@@ -21,12 +22,14 @@ namespace InitialProject.Repositories
 
         private List<AccommodationOwnerReview> _accommodationOwnerReviews;
 
-        private AccommodationOwnerReviewRepository()
+        public AccommodationOwnerReviewRepository()
         {
             _serializer = new Serializer<AccommodationOwnerReview>();
             _imageRepository = ImageRepository.GetInstance();
             _accommodationOwnerReviews = _serializer.FromCSV(FilePath);
         }
+
+        /*
         public static AccommodationOwnerReviewRepository GetInstance()
         {
             if (instance == null)
@@ -35,6 +38,8 @@ namespace InitialProject.Repositories
             }
             return instance;
         }
+        */
+
         public void BindAccommodationOwnerReviewWithAccommodationReservation()
         {
             foreach (AccommodationOwnerReview accommodationOwnerReview in _accommodationOwnerReviews)
