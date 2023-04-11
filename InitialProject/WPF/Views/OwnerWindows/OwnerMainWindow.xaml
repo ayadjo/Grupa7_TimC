@@ -37,6 +37,7 @@
                             Grid.Row="1" FontSize="20"  BorderBrush="White" />
                     <Button x:Name="ReservationRescheduleRequestsButton" Content="Zahtevi" Click="ReservationRescheduleRequestsButton_Click"
                             Grid.Row="2" FontSize="20"  BorderBrush="White" />
+                    <Button x:Name="LogOutButton" Content="Odjavi se" Grid.Row="5" Margin="33,155,34,46" FontSize="17" Click="LogOutButton_Click"/>
                 </Grid>
             </Grid>
         </Grid>

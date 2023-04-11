@@ -36,7 +36,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
             _accommodationReservationController = new AccommodationReservationController();
 
-            AccommodationReservations = new ObservableCollection<AccommodationReservation>(_accommodationReservationController.GetAllReservationsWithoutReview());
+            AccommodationReservations = new ObservableCollection<AccommodationReservation>(_accommodationReservationController.GetAllReservationsWithoutGuestReview());
         }
 
         private void goToGuestReview_Click(object sender, RoutedEventArgs e)

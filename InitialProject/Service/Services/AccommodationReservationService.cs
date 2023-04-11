@@ -1,5 +1,6 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Repositories;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,12 +61,12 @@ namespace InitialProject.Service.Services
             return retVal;
         }
 
-        public List<AccommodationReservation> GetAllReservationsWithoutReview()
+        public List<AccommodationReservation> GetAllReservationsWithoutGuestReview()
         {
             List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
             foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
             {
-                if (IsGuestWithoutReview(accommodationReservation))
+                if (IsGuestWithoutReview(accommodationReservation) && accommodationReservation.Accommodation.Owner.Id == SignInForm.LoggedUser.Id)
                 {
                     accommodationReservations.Add(accommodationReservation);
                 }
@@ -77,7 +78,7 @@ namespace InitialProject.Service.Services
         public int FindNumberOfGuestsWithoutReview()
         {
             int number;
-            List<AccommodationReservation> accommodationReservations = GetAllReservationsWithoutReview();
+            List<AccommodationReservation> accommodationReservations = GetAllReservationsWithoutGuestReview();
             return number = accommodationReservations.Count;
 
         }
@@ -120,7 +121,7 @@ namespace InitialProject.Service.Services
             return retVal;
         }
 
-        public bool DatesIntertwine(DateTime StartFirst, DateTime EndFirst, DateTime StartSecond, DateTime EndSecond)
+        public bool IsDatesIntertwine(DateTime StartFirst, DateTime EndFirst, DateTime StartSecond, DateTime EndSecond)
         {
             return (StartSecond.Date <= EndFirst.Date && EndSecond.Date >= StartFirst.Date);
         }
@@ -138,7 +139,7 @@ namespace InitialProject.Service.Services
             }
             foreach (AccommodationReservation reservation in reservations)
             {
-                if (DatesIntertwine(reservation.Start, reservation.End, reservationRescheduleRequest.NewStart, reservationRescheduleRequest.NewEnd))
+                if (IsDatesIntertwine(reservation.Start, reservation.End, reservationRescheduleRequest.NewStart, reservationRescheduleRequest.NewEnd))
                 {
                     return false;
                 }
