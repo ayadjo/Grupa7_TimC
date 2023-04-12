@@ -80,12 +80,14 @@ namespace InitialProject.WPF.Views.Guest2Windows
         {
 
             if (_selectedTourEvent != null && _selectedTourEvent.Status == Enumerations.TourEventStatus.Finished)
-            {
-                
+            {  
                 GuideReviewWindow guideReviewWindow = new GuideReviewWindow(_tourReservationController.GetTourReservationForTourEventAndUser(SelectedTourEvent.Id,SignInForm.LoggedUser.Id));
                 guideReviewWindow.Show();
                 
-                
+            }
+            else if (_selectedTourEvent == null)
+            {
+                MessageBox.Show("Morate odabrati turu!");
             }
             else
             {

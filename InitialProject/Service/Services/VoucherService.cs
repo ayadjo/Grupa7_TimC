@@ -62,7 +62,6 @@ namespace InitialProject.Service.Services
                 else
                 {
                     //ako vaucer nije iskoristen
-
                     var unusedVouchers = GetVouchersThatArentUsed(allVouchers);
                     if(voucher.ExpirationDate >= DateTime.Now) 
                     {
