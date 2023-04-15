@@ -206,7 +206,7 @@ namespace InitialProject.Service.Services
                 if (tourReservation.Voucher.Id != -1)
                 {
 
-                    guestsWithVoucher = +1;
+                    guestsWithVoucher += 1;
                 }
                 else
                 {

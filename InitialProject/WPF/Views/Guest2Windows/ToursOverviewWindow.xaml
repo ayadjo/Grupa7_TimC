@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Window"
         mc:Ignorable="d"
         Title="Prikaz i pretraga tura" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <DockPanel>
+    <DockPanel Background="#B7E6FF">
         <StackPanel Orientation="Horizontal">
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
         </StackPanel>
@@ -39,37 +39,68 @@
 
                 </Grid.ColumnDefinitions>
 
-                <TextBox x:Name="tbCountry" Text="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="0" Grid.Column="0" Height="30" Margin="31,10,10,10" />
-                <Image Source="/Resources/Images/people.png" Grid.Row="0" Grid.Column="0" Height="30" Margin="-4,10,113,10" />
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                    <StackPanel>
+                        <Image Source="/Resources/Images/earth.png"  Height="16" Width="35" Margin="0,8,0,-5"/>
+                        <Label Content="Država" Height="27" Width="50"/>
+                    </StackPanel>
+                    <TextBox x:Name="tbCountry" Text="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged}" Height="19" Width="66"/>
+                </StackPanel>
 
-                <TextBox x:Name="tbCity" Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Height="30" Margin="31,10,10,10" />
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                    <StackPanel>
+                        <Image Source="/Resources/Images/city.png"  Height="16" Width="35" Margin="0,8,0,-5"/>
+                        <Label Content="Grad" Height="27" Width="39"/>
+                    </StackPanel>
+                    <TextBox x:Name="tbCity" Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged}" Height="19" Width="66"/>
+                </StackPanel>
 
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+                    <StackPanel>
+                        <Image Source="/Resources/Images/people.png"  Height="16" Width="35" Margin="0,8,0,-5"/>
+                        <Label Content="Broj ljudi" Height="27" Width="56" Margin="-3,0,0,0"/>
+                    </StackPanel>
+                    <TextBox x:Name="tbNumberOfPeople" Text="{Binding Path=NumberOfPeople, UpdateSourceTrigger=PropertyChanged}" Height="19" Width="66"/>
+                </StackPanel>
 
-                <TextBox x:Name="tbNumberOfPeople" Text="{Binding Path=NumberOfPeople, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="2" Height="30" Margin="31,10,10,10"/>
-                <Image Source="/Resources/Images/people.png" Grid.Row="0" Height="30" Margin="139,10,118,10" Grid.ColumnSpan="2"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="3">
+                    <StackPanel>
+                        <Image Source="/Resources/Images/languages.png"  Height="16" Width="38" Margin="0,8,0,-5"/>
+                        <Label Content="Jezik" Height="27" Width="40"/>
+                    </StackPanel>
+                    <TextBox x:Name="tbLanguage" Text="{Binding Path=Languages, UpdateSourceTrigger=PropertyChanged}" Height="19" Width="66"/>
+                </StackPanel>
 
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4">
+                    <StackPanel>
+                        <Image Source="/Resources/Images/duration.png"  Height="16" Width="38" Margin="0,8,0,-5"/>
+                        <Label Content="Trajanje" Height="27" Width="52"/>
+                    </StackPanel>
+                    <TextBox x:Name="tbDuration" Text="{Binding Path=Duration, UpdateSourceTrigger=PropertyChanged}" Height="19" Width="66"/>
+                </StackPanel>
 
-
-                <TextBox x:Name="tbLanguage" Text="{Binding Path=Languages, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="3" Height="30" Margin="31,10,10,10"/>
-                <Image Source="/Resources/Images/language.png" Grid.Row="0" Grid.Column="1" Margin="144,20,122,14" Grid.ColumnSpan="2"/>
-
-                <TextBox x:Name="tbDuration" Text="{Binding Path=Duration, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="4" Height="30" Margin="31,10,10,10"/>
-                <Image Source="/Resources/Images/duration.png" Grid.Row="0" Grid.Column="2" Margin="147,14,108,14" Grid.ColumnSpan="2"/>
-
-                <Button x:Name="buttonSearch" Click="buttonSearch_Click" Content="Pretraži" Grid.Row="0" Grid.Column="5" Height="30"  Margin="10,10,10,10"></Button>
-                <Label Content="Drz" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <Label Content="Gra" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="121,15,0,0"/>
-                <Label Content="Ljudi" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="123,14,0,0" Grid.Column="1"/>
-                <Label Content="jezik" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3"/>
-                <Label Content="trajanje" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="3" Grid.ColumnSpan="2" Margin="113,14,0,0"/>
+               
+                <Button Click="buttonSearch_Click" Grid.Row="0" Grid.Column="5" Height="30"  Margin="10,10,10,10">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/search.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <ContentControl x:Name="buttonSearch" Content="Pretraži"></ContentControl>
+                    </StackPanel>
+                </Button>
 
             </Grid>
         </Grid>
 
         <Button x:Name="buttonReserve" DockPanel.Dock="Bottom" Content="Rezerviši" Margin="550,0,10,10" Width="70" Height="30" Click="buttonReserve_Click" ></Button>
         <Button x:Name="buttonMyTour" DockPanel.Dock="Bottom" Content="Moje ture" Margin="550,0,10,10" Width="70" Height="30" Click="buttonMyTour_Click" ></Button>
-        <Button x:Name="LogOutButton" DockPanel.Dock="Bottom" Content="Odjavi se" Click="LogOutButton_Click" Width="70" Margin="550,5,10,10"></Button>
         
+        <Button Height="31" Width="82" Click="LogOutButton_Click" DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/Images/logout.png" Width="15" Height="15" Margin="0,0,5,0" />
+                <ContentControl x:Name="LogOutButton" Content="Odjavi se" ></ContentControl>
+            </StackPanel>
+        </Button>
+        
+
         <DataGrid 
                   ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTour, UpdateSourceTrigger=PropertyChanged}"
