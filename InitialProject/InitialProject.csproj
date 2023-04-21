@@ -95,6 +95,7 @@
     <None Remove="Resources\Images\star.png" />
     <None Remove="Resources\Images\svet.png" />
     <None Remove="Resources\Images\tourist.png" />
+    <None Remove="Resources\Images\translation.png" />
     <None Remove="Resources\Images\transparency.png" />
     <None Remove="Resources\Images\travel-itinerary.png" />
     <None Remove="Resources\Images\travel-map.png" />
@@ -103,6 +104,12 @@
     <None Remove="Resources\Images\user.png" />
     <None Remove="Resources\Images\world-globe.png" />
     <None Remove="Resources\Images\worldTour.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\translation.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
