@@ -108,16 +108,6 @@ namespace InitialProject.Service.Services
             return tours;
         }
 
-
-        /*      public Tour SaveCascadeImages(Tour tour)
-              {
-                  return _tourRepository.SaveCascadeImages(tour);
-              }
-              public Tour SaveCascadeTourPoints(Tour tour)
-              {
-                  return _tourRepository.SaveCascadeTourPoints(tour);
-              }*/
-
         public Tour SaveImagesTourPoints(Tour tour)
         {
 
