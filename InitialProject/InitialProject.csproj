@@ -62,38 +62,152 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\1.jpg" />
+    <None Remove="Resources\Images\10.jpg" />
+    <None Remove="Resources\Images\12.jpg" />
+    <None Remove="Resources\Images\13.jpg" />
+    <None Remove="Resources\Images\14.jpg" />
+    <None Remove="Resources\Images\15.jpg" />
+    <None Remove="Resources\Images\7437.jpg" />
+    <None Remove="Resources\Images\77150.jpg" />
+    <None Remove="Resources\Images\adventure.png" />
+    <None Remove="Resources\Images\camping.png" />
+    <None Remove="Resources\Images\car.png" />
+    <None Remove="Resources\Images\check.png" />
     <None Remove="Resources\Images\city.png" />
+    <None Remove="Resources\Images\destination.png" />
     <None Remove="Resources\Images\duration.png" />
     <None Remove="Resources\Images\earth.png" />
+    <None Remove="Resources\Images\glacierNationalPark.jpg" />
+    <None Remove="Resources\Images\group.png" />
+    <None Remove="Resources\Images\hiking.png" />
     <None Remove="Resources\Images\language.png" />
     <None Remove="Resources\Images\languages.png" />
+    <None Remove="Resources\Images\location-pin.png" />
     <None Remove="Resources\Images\logout.png" />
+    <None Remove="Resources\Images\osakaKyoto.png" />
+    <None Remove="Resources\Images\passport.png" />
     <None Remove="Resources\Images\people.png" />
+    <None Remove="Resources\Images\picture1.jpg" />
+    <None Remove="Resources\Images\questionnaire.png" />
     <None Remove="Resources\Images\search.png" />
+    <None Remove="Resources\Images\skyscraper.png" />
+    <None Remove="Resources\Images\star.png" />
+    <None Remove="Resources\Images\svet.png" />
+    <None Remove="Resources\Images\tourist.png" />
+    <None Remove="Resources\Images\transparency.png" />
+    <None Remove="Resources\Images\travel-itinerary.png" />
+    <None Remove="Resources\Images\travel-map.png" />
+    <None Remove="Resources\Images\travel-map2.png" />
+    <None Remove="Resources\Images\travel.png" />
+    <None Remove="Resources\Images\user.png" />
+    <None Remove="Resources\Images\world-globe.png" />
+    <None Remove="Resources\Images\worldTour.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\city.png">
+    <Resource Include="Resources\Images\duration.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\group.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\skyscraper.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\duration.png">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\hiking.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\questionnaire.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\transparency.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\destination.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\star.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\location-pin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\travel-itinerary.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\world-globe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\adventure.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\check.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\earth.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\languages.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\logout.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\people.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Images\search.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

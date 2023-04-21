@@ -22,7 +22,7 @@ namespace InitialProject.WPF.Views.Guest2Window
     /// <summary>
     /// Interaction logic for ToursOverviewWindow.xaml
     /// </summary>
-    public partial class ToursOverviewWindow : Window   
+    public partial class ToursOverviewWindow : UserControl   
     {
         public ObservableCollection<Tour> Tours { get; set; }
 
@@ -56,7 +56,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             
         }
 
-        private void buttonReserve_Click(object sender, RoutedEventArgs e)
+        private void Reserve_Click(object sender, RoutedEventArgs e)
         {
              if (SelectedTour != null)
              {
@@ -78,25 +78,12 @@ namespace InitialProject.WPF.Views.Guest2Window
             }
         }
 
-        private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        private void Search_Click(object sender, RoutedEventArgs e)
         {
 
             List<Tour> searchedTours = _tourController.SearchTours(Country,City,Languages,NumberOfPeople,Duration);
             RefreshTours(searchedTours);
         }
 
-        private void buttonMyTour_Click(object sender, RoutedEventArgs e)
-        {
-            MyToursWindow myToursWindow = new MyToursWindow();
-            myToursWindow.Show();
-        }
-
-        private void LogOutButton_Click(object sender, RoutedEventArgs e)
-        {
-            SignInForm signInForm = new SignInForm();
-            signInForm.Show();
-            this.Close();
-
-        }
     }
 }
