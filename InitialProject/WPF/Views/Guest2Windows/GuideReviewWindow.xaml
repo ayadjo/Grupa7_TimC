@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
-        Title="Oceni turu i vodiča" Height="450" Width="400" WindowStartupLocation="CenterOwner">
+        Title="Oceni turu i vodiča" Height="450" Width="400" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ControlTemplate x:Key="ValidationTemplate">
             <StackPanel>

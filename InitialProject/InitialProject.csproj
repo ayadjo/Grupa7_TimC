@@ -75,10 +75,15 @@
     <None Remove="Resources\Images\car.png" />
     <None Remove="Resources\Images\check.png" />
     <None Remove="Resources\Images\city.png" />
+    <None Remove="Resources\Images\comment.png" />
+    <None Remove="Resources\Images\dateAndTime.png" />
     <None Remove="Resources\Images\destination.png" />
+    <None Remove="Resources\Images\diversity.png" />
     <None Remove="Resources\Images\duration.png" />
     <None Remove="Resources\Images\earth.png" />
+    <None Remove="Resources\Images\education.png" />
     <None Remove="Resources\Images\glacierNationalPark.jpg" />
+    <None Remove="Resources\Images\graph.png" />
     <None Remove="Resources\Images\group.png" />
     <None Remove="Resources\Images\hiking.png" />
     <None Remove="Resources\Images\language.png" />
@@ -88,6 +93,7 @@
     <None Remove="Resources\Images\osakaKyoto.png" />
     <None Remove="Resources\Images\passport.png" />
     <None Remove="Resources\Images\people.png" />
+    <None Remove="Resources\Images\photo.png" />
     <None Remove="Resources\Images\picture1.jpg" />
     <None Remove="Resources\Images\questionnaire.png" />
     <None Remove="Resources\Images\search.png" />
@@ -104,6 +110,42 @@
     <None Remove="Resources\Images\user.png" />
     <None Remove="Resources\Images\world-globe.png" />
     <None Remove="Resources\Images\worldTour.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\diversity.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\photo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\graph.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\education.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\dateAndTime.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\comment.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
