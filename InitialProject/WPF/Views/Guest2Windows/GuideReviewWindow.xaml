@@ -6,57 +6,77 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
         Title="Oceni turu i vodiča" Height="450" Width="400" WindowStartupLocation="CenterOwner">
-    <Grid>
+    <Window.Resources>
+        <ControlTemplate x:Key="ValidationTemplate">
+            <StackPanel>
+                <!-- Placeholder for the TextBox itself -->
+                <AdornedElementPlaceholder x:Name="textBox" />
+                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red" />
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid Background="#DFFDFF">
         <StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Margin="0,50,0,10">
+                <Image Source="/Resources/Images/education.png"  Height="20" Width="35" />
                 <Label Content="Znanje vodiča" Width="100"></Label>
-                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedKnowledge, UpdateSourceTrigger=PropertyChanged}" Width="45"></ComboBox>
-            <!--    <RadioButton Content="1" GroupName="RadioButtonKnowledge" IsChecked="{Binding SelectedKnowledge, Converter={StaticResource IntToBoolConverter}, ConverterParameter=1}" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
+                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedKnowledge, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White"></ComboBox>
+                <!--    <RadioButton Content="1" GroupName="RadioButtonKnowledge" IsChecked="{Binding SelectedKnowledge, Converter={StaticResource IntToBoolConverter}, ConverterParameter=1}" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="2" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5" ></RadioButton>
                 <RadioButton Content="3" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5" ></RadioButton>
                 <RadioButton Content="4" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="5" GroupName="RadioButtonKnowledge" Height="21" Width="32"/>-->
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10" >
+                <Image Source="/Resources/Images/translation.png"  Height="20" Width="35" />
                 <Label Content="Jezik vodiča" Width="100"></Label>
-                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedLanguage, UpdateSourceTrigger=PropertyChanged}" Width="45"></ComboBox>
-            <!--    <RadioButton Content="1" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
+                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedLanguage, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White" ></ComboBox>
+                <!--    <RadioButton Content="1" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="2" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="3" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="4" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="5" GroupName="RadioButtonLanguage" Height="21" Width="32"/>-->
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
+                <Image Source="/Resources/Images/diversity.png"  Height="20" Width="35" />
                 <Label Content="Zanimljivost ture" Width="100"></Label>
-                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedInterestingness, UpdateSourceTrigger=PropertyChanged}" Width="45"></ComboBox>
-            <!--    <RadioButton Content="1" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
+                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedInterestingness, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White"></ComboBox>
+                <!--    <RadioButton Content="1" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="2" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="3" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="4" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
                 <RadioButton Content="5" GroupName="RadioButtonInterestingness" Height="21" Width="32"/>-->
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
+                <Image Source="/Resources/Images/photo.png"  Height="20" Width="35" />
                 <Label Content="Dodaj sliku" Width="100"></Label>
-                <TextBox Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}" Width="92" Margin="0,0,10,0"></TextBox>
-                <Button x:Name="AddImageButton" Click="AddImageButton_Click" Content="+" Width="27" ></Button>
-                <Button x:Name="RemoveImageButton" Click="RemoveImageButton_Click" Content="-" Width="27"  Margin="10,0,0,0"></Button>
+                <TextBox Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}" Width="90" Margin="0,0,13,0"></TextBox>
+                <Button x:Name="AddImageButton" Click="AddImageButton_Click" Content="+" Width="27" Background="White"></Button>
+                <Button x:Name="RemoveImageButton" Click="RemoveImageButton_Click" Content="-" Width="27"  Margin="8,0,0,0" Background="White"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10" Height="85">
                 <DataGrid 
                   ItemsSource="{Binding Path=Images, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedUrl}"
                   AutoGenerateColumns="False" IsReadOnly="True"
-                  x:Name="myImagesOverview" Width="199" Margin="100,0,0,0" Height="82">
+                  x:Name="myImagesOverview"  Width="165" Margin="135,0,0,0" Height="82" Background="White">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Url" Binding="{Binding}" Width="*"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
+                <Image Source="/Resources/Images/comment.png"  Height="20" Width="35" VerticalAlignment="Top" Margin="0,5,0,0"/>
                 <Label Content="Komentar" Width="100"></Label>
-                <TextBox Width="200" Height="59" Text="{Binding Path=Comment, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Width="165" Height="59" Text="{Binding Path=Comment, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             </StackPanel>
-            <Button x:Name="AddReviewButton" Content="Oceni" Width="80" Height="30" HorizontalAlignment="Right" Margin="0,0,50,0" Click="AddReviewButton_Click" ></Button>
+            <Button x:Name="AddReviewButton" Width="80" Height="30" HorizontalAlignment="Right" Margin="0,0,50,0" Click="AddReviewButton_Click" Background="#FFFFFF">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Images/star.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <ContentControl Content="Oceni"></ContentControl>
+                </StackPanel>
+            </Button>
         </StackPanel>
 
     </Grid>
