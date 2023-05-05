@@ -5,90 +5,121 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Window"
         mc:Ignorable="d"
-        Title="Rezervacija tura" Height="500" Width="850" WindowStartupLocation="CenterScreen">
-    <DockPanel>
-        <TextBlock 
-                   DockPanel.Dock="Left" Width="261">
-            <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60*"/>
-                <ColumnDefinition Width="300*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="370"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
+        Title="Rezervacija tura" Height="550" Width="600" WindowStartupLocation="CenterScreen">
+    <StackPanel Orientation="Vertical">
 
-            <Grid Grid.Row="0" Grid.Column="0" Margin="30,2,30,3" Grid.ColumnSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Width="582" Height="402">
 
-        <TextBlock Text="Grad:" FontWeight="Bold" Margin="0,32,4,0"/>
-        <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.City}" Margin="87,32,16,2" Grid.ColumnSpan="2"/>
-        <TextBlock Text="Maks. gostiju:" FontWeight="Bold" Margin="0,37,4,0" Grid.Row="1"/>
-        <TextBlock Text="{Binding SelectedTourEvent.Tour.MaxGuests}" Grid.Column="1" Margin="34,37,-34,2" Grid.Row="1"/>
-
-        <TextBlock Text="Broj ljudi:" FontWeight="Bold" Margin="0,41,10,0" Grid.Row="2"/>
-        <TextBox Text="{Binding NumberOfPeople}" Margin="0,37,0,10" Grid.Row="2" Grid.Column="1"/>
-
-        <TextBlock Text="{Binding AvailableSpotsText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Margin="0,10,5,0" Grid.Row="3"/>
-        <TextBlock Text="{Binding AvailableSpots, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="42,15,-41,5" Grid.Row="3"/>
-
-            </Grid>
-            <WrapPanel Grid.Row="1"  FlowDirection="LeftToRight" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="90,0,0,0" Height="114" Width="116" >
-                <Button Content="Proveri dostupnost" Width="116" Height="27" Click="Check_Availability_Button_Click" Margin="0,10,0,5"/>
-                <Button Content="Predlozi slobodne za lokaciju" Width="116" Height="30" Click="Suggest_Click" Margin="0,5,0,5"/>
-                <Button x:Name="Reserve" Content="Rezervisi" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20, 5, 20, 5"
-              Click="Reserve_Click"/>
+            <StackPanel Orientation="Vertical" Width="340" Margin="30,30,0,0">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image Source="/Resources/Images/hiking.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <TextBlock Text="Naziv: " FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Name}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image Source="/Resources/Images/earth.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <TextBlock Text="Država: " FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.Country}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image Source="/Resources/Images/skyscraper.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <TextBlock Text="Grad: " FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.City}"/>
+                </StackPanel>
                 
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image Source="/Resources/Images/translation.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <TextBlock Text="Jezik: " FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Languages}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image Source="/Resources/Images/group.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <TextBlock Text="Maksimalan broj gostiju: " FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedTourEvent.Tour.MaxGuests}"/>
+                </StackPanel>
                 
-               
-            </WrapPanel>
-            <Button Grid.Column="1" x:Name="Cancel" Content="Otkazi" IsCancel="True" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Row="1"
-                    Click="Cancel_Click"/>
-        </Grid>
-    </Grid>
-        </TextBlock>
-        <StackPanel  DockPanel.Dock="Right">
-            <DataGrid DockPanel.Dock="Bottom"
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image Source="/Resources/Images/dateAndTime.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <TextBlock Text="Datum i vreme početka: " FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedTourEvent.StartTime}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image Source="/Resources/Images/duration.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <TextBlock Text="Trajanje: " FontWeight="Bold" />
+                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Duration}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Height="35">
+                    <Image Source="/Resources/Images/tour.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Top" />
+                    <TextBlock Text="Ključne tačke: " FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedTourEvent.Tour.TourPoints}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Height="50">
+                    <Image Source="/Resources/Images/info.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Top"/>
+                    <TextBlock Text="Opis: " FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Description}"/>
+                </StackPanel>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0,30,0,0" Width="205">
+                <Image Source="/Resources/Images/check.png" Width="100" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
+                    <Image Source="/Resources/Images/group.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <TextBlock Text="Broj ljudi:" FontWeight="Bold" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding NumberOfPeople}" Width="50"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center" Width="120">
+                    <TextBlock Text="{Binding AvailableSpotsText, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding AvailableSpots, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <DataGrid 
+                  ItemsSource="{Binding Vouchers, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedVoucher, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  Width="205" Height="90" x:Name="myVoucherOverview" Margin="0,10,0,10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="80"/>
+                        <DataGridTextColumn Header="Važi do:" Binding="{Binding ExpirationDate}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button x:Name="CheckAvailability" Height="30" Width="130" Click="Check_Availability_Button_Click" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/question-mark.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <ContentControl Content="Proveri dostupnost"></ContentControl>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="Reserve" Height="30" Width="130" Click="Reserve_Click" Background="White" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/check.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <ContentControl Content="Rezerviši"></ContentControl>
+                    </StackPanel>
+                </Button>
+
+
+
+
+            </StackPanel>
+
+
+        </StackPanel>
+
+        <DataGrid DockPanel.Dock="Bottom"
                        SelectionMode="Single"
                   ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True"
-                  Width="550" Height="163" Margin="0,10,0,0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Drzava" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn  Header="Grad" Binding="{Binding Tour.Location.City}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn  Header="Jezik" Binding="{Binding Tour.Languages}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn  Header="Trajanje" Binding="{Binding Tour.Duration}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn  Header="Vreme pocetka" Binding="{Binding StartTime}" Width="*"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-            <DataGrid 
-                  ItemsSource="{Binding Vouchers, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding SelectedVoucher, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True"
-                  Width="200" Height="122" x:Name="myVoucherOverview" Margin="0,10,0,10">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="100"/>
-                    <DataGridTextColumn Header="Važi do:" Binding="{Binding ExpirationDate}" Width="100"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
-        </StackPanel>
-
-
-
-
-    </DockPanel>
+                  Width="570" Height="106" Margin="0,10,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Država" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn  Header="Grad" Binding="{Binding Tour.Location.City}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn  Header="Jezik" Binding="{Binding Tour.Languages}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn  Header="Trajanje" Binding="{Binding Tour.Duration}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn  Header="Vreme početka" Binding="{Binding StartTime}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </Window>

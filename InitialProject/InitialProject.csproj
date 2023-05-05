@@ -86,6 +86,7 @@
     <None Remove="Resources\Images\graph.png" />
     <None Remove="Resources\Images\group.png" />
     <None Remove="Resources\Images\hiking.png" />
+    <None Remove="Resources\Images\info.png" />
     <None Remove="Resources\Images\language.png" />
     <None Remove="Resources\Images\languages.png" />
     <None Remove="Resources\Images\location-pin.png" />
@@ -95,11 +96,14 @@
     <None Remove="Resources\Images\people.png" />
     <None Remove="Resources\Images\photo.png" />
     <None Remove="Resources\Images\picture1.jpg" />
+    <None Remove="Resources\Images\point.png" />
+    <None Remove="Resources\Images\question-mark.png" />
     <None Remove="Resources\Images\questionnaire.png" />
     <None Remove="Resources\Images\search.png" />
     <None Remove="Resources\Images\skyscraper.png" />
     <None Remove="Resources\Images\star.png" />
     <None Remove="Resources\Images\svet.png" />
+    <None Remove="Resources\Images\tour.png" />
     <None Remove="Resources\Images\tourist.png" />
     <None Remove="Resources\Images\translation.png" />
     <None Remove="Resources\Images\transparency.png" />
@@ -110,6 +114,30 @@
     <None Remove="Resources\Images\user.png" />
     <None Remove="Resources\Images\world-globe.png" />
     <None Remove="Resources\Images\worldTour.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\tour.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\question-mark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\point.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
