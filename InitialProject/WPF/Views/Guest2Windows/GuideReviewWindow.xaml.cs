@@ -180,5 +180,47 @@ namespace InitialProject.WPF.Views.Guest2Windows
             Images.Remove(SelectedUrl);
             SelectedUrl = null;
         }
+
+        private void SetReviewForGuideKnowledge(object sender, RoutedEventArgs e)
+        {
+            if (knowledge1.IsChecked == true)
+                SelectedKnowledge = 1;
+            else if (knowledge2.IsChecked == true)
+                SelectedKnowledge = 2;
+            else if (knowledge3.IsChecked == true)
+                SelectedKnowledge = 3;
+            else if (knowledge4.IsChecked == true)
+                SelectedKnowledge = 4;
+            else if (knowledge5.IsChecked == true)
+                SelectedKnowledge = 5;
+        }
+
+        private void SetReviewForGuideLanguage(object sender, RoutedEventArgs e)
+        {
+            if (language1.IsChecked == true)
+                SelectedLanguage = 1;
+            else if (language2.IsChecked == true)
+                SelectedLanguage = 2;
+            else if (language3.IsChecked == true)
+                SelectedLanguage = 3;
+            else if (language4.IsChecked == true)
+                SelectedLanguage = 4;
+            else if (language5.IsChecked == true)
+                SelectedLanguage = 5;
+        }
+
+        private void SetReviewForGuideInterestingness(object sender, RoutedEventArgs e)
+        {
+            if (interestingness1.IsChecked == true)
+                SelectedInterestingness = 1;
+            else if (interestingness2.IsChecked == true)
+                SelectedInterestingness = 2;
+            else if (interestingness3.IsChecked == true)
+                SelectedInterestingness = 3;
+            else if (interestingness4.IsChecked == true)
+                SelectedInterestingness = 4;
+            else if (interestingness5.IsChecked == true)
+                SelectedInterestingness = 5;
+        }
     }
 }

@@ -21,32 +21,33 @@
             <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Margin="0,50,0,10">
                 <Image Source="/Resources/Images/education.png"  Height="20" Width="35" />
                 <Label Content="Znanje vodiča" Width="100"></Label>
-                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedKnowledge, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White"></ComboBox>
-                <!--    <RadioButton Content="1" GroupName="RadioButtonKnowledge" IsChecked="{Binding SelectedKnowledge, Converter={StaticResource IntToBoolConverter}, ConverterParameter=1}" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="2" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5" ></RadioButton>
-                <RadioButton Content="3" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5" ></RadioButton>
-                <RadioButton Content="4" GroupName="RadioButtonKnowledge" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="5" GroupName="RadioButtonKnowledge" Height="21" Width="32"/>-->
+                <!--<ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedKnowledge, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White"></ComboBox>-->
+                <RadioButton Name="knowledge1" Content="1" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="knowledge2" Content="2" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="knowledge3" Content="3" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="knowledge4" Content="4" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="knowledge5" Content="5" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10" >
                 <Image Source="/Resources/Images/translation.png"  Height="20" Width="35" />
                 <Label Content="Jezik vodiča" Width="100"></Label>
-                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedLanguage, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White" ></ComboBox>
-                <!--    <RadioButton Content="1" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="2" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="3" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="4" GroupName="RadioButtonLanguage" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="5" GroupName="RadioButtonLanguage" Height="21" Width="32"/>-->
+                <!--<ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedLanguage, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White" ></ComboBox>-->
+               
+                <RadioButton Name="language1" Content="1" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="language2" Content="2" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="language3" Content="3" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="language4" Content="4" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="language5" Content="5" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
                 <Image Source="/Resources/Images/diversity.png"  Height="20" Width="35" />
                 <Label Content="Zanimljivost ture" Width="100"></Label>
-                <ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedInterestingness, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White"></ComboBox>
-                <!--    <RadioButton Content="1" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="2" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="3" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="4" GroupName="RadioButtonInterestingness" Height="21" Width="32" Margin="5,5,5,5"></RadioButton>
-                <RadioButton Content="5" GroupName="RadioButtonInterestingness" Height="21" Width="32"/>-->
+                <!--<ComboBox ItemsSource="{Binding Path=Grades}" SelectedItem="{Binding Path=SelectedInterestingness, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="45" Background="White"></ComboBox>-->
+                <RadioButton Name="interestingness1" Content="1" Checked="SetReviewForGuideInterestingness" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="interestingness2" Content="2" Checked="SetReviewForGuideInterestingness" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="interestingness3" Content="3" Checked="SetReviewForGuideInterestingness" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="interestingness4" Content="4" Checked="SetReviewForGuideInterestingness" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="interestingness5" Content="5" Checked="SetReviewForGuideInterestingness" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
                 <Image Source="/Resources/Images/photo.png"  Height="20" Width="35" />
