@@ -21,7 +21,7 @@
         <Grid Grid.Column="0" Grid.Row="0">
             <Label Content="Najposećenija tura" HorizontalAlignment="Center" Margin="10,0,10,0" Grid.Row="0" VerticalAlignment="Center" FontSize="17" FontFamily="Candara"/>
             <TextBox Margin="0,138,0,82"  Width="200" Height="25" HorizontalAlignment="Center" Text="{Binding Path=BestTourEvent.Tour.Name}"/>
-            <Button x:Name="MostVisitedTourInGeneral" Click="ViewMostVisitedTourInGeneral_Click" Content="Tokom svih godina" Width="120" Height="25" HorizontalAlignment="Left" Margin="44,182,0,38"/>
+            <Button x:Name="MostVisitedTourInGeneral" Click="ViewMostVisitedTourInGeneral_Click" Content="Prikazi" Width="120" Height="25" HorizontalAlignment="Left" Margin="44,182,0,38"/>
             <ComboBox x:Name="YearComboBox"  SelectedItem="{Binding Path=SelectedYear}"  HorizontalAlignment="Right" ItemsSource="{Binding Years}" LostFocus="YearComboBox_LostFocus"  Margin="0,182,53,38" Width="120" Height="25"/>
 
 

@@ -44,7 +44,7 @@ namespace InitialProject.WPF.Views.GuideWindows
             if (SelectedTourEvent != null)
             {
                 _tourReservationController.CancelAllTourReservationsForTourEvent(SelectedTourEvent.Id);
-                MessageBox.Show("Uspesno ste otkazali turu");
+                
             }
             
             

@@ -59,6 +59,7 @@ namespace InitialProject.WPF.Views.GuideWindows
                     GuideReview guideReview = _guideReviewController.Get(SelectedReview.Id);
                     guideReview.Validity = true;
                     _guideReviewController.Update(guideReview);
+                    MessageBox.Show("Uspesno ste prijavili recenziju!");
                     
 
                 }

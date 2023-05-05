@@ -31,7 +31,7 @@
                   x:Name="ReviewsDataGrid" IsReadOnly="True" SelectionMode="Single" SelectionChanged="ReviewsDataGrid_SelectionChanged" >
                     <DataGrid.Columns >
                         <DataGridTextColumn Header="Naziv" Width="80" Binding="{Binding Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Dosao" Width="50" Binding="{Binding NameOfTourPoint}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Dosao" Width="80" Binding="{Binding NameOfTourPoint}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Interesantnost" Width="90" Binding="{Binding Interestingness}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Znanje" Width="50" Binding="{Binding Knowledge}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Jezik" Width="50" Binding="{Binding Language}"></DataGridTextColumn>
