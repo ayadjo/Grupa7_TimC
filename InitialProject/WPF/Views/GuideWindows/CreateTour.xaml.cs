@@ -237,7 +237,7 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         private void AddImages_Click(object sender, RoutedEventArgs e)
         {
-            AddTourImages TourImage = new AddTourImages(ImageResource.tour, AllImages);
+            AddTourImages TourImage = new AddTourImages(ImageResource.Tour, AllImages);
             TourImage.Show();
 
         }

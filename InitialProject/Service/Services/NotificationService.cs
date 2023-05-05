@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace InitialProject.Service.Services
 {
     public class NotificationService
     {
-        private NotificationRepository _notificationRepository;
+        private INotificationRepository _notificationRepository;
 
         public NotificationService()
         {
-            _notificationRepository = NotificationRepository.GetInstance();
+            _notificationRepository = Injector.Injector.CreateInstance<INotificationRepository>();
         }
 
         public List<Notification> GetAll()
@@ -40,6 +41,11 @@ namespace InitialProject.Service.Services
         public void Update(Notification notification)
         {
             _notificationRepository.Update(notification);
+        }
+
+        public int NextId()
+        {
+            return _notificationRepository.NextId();
         }
 
         /*

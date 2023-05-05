@@ -21,7 +21,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
     /// <summary>
     /// Interaction logic for MyToursWindow.xaml
     /// </summary>
-    public partial class MyToursWindow : Window, INotifyPropertyChanged
+    public partial class MyToursWindow : UserControl, INotifyPropertyChanged
     { 
         public ObservableCollection<TourEvent> TourEvents { get; set; }
 
@@ -59,23 +59,35 @@ namespace InitialProject.WPF.Views.Guest2Windows
         {
             if(SelectedTourEvent == null)
             {
-                return;
+                MessageBox.Show("Morate selektovati turu!");
+                //return;
             }
-            TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
-            tourPointsWindow.Show();
-            Close();
+            else if(_selectedTourEvent.Status != Enumerations.TourEventStatus.Started)
+            {
+                MessageBox.Show("Nije moguce pregledati kljucne tacke");
+            }
+            else
+            {
+                TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
+                tourPointsWindow.Show();
+            }
+            
+            
+            
         }
 
         private void Rate_Click(object sender, RoutedEventArgs e)
         {
 
             if (_selectedTourEvent != null && _selectedTourEvent.Status == Enumerations.TourEventStatus.Finished)
-            {
-                
+            {  
                 GuideReviewWindow guideReviewWindow = new GuideReviewWindow(_tourReservationController.GetTourReservationForTourEventAndUser(SelectedTourEvent.Id,SignInForm.LoggedUser.Id));
                 guideReviewWindow.Show();
-                Close();
                 
+            }
+            else if (_selectedTourEvent == null)
+            {
+                MessageBox.Show("Morate odabrati turu!");
             }
             else
             {

@@ -11,6 +11,7 @@ using InitialProject.WPF.Views.Guest1Windows;
 
 using InitialProject.Enumerations;
 using System.Collections.Generic;
+using InitialProject.WPF.Views.Guest2Windows;
 
 namespace InitialProject.WPF.Views;
 
@@ -108,9 +109,10 @@ public partial class SignInForm : Window
                         MessageBoxResult result = MessageBox.Show(this, "You have been added to " + tourName);
                         
                     }
-                   
-                    ToursOverviewWindow toursOverview = new ToursOverviewWindow();
-                    toursOverview.Show();
+
+                    Guest2MainWindow guest2MainWindow = new Guest2MainWindow();
+                    guest2MainWindow.Show();
+                    this.Close();
                     
                     return;
                 }

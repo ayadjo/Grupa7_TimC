@@ -16,11 +16,14 @@ namespace InitialProject.Service.Services
     {
         private TourReservationRepository _tourReservationRepository;
         private IVoucherRepository _voucherRepository;
+        private VoucherService _voucherService;
 
         public TourReservationService()
         {
             _tourReservationRepository = TourReservationRepository.GetInstance();
             _voucherRepository = Injector.Injector.CreateInstance<IVoucherRepository>();
+         //   _voucherService = Injector.Injector.CreateInstance<VoucherService>();
+            _voucherService = new VoucherService();
         }
 
 
@@ -36,6 +39,17 @@ namespace InitialProject.Service.Services
 
         public TourReservation Save(TourReservation tourReservation)
         {
+            if (tourReservation.Voucher == null)
+            {
+                tourReservation.Voucher = new Voucher() { Id = -1 };
+            }
+
+            if (tourReservation.Voucher.Id != -1)
+            {
+                tourReservation.Voucher.Used = true;
+                _voucherService.Update(tourReservation.Voucher);
+            }
+
             return _tourReservationRepository.Save(tourReservation);
         }
 
@@ -59,7 +73,6 @@ namespace InitialProject.Service.Services
                 if (tourReservation.TourPointWhenGuestCame.Id == -1 && tourReservation.TourEvent.Id == tourEvent.Id)
                 {
                     users.Add(tourReservation.Guest);
-
                 }
 
             }
@@ -193,7 +206,7 @@ namespace InitialProject.Service.Services
                 if (tourReservation.Voucher.Id != -1)
                 {
 
-                    guestsWithVoucher = +1;
+                    guestsWithVoucher += 1;
                 }
                 else
                 {
@@ -207,6 +220,8 @@ namespace InitialProject.Service.Services
 
             return tourPercentageOfGuestsVouchers;
         }
+
+        
 
     }
 }

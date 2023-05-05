@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Window"
         mc:Ignorable="d"
-        Title="Rezervacija tura" Height="500" Width="850">
+        Title="Rezervacija tura" Height="500" Width="850" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <TextBlock 
                    DockPanel.Dock="Left" Width="261">

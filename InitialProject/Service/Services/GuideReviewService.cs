@@ -59,5 +59,35 @@ namespace InitialProject.Service.Services
             return guideReviews;
 
         }
+        /*public  List<GuideReview> GetReviewsForUser(int userId, int tourReservationId)
+        {
+            List<GuideReview> userReviews = new List<GuideReview>();
+
+            foreach (GuideReview guideReview in _guideReviewRepository.GetAll())
+            {
+                if (tourReservationId == userReviews.Reservation.Id && userReviews.Reservation.User.Id == userId)
+                {
+
+                }
+            }
+
+            return userReviews;
+
+        }*/
+
+        public List<GuideReview> GetReviewsForUser(int tourReservation, int userId)
+        {
+            List<GuideReview> userReviews = new List<GuideReview>();
+
+            foreach (GuideReview guideReviews in _guideReviewRepository.GetAll())
+            {
+                if (guideReviews.Reservation.Guest.Id == userId && guideReviews.Reservation.Id == tourReservation)
+                {
+                    userReviews.Add(guideReviews);
+                }
+            }
+            return userReviews;
+        }
+
     }
 }
