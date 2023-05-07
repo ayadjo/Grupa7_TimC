@@ -16,13 +16,16 @@ using System.Windows.Shapes;
 using InitialProject.Enumerations;
 using InitialProject.Domain.Models;
 using InitialProject.WPF.Views.Guest2Windows;
+using System.ComponentModel;
+using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace InitialProject.WPF.Views.Guest2Window
 {
     /// <summary>
     /// Interaction logic for ToursOverviewWindow.xaml
     /// </summary>
-    public partial class ToursOverviewWindow : UserControl   
+    public partial class ToursOverviewWindow : UserControl, IDataErrorInfo  
     {
         public ObservableCollection<Tour> Tours { get; set; }
 
@@ -80,9 +83,72 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
+            if(IsValid)
+            {
+                List<Tour> searchedTours = _tourController.SearchTours(Country, City, Languages, NumberOfPeople, Duration);
+                RefreshTours(searchedTours);
+            }
+            else
+            {
+                MessageBox.Show(Error);
+            }
+        }
 
-            List<Tour> searchedTours = _tourController.SearchTours(Country,City,Languages,NumberOfPeople,Duration);
-            RefreshTours(searchedTours);
+        //Validacija
+
+        private Regex _StringRegex = new Regex("[A-Z]?[a-z]* || ^$");
+        private Regex _IntRegex = new Regex("[1-9]* || ^$");
+
+        public string Error => null;
+
+        public string this[string columnName]
+        {
+            get
+            {
+                if (columnName == "Country")
+                {
+                    Match match = _StringRegex.Match(Country);
+                    if (!match.Success)
+                        return validationMessage.Text ="Pogrešan format";
+                    else
+                        validationMessage.Text = string.Empty;
+                }
+                else if (columnName == "City")
+                {
+                    
+                }
+                else if (columnName == "NumberOfPeople")
+                {
+                    
+                }
+                else if (columnName == "Language")
+                {
+                    
+                }
+                else if (columnName == "Duration")
+                {
+
+                }
+
+
+                return null;
+            }
+        }
+
+        private readonly string[] _validatedProperties = { "Country", "City", "NumberOfPeople", "Language", "Duration" };
+
+        public bool IsValid
+        {
+            get
+            {
+                foreach (var property in _validatedProperties)
+                {
+                    if (this[property] != null)
+                        return false;
+                }
+
+                return true;
+            }
         }
 
     }

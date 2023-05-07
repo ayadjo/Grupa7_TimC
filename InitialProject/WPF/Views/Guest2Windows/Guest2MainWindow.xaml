@@ -58,7 +58,57 @@
             </WrapPanel>
         </Button>
 
-        <ContentControl x:Name="content" HorizontalAlignment="Left" Margin="234,0,0,0" VerticalAlignment="Center" Width="764" Height="584"/>
+        <StackPanel Orientation="Horizontal" Margin="860,0,0,511">
+            <Button x:Name="languageSerbian" HorizontalContentAlignment="Center" Width="50" Height="30" VerticalAlignment="Top" BorderBrush="#DFFDFF" Background="#DFFDFF">
+                <Button.Content>
+                    <WrapPanel>
+                        <!--<Image Source="/Resources/Images/transparency.png" Height="28" Width="28"/>-->
+                        <TextBlock TextDecorations="Underline">srpski</TextBlock>
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="languageEnglish" HorizontalContentAlignment="Center" Width="60" Height="30" VerticalAlignment="Top" BorderBrush="#DFFDFF" Background="#DFFDFF">
+                <Button.Content>
+                    <WrapPanel>
+                        <!--<Image Source="/Resources/Images/transparency.png" Height="28" Width="28"/>-->
+                        <TextBlock TextDecorations="Underline">engleski</TextBlock>
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+
+        
+
+        <ToggleButton x:Name="ToggleButton"  Foreground="White"
+                         Height="30" Width="60" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90,0,0,20">
+            <ToggleButton.Template>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="B1" Background="Black"
+                                CornerRadius="17" Padding="5">
+                        <Border x:Name="B2" Background="White"
+                                    Width="{TemplateBinding Height}"
+                                    CornerRadius="12" HorizontalAlignment="Left">
+                            <TextBlock x:Name="T1" Text="OFF" Foreground="Black" FontSize="10"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextAlignment="Center"/>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="B2" Property="HorizontalAlignment" Value="Right"/>
+                            <Setter TargetName="B2" Property="Background" Value="Black" />
+                            <Setter TargetName="B1" Property="Background" Value="White" />
+                            <Setter TargetName="T1" Property="Text" Value="ON" />
+                            <Setter TargetName="T1" Property="Foreground" Value="White"/>
+                            <Setter TargetName="T1" Property="FontSize" Value="10"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </ToggleButton.Template>
+        </ToggleButton>
+
+        <ContentControl x:Name="content" HorizontalAlignment="Left" Margin="234,50,0,0" VerticalAlignment="Center" Width="764" Height="540"/>
 
     </Grid>
 </Window>

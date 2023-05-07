@@ -95,6 +95,7 @@
     <None Remove="Resources\Images\passport.png" />
     <None Remove="Resources\Images\people.png" />
     <None Remove="Resources\Images\photo.png" />
+    <None Remove="Resources\Images\picture.png" />
     <None Remove="Resources\Images\picture1.jpg" />
     <None Remove="Resources\Images\point.png" />
     <None Remove="Resources\Images\question-mark.png" />
@@ -114,6 +115,12 @@
     <None Remove="Resources\Images\user.png" />
     <None Remove="Resources\Images\world-globe.png" />
     <None Remove="Resources\Images\worldTour.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\picture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
