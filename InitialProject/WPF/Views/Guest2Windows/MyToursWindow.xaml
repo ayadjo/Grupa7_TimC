@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
         d:DesignHeight="584" d:DesignWidth="764">
-    <StackPanel Background="#BBDDE6">
+    <StackPanel Background="#DFFDFF">
 
-        <StackPanel Orientation="Horizontal" Margin="30,40,30,25" Width="396" Height="90" >
+        <StackPanel Orientation="Horizontal" Margin="30,20,30,25" Width="396" Height="90" >
             <Image Source="/Resources/Images/travel-itinerary.png" Height="60" Width="128"/>
             <Image Source="/Resources/Images/adventure.png" Height="90" Width="140"/>
             <Image Source="/Resources/Images/location-pin.png" Height="60" Width="128"/>
@@ -17,7 +17,7 @@
         <DataGrid 
                   ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="0,0,10,-100" Height="346" Width="700">
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="0,0,10,-100" Height="300" Width="700">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Tour.Name}" Width="100"></DataGridTextColumn>
                 <DataGridTextColumn Header="Država" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>

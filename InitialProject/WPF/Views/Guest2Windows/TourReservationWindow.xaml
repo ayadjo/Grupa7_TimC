@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Window"
         mc:Ignorable="d"
         Title="Rezervacija tura" Height="550" Width="600" WindowStartupLocation="CenterScreen">
-    <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Vertical" Background="#DFFDFF">
 
         <StackPanel Orientation="Horizontal" Width="582" Height="402">
 
