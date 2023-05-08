@@ -21,7 +21,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
     /// <summary>
     /// Interaction logic for MyToursWindow.xaml
     /// </summary>
-    public partial class MyToursWindow : UserControl, INotifyPropertyChanged
+    public partial class MyToursWindow : INotifyPropertyChanged
     { 
         public ObservableCollection<TourEvent> TourEvents { get; set; }
 
