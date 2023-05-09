@@ -20,6 +20,7 @@ using System.ComponentModel;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 
+
 namespace InitialProject.WPF.Views.Guest2Window
 {
     /// <summary>
@@ -29,7 +30,11 @@ namespace InitialProject.WPF.Views.Guest2Window
     {
         public ObservableCollection<Tour> Tours { get; set; }
 
+        public ObservableCollection<Tour> Images { get; set; }
+
         public TourController _tourController;
+
+        public ImageController _imageController;
 
         public string Country { get; set; }
 
@@ -42,6 +47,7 @@ namespace InitialProject.WPF.Views.Guest2Window
         public string NumberOfPeople { get; set; }
 
         public Tour SelectedTour { get; set; }
+
         public ToursOverviewWindow()
         {
             InitializeComponent();
@@ -51,6 +57,8 @@ namespace InitialProject.WPF.Views.Guest2Window
             _tourController = new TourController();
 
             Tours = new ObservableCollection<Tour>(_tourController.GetAll());
+
+
             Country = "";
             City = "";
             Languages = "";
@@ -96,46 +104,36 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         //Validacija
 
-        private Regex _StringRegex = new Regex("[A-Z]?[a-z]* || ^$");
-        private Regex _IntRegex = new Regex("[1-9]* || ^$");
 
         public string Error => null;
-
         public string this[string columnName]
         {
             get
             {
-                if (columnName == "Country")
+                if (columnName == "Duration")
                 {
-                    Match match = _StringRegex.Match(Country);
-                    if (!match.Success)
-                        return validationMessage.Text ="Pogrešan format";
-                    else
-                        validationMessage.Text = string.Empty;
-                }
-                else if (columnName == "City")
-                {
-                    
-                }
-                else if (columnName == "NumberOfPeople")
-                {
-                    
-                }
-                else if (columnName == "Language")
-                {
-                    
-                }
-                else if (columnName == "Duration")
-                {
-
+                    int duration;
+                    if (!int.TryParse(Duration, out duration) || duration <= 0)
+                    {
+                        return "Pozitivan broj!";
+                    }
                 }
 
+                if (columnName == "NumberOfPeople")
+                {
+                    int maxGuests;
+                    if (!int.TryParse(NumberOfPeople, out maxGuests) || maxGuests <= 0)
+                    {
+                        return "Pozitivan broj!";
+                    }
+                }
 
                 return null;
-            }
-        }
 
-        private readonly string[] _validatedProperties = { "Country", "City", "NumberOfPeople", "Language", "Duration" };
+            }
+
+        }
+        private readonly string[] _validatedProperties = { "Duration", "NumberOfPeople" };
 
         public bool IsValid
         {

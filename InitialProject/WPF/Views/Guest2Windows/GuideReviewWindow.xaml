@@ -19,9 +19,9 @@
     <Grid Background="#DFFDFF">
         <StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Margin="0,20,0,0" >
-                <Image Source="/Resources/Images/education.png"  Height="20" Width="35" />
+                <Image Source="/Resources/Images/Guest2/education.png"  Height="20" Width="35" />
                 <Label Content="Znanje vodiča" Width="100"></Label>
-                <RadioButton Name="knowledge1" Content="1" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0" ></RadioButton>
+                <RadioButton Name="knowledge1" Content="1" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0" IsChecked="True"></RadioButton>
                 <RadioButton Name="knowledge2" Content="2" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0" ></RadioButton>
                 <RadioButton Name="knowledge3" Content="3" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0" ></RadioButton>
                 <RadioButton Name="knowledge4" Content="4" Checked="SetReviewForGuideKnowledge" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0" ></RadioButton>
@@ -29,9 +29,9 @@
             </StackPanel>
             <TextBlock x:Name="validationMessage" Foreground="Red" Margin="180,1,0,5" Height="12" FontSize="10"/>
             <StackPanel Orientation="Horizontal" Width="300" >
-                <Image Source="/Resources/Images/translation.png"  Height="20" Width="35" />
+                <Image Source="/Resources/Images/Guest2/translation.png"  Height="20" Width="35" />
                 <Label Content="Jezik vodiča" Width="100"></Label>
-                <RadioButton Name="language1" Content="1" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
+                <RadioButton Name="language1" Content="1" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0" IsChecked="True"></RadioButton>
                 <RadioButton Name="language2" Content="2" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
                 <RadioButton Name="language3" Content="3" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
                 <RadioButton Name="language4" Content="4" Checked="SetReviewForGuideLanguage" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
@@ -39,7 +39,7 @@
             </StackPanel>
             <TextBlock x:Name="validationMessageLanguage" Foreground="Red" Margin="180,1,0,5" Height="12" FontSize="10"/>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,15">
-                <Image Source="/Resources/Images/diversity.png"  Height="20" Width="35" />
+                <Image Source="/Resources/Images/Guest2/diversity.png"  Height="20" Width="35" />
                 <Label Content="Zanimljivost ture" Width="100"></Label>
                 <RadioButton Name="interestingness1" Content="1" Checked="SetReviewForGuideInterestingness" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0" IsChecked="True"></RadioButton>
                 <RadioButton Name="interestingness2" Content="2" Checked="SetReviewForGuideInterestingness" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Margin="0,0,3,0"></RadioButton>
@@ -48,7 +48,7 @@
                 <RadioButton Name="interestingness5" Content="5" Checked="SetReviewForGuideInterestingness" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" Margin="0,0,0,10">
-                <Image Source="/Resources/Images/picture.png"  Height="20" Width="35" />
+                <Image Source="/Resources/Images/Guest2/picture.png"  Height="20" Width="35" />
                 <Label Content="Dodaj sliku" Width="100" Height="27"></Label>
                 <TextBox Text="{Binding Url, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="90" Margin="0,0,13,0" Height="27"></TextBox>
                 <Button x:Name="AddImageButton" Click="AddImageButton_Click" Content="+" Width="27" Background="White" FontWeight="Bold"></Button>
@@ -67,13 +67,13 @@
                 </DataGrid>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="300" >
-                <Image Source="/Resources/Images/comment.png"  Height="20" Width="35" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                <Image Source="/Resources/Images/Guest2/comment.png"  Height="20" Width="35" VerticalAlignment="Top" Margin="0,5,0,0"/>
                 <Label Content="Komentar" Width="100"></Label>
                 <TextBox Width="165" Height="59" Text="{Binding Path=Comment, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}"></TextBox>
             </StackPanel>
             <Button x:Name="AddReviewButton" Width="80" Height="30" HorizontalAlignment="Right" Margin="0,20,42,0" Click="AddReviewButton_Click" Background="#FFFFFF">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/Images/star.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/star.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <ContentControl Content="Oceni"></ContentControl>
                 </StackPanel>
             </Button>

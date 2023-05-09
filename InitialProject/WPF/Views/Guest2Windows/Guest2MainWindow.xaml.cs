@@ -31,6 +31,8 @@ namespace InitialProject.WPF.Views.Guest2Windows
             InitializeComponent();
             this._ViewModel = new Guest2MainWindowViewModel(this.frame.NavigationService);
             this.DataContext = this._ViewModel;
+
+
         }
 
     }

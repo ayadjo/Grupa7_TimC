@@ -86,6 +86,10 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
             GuestFullName = SignInForm.LoggedUser.FirstName + " " + SignInForm.LoggedUser.LastName;
         }
+
+        public Guest2MainWindowViewModel()
+        {
+        }
         #endregion
 
     }

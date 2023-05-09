@@ -22,7 +22,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
     /// <summary>
     /// Interaction logic for GuideReviewWindow.xaml
     /// </summary>
-    public partial class GuideReviewWindow : Window, INotifyPropertyChanged, IDataErrorInfo
+    public partial class GuideReviewWindow : Window, INotifyPropertyChanged   //, IDataErrorInfo
     {
         public ObservableCollection<int> Grades { get; set; }
         public ObservableCollection<string> Images { get; set; }
@@ -148,16 +148,12 @@ namespace InitialProject.WPF.Views.Guest2Windows
                 }
             }
 
-            if (IsValid)
-            {
-                _guideReviewController.Save(guideReview);
-                MessageBox.Show("Uspešno ste ocenili!");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Podaci nisu dobro popunjeni!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
+            _guideReviewController.Save(guideReview);
+            MessageBox.Show("Uspešno ste ocenili!");
+            this.Close();
+            
+            
         }
 
 
@@ -232,7 +228,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
         //Validacija
 
-        public string Error => null;
+        /*public string Error => null;
 
         public string this[string columnName]
         {
@@ -260,7 +256,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
                     if (string.IsNullOrEmpty(SelectedInterestingness.ToString()))
                         return "Ovo polje ne sme biti prazno";
                 }
-                else if (columnName == "Comment")
+                if (columnName == "Comment")
                 {
                     if (string.IsNullOrEmpty(Comment))
                         return "Ovo polje ne sme biti prazno";
@@ -271,7 +267,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
             }
         }
 
-        private readonly string[] _validatedProperties = { "Knowledge", "Language", "Interestingness", "Comment" };
+        private readonly string[] _validatedProperties = { "Comment" };
 
         public bool IsValid
         {
@@ -285,6 +281,6 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
                 return true;
             }
-        }
+        }*/
     }
 }
