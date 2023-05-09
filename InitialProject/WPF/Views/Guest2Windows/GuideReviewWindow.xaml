@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
         Title="Oceni turu i vodiča" Height="450" Width="400" WindowStartupLocation="CenterScreen">
+    <Window.Icon>
+        <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
+    </Window.Icon>
     <Window.Resources>
         <ControlTemplate x:Key="ValidationTemplate">
             <StackPanel>

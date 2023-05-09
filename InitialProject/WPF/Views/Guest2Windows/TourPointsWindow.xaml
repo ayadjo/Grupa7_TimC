@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
         Title="Ključne tačke" Height="250" Width="300" WindowStartupLocation="CenterScreen">
+    <Window.Icon>
+        <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
+    </Window.Icon>
     <Grid Background="#DFFDFF">
         <StackPanel Orientation="Horizontal" Width="220" Height="150">
             <StackPanel Orientation="Vertical" Margin="0,25,0,0">

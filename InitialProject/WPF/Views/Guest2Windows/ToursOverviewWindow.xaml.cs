@@ -19,6 +19,7 @@ using InitialProject.WPF.Views.Guest2Windows;
 using System.ComponentModel;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
+using System.Data;
 
 
 namespace InitialProject.WPF.Views.Guest2Window
@@ -47,6 +48,7 @@ namespace InitialProject.WPF.Views.Guest2Window
         public string NumberOfPeople { get; set; }
 
         public Tour SelectedTour { get; set; }
+
 
         public ToursOverviewWindow()
         {
@@ -100,6 +102,35 @@ namespace InitialProject.WPF.Views.Guest2Window
             {
                 MessageBox.Show(Error);
             }
+        }
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj == null) yield return (T)Enumerable.Empty<T>();
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                DependencyObject ithChild = VisualTreeHelper.GetChild(depObj, i);
+                if (ithChild == null) continue;
+                if (ithChild is T t) yield return t;
+                foreach (T childOfChild in FindVisualChildren<T>(ithChild)) yield return childOfChild;
+            }
+        }
+
+        private void RefreshButtons()
+        {
+            foreach (Button tb in FindVisualChildren<Button>(this))
+            {
+                tb.Background = Brushes.LightGray;
+            }
+        }
+
+        private void SelectClick(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int tourId = Convert.ToInt32(button.Tag);
+            SelectedTour = _tourController.Get(tourId);
+            RefreshButtons();
+            button.Background = Brushes.Blue;
         }
 
         //Validacija

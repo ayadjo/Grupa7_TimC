@@ -35,5 +35,12 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
         }
 
+        private void Close_click(object sender, RoutedEventArgs e)
+        {
+            SignInForm signInForm = new SignInForm();
+            signInForm.Show();
+
+            Close();
+        }
     }
 }

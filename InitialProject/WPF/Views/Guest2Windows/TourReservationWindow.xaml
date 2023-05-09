@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Window"
         mc:Ignorable="d"
         Title="Rezervacija tura" Height="550" Width="620" WindowStartupLocation="CenterScreen">
+    <Window.Icon>
+        <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
+    </Window.Icon>
     <StackPanel Orientation="Vertical" Background="#DFFDFF">
 
         <StackPanel Orientation="Horizontal" Width="582" Height="402">
@@ -63,7 +66,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Margin="0,30,0,0" Width="205">
-                <Image Source="{Binding SelectedTourEvent.Tour.Image}" Width="150" Height="100" Margin="0,0,0,10" VerticalAlignment="Center"/>
+                <Image Source="{Binding SelectedTourEvent.Tour.Images[0].Url}" Width="150" Height="100" Margin="0,0,0,10" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
                     <Image Source="/Resources/Images/Guest2/group.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Broj ljudi:" FontWeight="Bold" Margin="0,0,10,0"/>

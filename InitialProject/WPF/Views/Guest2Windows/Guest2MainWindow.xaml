@@ -114,10 +114,12 @@
                     <Image Source="/Resources/Images/Guest2/user.png" Height="50" Width="50"/>
                     <TextBlock Text="{Binding GuestFullName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,5,0,0" Width="135" VerticalAlignment="Center" TextAlignment="Center"/>
                     <Button Height="24" Width="90" Command="{Binding LogOutCommand}" DockPanel.Dock="Bottom" Margin="0,10,0,0" Background="#FFFFFF" HorizontalAlignment="Center">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/Images/Guest2/logout.png" Width="15" Height="15" Margin="0,0,5,0" />
-                            <ContentControl Content="Odjavi se"></ContentControl>
-                        </StackPanel>
+                        <Button Click="Close_click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/Images/Guest2/logout.png" Width="15" Height="15" Margin="0,0,5,0" />
+                                <TextBlock Text="Odjavi se"></TextBlock>
+                            </StackPanel>
+                        </Button>
                     </Button>
                 </StackPanel>
             </Label.Content>

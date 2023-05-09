@@ -65,7 +65,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             if (CloseAction != null)
             {
                 CloseAction();   //????
-            }           
+            }  
         }
 
         private bool CanExecute_NavigateCommand(object obj)

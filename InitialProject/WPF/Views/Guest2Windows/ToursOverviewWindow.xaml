@@ -103,10 +103,10 @@
             </StackPanel>
         </Button>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Width="720" Height="300" Margin="0,0,25,55">
-            <WrapPanel Orientation="Horizontal">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Width="720" Height="300" Margin="0,0,25,55" x:Name="aaa">
+            <WrapPanel Orientation="Horizontal" >
 
-                <ItemsControl ItemsSource="{Binding Path=Tours}" >
+                <ItemsControl ItemsSource="{Binding Path=Tours}" Name="bbb" >
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel></WrapPanel>
@@ -123,23 +123,28 @@
                                             <Setter Property="Border.Background" Value="LightGray"></Setter>
                                             <Style.Triggers>
                                                 <Trigger Property="Border.IsMouseOver" Value="True">
-                                                    <Setter Property="Border.Background" Value="DarkBlue"></Setter>
+                                                    <Setter Property="Border.Background" Value="RosyBrown"></Setter>
                                                 </Trigger>
+                                               
                                             </Style.Triggers>
 
                                         </Style>
                                     </Border.Style>
 
                                     <DockPanel>
-                                        <DockPanel DockPanel.Dock="Top" Margin="15,15,15,0">
-                                            <Image  Width="150" Height="100" Source="{Binding Images[0].Url}" Margin="0,0,0,0" Cursor="Hand">
 
-                                            </Image>
+                                        <DockPanel DockPanel.Dock="Top" Margin="15,15,15,0">
+                                            <Button x:Name="AButton" Tag="{Binding Id}" Click="SelectClick">
+                                                <Image  Width="150" Height="100" Source="{Binding Images[0].Url}" Margin="0,0,0,0" Cursor="Hand">
+
+                                                </Image>
+
+                                            </Button>
                                         </DockPanel>
                                         <DockPanel DockPanel.Dock="Bottom">
                                             <TextBlock Text="{Binding Name}" TextAlignment="Center"></TextBlock>
                                         </DockPanel>
-                                        
+
                                     </DockPanel>
 
                                 </Border>
