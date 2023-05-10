@@ -22,7 +22,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
     /// <summary>
     /// Interaction logic for GuideReviewWindow.xaml
     /// </summary>
-    public partial class GuideReviewWindow : Window, INotifyPropertyChanged   //, IDataErrorInfo
+    public partial class GuideReviewWindow : Window, INotifyPropertyChanged, IDataErrorInfo
     {
         public ObservableCollection<int> Grades { get; set; }
         public ObservableCollection<string> Images { get; set; }
@@ -148,12 +148,18 @@ namespace InitialProject.WPF.Views.Guest2Windows
                 }
             }
 
-            
-            _guideReviewController.Save(guideReview);
-            MessageBox.Show("Uspešno ste ocenili!");
-            this.Close();
-            
-            
+
+            if (IsValid)
+            {
+                _guideReviewController.Save(guideReview);
+                MessageBox.Show("Uspešno ste ocenili!");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Neispravno uneti podaci!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
 
@@ -228,34 +234,13 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
         //Validacija
 
-        /*public string Error => null;
+        public string Error => null;
 
         public string this[string columnName]
         {
             get
             {
-                if (columnName == "Knowledge")
-                {
-                    if (knowledge1.IsChecked == false && knowledge2.IsChecked == false && knowledge3.IsChecked == false && knowledge4.IsChecked == false && knowledge5.IsChecked == false)
-                    {
-                        return validationMessage.Text = "Ovo polje je obavezno.";     
-                    }
-                    else
-                    {
-                        validationMessage.Text = string.Empty;
-                    }
-                        
-                }
-                else if (columnName == "Language")
-                {
-                    if (string.IsNullOrEmpty(SelectedLanguage.ToString()))
-                        return validationMessageLanguage.Text = "Ovo polje je obavezno.";
-                }
-                else if (columnName == "Interestingness")
-                {
-                    if (string.IsNullOrEmpty(SelectedInterestingness.ToString()))
-                        return "Ovo polje ne sme biti prazno";
-                }
+
                 if (columnName == "Comment")
                 {
                     if (string.IsNullOrEmpty(Comment))
@@ -281,6 +266,6 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
                 return true;
             }
-        }*/
+        }
     }
 }

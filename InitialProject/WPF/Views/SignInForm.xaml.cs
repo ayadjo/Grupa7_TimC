@@ -63,6 +63,8 @@ public partial class SignInForm : Window
 
         _accommodationReservationController = new AccommodationReservationController();
         _notificationController = new NotificationController();
+
+        usernameTextBox.Focus();
     }
 
     private void SignIn(object sender, RoutedEventArgs e)

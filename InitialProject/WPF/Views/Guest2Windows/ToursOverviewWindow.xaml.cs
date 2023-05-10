@@ -100,7 +100,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             }
             else
             {
-                MessageBox.Show(Error);
+                MessageBox.Show("Neispravno popunjeni podaci", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -130,17 +130,40 @@ namespace InitialProject.WPF.Views.Guest2Window
             int tourId = Convert.ToInt32(button.Tag);
             SelectedTour = _tourController.Get(tourId);
             RefreshButtons();
-            button.Background = Brushes.Blue;
+            button.Background = Brushes.RosyBrown;
         }
 
         //Validacija
 
+        private Regex _CountryRegex = new Regex("[A-Z][a-z]*");
 
+        private Regex _LanguageRegex = new Regex("[a-z]*");
         public string Error => null;
         public string this[string columnName]
         {
             get
             {
+                if (columnName == "Country")
+                {
+                        
+                    Match match = _CountryRegex.Match(Country);
+                    if (!match.Success)
+                        return "Samo slova!";
+                }
+                if (columnName == "City")
+                {
+
+                    Match match = _CountryRegex.Match(Country);
+                    if (!match.Success)
+                        return "Samo slova!";
+                }
+                if (columnName == "Language")
+                {
+
+                    Match match = _LanguageRegex.Match(Country);
+                    if (!match.Success)
+                        return "Samo slova!";
+                }
                 if (columnName == "Duration")
                 {
                     int duration;
@@ -164,7 +187,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             }
 
         }
-        private readonly string[] _validatedProperties = { "Duration", "NumberOfPeople" };
+        private readonly string[] _validatedProperties = { "Country", "City", "Language","Duration", "NumberOfPeople" };
 
         public bool IsValid
         {

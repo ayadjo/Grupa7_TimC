@@ -120,12 +120,12 @@
                                     <Border.Style>
                                         <Style>
 
-                                            <Setter Property="Border.Background" Value="LightGray"></Setter>
+                                            <Setter Property="Border.Background" Value="#DFFDFF"></Setter>
                                             <Style.Triggers>
                                                 <Trigger Property="Border.IsMouseOver" Value="True">
-                                                    <Setter Property="Border.Background" Value="RosyBrown"></Setter>
+                                                    <Setter Property="Border.Background" Value="#DFFDFF"></Setter>
                                                 </Trigger>
-                                               
+                                                
                                             </Style.Triggers>
 
                                         </Style>

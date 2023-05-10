@@ -75,6 +75,21 @@ namespace InitialProject.WPF.Views.Guest2Window
             }
         }
 
+        private TourPoint _tourPoint;
+
+        public TourPoint TourPoint
+        {
+            get => _tourPoint;
+            set
+            {
+                if (_tourPoint != value)
+                {
+                    _tourPoint = value;
+                    OnPropertyChanged("TourPoint");
+                }
+            }
+        }
+
         private Voucher _selectedVoucher;
 
         public Voucher SelectedVoucher
@@ -108,6 +123,8 @@ namespace InitialProject.WPF.Views.Guest2Window
 
             TourEvents = new ObservableCollection<TourEvent>(_tourEventController.GetTourEventsNotPassedForTour(tour));
             Vouchers = new ObservableCollection<Voucher>(_voucherController.VoucherForUser(SignInForm.LoggedUser.Id));
+
+            numberOfPeopleTextBox.Focus();
         }
 
         private void Reserve_Click(object sender, RoutedEventArgs e)

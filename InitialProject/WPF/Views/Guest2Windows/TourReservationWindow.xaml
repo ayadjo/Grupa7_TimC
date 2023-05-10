@@ -70,7 +70,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
                     <Image Source="/Resources/Images/Guest2/group.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Broj ljudi:" FontWeight="Bold" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding NumberOfPeople}" Width="50"/>
+                    <TextBox x:Name="numberOfPeopleTextBox" Text="{Binding NumberOfPeople}" Width="50"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center" Width="120">
                     <TextBlock Text="{Binding AvailableSpotsText, UpdateSourceTrigger=PropertyChanged}"/>
@@ -91,8 +91,8 @@
 
                 <Button Height="30" Width="130" Background="#DFFDFF" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#DFFDFF">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Images/Guest2/question-mark.png" Width="15" Height="15" Margin="0,0,5,0" />
-                        <ContentControl Content="Izveštaj o vaučerima"></ContentControl>
+                        <Image Source="/Resources/Images/Guest2/pdf.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <ContentControl Content="Izveštaj o vaučerima" FontSize="10"></ContentControl>
                     </StackPanel>
                 </Button>
 
