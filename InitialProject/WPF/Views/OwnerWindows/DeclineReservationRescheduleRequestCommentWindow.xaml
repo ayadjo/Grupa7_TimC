@@ -6,12 +6,21 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.OwnerWindows"
         mc:Ignorable="d"
         Title="Komentar" Height="300" Width="350" WindowStartupLocation="CenterScreen">
-    <Grid>
+    
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding FinishCommand}" Key="S" Modifiers="Ctrl" />
+    </Window.InputBindings>
+    <Grid Background="#5E4B64">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Height="100" Width="280" Text="{Binding Path=Comment}"/>
-        <Button x:Name="AddCommentButton" Grid.Row="1" Height="50" Width="100" Content="Unesi komentar" Click="AddCommentButton_Click"/>
+        <TextBox Name="CommentTextBox" Grid.Row="0" Height="100" Width="280" Text="{Binding Path=Comment}" Background="{StaticResource OwnerRectangleFill}" Foreground="White"/>
+        <Button x:Name="AddCommentButton"  Command="{Binding FinishCommand}" Style="{StaticResource AccommodationPinkButton}" Margin="112,204,112,22" Height="58" Grid.RowSpan="2">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Width="104">
+                <TextBlock Text="Završi" HorizontalAlignment="Center"/>
+                <TextBlock Text="CTRL + S" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>

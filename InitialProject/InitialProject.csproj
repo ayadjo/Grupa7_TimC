@@ -70,7 +70,9 @@
     <None Remove="Resources\Images\15.jpg" />
     <None Remove="Resources\Images\7437.jpg" />
     <None Remove="Resources\Images\77150.jpg" />
+    <None Remove="Resources\Images\add-128.png" />
     <None Remove="Resources\Images\adventure.png" />
+    <None Remove="Resources\Images\arrow-demo.png" />
     <None Remove="Resources\Images\camping.png" />
     <None Remove="Resources\Images\car.png" />
     <None Remove="Resources\Images\check.png" />
@@ -79,6 +81,7 @@
     <None Remove="Resources\Images\dateAndTime.png" />
     <None Remove="Resources\Images\destination.png" />
     <None Remove="Resources\Images\diversity.png" />
+    <None Remove="Resources\Images\down-arrow.png" />
     <None Remove="Resources\Images\duration.png" />
     <None Remove="Resources\Images\earth.png" />
     <None Remove="Resources\Images\education.png" />
@@ -86,10 +89,13 @@
     <None Remove="Resources\Images\graph.png" />
     <None Remove="Resources\Images\group.png" />
     <None Remove="Resources\Images\hiking.png" />
+    <None Remove="Resources\Images\home.png" />
+    <None Remove="Resources\Images\info-2-48.png" />
     <None Remove="Resources\Images\info.png" />
     <None Remove="Resources\Images\language.png" />
     <None Remove="Resources\Images\languages.png" />
     <None Remove="Resources\Images\location-pin.png" />
+    <None Remove="Resources\Images\logout-32.png" />
     <None Remove="Resources\Images\logout.png" />
     <None Remove="Resources\Images\osakaKyoto.png" />
     <None Remove="Resources\Images\passport.png" />
@@ -98,10 +104,12 @@
     <None Remove="Resources\Images\picture.png" />
     <None Remove="Resources\Images\picture1.jpg" />
     <None Remove="Resources\Images\point.png" />
+    <None Remove="Resources\Images\profile-owner.png" />
     <None Remove="Resources\Images\question-mark.png" />
     <None Remove="Resources\Images\questionnaire.png" />
     <None Remove="Resources\Images\search.png" />
     <None Remove="Resources\Images\skyscraper.png" />
+    <None Remove="Resources\Images\star-owner.png" />
     <None Remove="Resources\Images\star.png" />
     <None Remove="Resources\Images\svet.png" />
     <None Remove="Resources\Images\tour.png" />
@@ -113,11 +121,31 @@
     <None Remove="Resources\Images\travel-map2.png" />
     <None Remove="Resources\Images\travel.png" />
     <None Remove="Resources\Images\user.png" />
+    <None Remove="Resources\Images\white-down-arrow-png.png" />
+    <None Remove="Resources\Images\woman.png" />
     <None Remove="Resources\Images\world-globe.png" />
     <None Remove="Resources\Images\worldTour.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\add-128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\arrow-demo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\down-arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\info-2-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\logout-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\picture.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -125,6 +153,12 @@
 
   <ItemGroup>
     <Resource Include="Resources\Images\info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\profile-owner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\star-owner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -246,6 +280,12 @@
   <ItemGroup>
     <Resource Include="Resources\Images\travel-itinerary.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\white-down-arrow-png.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\woman.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

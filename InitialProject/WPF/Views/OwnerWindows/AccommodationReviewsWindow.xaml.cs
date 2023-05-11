@@ -28,16 +28,29 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        public RelayCommand CloseCommand { get; set; }
+
+   
+
 
         public AccommodationReviewsWindow(Accommodation accommodation)
         {
             InitializeComponent();
             this.DataContext = this;
 
+            CloseCommand = new RelayCommand(CancelButton_Click);
+   
             _accommodationOwnerReviewController = new AccommodationOwnerReviewController();
 
             AccommodationReviews = new ObservableCollection<AccommodationOwnerReview>(_accommodationOwnerReviewController.GetAllValidReviews(accommodation));
+            
            
+        }
+
+
+        private void CancelButton_Click(object sender)
+        {
+            Close();
         }
     }
 }

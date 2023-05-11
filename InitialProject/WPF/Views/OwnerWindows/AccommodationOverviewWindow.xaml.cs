@@ -21,39 +21,81 @@ namespace InitialProject.WPF.Views.OwnerWindows
     /// <summary>
     /// Interaction logic for AccommodationOverviewWindow.xaml
     /// </summary>
-    public partial class AccommodationOverviewWindow : Window
+    public partial class AccommodationOverviewWindow : UserControl
     {
 
         public ObservableCollection<Accommodation> Accommodations { get; set; }
         public AccommodationController _accommodationController;
 
         public Accommodation SelectedAccommodation { get; set; }
+
+        public RelayCommand RegisterNewAccommodationCommand { get; set; }
+        public RelayCommand ReviewsCommand { get; set; }
+
         public AccommodationOverviewWindow()
         {
             InitializeComponent();
             this.DataContext = this;
 
+            RegisterNewAccommodationCommand = new RelayCommand(RegistenNewAccommodationButton_Click, CanRegisterNewAccommodation);
+            ReviewsCommand = new RelayCommand(AccommodationReviewsButton_Click, CanReview);
+
             _accommodationController = new AccommodationController();
 
-            Accommodations = new ObservableCollection<Accommodation>(_accommodationController.GetByOwner(SignInForm.LoggedUser.Id)); //??
+            Accommodations = new ObservableCollection<Accommodation>(_accommodationController.GetByOwner(SignInForm.LoggedUser.Id)); 
+            if(Accommodations.Count != 0)
+            {
+                SelectedAccommodation = Accommodations.ElementAt(0);
+            }
+
+          
+
+
+        }
+        void UserControl1_Loaded(object sender, RoutedEventArgs e)
+        {
+            Window window = Window.GetWindow(this);
+            foreach (InputBinding ib in this.InputBindings)
+            {
+                window.InputBindings.Add(ib);
+            }
         }
 
-        private void RegistenNewAccommodationButton_Click(object sender, RoutedEventArgs e)
+        public void Refresh()
+        {
+            Accommodations.Clear();
+            foreach(Accommodation accommodation in _accommodationController.GetByOwner(SignInForm.LoggedUser.Id))
+            {
+                Accommodations.Add(accommodation);
+            }
+        }
+
+
+
+        private bool CanRegisterNewAccommodation(object param)
+        {
+            return MainWindow.SelectedTab == 1;
+        }
+
+        private void RegistenNewAccommodationButton_Click(object sender)
         {
             RegisterNewAccommodation NewAccommodation = new RegisterNewAccommodation();
-            NewAccommodation.Show();
-            Close();
+            NewAccommodation.ShowDialog();
+
+            Refresh();
+            
         }
 
-        private void AccommodationReviewsButton_Click(object sender, RoutedEventArgs e)
+        private bool CanReview(object param)
         {
-            if(SelectedAccommodation == null)
-            {
-                return;
-            }
+            return SelectedAccommodation != null && MainWindow.SelectedTab == 1;
+        }
+
+        private void AccommodationReviewsButton_Click(object param)
+        {
+            
             AccommodationReviewsWindow AccommodationReviews = new AccommodationReviewsWindow(SelectedAccommodation);
             AccommodationReviews.Show();
-            //Close();
         }
     }
 }

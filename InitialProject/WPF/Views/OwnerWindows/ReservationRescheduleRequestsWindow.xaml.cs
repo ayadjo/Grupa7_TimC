@@ -21,12 +21,14 @@ namespace InitialProject.WPF.Views.OwnerWindows
     /// <summary>
     /// Interaction logic for ReservationRescheduleRequestsWindow.xaml
     /// </summary>
-    public partial class ReservationRescheduleRequestsWindow : Window, INotifyPropertyChanged
+    public partial class ReservationRescheduleRequestsWindow : UserControl, INotifyPropertyChanged
     {
         public ObservableCollection<ReservationRescheduleRequest> ReservationRescheduleRequests { get; set; }
         public ReservationRescheduleRequestController _reservationRescheduleRequestsController;
 
         public ReservationRescheduleRequest SelectedReservationRescheduleRequest { get; set; }
+
+        public RelayCommand RequestHandlingCommand { get; set; }
         public ReservationRescheduleRequestsWindow()
         {
             InitializeComponent();
@@ -34,19 +36,33 @@ namespace InitialProject.WPF.Views.OwnerWindows
             _reservationRescheduleRequestsController = new ReservationRescheduleRequestController();
 
             ReservationRescheduleRequests = new ObservableCollection<ReservationRescheduleRequest>(_reservationRescheduleRequestsController.GetAllRequestsForHandling());
+
+            RequestHandlingCommand = new RelayCommand(RequestHandlingButton_Click, CanHandle);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void RequestHandlingButton_Click(object sender, RoutedEventArgs e)
+        public void Refresh()
         {
-            if (SelectedReservationRescheduleRequest == null)
+            ReservationRescheduleRequests.Clear();
+            foreach (ReservationRescheduleRequest request in _reservationRescheduleRequestsController.GetAllRequestsForHandling())
             {
-                return;
+                ReservationRescheduleRequests.Add(request);
             }
+        }
+
+        public bool CanHandle(object param)
+        {
+            return SelectedReservationRescheduleRequest != null;
+        }
+        private void RequestHandlingButton_Click(object sender)
+        {
+            
             ReservationRescheduleRequestHandlingWindow ReservationRescheduleRequestHandling = new ReservationRescheduleRequestHandlingWindow(SelectedReservationRescheduleRequest);
-            ReservationRescheduleRequestHandling.Show();
-            Close();
+            ReservationRescheduleRequestHandling.ShowDialog();
+
+            Refresh();
+          
         }
     }
 }

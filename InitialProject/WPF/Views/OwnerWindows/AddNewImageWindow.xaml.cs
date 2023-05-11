@@ -75,7 +75,9 @@ namespace InitialProject.WPF.Views.OwnerWindows
         public ImageResource Resource { get; set; }
         public List<Image> SaveImages { get; set; }
 
-       
+        public RelayCommand FinishCommand { get; set; }
+
+        public RelayCommand AddImageCommand { get; set; }
         public AddNewImageWindow(ImageResource resource, List<Image> saveImages)
         {
             InitializeComponent();
@@ -84,16 +86,26 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
             AllImages = new ObservableCollection<Image>();
             SaveImages = saveImages;
+
+            FinishCommand = new RelayCommand(CancelButton_Click);
+ 
+            AddImageCommand = new RelayCommand(SubmitButton_Click, CanAddImage);
+          
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        public bool CanAddImage(object param)
+        {
+            return true;
+        }
+
+        private void SubmitButton_Click(object sender)
         {
             Image image = new Image(-1, Url, -1, Description, Resource);
             AllImages.Add(image);
             SaveImages.Add(image);
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender)
         {
             Close();
         }

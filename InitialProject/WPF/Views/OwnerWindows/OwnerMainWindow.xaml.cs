@@ -43,7 +43,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
         private void MyAccommodationButton_Click(object sender, RoutedEventArgs e)
         {
             AccommodationOverviewWindow AccommodationOverview = new AccommodationOverviewWindow();
-            AccommodationOverview.Show();
+            //AccommodationOverview.Show();
         }
 
 
@@ -51,14 +51,14 @@ namespace InitialProject.WPF.Views.OwnerWindows
         private void GuestsReviewButton_Click(object sender, RoutedEventArgs e)
         {
             GuestWithoutReviewWindow GuestWithoutReview = new GuestWithoutReviewWindow();
-            GuestWithoutReview.Show();
+            //GuestWithoutReview.Show();
 
         }
 
         private void ReservationRescheduleRequestsButton_Click(object sender, RoutedEventArgs e)
         {
             ReservationRescheduleRequestsWindow ReservationRescheduleRequests = new ReservationRescheduleRequestsWindow();
-            ReservationRescheduleRequests.Show();
+            //ReservationRescheduleRequests.Show();
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)

@@ -54,6 +54,8 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         public ReservationRescheduleRequest ReservationRescheduleRequest { get; set; }
 
+        public RelayCommand FinishCommand { get; set; }
+
         public DeclineReservationRescheduleRequestCommentWindow(ReservationRescheduleRequest reservationRescheduleRequest)
         {
             InitializeComponent();
@@ -63,9 +65,18 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
             ReservationRescheduleRequest = reservationRescheduleRequest;
 
+            FinishCommand = new RelayCommand(AddCommentButton_Click, CanFinish);
+
+            CommentTextBox.Focus();
+
         }
 
-        private void AddCommentButton_Click(object sender, RoutedEventArgs e)
+        public bool CanFinish(object param)
+        {
+            return true;
+        }
+
+        private void AddCommentButton_Click(object sender)
         {
 
             ReservationRescheduleRequest.Status = Enumerations.RequestStatusType.Declined;

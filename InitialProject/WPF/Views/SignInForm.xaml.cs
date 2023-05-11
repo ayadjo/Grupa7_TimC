@@ -55,6 +55,7 @@ public partial class SignInForm : Window
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    public RelayCommand SignInCommand { get; set; }
     public SignInForm()
     {
         InitializeComponent();
@@ -63,9 +64,13 @@ public partial class SignInForm : Window
 
         _accommodationReservationController = new AccommodationReservationController();
         _notificationController = new NotificationController();
+
+        SignInCommand = new RelayCommand(SignIn);
+
+        UsernameTextBox.Focus();
     }
 
-    private void SignIn(object sender, RoutedEventArgs e)
+    private void SignIn(object sender)
     {
         User user = _repository.GetByUsername(Username);
 
@@ -78,7 +83,7 @@ public partial class SignInForm : Window
                 if (user.Type == UserType.Owner)
                 {
                     int NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
-                    OwnerMainWindow OwnerMainWindow = new OwnerMainWindow();
+                    MainWindow OwnerMainWindow = new MainWindow();
                     OwnerMainWindow.Show();
                     if (NumberOfGuestsWithoutReview > 0)
                     {

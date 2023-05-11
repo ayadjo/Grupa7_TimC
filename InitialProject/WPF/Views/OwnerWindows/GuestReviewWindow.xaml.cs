@@ -29,6 +29,33 @@ namespace InitialProject.WPF.Views.OwnerWindows
         public AccommodationReservationController _accommodationReservationController;
 
         #region NotifyProperties
+        private string _guest;
+        public string Guest
+        {
+            get => _guest;
+            set
+            {
+                if (value != _guest)
+                {
+                    _guest = value;
+                    OnPropertyChanged("Guest");
+                }
+            }
+        }
+
+        private string _accommodation;
+        public string Accommodation
+        {
+            get => _accommodation;
+            set
+            {
+                if (value != _accommodation)
+                {
+                    _accommodation = value;
+                    OnPropertyChanged("Accommodation");
+                }
+            }
+        }
         private int _selectedCleanliness;
         public int SelectedCleanliness
         {
@@ -84,6 +111,10 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         #endregion
         public AccommodationReservation reservation { get; set; }
+
+        public RelayCommand FinishCommand { get; set; }
+        public RelayCommand CancelCommand { get; set; }
+
         public GuestReviewWindow(AccommodationReservation accommodationReservation)
         {
             InitializeComponent();
@@ -98,11 +129,22 @@ namespace InitialProject.WPF.Views.OwnerWindows
             Grades.Add(3);
             Grades.Add(4);
             Grades.Add(5);
+
+            Guest = reservation.Guest.FirstName + " " + reservation.Guest.LastName;
+
+            FinishCommand = new RelayCommand(AddReviewButton_Click, CanAccept);
+
+            CancelCommand = new RelayCommand(CancelButton_Click);
+       
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void AddReviewButton_Click(object sender, RoutedEventArgs e)
+        public bool CanAccept(object param)
+        {
+            return true;
+        }
+        private void AddReviewButton_Click(object sender)
         {
             GuestReview guestReview = new GuestReview() {Reservation=reservation, Cleanliness = SelectedCleanliness, Behaviour = SelectedBehaviour, Comment = Comment };
             _guestReviewController.Save(guestReview);
@@ -112,7 +154,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
              Close();
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender)
         {
             Close();
         }

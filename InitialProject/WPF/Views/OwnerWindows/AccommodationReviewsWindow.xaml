@@ -5,32 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.OwnerWindows"
         mc:Ignorable="d"
-        Title="Vlasnik" Height="625" Width="1065" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="Vlasnik" Height="450" Width="800" WindowStartupLocation="CenterScreen" >
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding CloseCommand}" Key="Esc"/>
+    </Window.InputBindings>
+    <Window.Resources>
+        <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
+            <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
+            <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
+            <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#5E4B64">
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="60"/>
             <RowDefinition/>
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="1" Height="50" FontSize="24" Margin="0,90,0,0" Content="Recenzije"/>
+        <Label Grid.Row="0" Grid.Column="1" Height="40" FontSize="20"  Content="Recenzije" Style="{StaticResource BoldLabel}" Margin="0,20,0,0"/>
         <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="False" x:Name="AccommodationReviewsDataGrid" 
                   IsReadOnly="True" SelectionMode="Single"
                   ItemsSource="{Binding Path=AccommodationReviews, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Gost" Binding="{Binding Reservation.Guest.FirstName}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="Prezime" Binding="{Binding Reservation.Guest.LastName}" Width="120" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Od" Binding="{Binding Reservation.Start}" Width="110"></DataGridTextColumn>
-                <DataGridTextColumn Header="Do" Binding="{Binding Reservation.End}" Width="110"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Reservation.Guest.FirstName}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Reservation.Guest.LastName}" Width="*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Od" Binding="{Binding Reservation.Start}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Do" Binding="{Binding Reservation.End}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Čistoća" Binding="{Binding Cleanliness}" Width="80"></DataGridTextColumn>
                 <DataGridTextColumn Header="Korektnost vlasnika" Binding="{Binding Correctness}" Width="115"></DataGridTextColumn>
                 <DataGridTextColumn Header="Komentar" Binding="{Binding Comment}" Width="*"></DataGridTextColumn>
 
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="CloseButton" Grid.Row="2" Grid.Column="1" Command="{Binding CloseCommand}" FontSize="15" Style="{StaticResource DarkButton}" Margin="456,10,0,10" >
+            <StackPanel Margin="0,0,0,0">
+                <TextBlock Text="Nazad" HorizontalAlignment="Center"/>
+                <TextBlock Text="ESC" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+        </Button>
     </Grid>
 </Window>
