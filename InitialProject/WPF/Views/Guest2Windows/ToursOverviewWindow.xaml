@@ -30,7 +30,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,10,20,5" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="-5,10,20,0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -45,7 +45,7 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" >
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Image Source="/Resources/Images/earth.png"  Height="20" Width="35" Margin="0,8,0,-5" />
+                        <Image Source="/Resources/Images/Guest2/earth.png"  Height="20" Width="35" Margin="0,8,0,-5" />
                         <Label Content="Država" Height="27" Width="50" VerticalAlignment="Center"/>
                     </StackPanel>
                     <TextBox x:Name="tbCountry" Text="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
@@ -53,7 +53,7 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
-                        <Image Source="/Resources/Images/skyscraper.png"  Height="20" Width="35" Margin="0,8,0,-5"/>
+                        <Image Source="/Resources/Images/Guest2/skyscraper.png"  Height="20" Width="35" Margin="0,8,0,-5"/>
                         <Label Content="Grad" Height="27" Width="39"/>
                     </StackPanel>
                     <TextBox x:Name="tbCity" Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
@@ -61,7 +61,7 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
-                        <Image Source="/Resources/Images/group.png"  Height="20" Width="35" Margin="0,8,0,-5"/>
+                        <Image Source="/Resources/Images/Guest2/group.png"  Height="20" Width="35" Margin="0,8,0,-5"/>
                         <Label Content="Broj ljudi" Height="27" Width="56" Margin="-3,0,0,0"/>
                     </StackPanel>
                     <TextBox x:Name="tbNumberOfPeople" Text="{Binding Path=NumberOfPeople, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
@@ -69,7 +69,7 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
-                        <Image Source="/Resources/Images/translation.png"  Height="20" Width="38" Margin="3,8,3,-5"/>
+                        <Image Source="/Resources/Images/Guest2/translation.png"  Height="20" Width="38" Margin="3,8,3,-5"/>
                         <Label Content="Jezik" Height="27" Width="40" Margin="3,0,3,0"/>
                     </StackPanel>
                     <TextBox x:Name="tbLanguage" Text="{Binding Path=Languages, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
@@ -77,7 +77,7 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
-                        <Image Source="/Resources/Images/duration.png"  Height="20" Width="38" Margin="0,8,0,-5"/>
+                        <Image Source="/Resources/Images/Guest2/duration.png"  Height="20" Width="38" Margin="0,8,0,-5"/>
                         <Label Content="Trajanje" Height="27" Width="52"/>
                     </StackPanel>
                     <TextBox x:Name="tbDuration" Text="{Binding Path=Duration, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
@@ -86,7 +86,7 @@
 
                 <Button x:Name="Search" Click="Search_Click" Grid.Row="1" Grid.Column="4"  Margin="20,5,0,10" Background="White" Height="23" Width="120">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Images/search.png" Width="20" Height="15" Margin="0,0,5,0" />
+                        <Image Source="/Resources/Images/Guest2/search.png" Width="20" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="Pretraži" Height="15"></ContentControl>
                     </StackPanel>
                 </Button>
@@ -96,28 +96,64 @@
             </Grid>
         </Grid>
 
-        <Button x:Name="Reserve" DockPanel.Dock="Bottom" Margin="550,0,-45,30" Height="40" Width="120" Click="Reserve_Click" Background="White">
+        <Button x:Name="Reserve" DockPanel.Dock="Bottom" Margin="550,-90,-26,30" Height="40" Width="120" Click="Reserve_Click" Background="White">
             <StackPanel Orientation="Horizontal">
-                <Image Source="/Resources/Images/check.png" Width="15" Height="15" Margin="0,0,5,0" />
+                <Image Source="/Resources/Images/Guest2/check.png" Width="15" Height="15" Margin="0,0,5,0" />
                 <ContentControl Content="Rezerviši"></ContentControl>
             </StackPanel>
         </Button>
 
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Width="720" Height="300" Margin="0,0,25,55" x:Name="aaa">
+            <WrapPanel Orientation="Horizontal" >
 
-        <DataGrid 
-                  ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedTour, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True"
-                   Height="320" x:Name="tourOverview" Margin="20,0,20,0">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="Trajanje" Binding="{Binding Duration}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="Jezik" Binding="{Binding Languages}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="Broj ljudi" Binding="{Binding MaxGuests}" Width="*"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                <ItemsControl ItemsSource="{Binding Path=Tours}" Name="bbb" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
 
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel Margin="0,0,5,5" Width="170" Height="150" >
+                                <Border BorderThickness="1">
+                                    <Border.Style>
+                                        <Style>
+
+                                            <Setter Property="Border.Background" Value="#DFFDFF"></Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="Border.IsMouseOver" Value="True">
+                                                    <Setter Property="Border.Background" Value="#DFFDFF"></Setter>
+                                                </Trigger>
+                                                
+                                            </Style.Triggers>
+
+                                        </Style>
+                                    </Border.Style>
+
+                                    <DockPanel>
+
+                                        <DockPanel DockPanel.Dock="Top" Margin="15,15,15,0">
+                                            <Button x:Name="AButton" Tag="{Binding Id}" Click="SelectClick">
+                                                <Image  Width="150" Height="100" Source="{Binding Images[0].Url}" Margin="0,0,0,0" Cursor="Hand">
+
+                                                </Image>
+
+                                            </Button>
+                                        </DockPanel>
+                                        <DockPanel DockPanel.Dock="Bottom">
+                                            <TextBlock Text="{Binding Name}" TextAlignment="Center"></TextBlock>
+                                        </DockPanel>
+
+                                    </DockPanel>
+
+                                </Border>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </WrapPanel>
+        </ScrollViewer>
     </DockPanel>
 </UserControl>

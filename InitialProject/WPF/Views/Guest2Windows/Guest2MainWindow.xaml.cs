@@ -14,63 +14,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using InitialProject.Domain.Models;
 using System.ComponentModel;
+using InitialProject.WPF.Views;
+using InitialProject.WPF.ViewModels.Guest2ViewModels;
 
 namespace InitialProject.WPF.Views.Guest2Windows
 {
     /// <summary>
     /// Interaction logic for Guest2MainWindow.xaml
     /// </summary>
-    public partial class Guest2MainWindow : Window, INotifyPropertyChanged
+    public partial class Guest2MainWindow : Window
     {
-        private string _guestFullName { get; set; }
-        public string GuestFullName
-        {
-            get => _guestFullName;
-            set
-            {
-                if (_guestFullName != value)
-                {
-                    _guestFullName = value;
-                    OnPropertyChanged("GuestFullName");
-                }
-            }
-        }
+        public Guest2MainWindowViewModel _ViewModel { get; set; }    
 
         public Guest2MainWindow()
         {
             InitializeComponent();
-            this.DataContext = this;
+            this._ViewModel = new Guest2MainWindowViewModel(this.frame.NavigationService);
+            this.DataContext = this._ViewModel;
 
-            GuestFullName = SignInForm.LoggedUser.FirstName +" " + SignInForm.LoggedUser.LastName;
+
         }
 
-        private void goToToursOverview_Click(object sender, RoutedEventArgs e)
-        {
-            this.content.Content = new ToursOverviewWindow();
-        }
-
-        private void goToMyTours_Click(object sender, RoutedEventArgs e)
-        {
-            this.content.Content = new MyToursWindow();
-        }
-
-        private void goToMyRequests_Click(object sender, RoutedEventArgs e)
-        {
-            //this.content.Content = new MyRequestsWindow();
-        }
-
-        private void LogOut_Click(object sender, RoutedEventArgs e)
+        private void Close_click(object sender, RoutedEventArgs e)
         {
             SignInForm signInForm = new SignInForm();
             signInForm.Show();
-            this.Close();
-        }
 
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Close();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

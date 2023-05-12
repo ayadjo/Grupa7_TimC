@@ -88,6 +88,46 @@
     <None Remove="Resources\Images\glacierNationalPark.jpg" />
     <None Remove="Resources\Images\graph.png" />
     <None Remove="Resources\Images\group.png" />
+    <None Remove="Resources\Images\Guest2\adventure.png" />
+    <None Remove="Resources\Images\Guest2\application.png" />
+    <None Remove="Resources\Images\Guest2\check.png" />
+    <None Remove="Resources\Images\Guest2\comment.png" />
+    <None Remove="Resources\Images\Guest2\dateAndTime.png" />
+    <None Remove="Resources\Images\Guest2\delete.png" />
+    <None Remove="Resources\Images\Guest2\destination.png" />
+    <None Remove="Resources\Images\Guest2\diversity.png" />
+    <None Remove="Resources\Images\Guest2\duration.png" />
+    <None Remove="Resources\Images\Guest2\earth.png" />
+    <None Remove="Resources\Images\Guest2\education.png" />
+    <None Remove="Resources\Images\Guest2\graph.png" />
+    <None Remove="Resources\Images\Guest2\group.png" />
+    <None Remove="Resources\Images\Guest2\hiking.png" />
+    <None Remove="Resources\Images\Guest2\info.png" />
+    <None Remove="Resources\Images\Guest2\location-pin.png" />
+    <None Remove="Resources\Images\Guest2\location.png" />
+    <None Remove="Resources\Images\Guest2\logout.png" />
+    <None Remove="Resources\Images\Guest2\man.png" />
+    <None Remove="Resources\Images\Guest2\map.png" />
+    <None Remove="Resources\Images\Guest2\passport.png" />
+    <None Remove="Resources\Images\Guest2\pdf.png" />
+    <None Remove="Resources\Images\Guest2\pencil.png" />
+    <None Remove="Resources\Images\Guest2\percent.png" />
+    <None Remove="Resources\Images\Guest2\photo.png" />
+    <None Remove="Resources\Images\Guest2\picture.png" />
+    <None Remove="Resources\Images\Guest2\point.png" />
+    <None Remove="Resources\Images\Guest2\question-mark.png" />
+    <None Remove="Resources\Images\Guest2\questionnaire.png" />
+    <None Remove="Resources\Images\Guest2\schedule.png" />
+    <None Remove="Resources\Images\Guest2\search.png" />
+    <None Remove="Resources\Images\Guest2\skyscraper.png" />
+    <None Remove="Resources\Images\Guest2\star.png" />
+    <None Remove="Resources\Images\Guest2\tour.png" />
+    <None Remove="Resources\Images\Guest2\translation.png" />
+    <None Remove="Resources\Images\Guest2\transparency.png" />
+    <None Remove="Resources\Images\Guest2\travel-itinerary.png" />
+    <None Remove="Resources\Images\Guest2\trip.png" />
+    <None Remove="Resources\Images\Guest2\user.png" />
+    <None Remove="Resources\Images\Guest2\world-globe.png" />
     <None Remove="Resources\Images\hiking.png" />
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info-2-48.png" />
@@ -153,6 +193,7 @@
 
   <ItemGroup>
     <Resource Include="Resources\Images\info.png">
+    <Resource Include="Resources\Images\Guest2\pdf.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\profile-owner.png">
@@ -164,122 +205,92 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\tour.png">
+    <Resource Include="Resources\Images\Guest2\education.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\question-mark.png">
+    <Resource Include="Resources\Images\Guest2\world-globe.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\point.png">
+    <Resource Include="Resources\Images\Guest2\user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\diversity.png">
+    <Resource Include="Resources\Images\Guest2\trip.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\photo.png">
+    <Resource Include="Resources\Images\Guest2\travel-itinerary.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\graph.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Images\education.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Images\dateAndTime.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Images\comment.png">
+    <Resource Include="Resources\Images\Guest2\transparency.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\translation.png">
+    <Resource Include="Resources\Images\Guest2\translation.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\duration.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Images\group.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Images\skyscraper.png">
+    <Resource Include="Resources\Images\Guest2\tour.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\hiking.png">
+    <Resource Include="Resources\Images\Guest2\star.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\questionnaire.png">
+    <Resource Include="Resources\Images\Guest2\skyscraper.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\transparency.png">
+    <Resource Include="Resources\Images\Guest2\search.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\destination.png">
+    <Resource Include="Resources\Images\Guest2\schedule.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\star.png">
+    <Resource Include="Resources\Images\Guest2\questionnaire.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\location-pin.png">
+    <Resource Include="Resources\Images\Guest2\question-mark.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\travel-itinerary.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Resource Include="Resources\Images\Guest2\point.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\white-down-arrow-png.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -290,32 +301,146 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\world-globe.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Resource Include="Resources\Images\Guest2\picture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\adventure.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Resource Include="Resources\Images\Guest2\photo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\check.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\earth.png">
+    <Resource Include="Resources\Images\Guest2\percent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\logout.png">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\pencil.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\search.png">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\passport.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\user.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\man.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\logout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\location-pin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\location.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\hiking.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\group.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\graph.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\earth.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\duration.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\destination.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\dateAndTime.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\comment.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\application.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\adventure.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\diversity.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

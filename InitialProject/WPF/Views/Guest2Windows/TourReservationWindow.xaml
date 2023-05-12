@@ -5,56 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Window"
         mc:Ignorable="d"
-        Title="Rezervacija tura" Height="550" Width="600" WindowStartupLocation="CenterScreen">
+        Title="Rezervacija tura" Height="550" Width="620" WindowStartupLocation="CenterScreen">
+    <Window.Icon>
+        <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
+    </Window.Icon>
     <StackPanel Orientation="Vertical" Background="#DFFDFF">
 
         <StackPanel Orientation="Horizontal" Width="582" Height="402">
 
-            <StackPanel Orientation="Vertical" Width="340" Margin="30,30,0,0">
+            <StackPanel Orientation="Vertical" Width="340" Margin="6,30,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/hiking.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/hiking.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Naziv: " FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedTourEvent.Tour.Name}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/earth.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/earth.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Država: " FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.Country}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/skyscraper.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/skyscraper.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Grad: " FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.City}"/>
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/translation.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/translation.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Jezik: " FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedTourEvent.Tour.Languages}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/group.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/group.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Maksimalan broj gostiju: " FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedTourEvent.Tour.MaxGuests}"/>
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/dateAndTime.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/dateAndTime.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Datum i vreme početka: " FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedTourEvent.StartTime}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/duration.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/duration.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Trajanje: " FontWeight="Bold" />
                     <TextBlock Text="{Binding SelectedTourEvent.Tour.Duration}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Height="35">
-                    <Image Source="/Resources/Images/tour.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Top" />
+                    <Image Source="/Resources/Images/Guest2/tour.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Top" />
                     <TextBlock Text="Ključne tačke: " FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedTourEvent.Tour.TourPoints}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Height="50">
-                    <Image Source="/Resources/Images/info.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Top"/>
+                    <Image Source="/Resources/Images/Guest2/info.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Top"/>
                     <TextBlock Text="Opis: " FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedTourEvent.Tour.Description}"/>
                 </StackPanel>
@@ -63,14 +66,15 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Margin="0,30,0,0" Width="205">
-                <Image Source="/Resources/Images/check.png" Width="100" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                <Image Source="{Binding SelectedTourEvent.Tour.Images[0].Url}" Width="150" Height="100" Margin="0,0,0,10" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
-                    <Image Source="/Resources/Images/group.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/group.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <TextBlock Text="Broj ljudi:" FontWeight="Bold" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding NumberOfPeople}" Width="50"/>
+                    <TextBox x:Name="numberOfPeopleTextBox" Text="{Binding NumberOfPeople}" Width="50"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center" Width="120">
                     <TextBlock Text="{Binding AvailableSpotsText, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label> </Label>
                     <TextBlock Text="{Binding AvailableSpots, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
@@ -78,23 +82,30 @@
                   ItemsSource="{Binding Vouchers, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedVoucher, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True"
-                  Width="205" Height="90" x:Name="myVoucherOverview" Margin="0,10,0,10">
+                  Width="205" Height="80" x:Name="myVoucherOverview" Margin="0,10,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="80"/>
                         <DataGridTextColumn Header="Važi do:" Binding="{Binding ExpirationDate}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
+                <Button Height="30" Width="130" Background="#DFFDFF" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#DFFDFF">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/pdf.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <ContentControl Content="Izveštaj o vaučerima" FontSize="10"></ContentControl>
+                    </StackPanel>
+                </Button>
+
                 <Button x:Name="CheckAvailability" Height="30" Width="130" Click="Check_Availability_Button_Click" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Images/question-mark.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <Image Source="/Resources/Images/Guest2/question-mark.png" Width="15" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="Proveri dostupnost"></ContentControl>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="Reserve" Height="30" Width="130" Click="Reserve_Click" Background="White" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Images/check.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <Image Source="/Resources/Images/Guest2/check.png" Width="15" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="Rezerviši"></ContentControl>
                     </StackPanel>
                 </Button>
@@ -112,7 +123,7 @@
                   ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True"
-                  Width="570" Height="106" Margin="0,10,0,0">
+                  Width="570" Height="90" Margin="0,10,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn  Header="Država" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
                 <DataGridTextColumn  Header="Grad" Binding="{Binding Tour.Location.City}" Width="100"></DataGridTextColumn>
