@@ -194,19 +194,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             return true;
         }
 
-        
-        
-
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
+ 
 
         /*
         private void SetReviewForGuideKnowledge(object sender, RoutedEventArgs e)
