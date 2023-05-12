@@ -9,29 +9,18 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Repositories
 {
-    public class TourRequestRepository
+    public class TourRequestRepository : ITourRequestRepository
     {
         private const string FilePath = "../../../Resources/Data/tourRequest.csv";
-
-        private static TourRequestRepository instance = null;
 
         private readonly Serializer<TourRequest> _serializer;
 
         private List<TourRequest> _tourRequests;
 
-        private TourRequestRepository()
+        public TourRequestRepository()
         {
             _serializer = new Serializer<TourRequest>();
             _tourRequests = _serializer.FromCSV(FilePath);
-        }
-
-        public static TourRequestRepository GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new TourRequestRepository();
-            }
-            return instance;
         }
 
         public void BindTourRequestUser()
@@ -86,7 +75,7 @@ namespace InitialProject.Repositories
             TourRequest current = _tourRequests.Find(a => a.Id == tourRequest.Id);
             int index = _tourRequests.IndexOf(current);
             _tourRequests.Remove(current);
-            _tourRequests.Insert(index, tourRequest);      
+            _tourRequests.Insert(index, tourRequest);
             _serializer.ToCSV(FilePath, _tourRequests);
             return tourRequest;
         }

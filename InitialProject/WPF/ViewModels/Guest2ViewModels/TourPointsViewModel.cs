@@ -16,8 +16,6 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
     public class TourPointsViewModel
     {
 
-        //private Tour tour;
-
         private NavigationService navigationService;
         public ObservableCollection<TourPoint> TourPoints { get; set; }
 

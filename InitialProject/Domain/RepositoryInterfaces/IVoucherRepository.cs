@@ -11,7 +11,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
 {
     public interface IVoucherRepository
     {
-
         Voucher Get(int id);
         List<Voucher> GetAll();
 
