@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
-    public class GuideReviewViewModel : ViewModel
+    public class GuideReviewViewModel : ViewModelBase
     {
         public NavigationService navigationService { get; set; }
         public ObservableCollection<int> Grades { get; set; }

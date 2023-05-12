@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
-    public class Guest2MainWindowViewModel : ViewModel
+    public class Guest2MainWindowViewModel : ViewModelBase
     {
         /*private bool checker;
         public bool Checker
