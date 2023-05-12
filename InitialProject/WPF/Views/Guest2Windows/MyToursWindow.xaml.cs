@@ -15,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InitialProject.WPF.ViewModels.Guest2ViewModels;
+using System.Windows.Navigation;
 
 namespace InitialProject.WPF.Views.Guest2Windows
 {
@@ -22,7 +24,8 @@ namespace InitialProject.WPF.Views.Guest2Windows
     /// Interaction logic for MyToursWindow.xaml
     /// </summary>
     public partial class MyToursWindow : INotifyPropertyChanged
-    { 
+    {
+        public NavigationService NavigationService { get; set; }
         public ObservableCollection<TourEvent> TourEvents { get; set; }
 
         public TourEventController _tourEventController;

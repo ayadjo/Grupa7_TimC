@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InitialProject.Commands;
-using InitialProject.BindableBase;
 using System.Windows.Navigation;
 using InitialProject.WPF.Views.Guest2Window;
 using System.Windows.Controls;
@@ -16,6 +15,17 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
     public class Guest2MainWindowViewModel : ViewModel
     {
+        /*private bool checker;
+        public bool Checker
+        {
+            get { return checker; }
+            set
+            {
+                checker = value;
+                OnPropertyChanged();
+            }
+        }
+        */
         public NavigationService NavigationService { get; set; }
 
         public RelayCommand NavigateToToursOverviewCommand { get; set; }
@@ -83,6 +93,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             this.NavigateToMyToursCommand = new RelayCommand(Execute_NavigateToMyToursCommand, CanExecute_NavigateCommand);
             //this.NavigateToMyRequestsCommand = new RelayCommand(Execute_NavigateToMyRequestsCommand, CanExecute_NavigateCommand);
             this.LogOutCommand = new RelayCommand(Execute_LogOutCommand, CanExecute_NavigateCommand);
+           // this.Checker = false;
 
             GuestFullName = SignInForm.LoggedUser.FirstName + " " + SignInForm.LoggedUser.LastName;
         }
