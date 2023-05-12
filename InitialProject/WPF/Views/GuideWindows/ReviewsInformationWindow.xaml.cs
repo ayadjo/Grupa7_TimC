@@ -14,14 +14,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace InitialProject.WPF.Views.GuideWindows
 {
     /// <summary>
-    /// Interaction logic for ReviewsInformation.xaml
+    /// Interaction logic for ReviewsInformationWindow.xaml
     /// </summary>
-    public partial class ReviewsInformation : Window
+    public partial class ReviewsInformationWindow : Page
     {
         public GuideReviewController _guideReviewController;
         public GuideReview CurrentUser { get; set; }
@@ -29,7 +30,7 @@ namespace InitialProject.WPF.Views.GuideWindows
         public ObservableCollection<GuideReview> GuideReviews { get; set; }
 
         public ReviewDto SelectedReview { get; set; }
-        public ReviewsInformation(GuideReview user)
+        public ReviewsInformationWindow(GuideReview user)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -38,14 +39,14 @@ namespace InitialProject.WPF.Views.GuideWindows
             GuideReviews = new ObservableCollection<GuideReview>(_guideReviewController.GetAllGuideReviews(SignInForm.LoggedUser.Id, CurrentUser.Reservation.Guest.Id));
 
             Reviews = new ObservableCollection<ReviewDto>();
-            foreach(GuideReview guideReview in GuideReviews)
+            foreach (GuideReview guideReview in GuideReviews)
             {
                 ReviewDto guideReviewDto = new ReviewDto(guideReview);
                 Reviews.Add(guideReviewDto);
             }
         }
 
-        
+
 
         private void IsValid_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +61,7 @@ namespace InitialProject.WPF.Views.GuideWindows
                     guideReview.Validity = true;
                     _guideReviewController.Update(guideReview);
                     MessageBox.Show("Uspesno ste prijavili recenziju!");
-                    
+
 
                 }
 

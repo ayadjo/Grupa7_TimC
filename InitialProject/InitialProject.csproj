@@ -73,18 +73,24 @@
     <None Remove="Resources\Images\add-128.png" />
     <None Remove="Resources\Images\adventure.png" />
     <None Remove="Resources\Images\arrow-demo.png" />
+    <None Remove="Resources\Images\angle-small-left.png" />
+    <None Remove="Resources\Images\bar-chart.png" />
     <None Remove="Resources\Images\camping.png" />
     <None Remove="Resources\Images\car.png" />
     <None Remove="Resources\Images\check.png" />
     <None Remove="Resources\Images\city.png" />
     <None Remove="Resources\Images\comment.png" />
     <None Remove="Resources\Images\dateAndTime.png" />
+    <None Remove="Resources\Images\complex.png" />
     <None Remove="Resources\Images\destination.png" />
     <None Remove="Resources\Images\diversity.png" />
     <None Remove="Resources\Images\down-arrow.png" />
     <None Remove="Resources\Images\duration.png" />
     <None Remove="Resources\Images\earth.png" />
     <None Remove="Resources\Images\education.png" />
+    <None Remove="Resources\Images\favorite.png" />
+    <None Remove="Resources\Images\filter.png" />
+    <None Remove="Resources\Images\filter2.png" />
     <None Remove="Resources\Images\glacierNationalPark.jpg" />
     <None Remove="Resources\Images\graph.png" />
     <None Remove="Resources\Images\group.png" />
@@ -132,11 +138,15 @@
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info-2-48.png" />
     <None Remove="Resources\Images\info.png" />
+    <None Remove="Resources\Images\home2.png" />
     <None Remove="Resources\Images\language.png" />
     <None Remove="Resources\Images\languages.png" />
     <None Remove="Resources\Images\location-pin.png" />
     <None Remove="Resources\Images\logout-32.png" />
     <None Remove="Resources\Images\logout.png" />
+    <None Remove="Resources\Images\map.png" />
+    <None Remove="Resources\Images\menu-burger.png" />
+    <None Remove="Resources\Images\menu111.png" />
     <None Remove="Resources\Images\osakaKyoto.png" />
     <None Remove="Resources\Images\passport.png" />
     <None Remove="Resources\Images\people.png" />
@@ -146,13 +156,18 @@
     <None Remove="Resources\Images\point.png" />
     <None Remove="Resources\Images\profile-owner.png" />
     <None Remove="Resources\Images\question-mark.png" />
+    <None Remove="Resources\Images\plus.png" />
     <None Remove="Resources\Images\questionnaire.png" />
     <None Remove="Resources\Images\search.png" />
+    <None Remove="Resources\Images\sign.png" />
     <None Remove="Resources\Images\skyscraper.png" />
     <None Remove="Resources\Images\star-owner.png" />
     <None Remove="Resources\Images\star.png" />
+    <None Remove="Resources\Images\stars.png" />
+    <None Remove="Resources\Images\statistics.png" />
     <None Remove="Resources\Images\svet.png" />
     <None Remove="Resources\Images\tour.png" />
+    <None Remove="Resources\Images\tour-bus.png" />
     <None Remove="Resources\Images\tourist.png" />
     <None Remove="Resources\Images\translation.png" />
     <None Remove="Resources\Images\transparency.png" />
@@ -160,9 +175,11 @@
     <None Remove="Resources\Images\travel-map.png" />
     <None Remove="Resources\Images\travel-map2.png" />
     <None Remove="Resources\Images\travel.png" />
+    <None Remove="Resources\Images\travell.png" />
     <None Remove="Resources\Images\user.png" />
     <None Remove="Resources\Images\white-down-arrow-png.png" />
     <None Remove="Resources\Images\woman.png" />
+    <None Remove="Resources\Images\women.png" />
     <None Remove="Resources\Images\world-globe.png" />
     <None Remove="Resources\Images\worldTour.jpg" />
   </ItemGroup>
@@ -184,6 +201,46 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\logout-32.png">
+    <Resource Include="Resources\Images\angle-small-left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\bar-chart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\complex.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\favorite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\filter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\filter2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\home2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\menu-burger.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\plus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\sign.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\stars.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\statistics.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\tour-bus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\translation.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -238,6 +295,12 @@
 
   <ItemGroup>
     <Resource Include="Resources\Images\Guest2\translation.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\travell.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\women.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -453,6 +516,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Images\map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
