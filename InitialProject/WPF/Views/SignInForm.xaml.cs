@@ -61,7 +61,7 @@ public partial class SignInForm : Window
     {
         InitializeComponent();
         DataContext = this;
-        usernameTextBox.Focus();
+        UsernameTextBox.Focus();
         _repository = UserRepository.GetInstance();
 
         _accommodationReservationController = new AccommodationReservationController();

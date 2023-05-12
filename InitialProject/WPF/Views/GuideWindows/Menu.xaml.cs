@@ -28,10 +28,6 @@ namespace InitialProject.WPF.Views.GuideWindows
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
 
-
-            SignInForm signInForm = new SignInForm();
-            this.NavigationService.Navigate(signInForm);
-
         }
     }
 }

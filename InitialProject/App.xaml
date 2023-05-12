@@ -4,14 +4,14 @@
              xmlns:local="clr-namespace:InitialProject"
              StartupUri="WPF/Views/SignInForm.xaml">
     <Application.Resources>
-        
         <ResourceDictionary>
-            <!--New color for background-->
-            <SolidColorBrush x:Key="OwnerBackgroudColor1" Color="#282B40" />
-            <SolidColorBrush x:Key="OwnerRectangleFill" Color="#40445F"/>
-            <!--Label style-->
-        <ResourceDictionary>
+                <!--New color for background owner-->
+                <SolidColorBrush x:Key="OwnerBackgroudColor1" Color="#282B40" />
+                <SolidColorBrush x:Key="OwnerRectangleFill" Color="#40445F"/>
+            
+            <!--New color for background guide-->
             <SolidColorBrush x:Key="GuideBackgroudColor1" Color="#75627B" />
+            <!--Label style-->
             <Style TargetType="Label" x:Key="DefaultLabel">
                 <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
                 <Setter Property="FontSize" Value="20"/>
@@ -68,7 +68,11 @@
                                     <Setter Property="FontFamily" Value="Candara"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
-            <Style x:Key="RoundButtonStyle" TargetType="Button">
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+                <Style x:Key="RoundButtonStyle" TargetType="Button">
                 <Setter Property="Background" Value="#ffb3c6"/>
                 <Setter Property="Foreground" Value="#E80575"/>
                 
@@ -106,13 +110,10 @@
                 </Setter>
             </Style>
 
-            <!--Data grids-->
+            <!--Data grid for owner-->
             <Style TargetType="DataGrid" x:Key="DarkDataGrid">
                 <Setter Property="FontFamily" Value="Candara"/>
                 <Setter Property="FontSize" Value="10"/>
-            <Style TargetType="DataGrid" x:Key="DataGridStyle">
-                <Setter Property="FontFamily" Value="Candara"/>
-                <Setter Property="FontSize" Value="16"/>
                 <Setter Property="CanUserResizeColumns" Value="False"/>
                 <Setter Property="CanUserResizeRows" Value="False"/>
                 <Setter Property="SelectionMode" Value="Single"/>
@@ -123,17 +124,10 @@
                 <Setter Property="BorderBrush" Value="#191e29"/>
                 <Setter Property="BorderThickness" Value="2"/>
 
-               
+
                 <Setter Property="AlternationCount" Value="1"/>
 
                 <Setter Property="Background" Value="#3c4253"/>
-                <Setter Property="BorderBrush" Value="#FB6F92"/>
-                <Setter Property="BorderThickness" Value="2"/>
-
-                <!--Podesiti za izmenu boja-->
-                <Setter Property="AlternationCount" Value="1"/>
-
-                <Setter Property="Background" Value="LightPink"/>
                 <Setter Property="SelectionUnit" Value="FullRow"/>
 
             </Style>
@@ -144,20 +138,12 @@
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Height" Value="35"/>
                 <Setter Property="FontSize" Value="12"/>
-            <Style TargetType="DataGridColumnHeader" x:Key="DataGridHeader">
-                <Setter Property="Background" Value="#FB6F92"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="Height" Value="35"/>
-                <Setter Property="FontSize" Value="18"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
 
             </Style>
 
             <Style x:Key="DarkDataGridRow" TargetType="{x:Type DataGridRow}">
                 <Setter Property="Foreground" Value="#FFB3B3B3"/>
-            <Style x:Key="DataGridRow" TargetType="{x:Type DataGridRow}">
-                <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Height" Value="30"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
 
@@ -170,12 +156,84 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            
-            
 
-            <Style x:Key="DarkDataGridCell" TargetType="{x:Type DataGridCell}">
+
+
+            <Style x:Key="DarkDataGridCellOwner" TargetType="{x:Type DataGridCell}">
                 <Setter Property="Padding" Value="5,0,0,0"/>
-                
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type DataGridCell}">
+                            <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="#5E4B64"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="#4e6082"/>
+                    </Trigger>
+
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsSelected" Value="true"/>
+                            <Condition Property="Selector.IsSelectionActive" Value="false"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="Background" Value="#4e6082"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="#4e6082"/>
+                    </MultiTrigger>
+                </Style.Triggers>
+
+            </Style>
+
+
+
+            <!--Data grid for guide-->
+            <Style TargetType="DataGrid" x:Key="DataGridStyle">
+                <Setter Property="FontFamily" Value="Candara"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="CanUserResizeColumns" Value="False"/>
+                <Setter Property="CanUserResizeRows" Value="False"/>
+                <Setter Property="SelectionMode" Value="Single"/>
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="IsReadOnly" Value="True"/>
+                <Setter Property="HeadersVisibility" Value="Column"/>
+
+                <Setter Property="BorderBrush" Value="#FB6F92"/>
+                <Setter Property="BorderThickness" Value="2"/>
+
+                <!--Podesiti za izmenu boja-->
+                <Setter Property="AlternationCount" Value="1"/>
+
+                <Setter Property="Background" Value="LightPink"/>
+                <Setter Property="SelectionUnit" Value="FullRow"/>
+
+            </Style>
+
+            <Style TargetType="DataGridColumnHeader" x:Key="DataGridHeader">
+                <Setter Property="Background" Value="#FB6F92"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+            </Style>
+
+            <Style x:Key="DataGridRow" TargetType="{x:Type DataGridRow}">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+                <Style.Triggers>
+                    <Trigger Property="ItemsControl.AlternationIndex" Value="0">
                         <Setter Property="Background" Value="#E18AAA"/>
                     </Trigger>
                     <Trigger Property="IsMouseOver" Value="True">
@@ -199,9 +257,6 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="#5E4B64"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="BorderBrush" Value="#4e6082"/>
                         <Setter Property="Background" Value="#865595"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="BorderBrush" Value="#865595"/>
@@ -212,9 +267,6 @@
                             <Condition Property="IsSelected" Value="true"/>
                             <Condition Property="Selector.IsSelectionActive" Value="false"/>
                         </MultiTrigger.Conditions>
-                        <Setter Property="Background" Value="#4e6082"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="BorderBrush" Value="#4e6082"/>
                         <Setter Property="Background" Value="#865595"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="BorderBrush" Value="#865595"/>

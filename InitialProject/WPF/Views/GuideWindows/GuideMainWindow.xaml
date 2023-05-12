@@ -70,7 +70,7 @@
                     Height="110" 
                     Width="122"
                     Click="ScheduledToursButton_Click">
-            <Image Source="\Resources\Images\location-pin.png" Width="100" Height="100"/>
+            <Image Source="\Resources\Images\Guest2\location-pin.png" Width="100" Height="100"/>
         </Button>
 
         <Label  Content="Zakazane ture" 
