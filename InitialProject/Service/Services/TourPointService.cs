@@ -13,6 +13,7 @@ namespace InitialProject.Service.Services
     public class TourPointService
     {
         private TourPointRepository _tourPointRepository;
+        private TourEventRepository _tourEventRepository;
 
         public TourPointService()
         {
@@ -51,8 +52,21 @@ namespace InitialProject.Service.Services
 
         public List<TourPoint> GetByTour(int id)
         {
-
             return _tourPointRepository.GetByTour(id);
         }
+
+       /* public List<TourPoint> GetAllTourPointsForTourEvent(TourEvent selectedTourEvent)
+        {
+            List<TourPoint> tourPoints = new List<TourPoint>();
+            foreach(TourEvent tourEvent in _tourEventRepository.GetAll())
+            {
+                if(tourEvent == selectedTourEvent)
+                {
+
+                }
+            }
+
+            return tourPoints;
+        }*/
     }
 }

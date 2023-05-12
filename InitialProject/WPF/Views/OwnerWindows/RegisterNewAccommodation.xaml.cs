@@ -1,4 +1,5 @@
-﻿using InitialProject.Controller;
+﻿using InitialProject.Commands;
+using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
 using InitialProject.Repositories;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -144,10 +146,28 @@ namespace InitialProject.WPF.Views.OwnerWindows
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
+        public RelayCommand FinishRegistrationCommand { get; set; }
+     
+        public RelayCommand CancelRegistrationCommand { get; set; }
+
+
+        public RelayCommand AddNewImagesCommand { get; set; }
+
+   
+
         public RegisterNewAccommodation()
         {
             InitializeComponent();
             this.DataContext = this;
+
+            FinishRegistrationCommand = new RelayCommand(SubmitButton_Click, CanFinish);
+         
+
+            CancelRegistrationCommand = new RelayCommand(CancelButton_Click);
+           
+
+            AddNewImagesCommand = new RelayCommand(AddImages_Click);
+           
 
             _locationController = new LocationController();
             _accommodationController = new AccommodationController();
@@ -161,9 +181,14 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
             AllImages = new List<Image>();
 
-            
+            NameTextBox.Focus();
         }
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+
+        public bool CanFinish(object param)
+        {
+            return true;
+        }
+        private void SubmitButton_Click(object sender)
         {
             Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
             User user = SignInForm.LoggedUser;
@@ -175,7 +200,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
             Close();
         }
         //treba da sacuva listu slika i potom kad pravim smestaj hocu da mu ucitam tu listu
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender)
         {
             Close();
         }
@@ -191,7 +216,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
             }
         }
 
-        private void AddImages_Click(object sender, RoutedEventArgs e)
+        private void AddImages_Click(object sender)
         {
             AddNewImageWindow NewImage = new AddNewImageWindow(ImageResource.Accommodation, AllImages);
             NewImage.Show();

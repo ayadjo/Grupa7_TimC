@@ -53,5 +53,10 @@ namespace InitialProject.Controller
             return _tourPointService.GetByTour(id);
         }
 
+       /* public List<TourPoint> GetAllTourPointsForTourEvent(TourEvent tourEvent)
+        {
+            return _tourPointService.GetAllTourPointsForTourEvent();
+        }*/
+
     }
 }

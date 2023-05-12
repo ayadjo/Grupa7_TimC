@@ -5,42 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.OwnerWindows"
         mc:Ignorable="d"
-        Title="GuestReviewWindow" Height="450" Width="450" WindowStartupLocation="CenterScreen" WindowStyle="None">
-
-    <Grid>
+        Title="Oceni gosta" Height="450" Width="450" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding FinishCommand}" Key="S" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding CancelCommand}" Key="Esc"/>
+    </Window.InputBindings>
+    <Grid Background="{StaticResource OwnerRectangleFill}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
-            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Ocena gosta" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="LightGray"/>
-        <Grid Grid.Row="1" >
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label x:Name="CleanlinessLabel"  Content="Čistoća:" FontSize="20" Height="40" HorizontalAlignment="Left" Margin="103,24,0,24" Width="122"/>
-            <Label Grid.Row="1" x:Name="BeahviourLabel" Content="Ponašanje:" FontSize="20" Height="40" HorizontalAlignment="Left" Margin="103,24,0,24" Width="122"/>
-            <Label Grid.Row="2" x:Name="CommentLabel" Content="Komentar:" FontSize="20" Height="40" HorizontalAlignment="Left" Margin="103,24,0,24" Width="122"/>
-            <ComboBox x:Name="CleanlinessComboBox" ItemsSource="{Binding Grades}" SelectedItem="{Binding SelectedCleanliness}" 
-                     IsEditable="False" Margin="10,24,158,24" ToolTip="This field is required!" Grid.Row="0" Grid.Column="1"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="GuestLabel" Content="Gost" Height="30" HorizontalAlignment="Center" Style="{StaticResource DefaultLabelS}" Width="120" Grid.Row="1"/>
+        <Label x:Name="AccommodationLabel" Content="Smeštaj" Height="30" HorizontalAlignment="Center" Style="{StaticResource DefaultLabelS}" Width="120" Grid.Row="2"/>
+        <Label x:Name="CleanlinessLabel"  Content="Čistoća"  Height="30" HorizontalAlignment="Center" Style="{StaticResource DefaultLabelS}" Margin="0,10,0,10" Width="120" Grid.Row="3"/>
+        <Label Grid.Row="4" x:Name="BeahviourLabel" Content="Ponašanje" Height="30" HorizontalAlignment="Left" Margin="52,10,0,10" Width="120" Style="{StaticResource DefaultLabelS}"/>
+        <Label Grid.Row="5" x:Name="CommentLabel" Content="Komentar"  Height="30" HorizontalAlignment="Center" Margin="0,35,0,35" Width="120" Style="{StaticResource DefaultLabelS}"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding Guest}" Style="{StaticResource DefaultLabelS}" Height="30" Margin="23,12,22,12"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding reservation.Accommodation.Name}" Style="{StaticResource DefaultLabelS}" Height="30" Margin="23,12,22,12"/>
+        <ComboBox x:Name="CleanlinessComboBox" ItemsSource="{Binding Grades}" SelectedItem="{Binding SelectedCleanliness}" 
+                     IsEditable="False" Height="23" Width="180"  ToolTip="This field is required!" Grid.Row="3" Grid.Column="1"/>
 
-            <ComboBox x:Name="BehaviourComboBox" ItemsSource="{Binding Grades}" SelectedItem="{Binding SelectedBehaviour}" Grid.Row="1"  Grid.Column="1"
-                     IsEditable="False" Margin="13,25,156,25" ToolTip="This field is required!"/>
-            <TextBox x:Name="CommentTextBox" Text="{Binding Path=Comment, Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Height="60" Width="200" />
-        </Grid>
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="AddReviewButton" Grid.Column="0" Height="30" Width="60" Content="Dodaj" Click="AddReviewButton_Click"/>
-            <Button x:Name="CancelButton" Grid.Column="1" Height="30" Width="60" Content="Odustani" Click="CancelButton_Click"/>
-        </Grid>
+        <ComboBox x:Name="BehaviourComboBox" ItemsSource="{Binding Grades}" SelectedItem="{Binding SelectedBehaviour}" Grid.Row="4"  Grid.Column="1"
+                     IsEditable="False" Height="23" Width="180"  ToolTip="This field is required!"/>
+        <TextBox x:Name="CommentTextBox" Text="{Binding Path=Comment, Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Height="60" Width="180" />
+
+        <Button x:Name="AddReviewButton" Grid.Column="1"  Grid.Row="5" Command="{Binding FinishCommand}"  Style="{StaticResource SubmitButton}" Height="60" Width="80" Margin="23,98,122,0" Grid.RowSpan="2">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Dodaj" HorizontalAlignment="Center"/>
+                <TextBlock Text="ENTER" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="CancelButton" Grid.Column="1" Grid.Row="5" Height="60" Width="80" Style="{StaticResource CancelButton}" Command="{Binding CancelCommand}" Margin="125,98,22,0" Grid.RowSpan="2">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Odustani" HorizontalAlignment="Center"/>
+                <TextBlock Text="ESC" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+
     </Grid>
 </Window>

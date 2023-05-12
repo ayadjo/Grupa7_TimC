@@ -1,4 +1,5 @@
-﻿using InitialProject.Controller;
+﻿using InitialProject.Commands;
+using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
     /// <summary>
     /// Interaction logic for GuestWithoutReviewWindow.xaml
     /// </summary>
-    public partial class GuestWithoutReviewWindow : Window, INotifyPropertyChanged
+    public partial class GuestWithoutReviewWindow : UserControl, INotifyPropertyChanged
     {
         public ObservableCollection<AccommodationReservation> AccommodationReservations { get; set; }
         public AccommodationReservationController _accommodationReservationController;
@@ -29,6 +30,9 @@ namespace InitialProject.WPF.Views.OwnerWindows
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public AccommodationReservation SelectedAccommodationReservation { get; set; }
+
+        public RelayCommand GuestReviewCommand { get; set; }
+     
         public GuestWithoutReviewWindow()
         {
             InitializeComponent();
@@ -37,13 +41,30 @@ namespace InitialProject.WPF.Views.OwnerWindows
             _accommodationReservationController = new AccommodationReservationController();
 
             AccommodationReservations = new ObservableCollection<AccommodationReservation>(_accommodationReservationController.GetAllReservationsWithoutGuestReview());
+
+
+            GuestReviewCommand = new RelayCommand(goToGuestReview_Click);
+         
+            
         }
 
-        private void goToGuestReview_Click(object sender, RoutedEventArgs e)
+        public void Refresh()
+        {
+            AccommodationReservations.Clear();
+            foreach (AccommodationReservation reservation in _accommodationReservationController.GetAllReservationsWithoutGuestReview())
+            {
+                AccommodationReservations.Add(reservation);
+            }
+        }
+
+        private void goToGuestReview_Click(object sender)
         {
             GuestReviewWindow GuestReview = new GuestReviewWindow(SelectedAccommodationReservation);
-            GuestReview.Show();
-            Close();
+            GuestReview.ShowDialog();
+
+            Refresh();
+
+
         }
     }
 }

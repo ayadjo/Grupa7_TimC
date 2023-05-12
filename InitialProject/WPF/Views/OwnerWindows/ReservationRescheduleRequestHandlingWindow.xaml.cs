@@ -1,4 +1,5 @@
-﻿using InitialProject.Controller;
+﻿using InitialProject.Commands;
+using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,11 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         #endregion
         public ReservationRescheduleRequest rescheduleRequest { get; set; }
+
+        public RelayCommand AcceptCommand { get; set; }
+
+        public RelayCommand CancelCommand { get; set; }
+
         public ReservationRescheduleRequestHandlingWindow(ReservationRescheduleRequest reservationRescheduleRequest)
         {
             InitializeComponent();
@@ -86,12 +92,20 @@ namespace InitialProject.WPF.Views.OwnerWindows
             {
                 Available = "Smeštaj je slobodan.";
             }
+
+            AcceptCommand = new RelayCommand(AcceptRequestButton_Click, CanAccept);
+
+            CancelCommand = new RelayCommand(DeclineRequestButton_Click);
         }
 
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void AcceptRequestButton_Click(object sender, RoutedEventArgs e)
+        public bool CanAccept(object param)
+        {
+            return true;
+        }
+        private void AcceptRequestButton_Click(object sender)
         {
             rescheduleRequest.Status = Enumerations.RequestStatusType.Approved;
             rescheduleRequest.Reservation.Start = rescheduleRequest.NewStart;
@@ -101,7 +115,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
             Close();
         }
 
-        private void DeclineRequestButton_Click(object sender, RoutedEventArgs e)
+        private void DeclineRequestButton_Click(object sender)
         {
             DeclineReservationRescheduleRequestCommentWindow Comment = new DeclineReservationRescheduleRequestCommentWindow(rescheduleRequest);
             Comment.Show();

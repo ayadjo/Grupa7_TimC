@@ -5,16 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
-        Title="TourPointsWindow" Height="450" Width="400" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,52,-482,0">
-        <DataGrid 
+        Title="Ključne tačke" Height="250" Width="300" WindowStartupLocation="CenterScreen">
+    <Window.Icon>
+        <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
+    </Window.Icon>
+    <Grid Background="#DFFDFF">
+        <StackPanel Orientation="Horizontal" Width="220" Height="150">
+            <StackPanel Orientation="Vertical" Margin="0,25,0,0">
+                <Image Source="/Resources/Images/Guest2/point.png" Width="15" Height="15" Margin="0,0,5,5" />
+                <Image Source="/Resources/Images/Guest2/point.png" Width="15" Height="15" Margin="0,0,5,5" />
+                <Image Source="/Resources/Images/Guest2/point.png" Width="15" Height="15" Margin="0,0,5,5" />
+                <Image Source="/Resources/Images/Guest2/point.png" Width="15" Height="15" Margin="0,0,5,5" />
+                <Image Source="/Resources/Images/Guest2/point.png" Width="15" Height="15" Margin="0,0,5,5" />
+                <Image Source="/Resources/Images/Guest2/point.png" Width="15" Height="15" Margin="0,0,5,5" />
+            </StackPanel>
+            <DataGrid 
                   ItemsSource="{Binding Path=TourPoints, UpdateSourceTrigger=PropertyChanged}"
- 
-                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="25,117,546,111">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="120"></DataGridTextColumn>
-                <DataGridTextColumn Header="Status" Binding="{Binding Active}" Width="*"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Width="200" Height="150" Background="White">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="120"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Active}" Width="*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Window>

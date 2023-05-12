@@ -15,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InitialProject.WPF.ViewModels.Guest2ViewModels;
+using System.Windows.Navigation;
 
 namespace InitialProject.WPF.Views.Guest2Windows
 {
@@ -23,35 +25,11 @@ namespace InitialProject.WPF.Views.Guest2Windows
     /// </summary>
     public partial class TourPointsWindow : Window
     {
-        public ObservableCollection<TourPoint> TourPoints { get; set; }
-
-        public TourPointController _tourPointController { get; set; }
-        public TourEventController _tourEventController { get; set; }
-
-        
-        public TourEvent SelectedTourEvent { get; set; }
-        
-
-        public TourPointsWindow(TourEvent selectedTourEvent)
+        public NavigationService navigationService;
+        public TourPointsWindow(TourEvent SelectedTourEvent)
         {
             InitializeComponent();
-            this.DataContext = this;
-
-            _tourPointController = new TourPointController();
-            _tourEventController = new TourEventController();
-
-            SelectedTourEvent = selectedTourEvent;
-
-            _tourPointController = new TourPointController();
-
-            TourPoints = new ObservableCollection<TourPoint>(SelectedTourEvent.Tour.TourPoints);
+            this.DataContext = new TourPointsViewModel(navigationService, SelectedTourEvent);
         }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -1,4 +1,5 @@
-﻿using InitialProject.Controller;
+﻿using InitialProject.Commands;
+using InitialProject.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,6 +50,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
         }
         #endregion
 
+        public RelayCommand CloseCommand { get; set; }
         public GuestsWithoutReviewNotificationWindow()
         {
             InitializeComponent();
@@ -56,6 +58,13 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
             _accommodationReservationController = new AccommodationReservationController();
             NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
+
+            CloseCommand = new RelayCommand(CancelButton_Click);
+        }
+
+        private void CancelButton_Click(object sender)
+        {
+            Close();
         }
 
     }

@@ -14,171 +14,72 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using System.Windows.Navigation;
+using InitialProject.WPF.ViewModels.Guest2ViewModels;
 
 namespace InitialProject.WPF.Views.Guest2Windows
 {
     /// <summary>
     /// Interaction logic for GuideReviewWindow.xaml
     /// </summary>
-    public partial class GuideReviewWindow : Window, INotifyPropertyChanged
+ 
+    public partial class GuideReviewWindow : Window
     {
-        public ObservableCollection<int> Grades { get; set; }
-        public ObservableCollection<string> Images { get; set; }
+        public NavigationService navigationService;
 
-        public GuideReviewController _guideReviewController;
-        public TourReservationController _tourReservationController;
-        public ImageController _imageController;
+        public GuideReviewViewModel guideReviewViewModel;
 
-        public TourReservation SelectedTourReservation { get; set; }
-
-        public string SelectedUrl { get; set; }
-
-        private int _selectedKnowledge;
-        public int SelectedKnowledge
-        {
-            get => _selectedKnowledge;
-            set
-            {
-                if (value != _selectedKnowledge)
-                {
-                    _selectedKnowledge = value;
-                    OnPropertyChanged("SelectedKnowledge");
-                }
-            }
-        }
-
-        private int _selectedLanguage;
-        public int SelectedLanguage
-        {
-            get => _selectedLanguage;
-            set
-            {
-                if (value != _selectedLanguage)
-                {
-                    _selectedLanguage = value;
-                    OnPropertyChanged("SelectedLanguage");
-                }
-            }
-        }
-
-        private int _selectedInterestingness;
-        public int SelectedInterestingness
-        {
-            get => _selectedInterestingness;
-            set
-            {
-                if (value != _selectedInterestingness)
-                {
-                    _selectedInterestingness = value;
-                    OnPropertyChanged("SelectedInterestingness");
-                }
-            }
-        }
-
-        private string _comment;
-        public string Comment
-        {
-            get => _comment;
-            set
-            {
-                if (value != _comment)
-                {
-                    _comment = value;
-                    OnPropertyChanged("Comment");
-                }
-            }
-        }
-
-        private string _url;
-        public string Url
-        {
-            get => _url;
-            set
-            {
-                if (value != _url)
-                {
-                    _url = value;
-                    OnPropertyChanged("Url");
-                }
-            }
-        }
-
-
-        public GuideReviewWindow(TourReservation tourReservation)
+        public GuideReviewWindow(TourReservation SelectedTourReservation)
         {
             InitializeComponent();
-            this.DataContext = this;
-
-            _guideReviewController = new GuideReviewController();
-            _tourReservationController = new TourReservationController();
-            _imageController = new ImageController();
-
-            Images = new ObservableCollection<string>();
-
-            Grades = new ObservableCollection<int>();
-            Grades.Add(1);
-            Grades.Add(2);
-            Grades.Add(3);
-            Grades.Add(4);
-            Grades.Add(5);
-
-            SelectedTourReservation = tourReservation;
-            SelectedKnowledge = 0;
-            SelectedLanguage = 0;
-            SelectedInterestingness = 0;
-            //Comment = ""
-
+            //navigationService = NavigationService.GetNavigationService(this);
+            guideReviewViewModel = new GuideReviewViewModel(navigationService, SelectedTourReservation);
+            this.DataContext = guideReviewViewModel;
         }
-
-        private void AddReviewButton_Click(object sender, RoutedEventArgs e)
+/*
+        private void SetReviewForGuideKnowledge(object sender, RoutedEventArgs e)
         {
-            List<string> images = new List<string>(Images);
-            GuideReview guideReview = new GuideReview(-1,SelectedTourReservation,SelectedKnowledge,SelectedLanguage,SelectedInterestingness,Comment,images,false);  
-
-            List<GuideReview> userReviews = _guideReviewController.GetReviewsForUser(SelectedTourReservation.Id, SignInForm.LoggedUser.Id);
-
-            foreach (GuideReview userReview in userReviews)
-            {
-                if (guideReview != userReview)
-                {
-                    MessageBox.Show("Vec ste ocenili ovu turu.");
-                    return;
-                }
-            }
-
-            _guideReviewController.Save(guideReview);
-            MessageBox.Show("Uspešno ste ocenili!");
-            this.Close();
+            if (knowledge1.IsChecked == true)
+                guideReviewViewModel.SelectedKnowledge = 1;
+            else if (knowledge2.IsChecked == true)
+                guideReviewViewModel.SelectedKnowledge = 2;
+            else if (knowledge3.IsChecked == true)
+                guideReviewViewModel.SelectedKnowledge = 3;
+            else if (knowledge4.IsChecked == true)
+                guideReviewViewModel.SelectedKnowledge = 4;
+            else if (knowledge5.IsChecked == true)
+                guideReviewViewModel.SelectedKnowledge = 5;
         }
 
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string name)
+        private void SetReviewForGuideLanguage(object sender, RoutedEventArgs e)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
+            if (language1.IsChecked == true)
+                guideReviewViewModel.SelectedLanguage = 1;
+            else if (language2.IsChecked == true)
+                guideReviewViewModel.SelectedLanguage = 2;
+            else if (language3.IsChecked == true)
+                guideReviewViewModel.SelectedLanguage = 3;
+            else if (language4.IsChecked == true)
+                guideReviewViewModel.SelectedLanguage = 4;
+            else if (language5.IsChecked == true)
+                guideReviewViewModel.SelectedLanguage = 5;
         }
 
-        private void AddImageButton_Click(object sender, RoutedEventArgs e)
+        private void SetReviewForGuideInterestingness(object sender, RoutedEventArgs e)
         {
-            Images.Add(Url);
-            Url = "";
-        }
-
-        private void RemoveImageButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedUrl == null)
-            {
-                return;
-            }
-                
-            Images.Remove(SelectedUrl);
-            SelectedUrl = null;
-        }
+            if (interestingness1.IsChecked == true)
+                guideReviewViewModel.SelectedInterestingness = 1;
+            else if (interestingness2.IsChecked == true)
+                guideReviewViewModel.SelectedInterestingness = 2;
+            else if (interestingness3.IsChecked == true)
+                guideReviewViewModel.SelectedInterestingness = 3;
+            else if (interestingness4.IsChecked == true)
+                guideReviewViewModel.SelectedInterestingness = 4;
+            else if (interestingness5.IsChecked == true)
+                guideReviewViewModel.SelectedInterestingness = 5;
+        }*/
     }
 }
