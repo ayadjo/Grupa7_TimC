@@ -1,6 +1,5 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
-using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,20 +14,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 
 namespace InitialProject.WPF.Views.GuideWindows
 {
     /// <summary>
-    /// Interaction logic for Reviews.xaml
+    /// Interaction logic for ReviewsWindow.xaml
     /// </summary>
-    public partial class Reviews : Window, INotifyPropertyChanged
+    public partial class ReviewsWindow : Page
     {
-        
         public ObservableCollection<GuideReview> Guests { get; set; }
         public GuideReviewController _guideReviewController;
-        
+
 
 
 
@@ -90,6 +88,20 @@ namespace InitialProject.WPF.Views.GuideWindows
             }
         }
 
+        private string _header;
+        public string Header
+        {
+            get => _header;
+            set
+            {
+                if (value != _header)
+                {
+                    _header = value;
+                    OnPropertyChanged("Header");
+                }
+            }
+        }
+
         #endregion
 
         #region PropertyChangedNotifier
@@ -106,13 +118,13 @@ namespace InitialProject.WPF.Views.GuideWindows
 
 
 
-        public Reviews()
+        public ReviewsWindow()
         {
             InitializeComponent();
             this.DataContext = this;
             _guideReviewController = new GuideReviewController();
             Guests = new ObservableCollection<GuideReview>(_guideReviewController.GetAll());
-          
+            
 
         }
 
@@ -123,12 +135,10 @@ namespace InitialProject.WPF.Views.GuideWindows
 
             if (SelectedGuest != null)
             {
-                ReviewsInformation reviewsInformation = new ReviewsInformation(SelectedGuest);
-                reviewsInformation.Show();
+                ReviewsInformationWindow reviews = new ReviewsInformationWindow(SelectedGuest);
+                this.NavigationService.Navigate(reviews);
             }
-            
-        }
 
-        
+        }
     }
 }

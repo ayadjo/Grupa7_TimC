@@ -1,5 +1,4 @@
-﻿using InitialProject.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace InitialProject.WPF.Views.GuideWindows
@@ -18,27 +18,27 @@ namespace InitialProject.WPF.Views.GuideWindows
     /// <summary>
     /// Interaction logic for GuideMainWindow.xaml
     /// </summary>
-    public partial class GuideMainWindow : Window
+    public partial class GuideMainWindow : Page
     {
+
         public GuideMainWindow()
         {
             InitializeComponent();
         }
-
         private void MyTourssButton_Click(object sender, RoutedEventArgs e)
         {
             TourOverviewWindow tourOverviewWindow = new TourOverviewWindow();
-            tourOverviewWindow.Show();
+            this.NavigationService.Navigate(tourOverviewWindow);
         }
 
-        
 
-     
+
+
 
         private void TodaysToursButton_Click(object sender, RoutedEventArgs e)
         {
             TodaysToursOverviewWindow todaysToursOverviewWindow = new TodaysToursOverviewWindow();
-            todaysToursOverviewWindow.Show();   
+            todaysToursOverviewWindow.Show();
 
         }
 
@@ -52,8 +52,8 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         private void ReviewsButton_Click(object sender, RoutedEventArgs e)
         {
-            Reviews reviews = new Reviews();
-            reviews.Show();
+            ReviewsWindow reviews = new ReviewsWindow();
+            this.NavigationService.Navigate(reviews);
         }
 
         private void TourStatisticsButton_Click(object sender, RoutedEventArgs e)
@@ -62,13 +62,20 @@ namespace InitialProject.WPF.Views.GuideWindows
             tourStatistics.Show();
         }
 
-        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+      
+
+        private void Request_Click(object sender, RoutedEventArgs e)
         {
 
-           
-            SignInForm signInForm = new SignInForm();
-            signInForm.Show();
-            this.Close();
+        }
+
+        private void Statistics_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ComplexTours_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

@@ -59,6 +59,7 @@ public partial class SignInForm : Window
     {
         InitializeComponent();
         DataContext = this;
+        usernameTextBox.Focus();
         _repository = UserRepository.GetInstance();
 
         _accommodationReservationController = new AccommodationReservationController();
@@ -89,7 +90,7 @@ public partial class SignInForm : Window
                 }
                 else if (user.Type == UserType.Guide)
                 {
-                    GuideMainWindow guideMainWindow = new GuideMainWindow();
+                    GuideUIWindow guideMainWindow = new GuideUIWindow();
                     guideMainWindow.Show();
                     this.Close();
 

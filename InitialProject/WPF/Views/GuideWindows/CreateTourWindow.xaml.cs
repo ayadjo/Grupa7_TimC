@@ -1,24 +1,33 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Enumerations;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using Image = InitialProject.Domain.Models.Image;
+
 
 namespace InitialProject.WPF.Views.GuideWindows
 {
     /// <summary>
-    /// Interaction logic for CreateTour.xaml
+    /// Interaction logic for CreateTourWindow.xaml
     /// </summary>
-    public partial class CreateTour : Window, INotifyPropertyChanged
+    public partial class CreateTourWindow : Page, IDataErrorInfo
     {
-
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
 
@@ -31,11 +40,12 @@ namespace InitialProject.WPF.Views.GuideWindows
         public List<Image> AllImages { get; set; }
         public List<TourPoint> AllTourPoints { get; set; }
 
-        public CreateTour()
+        public CreateTourWindow()
         {
             InitializeComponent();
             this.DataContext = this;
             Tour Tour = new Tour();
+            nameTextBox.Focus();
 
             _locationController = new LocationController();
             _tourController = new TourController();
@@ -91,7 +101,7 @@ namespace InitialProject.WPF.Views.GuideWindows
                 }
             }
         }
-        
+
         private string _description;
         public string Description
         {
@@ -164,7 +174,7 @@ namespace InitialProject.WPF.Views.GuideWindows
         }
 
 
-       
+
 
         #endregion
 
@@ -184,38 +194,47 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
-            User user = SignInForm.LoggedUser;
-
-            Tour tour = new Tour()
+            if (IsValid)
             {
-                Name = Namee,
-                Location = location,
-                Description = Description,
-                Languages = Languages,
-                MaxGuests = MaxGuestss,
-                Duration = Duration,
-                Guide = user,
-                Images = AllImages,
-                TourPoints = AllTourPoints
-            };
-           
-            _tourController.SaveImagesTourPoints(tour);  
+                Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
+                User user = SignInForm.LoggedUser;
 
-            TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, TourEventStatus.NotStarted);
-            _tourEventController.Save(tourEvent);
+                Tour tour = new Tour()
+                {
+                    Name = Namee,
+                    Location = location,
+                    Description = Description,
+                    Languages = Languages,
+                    MaxGuests = MaxGuestss,
+                    Duration = Duration,
+                    Guide = user,
+                    Images = AllImages,
+                    TourPoints = AllTourPoints
+                };
 
-            
+                _tourController.SaveImagesTourPoints(tour);
 
-            
+                TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, TourEventStatus.NotStarted);
+                _tourEventController.Save(tourEvent);
+                MessageBox.Show("Kreirali ste turu!");
 
-            Close();
+            }
+            else
+            {
+                MessageBox.Show("Niste dobro uneli podatke");
+            }
+
+
+
+
+
+
 
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            
         }
 
         private void CountryComboBox_LostFocus(object sender, RoutedEventArgs e)
@@ -230,6 +249,8 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         }
 
+       
+
         private void CityComboBox_LostFocus(object sender, RoutedEventArgs e)
         {
 
@@ -242,18 +263,19 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         }
 
-        private void LanguageComboBox_LostFocus(object sender, RoutedEventArgs e) 
+        private void LanguageComboBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (LanguageComboBox.SelectedIndex == 0)
             {
                 Languages = "srpski";
             }
-            else if (LanguageComboBox.SelectedIndex == 1) {
+            else if (LanguageComboBox.SelectedIndex == 1)
+            {
 
                 Languages = "engleski";
 
             }
-            else if(LanguageComboBox.SelectedIndex == 2)
+            else if (LanguageComboBox.SelectedIndex == 2)
             {
 
                 Languages = "italijanski";
@@ -263,15 +285,15 @@ namespace InitialProject.WPF.Views.GuideWindows
             {
                 Languages = "korejski";
             }
-            else if(LanguageComboBox.SelectedIndex == 4)
+            else if (LanguageComboBox.SelectedIndex == 4)
             {
                 Languages = "japanski";
             }
-            
-        
+
+
         }
 
-       
+
 
         private void AddTourPoint_Click(object sender, RoutedEventArgs e)
         {
@@ -280,11 +302,96 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         }
 
-       
+
 
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
+        private void MaxGuestsSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        //Validacija
+        private Regex _NameRegex = new Regex("[A-Z]{1}[a-z]*");
+        private Regex _DurationRegex = new Regex("[0-9]*");
+
+        public string Error => null;
+
+        public string this[string columnName]
+        {
+            get
+            {
+                if (columnName == "Namee")
+                {
+                    if (string.IsNullOrEmpty(Namee))
+                        return "Ime je obavezno";
+
+                    Match match = _NameRegex.Match(Namee);
+                    if (!match.Success)
+                        return "Ime moze imati samo mala i velika slova";
+                }
+                else if (columnName == "SelectedCountry")
+                {
+                    if (string.IsNullOrEmpty(SelectedCountry))
+                        return "Drzava je obavezna";
+                }
+                else if (columnName == "SelectedCity")
+                {
+                    if (string.IsNullOrEmpty(SelectedCity))
+                        return "Grad je obavezan";
+                }
+                else if (columnName == "Description")
+                {
+                    if (string.IsNullOrEmpty(Description))
+                        return "Opis je obavezan";
+                }
+                else if (columnName == "Languages")
+                {
+                    if (string.IsNullOrEmpty(Languages))
+                        return "Jezik je obavezan";
+                }
+                else if (columnName == "MaxGuestss")
+                {
+                    if (string.IsNullOrEmpty(MaxGuestss.ToString()))
+                        return "Max broj gostiju je obavezan";
+                }
+                else if (columnName == "Duration")
+                {
+                    if (string.IsNullOrEmpty(Duration.ToString()))
+                        return "Trajanje je obavezano";
+                    Match match = _DurationRegex.Match(Duration.ToString());
+                    if (!match.Success)
+                        return "Trajanje moze biti samo broj";
+                }
+
+                return null;
+            }
+        }
+
+        private readonly string[] _validatedProperties = { "Namee", "SelectedCountry", "SelectedCity", "Description", "Languages", "MaxGuestss", "Duration" };
+
+        public bool IsValid
+        {
+            get
+            {
+                foreach (var property in _validatedProperties)
+                {
+                    if (this[property] != null)
+                        return false;
+                }
+
+                return true;
+            }
+        }
+     
+     
     }
 }
