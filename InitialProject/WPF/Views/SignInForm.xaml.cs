@@ -12,6 +12,7 @@ using InitialProject.WPF.Views.Guest1Windows;
 using InitialProject.Enumerations;
 using System.Collections.Generic;
 using InitialProject.WPF.Views.Guest2Windows;
+using InitialProject.Commands;
 
 namespace InitialProject.WPF.Views;
 

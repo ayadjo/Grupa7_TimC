@@ -186,13 +186,9 @@
     <Resource Include="Resources\Images\logout-32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\picture.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\info.png">
     <Resource Include="Resources\Images\Guest2\pdf.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
