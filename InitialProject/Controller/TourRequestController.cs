@@ -50,5 +50,9 @@ namespace InitialProject.Controller
             return _tourRequestService.GetAllTourRequestsForUser(userId);
         }
 
+        public List<int> YearsOfTourRequests(int guestId)
+        {
+            return _tourRequestService.YearsOfTourRequests(guestId);
+        }
     }
 }

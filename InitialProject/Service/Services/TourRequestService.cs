@@ -1,6 +1,7 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Enumerations;
+using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +63,19 @@ namespace InitialProject.Service.Services
             }
 
             return myRequests;
+        }
+
+        public List<int> YearsOfTourRequests(int guestId)
+        {
+            List<int> years = new List<int>();
+            foreach (TourRequest tourRequest in _tourRequestRepository.GetAll())
+            {
+                if (tourRequest.Guest.Id == guestId)
+                {
+                    years.Add(tourRequest.Start.Year);
+                }
+            }
+            return years.Distinct().ToList();
         }
     }
 }
