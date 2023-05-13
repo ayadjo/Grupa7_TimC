@@ -1,5 +1,6 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Domain.RepositoryInterfaces;
+using InitialProject.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,28 @@ namespace InitialProject.Service.Services
         public void Delete(TourRequest request)
         {
             _tourRequestRepository.Delete(request);
+        }
+
+        public List<TourRequest> GetAllTourRequestsForUser(int userId)
+        {
+            List<TourRequest> myRequests = new List<TourRequest>();
+            var allRequests = _tourRequestRepository.GetAll();
+
+            for (int i = 0; i < allRequests.Count(); i++)
+            {
+                var request = allRequests.ElementAt(i);
+                if (request.Guest.Id == userId)
+                {
+                    if ((request.Start - DateTime.Today).TotalDays <= 2)
+                    {
+                        request.Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), "Declined");
+                        _tourRequestRepository.Update(request);
+                    }
+                    myRequests.Add(request);
+                }
+            }
+
+            return myRequests;
         }
     }
 }

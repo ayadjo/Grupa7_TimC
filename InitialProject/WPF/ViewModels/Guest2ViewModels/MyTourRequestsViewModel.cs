@@ -1,6 +1,7 @@
 ﻿using InitialProject.Commands;
 using InitialProject.Controller;
 using InitialProject.Domain.Models;
+using InitialProject.WPF.Views;
 using InitialProject.WPF.Views.Guest2Windows;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
             _tourRequestController = new TourRequestController();
 
-            Requests = new ObservableCollection<TourRequest>(_tourRequestController.GetAll());
+            Requests = new ObservableCollection<TourRequest>(_tourRequestController.GetAllTourRequestsForUser(SignInForm.LoggedUser.Id));
         }
 
         public void Executed_CreateRequestCommand(object obj)
