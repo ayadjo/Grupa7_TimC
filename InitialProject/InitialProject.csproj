@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <Compile Remove="Resources\Locations\**" />
+    <Compile Remove="WPF\ViewModels\Guest2ViewModels\**" />
     <EmbeddedResource Remove="Resources\Locations\**" />
+    <EmbeddedResource Remove="WPF\ViewModels\Guest2ViewModels\**" />
     <None Remove="Resources\Locations\**" />
+    <None Remove="WPF\ViewModels\Guest2ViewModels\**" />
     <Page Remove="Resources\Locations\**" />
+    <Page Remove="WPF\ViewModels\Guest2ViewModels\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -522,6 +526,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="WPF\ViewModels\Guest1ViewModels\" />
     <Folder Include="WPF\ViewModels\GuideViewModels\" />
   </ItemGroup>
 

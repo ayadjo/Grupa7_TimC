@@ -37,6 +37,7 @@ namespace InitialProject.Commands
             _execute(parameter);
         }
 
+
         // public event EventHandler CanExecuteChanged;
     }
 }

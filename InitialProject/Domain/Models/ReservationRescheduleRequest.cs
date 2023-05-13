@@ -1,5 +1,6 @@
 ﻿using InitialProject.Enumerations;
 using InitialProject.Serializer;
+using InitialProject.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,8 +45,8 @@ namespace InitialProject.Domain.Models
                 Id.ToString(),
                 Reservation.Id.ToString(),
                 Guest.Id.ToString(),
-                NewStart.ToString(),
-                NewEnd.ToString(),
+                DateHelper.DateToString(NewStart),
+                DateHelper.DateToString(NewEnd),
                 Comment,
                 Status.ToString()
             };
@@ -57,8 +58,8 @@ namespace InitialProject.Domain.Models
             Id = Convert.ToInt32(values[0]);
             Reservation = new AccommodationReservation() { Id = Convert.ToInt32(values[1]) };
             Guest = new User() { Id = Convert.ToInt32(values[2]) };
-            NewStart = Convert.ToDateTime(values[3]);
-            NewEnd = Convert.ToDateTime(values[4]);
+            NewStart = DateHelper.StringToDate(values[3]);
+            NewEnd = DateHelper.StringToDate(values[4]);
             Comment = values[5];
             Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), values[6]);
         }
