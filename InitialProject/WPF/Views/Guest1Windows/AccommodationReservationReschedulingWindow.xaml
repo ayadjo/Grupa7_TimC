@@ -11,14 +11,14 @@
         <Label Content="(unesite novi početni i krajnji datum Vaše rezervacije izabranog smeštaja)" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Unesite novi početni datum:" HorizontalAlignment="Left" Margin="137,106,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <DatePicker Name="NewStartDateDatePicker" HorizontalAlignment="Left" Margin="137,148,0,0" VerticalAlignment="Top" Width="258" SelectedDateChanged="NewStartDate_SelectedDateChanged"/>
+        <DatePicker Name="NewStartDateDatePicker" HorizontalAlignment="Left" Margin="137,148,0,0" VerticalAlignment="Top" Width="258" SelectedDate="{Binding FromDate}"/>
 
         <Label Content="Unesite novi krajnji datum:" HorizontalAlignment="Left" Margin="628,106,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <DatePicker Name="NewEndDateDatePicker" HorizontalAlignment="Left" Margin="628,143,0,0" VerticalAlignment="Top" Width="258" SelectedDateChanged="NewEndDate_SelectedDateChanged"/>
+        <DatePicker Name="NewEndDateDatePicker" HorizontalAlignment="Left" Margin="628,143,0,0" VerticalAlignment="Top" Width="258" SelectedDate="{Binding ToDate}"/>
 
-        <Button Content="POŠALJI ZAHTEV" HorizontalAlignment="Center" Margin="0,471,0,0" VerticalAlignment="Top" Height="90" Width="292" Click="SendRescheduleRequestButton_Click"/>
+        <Button Content="POŠALJI ZAHTEV" HorizontalAlignment="Center" Margin="0,471,0,0" VerticalAlignment="Top" Height="90" Width="292" Command="{Binding RequestRescheduleCommand}"/>
         <Label Content="(klikom na ovo dugme, Vaš zahtev biće kreiran i poslat vlasniku)" HorizontalAlignment="Center" Margin="0,566,0,0" VerticalAlignment="Top"/>
 
-        <Button Content="Odustani" HorizontalAlignment="Left" Margin="933,686,0,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="933,686,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}"/>
     </Grid>
 </Window>

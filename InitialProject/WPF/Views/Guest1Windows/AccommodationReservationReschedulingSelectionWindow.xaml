@@ -19,9 +19,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="POŠALJI ZAHTEV ZA POMERANJE" HorizontalAlignment="Center" Margin="0,623,0,0" VerticalAlignment="Top" Height="70" Width="276" Click="AccommodationReservationReschedulingButton_Click"/>
+        <Button Content="POŠALJI ZAHTEV ZA POMERANJE" HorizontalAlignment="Center" Margin="0,623,0,0" VerticalAlignment="Top" Height="70" Width="276" Command="{Binding RescheduleCommand}"/>
         <Label Content="(nakon izabrane rezervacije, kliknite na ovo dugme kako biste dobili formu za pravljenje zahteva)" HorizontalAlignment="Center" Margin="0,693,0,0" VerticalAlignment="Top"/>
 
-        <Button Content="Nazad" HorizontalAlignment="Left" Margin="954,691,0,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+        <Button Content="Nazad" HorizontalAlignment="Left" Margin="954,691,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}"/>
     </Grid>
 </Window>

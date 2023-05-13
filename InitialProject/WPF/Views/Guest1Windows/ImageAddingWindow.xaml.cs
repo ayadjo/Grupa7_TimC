@@ -14,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InitialProject.WPF.ViewModels;
+using InitialProject.WPF.ViewModels.Guest1ViewModels;
 
 namespace InitialProject.WPF.Views.Guest1Windows
 {
@@ -22,88 +24,19 @@ namespace InitialProject.WPF.Views.Guest1Windows
     /// </summary>
     public partial class ImageAddingWindow : Window
     {
-        public ObservableCollection<Domain.Models.Image> AllImages { get; set; }
-
-        #region NotifyProperties
-        private string _url;
-        public string Url
-        {
-            get => _url;
-            set
-            {
-                if (value != _url)
-                {
-                    _url = value;
-                    OnPropertyChanged("Url");
-                }
-            }
-        }
-        private ImageResource _resource;
-        private string _description;
-        public string Description
-        {
-            get => _description;
-            set
-            {
-                if (value != _description)
-                {
-                    _description = value;
-                    OnPropertyChanged("Description");
-                }
-            }
-        }
-        #endregion
-
-        #region PropertyChangedNotifier
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
-        #endregion
-
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-
-        public ImageResource Resource { get; set; }
-        public List<Domain.Models.Image> SaveImages { get; set; }
-
-
         public ImageAddingWindow(ImageResource resource, List<Domain.Models.Image> saveImages)
         {
             InitializeComponent();
-            this.DataContext = this;
-            Resource = resource;
+            ImageAddingViewModel imageAddingViewModel = new ImageAddingViewModel(resource, saveImages);
+            this.DataContext = imageAddingViewModel;
 
-            AllImages = new ObservableCollection<Domain.Models.Image>();
-            SaveImages = saveImages;
-        }
-
-        private void AddImageButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(UrlTextBox.Text))
+            if (DataContext is IClose vm)
             {
-                MessageBox.Show("Niste uneli URL slike!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                vm.Close += () =>
+                {
+                    this.Close();
+                };
             }
-            else if (string.IsNullOrEmpty(DescriptionTextBox.Text))
-            {
-                MessageBox.Show("Niste uneli opis slike!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                Domain.Models.Image image = new Domain.Models.Image(-1, Url, -1, Description, Resource);
-                AllImages.Add(image);
-                SaveImages.Add(image);
-            }
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }
