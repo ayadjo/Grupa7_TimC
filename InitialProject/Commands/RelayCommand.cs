@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace InitialProject.WPF.Views
+namespace InitialProject.Commands
 {
     public class RelayCommand : ICommand
     {
@@ -36,6 +36,7 @@ namespace InitialProject.WPF.Views
         {
             _execute(parameter);
         }
+
 
         // public event EventHandler CanExecuteChanged;
     }

@@ -61,6 +61,11 @@ namespace InitialProject.WPF.Views
             Accommodations.Clear();
             foreach (var accommodation in _accommodationController.GetAll())
             {
+                //List<AccommodationRenovation> renovations =  _accommodationRenovationContreller.GetAll();
+                //foreach(AccommodationRenovation renovation in renovations){
+                //  if(renovation.Accommodation.id == accommodation.id){
+                //      isAccommodationRecentlyRenovated(renovation);
+                //  }
                 Accommodations.Add(accommodation);
             }
         }

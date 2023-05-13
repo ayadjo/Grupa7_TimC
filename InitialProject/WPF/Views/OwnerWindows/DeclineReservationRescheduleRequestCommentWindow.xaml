@@ -8,7 +8,7 @@
         Title="Komentar" Height="300" Width="350" WindowStartupLocation="CenterScreen">
     
     <Window.InputBindings>
-        <KeyBinding Command="{Binding FinishCommand}" Key="S" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding FinishCommand}" Key="B" Modifiers="Ctrl" />
     </Window.InputBindings>
     <Grid Background="#5E4B64">
         <Grid.RowDefinitions>

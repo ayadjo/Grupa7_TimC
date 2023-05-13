@@ -1,7 +1,6 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Repositories;
 using InitialProject.WPF.Views.OwnerWindows;
-using InitialProject.WPF.Views.Guest2Window;
 using InitialProject.WPF.Views.GuideWindows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -12,6 +11,7 @@ using InitialProject.WPF.Views.Guest1Windows;
 using InitialProject.Enumerations;
 using System.Collections.Generic;
 using InitialProject.WPF.Views.Guest2Windows;
+using InitialProject.Commands;
 
 namespace InitialProject.WPF.Views;
 

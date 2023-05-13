@@ -1,10 +1,6 @@
-﻿using InitialProject.Enumerations;
-using InitialProject.Serializer;
+﻿using InitialProject.Serializer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using InitialProject.Util;
 
 namespace InitialProject.Domain.Models
 {
@@ -43,8 +39,8 @@ namespace InitialProject.Domain.Models
                 Id.ToString(),
                 Accommodation.Id.ToString(),
                 Guest.Id.ToString(),
-                Start.ToString(),
-                End.ToString(),
+                DateHelper.DateToString(Start),
+                DateHelper.DateToString(End),
                 GuestReview.Id.ToString(),
                 AccommodationReview.Id.ToString()
             };
@@ -56,8 +52,8 @@ namespace InitialProject.Domain.Models
             Id = Convert.ToInt32(values[0]);
             Accommodation = new Accommodation() { Id = Convert.ToInt32(values[1]) };
             Guest = new User() { Id = Convert.ToInt32(values[2]) };
-            Start = Convert.ToDateTime(values[3]);
-            End = Convert.ToDateTime(values[4]);
+            Start = DateHelper.StringToDate(values[3]);
+            End = DateHelper.StringToDate(values[4]);
             GuestReview = new GuestReview() { Id = Convert.ToInt32(values[5]) };
             AccommodationReview = new AccommodationOwnerReview() { Id = Convert.ToInt32(values[6]) };
         }

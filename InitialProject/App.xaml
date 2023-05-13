@@ -71,7 +71,7 @@
                 </Setter>
             </Style>
 
-            <!--Data grids-->
+            <!--Data grids for owner-->
             <Style TargetType="DataGrid" x:Key="DarkDataGrid">
                 <Setter Property="FontFamily" Value="Candara"/>
                 <Setter Property="FontSize" Value="10"/>

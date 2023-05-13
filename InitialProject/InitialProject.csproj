@@ -334,4 +334,10 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="WPF\ViewModels\Guest1ViewModels\" />
+    <Folder Include="WPF\ViewModels\Guest2ViewModels\" />
+    <Folder Include="WPF\ViewModels\GuideViewModels\" />
+  </ItemGroup>
+
 </Project>
