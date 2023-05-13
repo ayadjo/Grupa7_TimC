@@ -33,6 +33,7 @@ namespace InitialProject.Injector
 
             TourRequestRepository tourRequestRepository = new TourRequestRepository();
             tourRequestRepository.BindTourRequestUser();
+            tourRequestRepository.BindTourRequestLocation();
 
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
             _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);

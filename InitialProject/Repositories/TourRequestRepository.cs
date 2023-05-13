@@ -40,6 +40,23 @@ namespace InitialProject.Repositories
             }
         }
 
+        public void BindTourRequestLocation()
+        {
+            foreach (TourRequest request in _tourRequests)
+            {
+                int locationId = request.Location.Id;
+                Location location = LocationRepository.GetInstance().Get(locationId);
+                if (location != null)
+                {
+                    request.Location = location;
+                }
+                else
+                {
+                    Console.WriteLine("Error in tourLocation binding");
+                }
+            }
+        }
+
         public List<TourRequest> GetAll()
         {
             return _tourRequests;
