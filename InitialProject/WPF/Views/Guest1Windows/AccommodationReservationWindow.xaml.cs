@@ -109,7 +109,8 @@ namespace InitialProject.WPF.Views
             else
             {
                 int id = 0;
-                AccommodationReservation accommodationReservation = new AccommodationReservation(id, accommodation, guest, start, start.AddDays(numberOfDaysForReservation), guestReview, accommodationReview);
+                bool isCancelled = false;
+                AccommodationReservation accommodationReservation = new AccommodationReservation(id, accommodation, guest, start, start.AddDays(numberOfDaysForReservation), guestReview, accommodationReview, isCancelled);
                 if (_accommodationReservationController.AvailableAccommodation(accommodationReservation, numberOfDaysForReservation))
                 {
                     _accommodationReservationController.Save(accommodationReservation);
@@ -137,7 +138,8 @@ namespace InitialProject.WPF.Views
                 DateTime end = DateTime.Parse(line[4]);
                 GuestReview guestReview = new GuestReview() { Id = Convert.ToInt32(line[5]) };
                 AccommodationOwnerReview accommodationReview = new AccommodationOwnerReview() { Id = Convert.ToInt32(line[6]) };
-                AccommodationReservation reservation = new AccommodationReservation(id, accommodation, guest, start, end, guestReview, accommodationReview);
+                bool isCancelled = Convert.ToBoolean(line[7]);
+                AccommodationReservation reservation = new AccommodationReservation(id, accommodation, guest, start, end, guestReview, accommodationReview, isCancelled);
                 reservations.Add(reservation);
             }
             reader.Close();

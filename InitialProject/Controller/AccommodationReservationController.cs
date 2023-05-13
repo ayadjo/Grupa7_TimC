@@ -85,5 +85,11 @@ namespace InitialProject.Controller
         {
             return _accommodationReservationService.IsReschedulePossible(reservationRescheduleRequest);
         }
+
+
+        public List<AccommodationReservation> GetCancelledByUserId(int guest)
+        {
+            return _accommodationReservationService.GetCancelledByUserId(guest);
+        }
     }
 }

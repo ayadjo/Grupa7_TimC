@@ -133,13 +133,17 @@ namespace InitialProject.Service.Services
             List<AccommodationReservation> bookedReservations = GetByAccommodationId(accommodationReservation.Accommodation.Id);
             foreach (AccommodationReservation bookedReservation in bookedReservations)
             {
-                if (accommodationReservation.Start >= bookedReservation.Start && accommodationReservation.Start < bookedReservation.End)
+                if (bookedReservation.IsCancelled == false)
                 {
-                    DateTime startSuggestion = bookedReservation.End;
-                    DateTime endSuggestion = bookedReservation.End.AddDays(numberOfDaysForReservation);
-                    MessageBox.Show("Ovaj smeštaj je zauzet u izabranom periodu!\n\nPreporuka za početni datum: " + startSuggestion.ToString("dd.MM.yyyy.") + "\nPreporuka za krajnji datum: " + endSuggestion.ToString("dd.MM.yyyy."), "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return false;
+                    if (accommodationReservation.Start >= bookedReservation.Start && accommodationReservation.Start < bookedReservation.End)
+                    {
+                        DateTime startSuggestion = bookedReservation.End;
+                        DateTime endSuggestion = bookedReservation.End.AddDays(numberOfDaysForReservation);
+                        MessageBox.Show("Ovaj smeštaj je zauzet u izabranom periodu!\n\nPreporuka za početni datum: " + startSuggestion.ToString("dd.MM.yyyy.") + "\nPreporuka za krajnji datum: " + endSuggestion.ToString("dd.MM.yyyy."), "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return false;
+                    }
                 }
+
             }
             return true;
         }
@@ -189,6 +193,24 @@ namespace InitialProject.Service.Services
             }
 
             return true;
+        }
+
+
+
+
+
+        public List<AccommodationReservation> GetCancelledByUserId(int guest)
+        {
+            List<AccommodationReservation> accommodationReservations = new List<AccommodationReservation>();
+            foreach (AccommodationReservation accommodationReservation in _accommodationReservationRepository.GetAll())
+            {
+                if (accommodationReservation.Guest.Id == guest && accommodationReservation.IsCancelled == false)
+                {
+                    accommodationReservations.Add(accommodationReservation);
+                }
+            }
+
+            return accommodationReservations;
         }
     }
 }

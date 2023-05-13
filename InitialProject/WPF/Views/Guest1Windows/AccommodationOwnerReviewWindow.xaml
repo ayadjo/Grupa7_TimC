@@ -19,15 +19,15 @@
         <TextBox x:Name="CommentTextBox" Text="{Binding Path=Comment, Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Left" Margin="546,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="468" Height="353"/>
 
         <Label Content="Možete ostaviti i slike:" HorizontalAlignment="Left" Margin="-3,470,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Button Content="Postavi" HorizontalAlignment="Left" Margin="201,482,0,0" VerticalAlignment="Top" Width="189" Click="ImagesButton_Click"/>
+        <Button Content="Postavi" HorizontalAlignment="Left" Margin="201,482,0,0" VerticalAlignment="Top" Width="189" Command="{Binding ImagesButtonCommand}"/>
         <Label Content="(u tekstualno polje unesite URL slike/a koju/e želite da pošaljete vlasniku u sklopu vaše recenzije)" HorizontalAlignment="Left" Margin="0,502,0,0" VerticalAlignment="Top"/>
-        
-        <Button Content="OCENI" HorizontalAlignment="Center" Margin="0,548,0,0" VerticalAlignment="Top" Height="69" Width="180" Click="ReviewButton_Click"/>
+
+        <Button Content="OCENI" HorizontalAlignment="Center" Margin="0,548,0,0" VerticalAlignment="Top" Height="69" Width="180" Command="{Binding ReviewButtonCommand}"/>
         <Label Content="(klikom na ovo dugme Vaša recenzija biće memorisana)" HorizontalAlignment="Center" Margin="0,617,0,0" VerticalAlignment="Top"/>
         
         <Label Content="Dodatno, možete i ostaviti preporuku za renoviranje:" HorizontalAlignment="Left" Margin="10,648,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Button Content="Ostavi preporuku" HorizontalAlignment="Left" Margin="488,658,0,0" VerticalAlignment="Top"/>
-        
-        <Button Content="Odustani" HorizontalAlignment="Left" Margin="936,699,0,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="936,699,0,0" VerticalAlignment="Top" Command="{Binding CancelButtonCommand}"/>
     </Grid>
 </Window>

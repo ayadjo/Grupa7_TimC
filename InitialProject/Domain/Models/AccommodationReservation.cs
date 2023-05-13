@@ -14,13 +14,14 @@ namespace InitialProject.Domain.Models
 
         public GuestReview GuestReview { get; set; }
         public AccommodationOwnerReview AccommodationReview { get; set; }
+        public bool IsCancelled { get; set; }
 
         public AccommodationReservation()
         {
 
         }
 
-        public AccommodationReservation(int id, Accommodation accommodation, User guest, DateTime start, DateTime end, GuestReview guestReview, AccommodationOwnerReview accommodationReview)
+        public AccommodationReservation(int id, Accommodation accommodation, User guest, DateTime start, DateTime end, GuestReview guestReview, AccommodationOwnerReview accommodationReview, bool isCancelled)
         {
             Id = id;
             Accommodation = accommodation;
@@ -29,6 +30,7 @@ namespace InitialProject.Domain.Models
             End = end;
             GuestReview = guestReview;
             AccommodationReview = accommodationReview;
+            IsCancelled = isCancelled;
         }
 
 
@@ -42,7 +44,8 @@ namespace InitialProject.Domain.Models
                 DateHelper.DateToString(Start),
                 DateHelper.DateToString(End),
                 GuestReview.Id.ToString(),
-                AccommodationReview.Id.ToString()
+                AccommodationReview.Id.ToString(),
+                IsCancelled.ToString()
             };
             return csvValues;
         }
@@ -56,6 +59,7 @@ namespace InitialProject.Domain.Models
             End = DateHelper.StringToDate(values[4]);
             GuestReview = new GuestReview() { Id = Convert.ToInt32(values[5]) };
             AccommodationReview = new AccommodationOwnerReview() { Id = Convert.ToInt32(values[6]) };
+            IsCancelled = Convert.ToBoolean(values[7]);
         }
     }
 }

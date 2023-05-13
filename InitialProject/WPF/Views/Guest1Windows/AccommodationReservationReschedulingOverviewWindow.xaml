@@ -60,9 +60,9 @@
 
         </TabControl>
 
-        <Button Content="NAPRAVI NOVI ZAHTEV" Margin="392,624,392,62" Click="AccommodationReservationReschedulingSelectionButton_Click"/>
+        <Button Content="NAPRAVI NOVI ZAHTEV" Margin="392,624,392,62" Command="{Binding SelectionCommand}"/>
         <Label Content="(klik na ovo dugme odvešće Vas na odabir rezervacija)" HorizontalAlignment="Center" Margin="0,690,0,0" VerticalAlignment="Top"/>
 
-        <Button Content="Nazad" HorizontalAlignment="Left" Margin="943,683,0,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+        <Button Content="Nazad" HorizontalAlignment="Left" Margin="943,683,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}"/>
     </Grid>
 </Window>

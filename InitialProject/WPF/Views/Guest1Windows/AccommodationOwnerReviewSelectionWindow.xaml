@@ -20,10 +20,10 @@
                 <DataGridTextColumn Header="Krajnji datum" Binding="{Binding End}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
-        <Button Content="OCENI REZERVACIJU" HorizontalAlignment="Left" Margin="385,629,0,0" VerticalAlignment="Top" Height="73" Width="222" Click="Review_Click"/>
+
+        <Button Content="OCENI REZERVACIJU" HorizontalAlignment="Left" Margin="385,629,0,0" VerticalAlignment="Top" Height="73" Width="222" Command="{Binding ReviewCommand}"/>
         <Label Content="(nakon što izaberete jednu od Vaših rezervacija, klikom na ovo dugme, idete na formu za ocenjivanje)" HorizontalAlignment="Center" Margin="0,702,0,0" VerticalAlignment="Top"/>
-        
-        <Button Content="Nazad" HorizontalAlignment="Left" Margin="948,700,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+
+        <Button Content="Nazad" HorizontalAlignment="Left" Margin="948,700,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}"/>
     </Grid>
 </Window>
