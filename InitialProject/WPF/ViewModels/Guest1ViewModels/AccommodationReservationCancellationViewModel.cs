@@ -32,7 +32,7 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
 
             _accommodationReservationController = new AccommodationReservationController();
 
-            AccommodationReservations = new ObservableCollection<AccommodationReservation>(_accommodationReservationController.GetByUserId(guest.Id));
+            AccommodationReservations = new ObservableCollection<AccommodationReservation>(_accommodationReservationController.GetCancelledByUserId(guest.Id));
         }
 
         private void UpdateAccommodationReservationsList()
@@ -71,14 +71,18 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
                     }
                     else
                     {
-                        _accommodationReservationController.Delete(SelectedAccommodationReservation);
+                        //_accommodationReservationController.Delete(SelectedAccommodationReservation);
+                        SelectedAccommodationReservation.IsCancelled = true;
+                        _accommodationReservationController.Update(SelectedAccommodationReservation);
                         MessageBox.Show("Uspešno ste otkazali smeštaj!", "Otkazano!", MessageBoxButton.OK);
                         this.Close();
                     }
                 }
                 else
                 {
-                    _accommodationReservationController.Delete(SelectedAccommodationReservation);
+                    //_accommodationReservationController.Delete(SelectedAccommodationReservation);
+                    SelectedAccommodationReservation.IsCancelled = true;
+                    _accommodationReservationController.Update(SelectedAccommodationReservation);
                     MessageBox.Show("Uspešno ste otkazali smeštaj!", "Otkazano!", MessageBoxButton.OK);
                     this.Close();
                 }
