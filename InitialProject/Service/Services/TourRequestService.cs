@@ -1,7 +1,9 @@
-﻿using InitialProject.Domain.Models;
+﻿using InitialProject.Domain.Dto;
+using InitialProject.Domain.Models;
 using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Enumerations;
 using InitialProject.Repositories;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +78,32 @@ namespace InitialProject.Service.Services
                 }
             }
             return years.Distinct().ToList();
+        }
+
+        public TourRequestPercentageDto GetPercentageOfTourRequest(int userId, int year = -1)
+        {
+            int acceptedRequests = 0;
+            int rejectedRequests = 0;
+
+            TourRequestPercentageDto tourRequestPercentage = new TourRequestPercentageDto(0, 0);
+
+            foreach (TourRequest tourRequest in GetAllTourRequestsForUser(userId))
+            {
+                if (tourRequest.Status == RequestStatusType.Approved)
+                {
+                    acceptedRequests += 1;
+                }
+                else if(tourRequest.Status == RequestStatusType.Declined)
+                {
+                    rejectedRequests += 1;
+                }
+            }
+            double acceptedRequestsPercentage = (acceptedRequests * 100.0) / (acceptedRequests + rejectedRequests);
+            double rejectedRequestsPercentage = (rejectedRequests * 100.0) / (acceptedRequests + rejectedRequests);
+            tourRequestPercentage.PercentageOfAcceptedRequests = (int)Math.Round(acceptedRequestsPercentage);
+            tourRequestPercentage.PercentageOfRejectedRequests = (int)Math.Round(rejectedRequestsPercentage);
+
+            return tourRequestPercentage;
         }
     }
 }

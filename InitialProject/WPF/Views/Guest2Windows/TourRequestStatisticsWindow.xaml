@@ -11,12 +11,13 @@
             <Button x:Name="InGeneral" Command="{Binding InGeneralCommand}" Content="Tokom svih godina" Width="120" Height="25" Margin="0,0,20,0"/>
             <ComboBox x:Name="YearComboBox"  SelectedItem="{Binding Path=SelectedYear}"  HorizontalAlignment="Right" ItemsSource="{Binding Years}" Width="120" Height="25"/>
         </StackPanel>
-        <Button x:Name="View" Command="{Binding ViewCommand}" HorizontalAlignment="Center" Height="25" Width="120" Content="Prikaži"></Button>
+        <Button x:Name="View" Command="{Binding ViewCommand}"  HorizontalAlignment="Center" Height="25" Width="120" Content="Prikaži"></Button>
         <Rectangle Stroke="Black" StrokeThickness="2" Width="500" Height="130" Margin="0,10,0,0"/>
         <StackPanel Margin="0,-130,0,0" Width="457" Height="100" >
             <StackPanel Orientation="Horizontal">
                 <Label Content="Procenat prihvaćenih zahteva:" Margin="0,0,10,10"/>
-                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfAcceptedRequests, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfAcceptedRequests, UpdateSourceTrigger=PropertyChanged}">
+                </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Prosečan broj ljudi u prihvaćenim zahtevima:" Margin="0,0,10,10"/>
@@ -24,7 +25,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Procenat neprihvaćenih zahteva:" Margin="0,0,10,10"/>
-                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfRejectedRequests, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock  Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfRejectedRequests, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InitialProject.Controller;
+using InitialProject.Domain.Dto;
 using InitialProject.WPF.ViewModels;
 using InitialProject.WPF.ViewModels.Guest2ViewModels;
 
@@ -24,7 +26,9 @@ namespace InitialProject.WPF.Views.Guest2Windows
         public TourRequestStatisticsWindow()
         {
             InitializeComponent();
+
             this.DataContext = new TourRequestStatisticsViewModel();
         }
+
     }
 }
