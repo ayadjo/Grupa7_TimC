@@ -106,6 +106,10 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        
+        private void CreateRequest_Click(object sender, RoutedEventArgs e)
+        {
+            CreateTourRequestWindow createTourRequestWindow = new CreateTourRequestWindow();
+            createTourRequestWindow.Show();
+        }
     }
 }
