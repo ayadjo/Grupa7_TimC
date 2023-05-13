@@ -16,8 +16,6 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
     public class TourPointsViewModel
     {
 
-        //private Tour tour;
-
         private NavigationService navigationService;
         public ObservableCollection<TourPoint> TourPoints { get; set; }
 
@@ -43,12 +41,5 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
 
         }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

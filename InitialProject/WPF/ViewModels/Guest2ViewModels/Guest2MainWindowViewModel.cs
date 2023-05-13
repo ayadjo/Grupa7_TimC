@@ -31,8 +31,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public RelayCommand NavigateToToursOverviewCommand { get; set; }
 
         public RelayCommand NavigateToMyToursCommand { get; set; }
-
-        public RelayCommand NavigateToMyRequestsCommand { get; set; }
+        public RelayCommand NavigateToMyTourRequestsCommand { get; set; }
 
         public RelayCommand LogOutCommand { get; set; }
 
@@ -68,6 +67,12 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
                 new Uri("WPF/Views/Guest2Windows/MyToursWindow.xaml", UriKind.Relative));
         }
 
+        private void Execute_NavigateToMyTourRequestsCommand(object obj)
+        {
+            this.NavigationService.Navigate(
+                new Uri("WPF/Views/Guest2Windows/MyTourRequestsWindow.xaml", UriKind.Relative));
+        }
+
         private void Execute_LogOutCommand(object sender)
         {
             SignInForm signInForm = new SignInForm();
@@ -91,7 +96,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             this.NavigationService = navigationService;
             this.NavigateToToursOverviewCommand = new RelayCommand(Execute_NavigateToToursOverviewCommand, CanExecute_NavigateCommand);
             this.NavigateToMyToursCommand = new RelayCommand(Execute_NavigateToMyToursCommand, CanExecute_NavigateCommand);
-            //this.NavigateToMyRequestsCommand = new RelayCommand(Execute_NavigateToMyRequestsCommand, CanExecute_NavigateCommand);
+            this.NavigateToMyTourRequestsCommand = new RelayCommand(Execute_NavigateToMyTourRequestsCommand, CanExecute_NavigateCommand);
             this.LogOutCommand = new RelayCommand(Execute_LogOutCommand, CanExecute_NavigateCommand);
            // this.Checker = false;
 

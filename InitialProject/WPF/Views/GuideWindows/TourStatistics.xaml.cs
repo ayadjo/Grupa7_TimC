@@ -33,8 +33,6 @@ namespace InitialProject.WPF.Views.GuideWindows
         public ObservableCollection<TourEvent> TourEvents { get; set; }
         public TourEvent SelectedTourEvent { get; set; }
         
-       
-
 
 
         #region NotifyProperties
