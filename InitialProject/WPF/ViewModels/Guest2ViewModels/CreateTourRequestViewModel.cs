@@ -148,7 +148,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
 
             _tourRequestController.Save(tourRequest);
-            NavigationService.Navigate(new Uri("WPF/Views/Guest2Windows/MyTourRequests.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("WPF/Views/Guest2Windows/MyTourRequests.xaml", UriKind.Relative));
         }
 
         public bool CanExecute_CreateRequestCommand(object obj)
