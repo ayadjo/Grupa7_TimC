@@ -67,6 +67,7 @@ namespace InitialProject.Service.Services
             return myRequests;
         }
 
+
         public List<int> YearsOfTourRequests(int guestId)
         {
             List<int> years = new List<int>();
