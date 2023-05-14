@@ -30,7 +30,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" HorizontalAlignment="Left" Margin="162,372,0,0" VerticalAlignment="Top" Orientation="Horizontal" Height="40" Width="100">
-            <Button x:Name="ShowButton" Style="{StaticResource RoundButtonStyle}" Content="Prikaži" Click="ShowButton_Click" Height="40" Width="100"/>
+            <Button x:Name="ShowButton" Style="{StaticResource RoundButtonStyle}" Content="Prikaži"  Command="{Binding ShowButtonCommand}" Height="40" Width="100"/>
         </StackPanel>
     </Grid>
 </Page>
