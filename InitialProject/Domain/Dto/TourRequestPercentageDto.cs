@@ -11,10 +11,13 @@ namespace InitialProject.Domain.Dto
         public int PercentageOfAcceptedRequests { get; set; }
         public int PercentageOfRejectedRequests { get; set; }
 
-        public TourRequestPercentageDto(int percentageOfAcceptedRequests, int percentageOfRejectedRequests)
+        public int AverageNumberOfPeopleInAcceptedRequests { get; set; }
+
+        public TourRequestPercentageDto(int percentageOfAcceptedRequests, int percentageOfRejectedRequests, int averageNumberOfPeopleInAcceptedRequests)
         {
             PercentageOfAcceptedRequests = percentageOfAcceptedRequests;
             PercentageOfRejectedRequests = percentageOfRejectedRequests;
+            AverageNumberOfPeopleInAcceptedRequests = averageNumberOfPeopleInAcceptedRequests;
         }
     }
 }

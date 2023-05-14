@@ -84,14 +84,16 @@ namespace InitialProject.Service.Services
         {
             int acceptedRequests = 0;
             int rejectedRequests = 0;
+            int numberOfPeopleInAcceptedRequests = 0;
 
-            TourRequestPercentageDto tourRequestPercentage = new TourRequestPercentageDto(0, 0);
+            TourRequestPercentageDto tourRequestPercentage = new TourRequestPercentageDto(0, 0, 0);
 
             foreach (TourRequest tourRequest in GetAllTourRequestsForUser(userId))
             {
                 if (tourRequest.Status == RequestStatusType.Approved)
                 {
                     acceptedRequests += 1;
+                    numberOfPeopleInAcceptedRequests += tourRequest.MaxGuests;
                 }
                 else if(tourRequest.Status == RequestStatusType.Declined)
                 {
@@ -99,7 +101,7 @@ namespace InitialProject.Service.Services
                 }
             }
 
-            CalculateRequestPercentage(tourRequestPercentage, acceptedRequests, rejectedRequests);
+            CalculateRequestPercentage(tourRequestPercentage, acceptedRequests, rejectedRequests, numberOfPeopleInAcceptedRequests);
 
             return tourRequestPercentage;
         }
@@ -108,8 +110,9 @@ namespace InitialProject.Service.Services
         {
             int acceptedRequests = 0;
             int rejectedRequests = 0;
+            int numberOfPeopleInAcceptedRequests = 0;
 
-            TourRequestPercentageDto tourRequestPercentage = new TourRequestPercentageDto(0, 0);
+            TourRequestPercentageDto tourRequestPercentage = new TourRequestPercentageDto(0, 0, 0);
 
             foreach (TourRequest tourRequest in GetAllTourRequestsForUser(userId))
             {
@@ -118,6 +121,7 @@ namespace InitialProject.Service.Services
                     if (tourRequest.Status == RequestStatusType.Approved)
                     {
                         acceptedRequests += 1;
+                        numberOfPeopleInAcceptedRequests += tourRequest.MaxGuests;
                     }
                     else if (tourRequest.Status == RequestStatusType.Declined)
                     {
@@ -127,12 +131,12 @@ namespace InitialProject.Service.Services
                 
             }
 
-            CalculateRequestPercentage(tourRequestPercentage, acceptedRequests, rejectedRequests);
+            CalculateRequestPercentage(tourRequestPercentage, acceptedRequests, rejectedRequests, numberOfPeopleInAcceptedRequests);
 
             return tourRequestPercentage;
         }
 
-        private void CalculateRequestPercentage(TourRequestPercentageDto tourRequestPercentage, int acceptedRequests, int rejectedRequests)
+        private void CalculateRequestPercentage(TourRequestPercentageDto tourRequestPercentage, int acceptedRequests, int rejectedRequests,int numberOfPeopleInAcceptedRequests)
         {
             double totalRequests = acceptedRequests + rejectedRequests;
 
@@ -142,6 +146,7 @@ namespace InitialProject.Service.Services
                 double rejectedRequestsPercentage = (rejectedRequests * 100.0) / totalRequests;
                 tourRequestPercentage.PercentageOfAcceptedRequests = (int)Math.Round(acceptedRequestsPercentage);
                 tourRequestPercentage.PercentageOfRejectedRequests = (int)Math.Round(rejectedRequestsPercentage);
+                tourRequestPercentage.AverageNumberOfPeopleInAcceptedRequests = numberOfPeopleInAcceptedRequests / acceptedRequests; ;
             }
         }
     }
