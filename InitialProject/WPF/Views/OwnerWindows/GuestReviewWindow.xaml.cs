@@ -103,6 +103,8 @@ namespace InitialProject.WPF.Views.OwnerWindows
         public RelayCommand FinishCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
 
+        public User guest { get; set; }
+
         public GuestReviewWindow(AccommodationReservation accommodationReservation)
         {
             InitializeComponent();
@@ -111,6 +113,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
             _guestReviewController = new GuestReviewController();
             _accommodationReservationController = new AccommodationReservationController();
             reservation = accommodationReservation;
+            guest = reservation.Guest;
             Grades = new ObservableCollection<int>();
             Grades.Add(1);
             Grades.Add(2);
@@ -134,7 +137,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
         }
         private void AddReviewButton_Click(object sender)
         {
-            GuestReview guestReview = new GuestReview() {Reservation=reservation, Cleanliness = SelectedCleanliness, Behaviour = SelectedBehaviour, Comment = Comment };
+            GuestReview guestReview = new GuestReview() { Reservation = reservation, Guest = guest, Cleanliness = SelectedCleanliness, Behaviour = SelectedBehaviour, Comment = Comment };
             _guestReviewController.Save(guestReview);
             reservation.GuestReview = guestReview;
             _accommodationReservationController.Update(reservation);

@@ -11,15 +11,17 @@ namespace InitialProject.Domain.Models
     {
         public int Id { get; set; }
         public AccommodationReservation Reservation { get; set; }
+        public User Guest { get; set; }
         public int Cleanliness { get; set; }
         public int Behaviour { get; set; }
         public string Comment { get; set; }
 
         public GuestReview() { }
-        public GuestReview(int id, AccommodationReservation reservation, int cleanliness, int behaviour, string comment)
+        public GuestReview(int id, AccommodationReservation reservation, User guest, int cleanliness, int behaviour, string comment)
         {
             Id = id;
             Reservation = reservation;
+            Guest = guest;
             Cleanliness = cleanliness;
             Behaviour = behaviour;
             Comment = comment;
@@ -30,6 +32,7 @@ namespace InitialProject.Domain.Models
             string[] csvValues =
             {   Id.ToString(),
                 Reservation.Id.ToString(),
+                Guest.Id.ToString(),
                 Cleanliness.ToString(),
                 Behaviour.ToString(),
                 Comment
@@ -42,9 +45,10 @@ namespace InitialProject.Domain.Models
         {
             Id = Convert.ToInt32(values[0]);
             Reservation = new AccommodationReservation() { Id = Convert.ToInt32(values[1]) };
-            Cleanliness = Convert.ToInt32(values[2]);
-            Behaviour = Convert.ToInt32(values[3]);
-            Comment = values[4];
+            Guest = new User() { Id = Convert.ToInt32(values[2]) };
+            Cleanliness = Convert.ToInt32(values[3]);
+            Behaviour = Convert.ToInt32(values[4]);
+            Comment = values[5];
         }
     }
 }

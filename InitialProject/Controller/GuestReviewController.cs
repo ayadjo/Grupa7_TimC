@@ -41,5 +41,10 @@ namespace InitialProject.Controller
         {
             _guestReviewService.Update(guestReview);
         }
+
+        public List<GuestReview> GetByUserId(int guest)
+        {
+            return _guestReviewService.GetByUserId(guest);
+        }
     }
 }
