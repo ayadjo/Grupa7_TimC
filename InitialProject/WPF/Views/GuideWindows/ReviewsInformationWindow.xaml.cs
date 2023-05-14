@@ -1,6 +1,7 @@
 ﻿using InitialProject.Controller;
 using InitialProject.Domain.Dto;
 using InitialProject.Domain.Models;
+using InitialProject.WPF.ViewModels.GuideViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,53 +25,18 @@ namespace InitialProject.WPF.Views.GuideWindows
     /// </summary>
     public partial class ReviewsInformationWindow : Page
     {
-        public GuideReviewController _guideReviewController;
-        public GuideReview CurrentUser { get; set; }
-        public ObservableCollection<ReviewDto> Reviews { get; set; }
-        public ObservableCollection<GuideReview> GuideReviews { get; set; }
-
-        public ReviewDto SelectedReview { get; set; }
+        public NavigationService navigationService;
         public ReviewsInformationWindow(GuideReview user)
         {
             InitializeComponent();
-            this.DataContext = this;
-            CurrentUser = user;
-            _guideReviewController = new GuideReviewController();
-            GuideReviews = new ObservableCollection<GuideReview>(_guideReviewController.GetAllGuideReviews(SignInForm.LoggedUser.Id, CurrentUser.Reservation.Guest.Id));
+            ReviewsInformationViewModel reviewsInformationViewModel = new ReviewsInformationViewModel(navigationService, user);
+            this.DataContext = reviewsInformationViewModel;
 
-            Reviews = new ObservableCollection<ReviewDto>();
-            foreach (GuideReview guideReview in GuideReviews)
-            {
-                ReviewDto guideReviewDto = new ReviewDto(guideReview);
-                Reviews.Add(guideReviewDto);
-            }
         }
-
-
-
-        private void IsValid_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedReview != null)
-            {
-
-                if (SelectedReview.Validity == false)
-                {
-
-                    SelectedReview.Validity = true;
-                    GuideReview guideReview = _guideReviewController.Get(SelectedReview.Id);
-                    guideReview.Validity = true;
-                    _guideReviewController.Update(guideReview);
-                    MessageBox.Show("Uspesno ste prijavili recenziju!");
-
-
-                }
-
-            }
-        }
-
         private void ReviewsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
     }
 }
