@@ -47,19 +47,14 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
             _tourRequestController = new TourRequestController();
 
-            TourRequestPercentageDto = _tourRequestController.GetPercentageOfTourRequest(SignInForm.LoggedUser.Id);
 
             Years = new ObservableCollection<int>(_tourRequestController.YearsOfTourRequests(SignInForm.LoggedUser.Id));
             SelectedYear = -1;
         }
 
         public void Executed_ViewCommand(object obj)
-        {
-            if (SelectedYear == -1)
-            {
-                return;
-            }
-            TourRequestPercentageDto = _tourRequestController.GetPercentageOfTourRequest(SignInForm.LoggedUser.Id, SelectedYear);
+        {          
+            TourRequestPercentageDto = _tourRequestController.GetPercentageOfTourRequestForYear(SignInForm.LoggedUser.Id, SelectedYear);
         }
 
         public bool CanExecute_ViewCommand(object obj)
@@ -69,7 +64,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         public void Executed_InGeneralCommand(object obj)
         {
-            
+            TourRequestPercentageDto = _tourRequestController.GetPercentageOfTourRequest(SignInForm.LoggedUser.Id);
         }
 
         public bool CanExecute_InGeneralCommand(object obj)

@@ -56,9 +56,14 @@ namespace InitialProject.Controller
             return _tourRequestService.YearsOfTourRequests(guestId);
         }
 
-        public TourRequestPercentageDto GetPercentageOfTourRequest(int userId,int year = -1)
+        public TourRequestPercentageDto GetPercentageOfTourRequest(int userId)
         {
-            return _tourRequestService.GetPercentageOfTourRequest(userId, year);
+            return _tourRequestService.GetPercentageOfTourRequest(userId);
+        }
+
+        public TourRequestPercentageDto GetPercentageOfTourRequestForYear(int userId, int year)
+        {
+            return _tourRequestService.GetPercentageOfTourRequestForYear(userId, year);
         }
     }
 }

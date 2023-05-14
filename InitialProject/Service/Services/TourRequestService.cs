@@ -55,7 +55,7 @@ namespace InitialProject.Service.Services
                 var request = allRequests.ElementAt(i);
                 if (request.Guest.Id == userId)
                 {
-                    if ((request.Start - DateTime.Today).TotalDays <= 2)
+                    if ((request.Start - DateTime.Today).TotalDays <= 2 && request.Status == RequestStatusType.Standby)
                     {
                         request.Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), "Declined");
                         _tourRequestRepository.Update(request);
@@ -80,7 +80,7 @@ namespace InitialProject.Service.Services
             return years.Distinct().ToList();
         }
 
-        public TourRequestPercentageDto GetPercentageOfTourRequest(int userId, int year = -1)
+        public TourRequestPercentageDto GetPercentageOfTourRequest(int userId)
         {
             int acceptedRequests = 0;
             int rejectedRequests = 0;
@@ -98,12 +98,51 @@ namespace InitialProject.Service.Services
                     rejectedRequests += 1;
                 }
             }
-            double acceptedRequestsPercentage = (acceptedRequests * 100.0) / (acceptedRequests + rejectedRequests);
-            double rejectedRequestsPercentage = (rejectedRequests * 100.0) / (acceptedRequests + rejectedRequests);
-            tourRequestPercentage.PercentageOfAcceptedRequests = (int)Math.Round(acceptedRequestsPercentage);
-            tourRequestPercentage.PercentageOfRejectedRequests = (int)Math.Round(rejectedRequestsPercentage);
+
+            CalculateRequestPercentage(tourRequestPercentage, acceptedRequests, rejectedRequests);
 
             return tourRequestPercentage;
+        }
+
+        public TourRequestPercentageDto GetPercentageOfTourRequestForYear(int userId,int year)
+        {
+            int acceptedRequests = 0;
+            int rejectedRequests = 0;
+
+            TourRequestPercentageDto tourRequestPercentage = new TourRequestPercentageDto(0, 0);
+
+            foreach (TourRequest tourRequest in GetAllTourRequestsForUser(userId))
+            {
+                if (tourRequest.Start.Year == year)
+                {
+                    if (tourRequest.Status == RequestStatusType.Approved)
+                    {
+                        acceptedRequests += 1;
+                    }
+                    else if (tourRequest.Status == RequestStatusType.Declined)
+                    {
+                        rejectedRequests += 1;
+                    }
+                }
+                
+            }
+
+            CalculateRequestPercentage(tourRequestPercentage, acceptedRequests, rejectedRequests);
+
+            return tourRequestPercentage;
+        }
+
+        private void CalculateRequestPercentage(TourRequestPercentageDto tourRequestPercentage, int acceptedRequests, int rejectedRequests)
+        {
+            double totalRequests = acceptedRequests + rejectedRequests;
+
+            if (totalRequests > 0)
+            {
+                double acceptedRequestsPercentage = (acceptedRequests * 100.0) / totalRequests;
+                double rejectedRequestsPercentage = (rejectedRequests * 100.0) / totalRequests;
+                tourRequestPercentage.PercentageOfAcceptedRequests = (int)Math.Round(acceptedRequestsPercentage);
+                tourRequestPercentage.PercentageOfRejectedRequests = (int)Math.Round(rejectedRequestsPercentage);
+            }
         }
     }
 }
