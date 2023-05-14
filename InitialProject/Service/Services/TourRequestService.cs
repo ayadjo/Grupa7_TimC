@@ -146,7 +146,7 @@ namespace InitialProject.Service.Services
                 double rejectedRequestsPercentage = (rejectedRequests * 100.0) / totalRequests;
                 tourRequestPercentage.PercentageOfAcceptedRequests = (int)Math.Round(acceptedRequestsPercentage);
                 tourRequestPercentage.PercentageOfRejectedRequests = (int)Math.Round(rejectedRequestsPercentage);
-                tourRequestPercentage.AverageNumberOfPeopleInAcceptedRequests = numberOfPeopleInAcceptedRequests / acceptedRequests; ;
+                tourRequestPercentage.AverageNumberOfPeopleInAcceptedRequests = numberOfPeopleInAcceptedRequests / acceptedRequests; 
             }
         }
     }

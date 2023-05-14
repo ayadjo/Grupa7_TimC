@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
-        mc:Ignorable="d"
+        
         Title="Statistika o zahtevima" Height="450" Width="800">
     <StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,10">
@@ -16,23 +17,39 @@
         <StackPanel Margin="0,-130,0,0" Width="457" Height="100" >
             <StackPanel Orientation="Horizontal">
                 <Label Content="Procenat prihvaćenih zahteva:" Margin="0,0,10,10"/>
-                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfAcceptedRequests, UpdateSourceTrigger=PropertyChanged}">
+                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfAcceptedRequests, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0}%}">
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Prosečan broj ljudi u prihvaćenim zahtevima:" Margin="0,0,10,0"/>
-                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.AverageNumberOfPeopleInAcceptedRequests, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Prosečan broj ljudi u prihvaćenim zahtevima:" Margin="0,0,10,10"/>
+                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.AverageNumberOfPeopleInAcceptedRequests, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0}%}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Procenat neprihvaćenih zahteva:" Margin="0,0,10,10"/>
-                <TextBlock  Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfRejectedRequests, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock  Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfRejectedRequests, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0}%}"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <!--<Rectangle Stroke="Black" StrokeThickness="2" Width="245" Height="160" Margin="150,10,0,0"/>
-           
-            <Rectangle Stroke="Black" StrokeThickness="2" Width="245" Height="160" Margin="10,10,0,0"/>-->
-            
+            <!--<Rectangle Stroke="Black" StrokeThickness="2" Width="245" Height="160" Margin="150,10,0,0"/>-->
+            <syncfusion:SfChart Name="RequestsByLanguageChart" Height="200" Margin="75,0,0,0"  Width="350" >
+                <syncfusion:SfChart.PrimaryAxis>
+                    <syncfusion:CategoryAxis Header="Jezik" />
+                </syncfusion:SfChart.PrimaryAxis>
+                <syncfusion:SfChart.SecondaryAxis>
+                    <syncfusion:NumericalAxis Header="Broj zahteva" />
+                </syncfusion:SfChart.SecondaryAxis>
+                <syncfusion:ColumnSeries ItemsSource="{Binding LanguageRequests}" XBindingPath="Key" YBindingPath="Value" />
+            </syncfusion:SfChart>
+            <!--<Rectangle Stroke="Black" StrokeThickness="2" Width="245" Height="160" Margin="10,10,0,0"/>-->
+            <syncfusion:SfChart Name="RequestsByLocationChart" Height="200" Margin="5,0,0,0"  Width="350" >
+                <syncfusion:SfChart.PrimaryAxis>
+                    <syncfusion:CategoryAxis Header="Lokacija" />
+                </syncfusion:SfChart.PrimaryAxis>
+                <syncfusion:SfChart.SecondaryAxis>
+                    <syncfusion:NumericalAxis Header="Broj zahteva" />
+                </syncfusion:SfChart.SecondaryAxis>
+                <syncfusion:ColumnSeries ItemsSource="{Binding LocationRequests}" XBindingPath="Key" YBindingPath="Value" />
+            </syncfusion:SfChart>
         </StackPanel>
     </StackPanel>
 </Window>
