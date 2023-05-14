@@ -20,7 +20,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Prosečan broj ljudi u prihvaćenim zahtevima:" Margin="0,0,10,10"/>
+                <Label Content="Prosečan broj ljudi u prihvaćenim zahtevima:" Margin="0,0,10,0"/>
                 <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.AverageNumberOfPeopleInAcceptedRequests, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -29,8 +29,10 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Rectangle Stroke="Black" StrokeThickness="2" Width="245" Height="160" Margin="150,10,0,0"/>
-            <Rectangle Stroke="Black" StrokeThickness="2" Width="245" Height="160" Margin="10,10,0,0"/>
+            <!--<Rectangle Stroke="Black" StrokeThickness="2" Width="245" Height="160" Margin="150,10,0,0"/>
+           
+            <Rectangle Stroke="Black" StrokeThickness="2" Width="245" Height="160" Margin="10,10,0,0"/>-->
+            
         </StackPanel>
     </StackPanel>
 </Window>
