@@ -23,6 +23,7 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
         public AccommodationReservationController _accommodationReservationController;
 
         public List<Domain.Models.Image> AllImages { get; set; }
+        public List<RenovationRecommendation> AllRenovationRecommendations { get; set; }
 
         #region NotifyProperties
         private int _selectedCleanliness;
@@ -95,6 +96,7 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
             Grades.Add(5);
 
             AllImages = new List<Domain.Models.Image>();
+            AllRenovationRecommendations = new List<RenovationRecommendation>();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -115,9 +117,8 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
             }
             else
             {
-                AccommodationOwnerReview accommodationOwnerReview = new AccommodationOwnerReview() { Reservation = reservation, Cleanliness = SelectedCleanliness, Correctness = SelectedCorrectness, Comment = Comment, Images = AllImages };
-                //_accommodationOwnerReviewController.Save(accommodationOwnerReview);
-                _accommodationOwnerReviewController.SaveImages(accommodationOwnerReview);
+                AccommodationOwnerReview accommodationOwnerReview = new AccommodationOwnerReview() { Reservation = reservation, Cleanliness = SelectedCleanliness, Correctness = SelectedCorrectness, Comment = Comment, Images = AllImages, RenovationRecommendations = AllRenovationRecommendations };
+                _accommodationOwnerReviewController.SaveReviewImagesRecommendation(accommodationOwnerReview);
                 reservation.AccommodationReview = accommodationOwnerReview;
                 _accommodationReservationController.Update(reservation);
                 MessageBox.Show("Uspešno ste ocenili smeštaj i vlasnika!", "Ocenjeno!", MessageBoxButton.OK);
@@ -136,6 +137,19 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
             imageAddingWindow.Show();
         }
 
+        private void RecommendationButton_Click()
+        {
+            if (AllRenovationRecommendations.Count > 0)
+            {
+                MessageBox.Show("Ne možete poslati više od jedne preporuke za renoviranje!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                RenovationRecommendationWindow renovationRecommendationWindow = new RenovationRecommendationWindow(reservation, AllRenovationRecommendations);
+                renovationRecommendationWindow.Show();
+            }
+        }
+
 
 
 
@@ -147,6 +161,15 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
             get
             {
                 return _imagesButtonCommand ?? (_imagesButtonCommand = new CommandBase(() => ImagesButton_Click(), true));
+            }
+        }
+
+        private ICommand _recommendationButtonCommand;
+        public ICommand RecommendationButtonCommand
+        {
+            get
+            {
+                return _recommendationButtonCommand ?? (_recommendationButtonCommand = new CommandBase(() => RecommendationButton_Click(), true));
             }
         }
 

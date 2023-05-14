@@ -20,12 +20,15 @@ namespace InitialProject.Repositories
 
         private ImageRepository _imageRepository;
 
+        private RenovationRecommendationRepository _renovationRecommendationRepository;
+
         private List<AccommodationOwnerReview> _accommodationOwnerReviews;
 
         public AccommodationOwnerReviewRepository()
         {
             _serializer = new Serializer<AccommodationOwnerReview>();
             _imageRepository = ImageRepository.GetInstance();
+            _renovationRecommendationRepository = new RenovationRecommendationRepository();
             _accommodationOwnerReviews = _serializer.FromCSV(FilePath);
         }
 
@@ -103,7 +106,7 @@ namespace InitialProject.Repositories
             return _accommodationOwnerReviews.FindAll(aor => aor.Reservation.Id == reservationId);
         }
 
-        public AccommodationOwnerReview SaveImages(AccommodationOwnerReview accommodationOwnerReview)
+        public AccommodationOwnerReview SaveReviewImagesRecommendation(AccommodationOwnerReview accommodationOwnerReview)
         {
             accommodationOwnerReview.Id = NextId();
 
@@ -111,6 +114,12 @@ namespace InitialProject.Repositories
             {
                 image.ResourceId = accommodationOwnerReview.Id;
                 _imageRepository.Save(image);
+            }
+
+            foreach (RenovationRecommendation renovationRecommendation in accommodationOwnerReview.RenovationRecommendations)
+            {
+                renovationRecommendation.ResourceId = accommodationOwnerReview.Id;
+                _renovationRecommendationRepository.Save(renovationRecommendation);
             }
 
             _accommodationOwnerReviews.Add(accommodationOwnerReview);

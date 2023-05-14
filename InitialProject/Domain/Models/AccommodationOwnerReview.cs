@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,10 +16,12 @@ namespace InitialProject.Domain.Models
         public int Correctness { get; set; }
         public string Comment { get; set; }
         public List<Image> Images { get; set; }
+        public List<RenovationRecommendation> RenovationRecommendations { get; set; }
 
         public AccommodationOwnerReview()
         {
             Images = new List<Image>();
+            RenovationRecommendations = new List<RenovationRecommendation>();
         }
 
         public AccommodationOwnerReview(int id, AccommodationReservation reservation, int cleanliness, int correctness, string comment)
@@ -29,6 +32,7 @@ namespace InitialProject.Domain.Models
             Correctness = correctness;
             Comment = comment;
             Images = new List<Image>();
+            RenovationRecommendations = new List<RenovationRecommendation>();
         }
 
         public string[] ToCSV()

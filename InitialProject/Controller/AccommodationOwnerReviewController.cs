@@ -39,9 +39,9 @@ namespace InitialProject.Controller
             _accommodationOwnerReviewService.Update(accommodationOwnerReview);
         }
 
-        public AccommodationOwnerReview SaveImages(AccommodationOwnerReview accommodationOwnerReview)
+        public AccommodationOwnerReview SaveReviewImagesRecommendation(AccommodationOwnerReview accommodationOwnerReview)
         {
-            return _accommodationOwnerReviewService.SaveImages(accommodationOwnerReview);
+            return _accommodationOwnerReviewService.SaveReviewImagesRecommendation(accommodationOwnerReview);
         }
         public List<AccommodationOwnerReview> GetAllValidReviews(Accommodation accommodation)
         {

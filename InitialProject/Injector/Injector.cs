@@ -40,6 +40,8 @@ namespace InitialProject.Injector
             _implementations.Add(typeof(IReservationRescheduleRequestRepository), reservationRescheduleRequestRepository);
             _implementations.Add(typeof(INotificationRepository), notificationRepository);
             _implementations.Add(typeof(ITourRequestRepository), tourRequestRepository);
+
+            RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
         }
 
         public static T CreateInstance<T>()

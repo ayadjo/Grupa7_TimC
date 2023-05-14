@@ -53,9 +53,9 @@ namespace InitialProject.Service.Services
             return _accommodationOwnerReviewRepository.GetByReservation(accommodationOwnerReview.Reservation.Id);
         }
 
-        public AccommodationOwnerReview SaveImages(AccommodationOwnerReview accommodationOwnerReview)
+        public AccommodationOwnerReview SaveReviewImagesRecommendation(AccommodationOwnerReview accommodationOwnerReview)
         {
-            return _accommodationOwnerReviewRepository.SaveImages(accommodationOwnerReview);
+            return _accommodationOwnerReviewRepository.SaveReviewImagesRecommendation(accommodationOwnerReview);
         }
         private bool isValidReview(AccommodationReservation reservation)
         {
