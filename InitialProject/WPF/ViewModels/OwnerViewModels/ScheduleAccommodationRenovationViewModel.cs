@@ -84,6 +84,7 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
             _accommodationRenovationController = new AccommodationRenovationController();
 
             AvailableTerms = new ObservableCollection<AvailableTermsDto>();
+            SelectedTerm = new AvailableTermsDto();
 
             SelectedAccommodation = accommodation;
 
@@ -117,7 +118,7 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
 
         public bool CanExecute_ScheduleRenovationCommand(object param)
         {
-            return true;
+            return _accommodationRenovationController.IsRenovationPossible(SelectedAccommodation, SelectedTerm.Start, SelectedTerm.End);
         }
         public void Execute_ScheduleRenovationCommand(object param) 
         {

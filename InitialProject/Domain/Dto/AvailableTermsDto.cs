@@ -15,5 +15,7 @@ namespace InitialProject.Domain.Dto
             Start = start;
             End = end;
         }
+
+        public AvailableTermsDto() { }
     }
 }

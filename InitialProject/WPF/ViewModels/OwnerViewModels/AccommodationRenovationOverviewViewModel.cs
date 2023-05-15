@@ -29,18 +29,46 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
 
         public AccommodationRenovation SelectedAccommodationRenovation { get; set; }
 
+        public Accommodation SelectedAccommodation { get; set; }
+
         public RelayCommand CloseCommand { get; set; }
+
+        public RelayCommand CancelRenovationCommand { get; set; }
         public AccommodationRenovationOverviewViewModel(Accommodation accommodation)
         {
             _accommodationRenovationController = new AccommodationRenovationController();
 
+            SelectedAccommodation = accommodation;
+
             AccommodationRenovations = new ObservableCollection<AccommodationRenovation>(_accommodationRenovationController.GetAllValidRenovations(accommodation));
+            
             CloseCommand = new RelayCommand(Execute_CloseCommand);
+            CancelRenovationCommand = new RelayCommand(Execute_CancelRenovationCommand, CanExecute_CancelRenovationCommand);
         }
 
         public void Execute_CloseCommand(object param)
         {
             Close();
+        }
+
+        public void Refresh()
+        {
+            AccommodationRenovations.Clear();
+            foreach (AccommodationRenovation renovation in _accommodationRenovationController.GetAllValidRenovations(SelectedAccommodation)) 
+            {
+                AccommodationRenovations.Add(renovation);
+            }
+        }
+
+        public bool CanExecute_CancelRenovationCommand(object param)
+        {
+            return SelectedAccommodationRenovation != null;
+        }
+
+        public void Execute_CancelRenovationCommand(object param)
+        {
+            _accommodationRenovationController.CancelRenovation(SelectedAccommodationRenovation);
+            Refresh();
         }
     }
 }

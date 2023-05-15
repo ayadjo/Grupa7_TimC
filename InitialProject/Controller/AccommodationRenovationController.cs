@@ -54,5 +54,15 @@ namespace InitialProject.Controller
         {
             return _accommodationRenovationService.GetAllValidRenovations(accommodation);
         }
+
+        public void CancelRenovation(AccommodationRenovation renovation)
+        {
+            _accommodationRenovationService.CancelRenovation(renovation);
+        }
+
+        public bool IsRenovationPossible(Accommodation accommodation, DateTime StartSecond, DateTime EndSecond)
+        {
+            return _accommodationRenovationService.IsRenovationPossible(accommodation, StartSecond, EndSecond);
+        }
     }
 }

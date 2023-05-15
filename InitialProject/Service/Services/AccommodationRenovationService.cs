@@ -118,6 +118,34 @@ namespace InitialProject.Service.Services
             return renovations;
         }
 
+        public void CancelRenovation(AccommodationRenovation renovation)
+        {
+            if(DateTime.Now.AddDays(5) <= renovation.Start)
+            {
+                renovation.IsCancelled = true;
+                _accommodationRenovationRepository.Update(renovation);
+            }
+        }
+
+        public bool IsDatesIntertwine(DateTime StartFirst, DateTime EndFirst, DateTime StartSecond, DateTime EndSecond)
+        {
+            return (StartSecond.Date <= EndFirst.Date && EndSecond.Date >= StartFirst.Date);
+        }
+
+        public bool IsRenovationPossible(Accommodation accommodation, DateTime StartSecond, DateTime EndSecond)
+        {
+            List<AccommodationRenovation> renovations = GetByAccommodationId(accommodation.Id);
+            foreach(AccommodationRenovation renovation in renovations)
+            {
+                if(IsDatesIntertwine(renovation.Start, renovation.End, StartSecond, EndSecond))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
 
     }
 }
