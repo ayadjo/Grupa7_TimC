@@ -1,4 +1,5 @@
-﻿using InitialProject.Domain.Models;
+﻿using InitialProject.Domain.Dto;
+using InitialProject.Domain.Models;
 using InitialProject.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,14 @@ using System.Windows.Shapes;
 namespace InitialProject.WPF.Views.OwnerWindows
 {
     /// <summary>
-    /// Interaction logic for AccommodationStatisticsByYear.xaml
+    /// Interaction logic for AccommodationStatisticsByMonth.xaml
     /// </summary>
-    public partial class AccommodationStatisticsByYearDto : Window
+    public partial class AccommodationStatisticsByMonth : Window
     {
-        public AccommodationStatisticsByYearDto(Accommodation accommodation)
+        public AccommodationStatisticsByMonth(AccommodationByYearStatisticDto statisticByYear, Accommodation accommodation)
         {
             InitializeComponent();
-            this.DataContext = new ViewModels.OwnerViewModels.AccommodationStatisticByYearViewModel(accommodation);
+            this.DataContext = new ViewModels.OwnerViewModels.AccommodationStatisticsByMonthViewModel(statisticByYear, accommodation);
 
             if (DataContext is IClose vm)
             {

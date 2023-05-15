@@ -30,6 +30,13 @@
                 <Setter Property="TextBlock.Foreground" Value="LightGray"/>
             </Style>
 
+            <Style TargetType="Label" x:Key="BoldLabelDark">
+                <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="TextBlock.Foreground" Value="#191e29"/>
+            </Style>
+
             <!--Tabbed Panel-->
             <Style x:Key="DarkTabbedPanel" TargetType="TabControl">
                 <Setter Property="BorderBrush" Value="#191e29"/>

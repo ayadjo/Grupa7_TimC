@@ -1,4 +1,5 @@
-﻿using InitialProject.Domain.Models;
+﻿using InitialProject.Domain.Dto;
+using InitialProject.Domain.Models;
 using InitialProject.Repositories;
 using InitialProject.WPF.Views;
 using System;
@@ -13,10 +14,12 @@ namespace InitialProject.Service.Services
     public class AccommodationReservationService
     {
         private AccommodationReservationRepository _accommodationReservationRepository;
+        private ReservationRescheduleRequestService _reservationRescheduleService;
 
         public AccommodationReservationService()
         {
             _accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
+            _reservationRescheduleService = new ReservationRescheduleRequestService();
         }
 
         public List<AccommodationReservation> GetAll()
@@ -212,5 +215,218 @@ namespace InitialProject.Service.Services
 
             return accommodationReservations;
         }
+
+        private AccommodationByMonthStatisticDto AddReservationMonthWhichNotExists(AccommodationByMonthStatisticDto byMonth, AccommodationReservation reservation)
+        {
+            byMonth.Month = reservation.Start.Month;
+            byMonth.CancelledReservationsNum = 0;
+            byMonth.ReservationsNum = 1;
+            byMonth.RescheduledReservationsNum = 0;
+            if (reservation.IsCancelled)
+            {
+                byMonth.CancelledReservationsNum++;
+            }
+            if (_reservationRescheduleService.IsReservationRescheduled(reservation))
+            {
+                byMonth.RescheduledReservationsNum++;
+            }
+            return byMonth;
+        }
+
+        private AccommodationByMonthStatisticDto AddReservationMonthWhichExists(AccommodationByMonthStatisticDto byMonth, AccommodationReservation reservation)
+        {
+            byMonth.ReservationsNum++;
+            if (reservation.IsCancelled)
+            {
+                byMonth.CancelledReservationsNum++;
+            }
+            if (_reservationRescheduleService.IsReservationRescheduled(reservation))
+            {
+                byMonth.RescheduledReservationsNum++;
+            }
+            return byMonth;
+        }
+
+        private AccommodationByYearStatisticDto AddReservationYearWhichNotExists(AccommodationByYearStatisticDto byYear, AccommodationReservation reservation)
+        {
+            byYear.Year = reservation.Start.Year;
+            byYear.CancelledReservationsNum = 0;
+            byYear.ReservationsNum = 1;
+            byYear.RescheduledReservationsNum = 0;
+            if (reservation.IsCancelled)
+            {
+                byYear.CancelledReservationsNum++;
+            }
+            if (_reservationRescheduleService.IsReservationRescheduled(reservation))
+            {
+                byYear.RescheduledReservationsNum++;
+            }
+            return byYear;
+        }
+
+        private AccommodationByYearStatisticDto AddReservationYearWhichExists(AccommodationByYearStatisticDto byYear, AccommodationReservation reservation)
+        {
+            byYear.ReservationsNum++;
+            if (reservation.IsCancelled)
+            {
+                byYear.CancelledReservationsNum++;
+            }
+            if (_reservationRescheduleService.IsReservationRescheduled(reservation))
+            {
+                byYear.RescheduledReservationsNum++;
+            }
+            return byYear;
+        }
+
+        private void AddReservationYearToStatistics(List<AccommodationByYearStatisticDto> statistics, AccommodationReservation reservation)
+        {
+            AccommodationByYearStatisticDto byYear = null;
+            foreach(AccommodationByYearStatisticDto accommodationByYearStatisticDto in statistics)
+            {
+                if(accommodationByYearStatisticDto.Year == reservation.Start.Year)
+                {
+                    byYear = accommodationByYearStatisticDto;
+                    break;
+                }
+            }
+            if(byYear == null)
+            {
+               byYear = new AccommodationByYearStatisticDto(0,0,0,0);
+               statistics.Add(AddReservationYearWhichNotExists(byYear, reservation));
+            }
+            else
+            {
+                AddReservationYearWhichExists(byYear, reservation);
+            }
+        }
+
+        private void AddReservationMonthToStatistics(List<AccommodationByMonthStatisticDto> statistics, AccommodationReservation reservation, int year)
+        {
+            AccommodationByMonthStatisticDto byMonth = null;
+            foreach(AccommodationByMonthStatisticDto accommodationByMonthStatisticDto in statistics)
+            {
+                if(accommodationByMonthStatisticDto.Month == reservation.Start.Month && year == reservation.Start.Year)
+                {
+                    byMonth = accommodationByMonthStatisticDto;
+                    break;
+                }
+            }
+            if (byMonth == null)
+            {
+                byMonth = new AccommodationByMonthStatisticDto(0, 0, 0, 0);
+                statistics.Add(AddReservationMonthWhichNotExists(byMonth, reservation));
+            }
+            else
+            {
+                AddReservationMonthWhichExists(byMonth, reservation);
+            }
+        }
+
+        public List<AccommodationByYearStatisticDto> GetYearStatisticForAccommodation(int accommodationId)
+        {
+            List<AccommodationByYearStatisticDto> statistics = new List<AccommodationByYearStatisticDto>();
+            List<AccommodationReservation> reservations = GetByAccommodationId(accommodationId);
+
+            foreach(AccommodationReservation reservation in reservations)
+            {
+                AddReservationYearToStatistics(statistics, reservation);
+            }
+
+
+            return statistics;
+        }
+
+        public List<AccommodationByMonthStatisticDto> GetMonthStatisticForAccommodation(int year, int accommodationId)
+        {
+            List<AccommodationByMonthStatisticDto> statisticsByMonth = new List<AccommodationByMonthStatisticDto>();
+            List<AccommodationReservation> reservations = GetByAccommodationId(accommodationId);
+
+            foreach (AccommodationReservation reservation in reservations)
+            {
+                AddReservationMonthToStatistics(statisticsByMonth, reservation, year);
+            }
+
+            return statisticsByMonth;
+        }
+
+
+        private void AddReservationYearToBestStatistics(List<BestStatisticDto> statistics, AccommodationReservation reservation)
+        {
+            BestStatisticDto byYear = null;
+            foreach (BestStatisticDto bestStatisticDto in statistics)
+            {
+                if (bestStatisticDto.Year == reservation.Start.Year)
+                {
+                    byYear = bestStatisticDto;
+                    break;
+                }
+            }
+            if (byYear == null)
+            {
+                byYear = new BestStatisticDto() { Year = reservation.Start.Year, DaysReserved = (int)(reservation.End - reservation.Start).TotalDays };
+                statistics.Add(byYear);
+            }
+            else
+            {
+                byYear.DaysReserved += (int)(reservation.End - reservation.Start).TotalDays;
+            }
+        }
+
+       /* private void AddReservationMonthToBestStatistics(int year, List<BestStatisticMonthDto> statistics, AccommodationReservation reservation)
+        {
+            BestStatisticMonthDto byMonth = null;
+            foreach (BestStatisticMonthDto bestStatisticDto in statistics)
+            {
+                if (bestStatisticDto.Month == reservation.Start.Month && reservation.Start.Year == year)
+                {
+                    byMonth = bestStatisticDto;
+                    break;
+                }
+            }
+            if (byMonth == null)
+            {
+                byMonth = new BestStatisticMonthDto() { Year = reservation.Start.Year, DaysReserved = (int)(reservation.End - reservation.Start).TotalDays };
+                statistics.Add(byMonth);
+            }
+            else
+            {
+                byMonth.DaysReserved += (int)(reservation.End - reservation.Start).TotalDays;
+            }
+        }*/
+
+
+        public int GetBestYearForAccommodation(int accommodationId)
+        {
+            List<BestStatisticDto> statistics = new List<BestStatisticDto>();
+            List<AccommodationReservation> reservations = GetByAccommodationId(accommodationId);
+
+            foreach (AccommodationReservation reservation in reservations)
+            {
+                AddReservationYearToBestStatistics(statistics, reservation);
+            }
+
+            int max = statistics.Max(i => i.DaysReserved);
+            BestStatisticDto bestStatistic = statistics.First(x => x.DaysReserved == max);
+
+            return bestStatistic.Year;
+        }
+
+        public int GetBestMonthForAccommodation(int year, int accommodationId)
+        {
+            List<BestStatisticMonthDto> statistics = new List<BestStatisticMonthDto>();
+            List<AccommodationReservation> reservations = GetByAccommodationId(accommodationId);
+
+            foreach (AccommodationReservation reservation in reservations)
+            {
+                //AddReservationMonthToBestStatistics(year, statistics, reservation);
+            }
+
+            int max = statistics.Max(i => i.DaysReserved);
+            BestStatisticMonthDto bestStatistic = statistics.First(x => x.DaysReserved == max);
+
+            return bestStatistic.Month;
+        }
+
+
     }
 }

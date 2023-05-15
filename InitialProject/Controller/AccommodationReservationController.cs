@@ -1,4 +1,5 @@
-﻿using InitialProject.Domain.Models;
+﻿using InitialProject.Domain.Dto;
+using InitialProject.Domain.Models;
 using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
@@ -90,6 +91,21 @@ namespace InitialProject.Controller
         public List<AccommodationReservation> GetCancelledByUserId(int guest)
         {
             return _accommodationReservationService.GetCancelledByUserId(guest);
+        }
+
+        public List<AccommodationByYearStatisticDto> GetYearStatisticForAccommodation(int accommodationId)
+        {
+            return _accommodationReservationService.GetYearStatisticForAccommodation(accommodationId);
+        }
+
+        public List<AccommodationByMonthStatisticDto> GetMonthStatisticForAccommodation(int year, int accommodationId)
+        {
+            return _accommodationReservationService.GetMonthStatisticForAccommodation(year, accommodationId);
+        }
+
+        public int GetBestYearForAccommodation(int accommodationId)
+        {
+            return _accommodationReservationService.GetBestYearForAccommodation(accommodationId);
         }
     }
 }

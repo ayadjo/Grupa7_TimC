@@ -11,6 +11,7 @@
         <KeyBinding Command="{Binding ReviewsCommand}" Key="L" Modifiers="Ctrl" />
         <KeyBinding Command="{Binding AccommodationRenovationCommand}" Key="R" Modifiers="Ctrl" />
         <KeyBinding Command="{Binding ShowAccommodationRenovationCommand}" Key="Y" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding ShowStatisticByYearCommand}" Key="T" Modifiers="Ctrl"/>
     </UserControl.InputBindings>
     <UserControl.Resources>
 
@@ -37,7 +38,7 @@
 
         </StackPanel>
 
-        <Button x:Name="RegistenNewAccommodationButton"  FontSize="13" Width="151"
+        <Button x:Name="RegistenNewAccommodationButton"  FontSize="13" Width="145"
                 Grid.Row="2" Command="{Binding RegisterNewAccommodationCommand}"  Margin="649,10,0,46" Style="{StaticResource AccommodationPinkButton}" >
             <StackPanel>
                 <TextBlock Text="Registruj novi smeštaj" HorizontalAlignment="Center"/>
@@ -45,27 +46,36 @@
             </StackPanel>
 
         </Button>
-        <Button x:Name="AccommodationReviewsButton" Grid.Row="2" FontSize="13" Width="151" Command="{Binding ReviewsCommand}"  Margin="472,10,179,46" Style="{StaticResource AccommodationPinkButton}">
+        <Button x:Name="AccommodationReviewsButton" Grid.Row="2" FontSize="13" Width="145" Command="{Binding ReviewsCommand}"  Margin="481,10,140,46" Style="{StaticResource AccommodationPinkButton}">
             <StackPanel >
                 <TextBlock  Text="Recenzije" HorizontalAlignment="Center"/>
                 <TextBlock Text="CTRL + L" HorizontalAlignment="Center"/>
             </StackPanel>
 
         </Button>
-        <Button x:Name="ScheduleAccommodationRenovationButton" Grid.Row="2" FontSize="13" Width="151" Command="{Binding AccommodationRenovationCommand}"  Margin="292,10,357,46" Style="{StaticResource AccommodationPinkButton}">
+        <Button x:Name="ScheduleAccommodationRenovationButton" Grid.Row="2" FontSize="13" Width="145" Command="{Binding AccommodationRenovationCommand}"  Margin="308,10,280,46" Style="{StaticResource AccommodationPinkButton}">
             <StackPanel >
                 <TextBlock  Text="Zakaži renoviranje" HorizontalAlignment="Center"/>
                 <TextBlock Text="CTRL + R" HorizontalAlignment="Center"/>
             </StackPanel>
         </Button>
 
-        <Button x:Name="AccommodationRenovationButton" Grid.Row="2" FontSize="13" Width="151" Command="{Binding ShowAccommodationRenovationCommand}"  Margin="106,10,543,46" Style="{StaticResource AccommodationPinkButton}">
+        <Button x:Name="AccommodationRenovationButton" Grid.Row="2" FontSize="13" Width="151" Command="{Binding ShowAccommodationRenovationCommand}"  Margin="130,10,420,46" Style="{StaticResource AccommodationPinkButton}">
             <StackPanel >
                 <TextBlock  Text="Renoviranja" HorizontalAlignment="Center"/>
                 <TextBlock Text="CTRL + Y" HorizontalAlignment="Center"/>
             </StackPanel>
 
         </Button>
+
+        <Button x:Name="AccommodationStatisticButton" Grid.Row="2" FontSize="13" Width="145" Command="{Binding ShowStatisticByYearCommand}"  Margin="10,10,620,46" Style="{StaticResource AccommodationPinkButton}">
+            <StackPanel >
+                <TextBlock  Text="Statistika" HorizontalAlignment="Center"/>
+                <TextBlock Text="CTRL + T" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+        </Button>
+
         <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Accommodations, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedAccommodation, UpdateSourceTrigger=PropertyChanged}"
                   Margin="0,0,0,0" AutoGenerateColumns="False"
