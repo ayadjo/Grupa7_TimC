@@ -31,15 +31,21 @@ namespace InitialProject.Injector
             NotificationRepository notificationRepository = new NotificationRepository();
             notificationRepository.BindNotificationTourReservation();
 
+
             TourRequestRepository tourRequestRepository = new TourRequestRepository();
             tourRequestRepository.BindTourRequestUser();
             tourRequestRepository.BindTourRequestLocation();
+
+            /*NotificationForRequestRepository notificationForRequestRepository = new NotificationForRequestRepository();
+            notificationForRequestRepository.BindNotificationTourRequest();*/
+
 
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
             _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);
             _implementations.Add(typeof(IReservationRescheduleRequestRepository), reservationRescheduleRequestRepository);
             _implementations.Add(typeof(INotificationRepository), notificationRepository);
             _implementations.Add(typeof(ITourRequestRepository), tourRequestRepository);
+            //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
         }
 
         public static T CreateInstance<T>()

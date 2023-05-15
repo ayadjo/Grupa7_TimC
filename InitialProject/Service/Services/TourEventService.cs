@@ -15,7 +15,6 @@ namespace InitialProject.Service.Services
     public class TourEventService
     {
 
-
         private TourEventRepository _tourEventRepository;
         private TourReservationRepository _tourReservationRepository;
 
@@ -176,7 +175,7 @@ namespace InitialProject.Service.Services
             return tourEventsNotPassed;
         }
 
-        //da pronadje najposeceniji TourEvent bez prosledjivanja specificne godine
+        
         public TourEvent MostVisitedTourEvent(int year = -1)
         {
             TourEvent mostVisitedTourEvent = null;
@@ -186,7 +185,7 @@ namespace InitialProject.Service.Services
             {
                 if (tourEvent.Status != Enumerations.TourEventStatus.Finished)
                 {
-                    continue;  //predji na sledeci tourEvent
+                    continue;  
                 }
                 if (year != -1)
                 {

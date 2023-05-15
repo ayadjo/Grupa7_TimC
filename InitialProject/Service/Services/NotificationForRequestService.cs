@@ -10,7 +10,7 @@ namespace InitialProject.Service.Services
 {
     public class NotificationForRequestService
     {
-        private INotificationForRequestRepository _notificationRepository;
+        /*private INotificationForRequestRepository _notificationRepository;
 
         public NotificationForRequestService()
         {
@@ -46,5 +46,22 @@ namespace InitialProject.Service.Services
         {
             return _notificationRepository.NextId();
         }
+
+        public List<NotificationForRequest> GetNotificationForUser(int userId)
+        {
+            List<NotificationForRequest> notificationList = new List<NotificationForRequest>();
+            var allNotifications = _notificationRepository.GetAll();
+            for (int i = 0; i < allNotifications.Count(); i++)
+            {
+                var notification = allNotifications.ElementAt(i);
+                if (!notification.IsDelivered && notification.TourRequest.Guest.Id == userId)
+                {
+                    notification.IsDelivered = true;
+                    _notificationRepository.Update(notification);
+                    notificationList.Add(notification);
+                }
+            }
+            return notificationList;
+        }*/
     }
 }

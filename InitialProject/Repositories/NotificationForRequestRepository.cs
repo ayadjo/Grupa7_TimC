@@ -11,16 +11,20 @@ namespace InitialProject.Repositories
 {
     public class NotificationForRequestRepository : INotificationForRequestRepository
     {
+        /*
         private const string FilePath = "../../../Resources/Data/notificationsForRequest.csv";
+
+       
 
         private readonly Serializer<NotificationForRequest> _serializer;
 
         private List<NotificationForRequest> _notifications;
 
-        public NotificationForRequestRepository()
+        public NotificationForRequestRepository()  
         {
             _serializer = new Serializer<NotificationForRequest>();
             _notifications = _serializer.FromCSV(FilePath);
+            BindNotificationTourRequest();
         }
 
 
@@ -52,7 +56,7 @@ namespace InitialProject.Repositories
                 }
             }
         }
-
+       
         public NotificationForRequest Save(NotificationForRequest notification)
         {
 
@@ -84,6 +88,6 @@ namespace InitialProject.Repositories
             _notifications.Insert(index, notification);
             _serializer.ToCSV(FilePath, _notifications);
             return notification;
-        }
+        }*/
     }
 }

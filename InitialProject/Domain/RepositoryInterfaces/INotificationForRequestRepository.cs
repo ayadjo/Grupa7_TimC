@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace InitialProject.Domain.RepositoryInterfaces
 {
     public interface INotificationForRequestRepository
-    {
+    {/*
         List<NotificationForRequest> GetAll();
 
         NotificationForRequest Get(int id);
@@ -19,7 +19,7 @@ namespace InitialProject.Domain.RepositoryInterfaces
 
         NotificationForRequest Update(NotificationForRequest notification);
 
-        public int NextId();
+        public int NextId();*/
 
     }
 }
