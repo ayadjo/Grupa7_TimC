@@ -36,7 +36,6 @@ namespace InitialProject.Repositories
 
         }
 
-        //?????
         public void BindNotificationTourReservation()
         {
             foreach (Notification notification in _notifications)
