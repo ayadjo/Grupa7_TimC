@@ -14,5 +14,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
         AccommodationRenovation Save(AccommodationRenovation accommodationRenovation);
         void Delete(AccommodationRenovation accommodationRenovation);
         AccommodationRenovation Update(AccommodationRenovation accommodationRenovation);
+        List<AccommodationRenovation> GetByAccommodationId(int id);
     }
 }

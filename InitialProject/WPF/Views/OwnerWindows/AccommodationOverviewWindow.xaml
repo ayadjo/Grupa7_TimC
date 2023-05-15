@@ -10,6 +10,7 @@
         <KeyBinding Command="{Binding RegisterNewAccommodationCommand}" Key="K" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding ReviewsCommand}" Key="L" Modifiers="Ctrl" />
         <KeyBinding Command="{Binding AccommodationRenovationCommand}" Key="R" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding ShowAccommodationRenovationCommand}" Key="Y" Modifiers="Ctrl"/>
     </UserControl.InputBindings>
     <UserControl.Resources>
 
@@ -51,10 +52,17 @@
             </StackPanel>
 
         </Button>
-        <Button x:Name="AccommodationRenovationButton" Grid.Row="2" FontSize="13" Width="151" Command="{Binding AccommodationRenovationCommand}"  Margin="292,10,357,46" Style="{StaticResource AccommodationPinkButton}">
+        <Button x:Name="ScheduleAccommodationRenovationButton" Grid.Row="2" FontSize="13" Width="151" Command="{Binding AccommodationRenovationCommand}"  Margin="292,10,357,46" Style="{StaticResource AccommodationPinkButton}">
             <StackPanel >
                 <TextBlock  Text="Zakaži renoviranje" HorizontalAlignment="Center"/>
                 <TextBlock Text="CTRL + R" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="AccommodationRenovationButton" Grid.Row="2" FontSize="13" Width="151" Command="{Binding ShowAccommodationRenovationCommand}"  Margin="106,10,543,46" Style="{StaticResource AccommodationPinkButton}">
+            <StackPanel >
+                <TextBlock  Text="Renoviranja" HorizontalAlignment="Center"/>
+                <TextBlock Text="CTRL + Y" HorizontalAlignment="Center"/>
             </StackPanel>
 
         </Button>

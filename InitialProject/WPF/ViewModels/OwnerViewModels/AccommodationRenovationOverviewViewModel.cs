@@ -1,4 +1,5 @@
-﻿using InitialProject.Controller;
+﻿using InitialProject.Commands;
+using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -27,11 +28,19 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
         public AccommodationRenovationController _accommodationRenovationController;
 
         public AccommodationRenovation SelectedAccommodationRenovation { get; set; }
+
+        public RelayCommand CloseCommand { get; set; }
         public AccommodationRenovationOverviewViewModel(Accommodation accommodation)
         {
             _accommodationRenovationController = new AccommodationRenovationController();
 
             AccommodationRenovations = new ObservableCollection<AccommodationRenovation>(_accommodationRenovationController.GetAllValidRenovations(accommodation));
+            CloseCommand = new RelayCommand(Execute_CloseCommand);
+        }
+
+        public void Execute_CloseCommand(object param)
+        {
+            Close();
         }
     }
 }

@@ -82,5 +82,10 @@ namespace InitialProject.Repositories
             return accommodationRenovation;
         }
 
+        public List<AccommodationRenovation> GetByAccommodationId(int id)
+        {
+            List<AccommodationRenovation> renovations = GetAll();
+            return renovations.Where(renovations => renovations.Accommodation.Id == id).ToList();
+        }
     }
 }

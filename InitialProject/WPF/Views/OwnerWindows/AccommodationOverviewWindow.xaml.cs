@@ -25,6 +25,8 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         public RelayCommand AccommodationRenovationCommand { get; set; }
 
+        public RelayCommand ShowAccommodationRenovationCommand { get; set; }
+
         public AccommodationOverviewWindow()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
             RegisterNewAccommodationCommand = new RelayCommand(RegistenNewAccommodationButton_Click, CanRegisterNewAccommodation);
             ReviewsCommand = new RelayCommand(AccommodationReviewsButton_Click, CanReview);
             AccommodationRenovationCommand = new RelayCommand(Execute_AccommodationRenovationCommand, CanExecute_AccommodationRenovationCommand);
+            ShowAccommodationRenovationCommand = new RelayCommand(Execute_ShowAccommodationRenovationCommand, CanExecute_ShowAccommodationRenovationCommand);
 
             _accommodationController = new AccommodationController();
 
@@ -102,6 +105,17 @@ namespace InitialProject.WPF.Views.OwnerWindows
         private void Execute_AccommodationRenovationCommand(object param)
         {
             ScheduleAccommodationRenovationWindow renovation = new ScheduleAccommodationRenovationWindow(SelectedAccommodation);
+            renovation.Show();
+        }
+
+        public bool CanExecute_ShowAccommodationRenovationCommand(object param)
+        {
+            return SelectedAccommodation != null && MainWindow.SelectedTab == 1;
+        }
+
+        private void Execute_ShowAccommodationRenovationCommand(object param)
+        {
+            AccommodationRenovationsOverviewWindow renovation = new AccommodationRenovationsOverviewWindow(SelectedAccommodation);
             renovation.Show();
         }
     }

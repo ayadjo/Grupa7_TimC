@@ -49,6 +49,11 @@ namespace InitialProject.Service.Services
             return _accommodationRenovationRepository.Update(accommodationRenovation);
         }
 
+        public List<AccommodationRenovation> GetByAccommodationId(int id)
+        {
+            return _accommodationRenovationRepository.GetByAccommodationId(id);
+        }
+
         public List<AvailableTermsDto> FindAllAvailableTerms(Accommodation accommodation, DateTime Start, DateTime End, int Duration)
         {
             List<AccommodationReservation> reservations = _accommodationReservationService.GetByAccommodationId(accommodation.Id);
@@ -102,7 +107,7 @@ namespace InitialProject.Service.Services
 
         public List<AccommodationRenovation> GetAllValidRenovations(Accommodation accommodation)
         {
-            List<AccommodationRenovation> renovations = GetAll();
+            List<AccommodationRenovation> renovations = GetByAccommodationId(accommodation.Id);
             foreach(AccommodationRenovation renovation in renovations)
             {
                 if(renovation.IsCancelled == true)
