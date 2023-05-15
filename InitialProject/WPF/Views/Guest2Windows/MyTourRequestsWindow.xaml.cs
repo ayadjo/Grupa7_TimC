@@ -45,7 +45,8 @@ namespace InitialProject.WPF.Views.Guest2Windows
         
         private void Statistics_Click(object sender, RoutedEventArgs e)
         {
-
+            TourRequestStatisticsWindow tourRequestStatisticsWindow = new TourRequestStatisticsWindow();
+            tourRequestStatisticsWindow.Show();
         }
     }
 }

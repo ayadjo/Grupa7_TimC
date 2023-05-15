@@ -52,7 +52,7 @@ namespace InitialProject.Repositories
                 }
                 else
                 {
-                    Console.WriteLine("Error in tourLocation binding");
+                    Console.WriteLine("Error in tourRequestLocation binding");
                 }
             }
         }

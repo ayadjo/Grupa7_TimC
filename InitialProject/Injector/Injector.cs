@@ -1,4 +1,4 @@
-﻿using InitialProject.Domain.RepositoryInterfaces;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -31,9 +31,14 @@ namespace InitialProject.Injector
             NotificationRepository notificationRepository = new NotificationRepository();
             notificationRepository.BindNotificationTourReservation();
 
+
             TourRequestRepository tourRequestRepository = new TourRequestRepository();
             tourRequestRepository.BindTourRequestUser();
             tourRequestRepository.BindTourRequestLocation();
+
+            /*NotificationForRequestRepository notificationForRequestRepository = new NotificationForRequestRepository();
+            notificationForRequestRepository.BindNotificationTourRequest();*/
+
 
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
             _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);
@@ -42,6 +47,7 @@ namespace InitialProject.Injector
             _implementations.Add(typeof(ITourRequestRepository), tourRequestRepository);
 
             RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
+            //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
         }
 
         public static T CreateInstance<T>()

@@ -1,4 +1,5 @@
-﻿using InitialProject.Domain.Models;
+﻿using InitialProject.Domain.Dto;
+using InitialProject.Domain.Models;
 using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
@@ -50,5 +51,19 @@ namespace InitialProject.Controller
             return _tourRequestService.GetAllTourRequestsForUser(userId);
         }
 
+        public List<int> YearsOfTourRequests(int guestId)
+        {
+            return _tourRequestService.YearsOfTourRequests(guestId);
+        }
+
+        public TourRequestPercentageDto GetPercentageOfTourRequest(int userId)
+        {
+            return _tourRequestService.GetPercentageOfTourRequest(userId);
+        }
+
+        public TourRequestPercentageDto GetPercentageOfTourRequestForYear(int userId, int year)
+        {
+            return _tourRequestService.GetPercentageOfTourRequestForYear(userId, year);
+        }
     }
 }
