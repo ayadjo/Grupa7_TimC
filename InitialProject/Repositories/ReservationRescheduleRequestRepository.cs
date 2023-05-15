@@ -36,7 +36,7 @@ namespace InitialProject.Repositories
                 }
                 else
                 {
-                    Console.WriteLine("Error in accommodationLocation binding");
+                    Console.WriteLine("Error in reservationRescheduleRequestUser binding");
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace InitialProject.Repositories
                 }
                 else
                 {
-                    Console.WriteLine("Error in accommodationLocation binding");
+                    Console.WriteLine("Error in reservationRescheduleRequestAccommodationReservation binding");
                 }
             }
         }

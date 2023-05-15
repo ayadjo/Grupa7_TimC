@@ -9,6 +9,7 @@
     <UserControl.InputBindings>
         <KeyBinding Command="{Binding RegisterNewAccommodationCommand}" Key="K" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding ReviewsCommand}" Key="L" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding AccommodationRenovationCommand}" Key="R" Modifiers="Ctrl" />
     </UserControl.InputBindings>
     <UserControl.Resources>
 
@@ -47,6 +48,13 @@
             <StackPanel >
                 <TextBlock  Text="Recenzije" HorizontalAlignment="Center"/>
                 <TextBlock Text="CTRL + L" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+        </Button>
+        <Button x:Name="AccommodationRenovationButton" Grid.Row="2" FontSize="13" Width="151" Command="{Binding AccommodationRenovationCommand}"  Margin="292,10,357,46" Style="{StaticResource AccommodationPinkButton}">
+            <StackPanel >
+                <TextBlock  Text="Zakaži renoviranje" HorizontalAlignment="Center"/>
+                <TextBlock Text="CTRL + R" HorizontalAlignment="Center"/>
             </StackPanel>
 
         </Button>

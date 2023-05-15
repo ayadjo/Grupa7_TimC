@@ -36,7 +36,7 @@ namespace InitialProject.WPF.Views.OwnerWindows
 
         private bool CanNextTab(object param)
         {
-            return TabControl1.SelectedIndex != 4;
+            return TabControl1.SelectedIndex != 5;
         }
 
         private bool CanPreviousTab(object param)

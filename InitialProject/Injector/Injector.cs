@@ -35,11 +35,15 @@ namespace InitialProject.Injector
             tourRequestRepository.BindTourRequestUser();
             tourRequestRepository.BindTourRequestLocation();
 
+            AccommodationRenovationRepository accommodationRenovationRepository = new AccommodationRenovationRepository();
+            accommodationRenovationRepository.BindAccommodationRenovationWithAccommodation();
+
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
             _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);
             _implementations.Add(typeof(IReservationRescheduleRequestRepository), reservationRescheduleRequestRepository);
             _implementations.Add(typeof(INotificationRepository), notificationRepository);
             _implementations.Add(typeof(ITourRequestRepository), tourRequestRepository);
+            _implementations.Add(typeof(IAccommodationRenovationRepository), accommodationRenovationRepository);
         }
 
         public static T CreateInstance<T>()

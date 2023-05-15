@@ -57,6 +57,7 @@
             <TabItem Header="Neocenjeni gosti" Style="{StaticResource DarkTabbedItem}" HorizontalAlignment="Left" Width="142">
                 <local:GuestWithoutReviewWindow x:Name="GuestsTab"/>
             </TabItem>
+            
         </TabControl>
     </Grid>
 </Window>
