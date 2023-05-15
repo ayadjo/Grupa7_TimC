@@ -108,14 +108,8 @@ namespace InitialProject.Service.Services
         public List<AccommodationRenovation> GetAllValidRenovations(Accommodation accommodation)
         {
             List<AccommodationRenovation> renovations = GetByAccommodationId(accommodation.Id);
-            foreach(AccommodationRenovation renovation in renovations)
-            {
-                if(renovation.IsCancelled == true)
-                {
-                    renovations.Remove(renovation);
-                }
-            }
-            return renovations;
+            
+            return renovations.Where(r => r.IsCancelled == false).ToList();
         }
 
         public void CancelRenovation(AccommodationRenovation renovation)

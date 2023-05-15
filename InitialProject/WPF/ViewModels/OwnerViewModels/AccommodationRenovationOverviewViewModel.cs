@@ -27,7 +27,16 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
 
         public AccommodationRenovationController _accommodationRenovationController;
 
-        public AccommodationRenovation SelectedAccommodationRenovation { get; set; }
+        private AccommodationRenovation _accommodationRenovation;
+        public AccommodationRenovation SelectedAccommodationRenovation 
+        { get { return _accommodationRenovation;  }
+
+            set
+            {
+                _accommodationRenovation = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Accommodation SelectedAccommodation { get; set; }
 

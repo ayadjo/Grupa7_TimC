@@ -31,7 +31,7 @@
         <Label Grid.Row="0" Grid.Column="1" Height="40" FontSize="20"  Content="Renoviranja" Style="{StaticResource BoldLabel}" Margin="0,20,0,0"/>
         <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="False" x:Name="AccommodationReviewsDataGrid" 
                   IsReadOnly="True" SelectionMode="Single"
-                  ItemsSource="{Binding Path=AccommodationRenovations, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedRenovation}">
+                  ItemsSource="{Binding Path=AccommodationRenovations, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedAccommodationRenovation}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Smeštaj" Binding="{Binding Accommodation.Name}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Država" Binding="{Binding Accommodation.Location.Country}" Width="*" ></DataGridTextColumn>
