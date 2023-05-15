@@ -1,5 +1,6 @@
 ﻿using InitialProject.Enumerations;
 using InitialProject.Serializer;
+using InitialProject.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace InitialProject.Domain.Models
            {
                Id.ToString(),
                Tour.Id.ToString(),
-               StartTime.ToString(),
+               DateHelper.DateToString(StartTime),
                Status.ToString(),
            };
 
@@ -55,7 +56,7 @@ namespace InitialProject.Domain.Models
         {
             Id = Convert.ToInt32(values[0]);
             Tour = new Tour() { Id = Convert.ToInt32(values[1]) };
-            StartTime = DateTime.Parse(values[2]);
+            StartTime = DateHelper.StringToDate(values[2]);
             Status = (TourEventStatus)Enum.Parse(typeof(TourEventStatus), values[3]);
         }
 
