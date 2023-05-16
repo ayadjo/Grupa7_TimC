@@ -59,7 +59,9 @@ namespace InitialProject.Service.Services
             List<AccommodationReservation> reservations = _accommodationReservationService.GetByAccommodationId(accommodation.Id);
             List<AvailableTermsDto> availableTerms = GetAvailableTerms(Start, End, Duration, reservations);
 
-            return availableTerms;
+
+            return availableTerms.Where(r => IsRenovationPossible(accommodation, r.Start, r.End) == true).ToList();
+
         }
 
         private bool IsTermAvailableForRenovation(DateTime startDate, DateTime endDate, int duration, AccommodationReservation reservation)
@@ -112,26 +114,31 @@ namespace InitialProject.Service.Services
             return renovations.Where(r => r.IsCancelled == false).ToList();
         }
 
+
         public void CancelRenovation(AccommodationRenovation renovation)
         {
             if(DateTime.Now.AddDays(5) <= renovation.Start)
             {
                 renovation.IsCancelled = true;
                 _accommodationRenovationRepository.Update(renovation);
+            }else
+            {
+                MessageBox.Show("Nije moguce otkazati renoviranje u ovom trenutku.", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+                
             }
         }
 
-        public bool IsDatesIntertwine(DateTime StartFirst, DateTime EndFirst, DateTime StartSecond, DateTime EndSecond)
+        private bool IsDatesIntertwine(DateTime StartFirst, DateTime EndFirst, DateTime StartSecond, DateTime EndSecond)
         {
             return (StartSecond.Date <= EndFirst.Date && EndSecond.Date >= StartFirst.Date);
         }
 
-        public bool IsRenovationPossible(Accommodation accommodation, DateTime StartSecond, DateTime EndSecond)
+        private bool IsRenovationPossible(Accommodation accommodation, DateTime StartSecond, DateTime EndSecond)
         {
             List<AccommodationRenovation> renovations = GetByAccommodationId(accommodation.Id);
             foreach(AccommodationRenovation renovation in renovations)
             {
-                if(IsDatesIntertwine(renovation.Start, renovation.End, StartSecond, EndSecond))
+                if(IsDatesIntertwine(renovation.Start, renovation.End, StartSecond, EndSecond) && renovation.IsCancelled == false)
                 {
                     return false;
                 }

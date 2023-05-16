@@ -4,12 +4,15 @@ using InitialProject.Domain.Dto;
 using InitialProject.Domain.Models;
 using InitialProject.WPF.Views.OwnerWindows;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace InitialProject.WPF.ViewModels.OwnerViewModels
 {
@@ -22,7 +25,7 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
         public ObservableCollection<AvailableTermsDto> AvailableTerms { get; set; }
 
         #region NotifyProperties
-        private DateTime _selectedStartDate;
+        private DateTime _selectedStartDate = DateTime.Now.Date;
         public DateTime SelectedStartDate
         {
             get => _selectedStartDate;
@@ -36,7 +39,7 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
             }
         }
 
-        private DateTime _selectedEndDate;
+        private DateTime _selectedEndDate = DateTime.Now.Date;
         public DateTime SelectedEndDate
         {
             get => _selectedEndDate;
@@ -71,6 +74,8 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
 
         public RelayCommand CancelCommand { get; set; }
 
+    
+
         public Accommodation SelectedAccommodation { get; set; }
 
         public AvailableTermsDto SelectedTerm { get; set; }
@@ -78,7 +83,7 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
         public ScheduleAccommodationRenovationViewModel(Accommodation accommodation)
         {
             SearchCommand = new RelayCommand(Execute_SearchCommand, Can_SearchCommand);
-            ScheduleRenovationCommand = new RelayCommand(Execute_ScheduleRenovationCommand, CanExecute_ScheduleRenovationCommand);
+            ScheduleRenovationCommand = new RelayCommand(Execute_ScheduleRenovationCommand);
             CancelCommand = new RelayCommand(Execute_CancelCommand);
 
             _accommodationRenovationController = new AccommodationRenovationController();
@@ -107,18 +112,36 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
 
         public bool Can_SearchCommand(object param)
         {
+          
             return true;
         }
 
         public void Execute_SearchCommand(object param)
         {
+            if (SelectedEndDate == default(DateTime) || Duration == 0 || SelectedEndDate < SelectedStartDate)
+            {
+                MessageBox.Show("Niste uneli ispravane podatke, pokušajte ponovo.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            int totalDays = (SelectedEndDate - SelectedStartDate).Days;
+            if (Duration > totalDays)
+            {
+                MessageBox.Show("Niste uneli ispravnu vrednost trajanja, pokušajte ponovo.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
             List<AvailableTermsDto> availableTerms = _accommodationRenovationController.FindAllAvailableTerms(SelectedAccommodation ,SelectedStartDate, SelectedEndDate, Duration);
             Refresh(availableTerms);
+            if(availableTerms.Count == 0)
+            {
+                MessageBox.Show("Uneti termini su popunjeni, pokusajte sa nekim drugim terminima.", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         public bool CanExecute_ScheduleRenovationCommand(object param)
         {
-            return _accommodationRenovationController.IsRenovationPossible(SelectedAccommodation, SelectedTerm.Start, SelectedTerm.End);
+            return SelectedTerm != null;
         }
         public void Execute_ScheduleRenovationCommand(object param) 
         {
@@ -126,5 +149,10 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
             descriptionWindow.Show();
             Close();
         }
+
+        
+
+
+        
     }
 }

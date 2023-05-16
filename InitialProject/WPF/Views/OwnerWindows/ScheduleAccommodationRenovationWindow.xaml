@@ -36,12 +36,12 @@
 
             <StackPanel Orientation="Horizontal"  Grid.Column="0" >
                 <Label Content="Od" Height="27" Width="50" VerticalAlignment="Center" Style="{StaticResource DefaultLabel}" FontSize="14"/>
-                <DatePicker SelectedDate="{Binding Path=SelectedStartDate}"  Name="StartDatePicker" SelectedDateChanged="StartDatePicker_SelectedDateChanged" FontFamily="Candara"/>
+                <DatePicker SelectedDate="{Binding Path=SelectedStartDate}"  Name="StartDatePicker"  FontFamily="Candara" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="1" >
                 <Label Content="Do" Height="27" Width="50" VerticalAlignment="Center" Style="{StaticResource DefaultLabel}" FontSize="14"/>
-                <DatePicker SelectedDate="{Binding Path=SelectedEndDate}"  Name="EndDatePicker" SelectedDateChanged="EndDatePicker_SelectedDateChanged" FontFamily="Candara"/>
+                <DatePicker SelectedDate="{Binding Path=SelectedEndDate}"  Name="EndDatePicker"  FontFamily="Candara" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" >

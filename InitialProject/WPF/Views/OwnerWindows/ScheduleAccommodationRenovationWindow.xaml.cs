@@ -34,14 +34,5 @@ namespace InitialProject.WPF.Views.OwnerWindows
             }
         }
 
-        private void StartDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void EndDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

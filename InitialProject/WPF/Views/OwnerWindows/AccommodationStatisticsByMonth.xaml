@@ -29,7 +29,11 @@
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="1" Content="{Binding SelectedStatisticByYear.Year}" Style="{StaticResource BoldLabelDark}" FontSize="20"/>
-        <Label Grid.Row="1" Grid.Column="1" Height="40" FontSize="20"  Content="{Binding Accommodation.Name}" Style="{StaticResource BoldLabelDark}" Margin="0,20,0,0"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+            <Label Height="40" FontSize="20"  Content="{Binding Accommodation.Name}" Style="{StaticResource BoldLabelDark}" Margin="0,20,0,0"/>
+            <Label Height="40"  Content=" - najviše zauzet tokom" Margin="0,20,0,0" Style="{StaticResource DefaultLabelDark}"/>
+            <Label Height="40" Content="{Binding BestMonth}" Margin="0,20,0,0" Style="{StaticResource DefaultLabelDark}"/>
+        </StackPanel>
         <DataGrid Grid.Row="2" Grid.Column="1" AutoGenerateColumns="False" x:Name="StatisticsByMonthDataGrid" 
                   IsReadOnly="True" SelectionMode="Single"
                   ItemsSource="{Binding Path=AccommodationStatisticsByMonth, UpdateSourceTrigger=PropertyChanged}">

@@ -107,5 +107,10 @@ namespace InitialProject.Controller
         {
             return _accommodationReservationService.GetBestYearForAccommodation(accommodationId);
         }
+
+        public int GetBestMonthForAccommodation(int year, int accommodationId)
+        {
+            return _accommodationReservationService.GetBestMonthForAccommodation(year, accommodationId);
+        }
     }
 }

@@ -69,7 +69,7 @@ namespace InitialProject.Service.Services
             return _accommodationRepository.GetByOwner(id);
         }
 
-        public bool IsRecentlyRenovated(int accommodationId)
+        private bool IsRecentlyRenovated(int accommodationId)
         {
             List<AccommodationRenovation> renovations = _accommodationRenovationRepository.GetByAccommodationId(accommodationId);
             foreach(AccommodationRenovation renovation in renovations)
@@ -82,8 +82,6 @@ namespace InitialProject.Service.Services
 
             return false;
         }
-
-       
 
         public List<AccommodationDto> GetDtos(List<Accommodation> accommodations)
         {

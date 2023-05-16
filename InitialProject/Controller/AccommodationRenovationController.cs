@@ -60,9 +60,6 @@ namespace InitialProject.Controller
             _accommodationRenovationService.CancelRenovation(renovation);
         }
 
-        public bool IsRenovationPossible(Accommodation accommodation, DateTime StartSecond, DateTime EndSecond)
-        {
-            return _accommodationRenovationService.IsRenovationPossible(accommodation, StartSecond, EndSecond);
-        }
+       
     }
 }
