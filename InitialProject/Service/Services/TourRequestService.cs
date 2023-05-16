@@ -15,9 +15,11 @@ namespace InitialProject.Service.Services
     public class TourRequestService
     {
         private ITourRequestRepository _tourRequestRepository;
+        private INewTourNotificationRepository _newTourNotificationRepository;
         public TourRequestService()
         {
             _tourRequestRepository = Injector.Injector.CreateInstance<ITourRequestRepository>();
+            _newTourNotificationRepository = Injector.Injector.CreateInstance<INewTourNotificationRepository>();
         }
 
         public List<TourRequest> GetAll()
@@ -143,12 +145,68 @@ namespace InitialProject.Service.Services
 
             if (totalRequests > 0)
             {
-                double acceptedRequestsPercentage = (acceptedRequests * 100.0) / totalRequests;
+                double acceptedRequestsPercentage = (acceptedRequests * 100.0) / totalRequests;   //decimal bolje
                 double rejectedRequestsPercentage = (rejectedRequests * 100.0) / totalRequests;
                 tourRequestPercentage.PercentageOfAcceptedRequests = (int)Math.Round(acceptedRequestsPercentage);
                 tourRequestPercentage.PercentageOfRejectedRequests = (int)Math.Round(rejectedRequestsPercentage);
-                tourRequestPercentage.AverageNumberOfPeopleInAcceptedRequests = numberOfPeopleInAcceptedRequests / acceptedRequests; 
+
+                if(acceptedRequests > 0)
+                {
+                    tourRequestPercentage.AverageNumberOfPeopleInAcceptedRequests = numberOfPeopleInAcceptedRequests / acceptedRequests;
+                }               
             }
+        }
+
+
+        //obavestenje
+        /*public List<TourRequest> GetAllForUser(int userId)
+        {
+            return GetAll().Where(r => r.Guest.Id == userId).ToList();
+        }*/
+
+        private void AddUnfulfilledRequest(List<TourRequest> unfullfilledRequests, TourRequest requestToAdd)
+        {
+            foreach (TourRequest tourRequest in unfullfilledRequests)
+            {
+                if (tourRequest.Guest.Id == requestToAdd.Guest.Id)
+                {
+                    return;
+                }
+            }
+
+            foreach (TourRequest request in GetAllTourRequestsForUser(requestToAdd.Guest.Id))
+            {
+                if (request.Status == RequestStatusType.Approved && request.Language == requestToAdd.Language && request.Location.City == requestToAdd.Location.City)
+                {
+                    return;
+                }
+            }
+            unfullfilledRequests.Add(requestToAdd);
+        }
+
+        public void NewTourFromStatistics(Tour tour)  //GenerateNewTourNotifications
+        {
+            List<TourRequest> unfullfilledRequests = new List<TourRequest>();
+            foreach (TourRequest request in _tourRequestRepository.GetAll())
+            {
+                if (IsUnfulfilledTourRequest(request, tour))
+                {
+                    AddUnfulfilledRequest(unfullfilledRequests, request);
+                }
+            }
+
+
+            foreach (TourRequest tourRequest in unfullfilledRequests)
+            {
+                NewTourNotification newTourNotification = new NewTourNotification() { Tour = tour, Guest = tourRequest.Guest, IsDelivered = false };
+                _newTourNotificationRepository.Save(newTourNotification);
+            }
+        }
+
+        private bool IsUnfulfilledTourRequest(TourRequest request, Tour tour)
+        {
+            return request.Status != RequestStatusType.Approved &&
+                   (request.Location.City == tour.Location.City || request.Language == tour.Languages);
         }
     }
 }

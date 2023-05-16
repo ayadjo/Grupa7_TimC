@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Domain.Models
 {
-    public class NotificationForRequest //: ISerializable
-    {/*
+    public class NotificationForRequest : ISerializable
+    {
         public int Id { get; set; }
         public TourRequest TourRequest { get; set; }
         public bool IsDelivered { get; set; }
@@ -38,6 +38,6 @@ namespace InitialProject.Domain.Models
             Id = Convert.ToInt32(values[0]);
             TourRequest = new TourRequest() { Id = Convert.ToInt32(values[1]) };
             IsDelivered = Boolean.Parse(values[2]);
-        }*/
+        }
     }
 }

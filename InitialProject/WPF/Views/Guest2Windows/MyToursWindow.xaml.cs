@@ -17,6 +17,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using InitialProject.WPF.ViewModels.Guest2ViewModels;
 using System.Windows.Navigation;
+using System.Threading.Channels;
+using InitialProject.WPF.ViewModels;
 
 namespace InitialProject.WPF.Views.Guest2Windows
 {
@@ -55,7 +57,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
             
             TourEvents = new ObservableCollection<TourEvent>(_tourReservationController.UsersTourEvents(SignInForm.LoggedUser.Id));
-            
+
         }
 
         private void TourPoint_Click(object sender, RoutedEventArgs e)

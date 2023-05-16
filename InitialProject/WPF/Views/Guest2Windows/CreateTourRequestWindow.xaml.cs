@@ -1,4 +1,5 @@
 ﻿using InitialProject.Controller;
+using InitialProject.WPF.ViewModels;
 using InitialProject.WPF.ViewModels.Guest2ViewModels;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,14 @@ namespace InitialProject.WPF.Views.Guest2Windows
             InitializeComponent();
             createTourRequestViewModel = new CreateTourRequestViewModel(NavigationService);
             this.DataContext = createTourRequestViewModel;
+
+            if (DataContext is IClose vm)
+            {
+                vm.Close += () =>
+                {
+                    this.Close();
+                };
+            }
         }
 
         private void CountryComboBox_LostFocus(object sender, RoutedEventArgs e)
