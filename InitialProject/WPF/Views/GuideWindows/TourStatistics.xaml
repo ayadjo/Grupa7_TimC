@@ -21,7 +21,7 @@
         <Grid Grid.Column="0" Grid.Row="0">
             <Label Content="Najposećenija tura" HorizontalAlignment="Center" Margin="10,0,10,0" Grid.Row="0" VerticalAlignment="Center" FontSize="17" FontFamily="Candara"/>
             <TextBox Margin="0,138,0,82"  Width="200" Height="25" HorizontalAlignment="Center" Text="{Binding Path=BestTourEvent.Tour.Name}"/>
-            <Button x:Name="MostVisitedTourInGeneral" Click="ViewMostVisitedTourInGeneral_Click" Content="Prikazi" Width="120" Height="25" HorizontalAlignment="Left" Margin="44,182,0,38"/>
+            <Button x:Name="MostVisitedTourInGeneral"  Command="{Binding ViewMostVisitedTourInGeneralCommand}" Content="Prikazi" Width="120" Height="25" HorizontalAlignment="Left" Margin="44,182,0,38"/>
             <ComboBox x:Name="YearComboBox"  SelectedItem="{Binding Path=SelectedYear}"  HorizontalAlignment="Right" ItemsSource="{Binding Years}" LostFocus="YearComboBox_LostFocus"  Margin="0,182,53,38" Width="120" Height="25"/>
 
 
@@ -53,7 +53,7 @@
                 <TextBox  Margin="189,131,0,86"  Width="200" Height="30" HorizontalAlignment="Left" IsEnabled="False" Text="{Binding Path=TourPercentageOfGuestsVouchers.PercentageWithVouchers, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Procenat bez vaucera:" HorizontalAlignment="Left" Margin="10,166,0,0" Grid.Row="0" VerticalAlignment="Top" FontSize="17" FontFamily="Candara" RenderTransformOrigin="0.444,-2.345"/>
                 <TextBox  Margin="189,166,0,51"  Width="200" Height="30" HorizontalAlignment="Left" IsEnabled="False" Text="{Binding Path=TourPercentageOfGuestsVouchers.PercentageWithoutVouchers,UpdateSourceTrigger=PropertyChanged}"/>
-                <Button x:Name="ViewButton" Content="Prikazi" Click="ViewButton_Click" Height="20" Width="100" Margin="165,217,165,10"/>
+                <Button x:Name="ViewButton" Content="Prikazi"  Command="{Binding ViewButtonCommand}" Height="20" Width="100" Margin="165,217,165,10"/>
 
             </Grid>
 

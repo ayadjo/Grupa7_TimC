@@ -15,7 +15,6 @@ namespace InitialProject.Service.Services
     public class TourEventService
     {
 
-
         private TourEventRepository _tourEventRepository;
         private TourReservationRepository _tourReservationRepository;
 
@@ -176,6 +175,7 @@ namespace InitialProject.Service.Services
             return tourEventsNotPassed;
         }
 
+        
         public TourEvent MostVisitedTourEvent(int year = -1)
         {
             TourEvent mostVisitedTourEvent = null;
@@ -185,7 +185,7 @@ namespace InitialProject.Service.Services
             {
                 if (tourEvent.Status != Enumerations.TourEventStatus.Finished)
                 {
-                    continue;
+                    continue;  
                 }
                 if (year != -1)
                 {

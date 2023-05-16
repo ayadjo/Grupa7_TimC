@@ -17,6 +17,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
         public AccommodationOwnerReview Update(AccommodationOwnerReview accommodationOwnerReview);
         public int NextId();
         public List<AccommodationOwnerReview> GetByReservation(int reservationId);
-        public AccommodationOwnerReview SaveImages(AccommodationOwnerReview accommodationOwnerReview);
+        public AccommodationOwnerReview SaveReviewImagesRecommendation(AccommodationOwnerReview accommodationOwnerReview);
     }
 }

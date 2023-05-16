@@ -526,4 +526,8 @@
     <Folder Include="WPF\ViewModels\GuideViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="21.2.4" />
+  </ItemGroup>
+
 </Project>

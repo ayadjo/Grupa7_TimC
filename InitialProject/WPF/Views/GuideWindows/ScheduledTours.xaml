@@ -30,7 +30,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="0,327,10,0" VerticalAlignment="Top" Orientation="Horizontal">
-            <Button x:Name="CancelButton" Content="Otkaži" Click="CancelButton_Click" Height="40" Width="100"/>
+            <Button x:Name="CancelButton" Content="Otkaži" Command="{Binding CancelCommand}" Height="40" Width="100"/>
         </StackPanel>
     </Grid>
 </Window>

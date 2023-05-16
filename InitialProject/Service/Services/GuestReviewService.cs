@@ -1,5 +1,7 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +43,23 @@ namespace InitialProject.Service.Services
         public List<GuestReview> GetByReservation(GuestReview guestReview)
         {
             return _guestReviewRepository.GetByReservation(guestReview.Reservation.Id);
+        }
+
+        public List<GuestReview> GetByUserId(int guest)
+        {
+            List<GuestReview> guestReviews = new List<GuestReview>();
+
+            foreach (GuestReview guestReview in _guestReviewRepository.GetAll())
+            {
+                if (guestReview.Guest.Id == guest)
+                {
+                    if (guestReview.Reservation.AccommodationReview.Id != -1)
+                    {
+                        guestReviews.Add(guestReview);
+                    }
+                }
+            }
+            return guestReviews;
         }
     }
 }

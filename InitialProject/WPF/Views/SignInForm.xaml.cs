@@ -25,6 +25,7 @@ public partial class SignInForm : Window
 
     public AccommodationReservationController _accommodationReservationController;
     public NotificationController _notificationController;
+    public NotificationForRequestController _notificationForRequestController;
 
     private static User loggedUser;
 
@@ -65,6 +66,7 @@ public partial class SignInForm : Window
 
         _accommodationReservationController = new AccommodationReservationController();
         _notificationController = new NotificationController();
+        _notificationForRequestController = new NotificationForRequestController();
 
         SignInCommand = new RelayCommand(SignIn);
 
@@ -115,6 +117,16 @@ public partial class SignInForm : Window
                         MessageBoxResult result = MessageBox.Show(this, "You have been added to " + tourName);
                         
                     }
+
+                    /*List<NotificationForRequest> notificationsForRequest = _notificationForRequestController.GetNotificationForUser(loggedUser.Id);
+
+                    foreach (NotificationForRequest notification in notificationsForRequest)
+                    {
+
+                        string requestLocation = notification.TourRequest.Location.City + "(" + notification.TourRequest.Location.City + ")";
+                        MessageBoxResult result = MessageBox.Show(this, "Vas zahtev je prihvacen - " + requestLocation);
+
+                    }*/
 
                     Guest2MainWindow guest2MainWindow = new Guest2MainWindow();
                     guest2MainWindow.Show();
