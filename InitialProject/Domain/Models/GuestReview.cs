@@ -32,10 +32,10 @@ namespace InitialProject.Domain.Models
             string[] csvValues =
             {   Id.ToString(),
                 Reservation.Id.ToString(),
-                Guest.Id.ToString(),
                 Cleanliness.ToString(),
                 Behaviour.ToString(),
-                Comment
+                Comment,
+                Guest.Id.ToString(),
             };
             return csvValues;
 
@@ -45,10 +45,10 @@ namespace InitialProject.Domain.Models
         {
             Id = Convert.ToInt32(values[0]);
             Reservation = new AccommodationReservation() { Id = Convert.ToInt32(values[1]) };
-            Guest = new User() { Id = Convert.ToInt32(values[2]) };
-            Cleanliness = Convert.ToInt32(values[3]);
-            Behaviour = Convert.ToInt32(values[4]);
-            Comment = values[5];
+            Cleanliness = Convert.ToInt32(values[2]);
+            Behaviour = Convert.ToInt32(values[3]);
+            Comment = values[4];
+            Guest = new User() { Id = Convert.ToInt32(values[5]) };
         }
     }
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Domain.RepositoryInterfaces;
+using InitialProject.Enumerations;
 using InitialProject.Serializer;
 
 namespace InitialProject.Repositories
@@ -16,6 +18,7 @@ namespace InitialProject.Repositories
         private readonly Serializer<RenovationRecommendation> _serializer;
 
         private List<RenovationRecommendation> _renovationRecommendations;
+
 
         public RenovationRecommendationRepository()
         {
@@ -62,5 +65,8 @@ namespace InitialProject.Repositories
             _serializer.ToCSV(FilePath, _renovationRecommendations);
             return renovationRecommendation;
         }
+
+        
+        
     }
 }

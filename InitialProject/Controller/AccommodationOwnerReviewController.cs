@@ -53,5 +53,6 @@ namespace InitialProject.Controller
             return _accommodationOwnerReviewService.IsSuperOwner(ownerId);
         }
 
+
     }
 }

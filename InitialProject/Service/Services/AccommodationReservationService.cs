@@ -15,11 +15,13 @@ namespace InitialProject.Service.Services
     {
         private AccommodationReservationRepository _accommodationReservationRepository;
         private ReservationRescheduleRequestService _reservationRescheduleService;
+        private AccommodationOwnerReviewService _accommodationOwnerService;
 
         public AccommodationReservationService()
         {
             _accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
             _reservationRescheduleService = new ReservationRescheduleRequestService();
+            _accommodationOwnerService = new AccommodationOwnerReviewService();
         }
 
         public List<AccommodationReservation> GetAll()
@@ -134,7 +136,7 @@ namespace InitialProject.Service.Services
         public Boolean AvailableAccommodation(AccommodationReservation accommodationReservation, int numberOfDaysForReservation)
         {
             List<AccommodationReservation> bookedReservations = GetByAccommodationId(accommodationReservation.Accommodation.Id);
-            foreach (AccommodationReservation bookedReservation in bookedReservations)
+             foreach (AccommodationReservation bookedReservation in bookedReservations)
             {
                 if (bookedReservation.IsCancelled == false)
                 {
@@ -227,6 +229,10 @@ namespace InitialProject.Service.Services
             {
                 byYear.RescheduledReservationsNum++;
             }
+            if (_accommodationOwnerService.IsReservationWithRenovationRecommendations(reservation))
+            {
+                byYear.RecommendationForRenovationNum++;
+            }
 
             return byYear;
         }
@@ -262,7 +268,7 @@ namespace InitialProject.Service.Services
             }
             if (byYear == null)
             {
-                byYear = new AccommodationByYearStatisticDto(0, 0, 0, 0);
+                byYear = new AccommodationByYearStatisticDto(0, 0, 0, 0, 0);
                 statistics.Add(AddReservationYearWhichNotExists(byYear, reservation));
             }
             else
@@ -294,6 +300,10 @@ namespace InitialProject.Service.Services
             if (_reservationRescheduleService.IsReservationRescheduled(reservation))
             {
                 byMonth.RescheduledReservationsNum++;
+            }
+            if (_accommodationOwnerService.IsReservationWithRenovationRecommendations(reservation))
+            {
+                byMonth.RecommendationForRenovationNum++;
             }
             return byMonth;
         }
@@ -327,7 +337,7 @@ namespace InitialProject.Service.Services
             }
             if (byMonth == null)
             {
-                byMonth = new AccommodationByMonthStatisticDto(0, 0, 0, 0);
+                byMonth = new AccommodationByMonthStatisticDto(0, 0, 0, 0, 0);
                 statistics.Add(AddReservationMonthWhichNotExists(byMonth, reservation));
             }
             else

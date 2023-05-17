@@ -38,10 +38,11 @@
                   ItemsSource="{Binding Path=AccommodationStatistics, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedStatistic, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Godina" Binding="{Binding Year}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Godina" Binding="{Binding Year}" Width="60"></DataGridTextColumn>
                 <DataGridTextColumn Header="Rezervacije" Binding="{Binding ReservationsNum}"  Width="*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Otkazane rezervacije" Binding="{Binding CancelledReservationsNum}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Pomerene rezervacije" Binding="{Binding RescheduledReservationsNum}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Preporuke za renoviranje" Binding="{Binding RecommendationForRenovationNum}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="StatisticsByMonthButton" Grid.Row="2" Command="{Binding StatisticsByMonthCommand}" Grid.Column="1" HorizontalAlignment="Right" FontSize="15" Width="170" Style="{StaticResource DarkButton}" Margin="10">

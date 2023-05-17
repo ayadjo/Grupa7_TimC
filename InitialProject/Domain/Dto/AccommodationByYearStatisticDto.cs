@@ -12,12 +12,14 @@ namespace InitialProject.Domain.Dto
         public int ReservationsNum { get; set; }
         public int CancelledReservationsNum { get; set; }
         public int RescheduledReservationsNum { get; set; }
-        public AccommodationByYearStatisticDto(int year, int reservationsNum, int cancelledReservationsNum, int rescheduledReservationsNum)
+        public int RecommendationForRenovationNum { get; set; }
+        public AccommodationByYearStatisticDto(int year, int reservationsNum, int cancelledReservationsNum, int rescheduledReservationsNum, int recommendationForRenovationNum)
         {
             Year = year;
             ReservationsNum = reservationsNum;
             CancelledReservationsNum = cancelledReservationsNum;
             RescheduledReservationsNum = rescheduledReservationsNum;
+            RecommendationForRenovationNum = recommendationForRenovationNum;
         }
 
     }

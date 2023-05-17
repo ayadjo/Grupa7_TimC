@@ -42,14 +42,14 @@ namespace InitialProject.Injector
             notificationForRequestRepository.BindNotificationTourRequest();*/
 
 
+            RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
             _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);
             _implementations.Add(typeof(IReservationRescheduleRequestRepository), reservationRescheduleRequestRepository);
             _implementations.Add(typeof(INotificationRepository), notificationRepository);
             _implementations.Add(typeof(ITourRequestRepository), tourRequestRepository);
             _implementations.Add(typeof(IAccommodationRenovationRepository), accommodationRenovationRepository);
-
-            RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
+            _implementations.Add(typeof(IRenovationRecommendationRepository), renovationRecommendationRepository);
             //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
         }
 

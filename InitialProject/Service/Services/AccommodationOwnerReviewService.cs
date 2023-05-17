@@ -1,5 +1,6 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Domain.RepositoryInterfaces;
+using InitialProject.Enumerations;
 using InitialProject.Repositories;
 using InitialProject.WPF.Views;
 using System;
@@ -18,6 +19,7 @@ namespace InitialProject.Service.Services
         private IAccommodationOwnerReviewRepository _accommodationOwnerReviewRepository;
 
         private AccommodationReservationRepository _accommodationReservationRepository;
+        private IRenovationRecommendationRepository _renovationRecommendationRepository;
 
         public AccommodationOwnerReviewService()
         {
@@ -25,6 +27,8 @@ namespace InitialProject.Service.Services
             _accommodationOwnerReviewRepository = Injector.Injector.CreateInstance<IAccommodationOwnerReviewRepository>();
 
             _accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
+
+            _renovationRecommendationRepository = Injector.Injector.CreateInstance<IRenovationRecommendationRepository>();
         }
 
         public List<AccommodationOwnerReview> GetAll()
@@ -111,6 +115,27 @@ namespace InitialProject.Service.Services
             return count >= 50 && average >= 4.5;
         }
 
-
+        public bool IsReservationWithRenovationRecommendations(AccommodationReservation reservation)
+        {
+            List<AccommodationOwnerReview> reviews = _accommodationOwnerReviewRepository.GetAll();
+            foreach (AccommodationOwnerReview review in reviews)
+            {   foreach(RenovationRecommendation renovationRecommendation in _renovationRecommendationRepository.GetAll())
+                {
+                    if(renovationRecommendation.ResourceId == review.Id)
+                    {
+                        review.RenovationRecommendations.Add(renovationRecommendation);
+                    }
+                }
+                
+            }
+            foreach(AccommodationOwnerReview review in reviews)
+            {
+                if(review.Reservation.Id == reservation.Id && review.RenovationRecommendations.Any())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
