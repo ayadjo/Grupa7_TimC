@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace InitialProject.Controller
 {
     public class NotificationForRequestController
-    {/*
+    {
         private readonly NotificationForRequestService _notificationService;
 
         public NotificationForRequestController()
@@ -52,6 +52,6 @@ namespace InitialProject.Controller
         public List<NotificationForRequest> GetNotificationForUser(int userId)
         {
             return _notificationService.GetNotificationForUser(userId);
-        }*/
+        }
     }
 }

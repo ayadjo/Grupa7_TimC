@@ -120,22 +120,22 @@ public partial class SignInForm : Window
                         
                     }
 
-                    /*List<NotificationForRequest> notificationsForRequest = _notificationForRequestController.GetNotificationForUser(loggedUser.Id);
+                    List<NotificationForRequest> notificationsForRequest = _notificationForRequestController.GetNotificationForUser(loggedUser.Id);
 
                     foreach (NotificationForRequest notification in notificationsForRequest)
                     {
 
-                        string requestLocation = notification.TourRequest.Location.City + "(" + notification.TourRequest.Location.City + ")";
+                        string requestLocation = notification.TourRequest.Location.City + "(" + notification.TourRequest.Location.Country + ")";
                         MessageBoxResult result = MessageBox.Show(this, "Vas zahtev je prihvacen - " + requestLocation);
 
-                    }*/
+                    }
 
                     List<NewTourNotification> newTourNotifications = _newTourNotificationController.GetNotificationForUser(loggedUser.Id);
                     foreach (NewTourNotification notification in newTourNotifications)
                     {
 
                         //string tourName = notification.Tour.Name;
-                        MessageBoxResult result = MessageBox.Show(this, "Nova tura kreirana ");
+                        MessageBoxResult result = MessageBox.Show(this, "Nova tura kreirana");
 
                     }
 

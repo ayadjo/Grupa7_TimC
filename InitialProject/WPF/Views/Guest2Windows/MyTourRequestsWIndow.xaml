@@ -32,12 +32,12 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="CreateRequest" Height="35" Width="150" Background="#FFFFFF" Click="CreateRequest_Click">
+                <!--<Button x:Name="CreateRequest" Height="35" Width="150" Background="#FFFFFF" Click="CreateRequest_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="Kreiraj zahtev"></ContentControl>
                     </StackPanel>
-                </Button>
+                </Button>-->
             </StackPanel>
 
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0,20,0,10">Složeni zahtevi</Label>

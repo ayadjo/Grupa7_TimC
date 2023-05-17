@@ -158,11 +158,7 @@ namespace InitialProject.Service.Services
         }
 
 
-        //obavestenje
-        /*public List<TourRequest> GetAllForUser(int userId)
-        {
-            return GetAll().Where(r => r.Guest.Id == userId).ToList();
-        }*/
+     
 
         private void AddUnfulfilledRequest(List<TourRequest> unfullfilledRequests, TourRequest requestToAdd)
         {
@@ -184,7 +180,7 @@ namespace InitialProject.Service.Services
             unfullfilledRequests.Add(requestToAdd);
         }
 
-        public void NewTourFromStatistics(Tour tour)  //GenerateNewTourNotifications
+        public void GenerateNewTourNotifications(Tour tour)  
         {
             List<TourRequest> unfullfilledRequests = new List<TourRequest>();
             foreach (TourRequest request in _tourRequestRepository.GetAll())
