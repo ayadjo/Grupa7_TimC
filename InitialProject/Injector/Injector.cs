@@ -29,8 +29,7 @@ namespace InitialProject.Injector
 
             TourRequestRepository tourRequestRepository = new TourRequestRepository();
 
-            NotificationForRequestRepository notificationForRequestRepository = new NotificationForRequestRepository();
-            
+            TourRequestAcceptedNotificationRepository tourRequestAcceptedNotificationRepository = new TourRequestAcceptedNotificationRepository();
 
             NewTourNotificationRepository newTorNotificationRepository = new NewTourNotificationRepository();
 
@@ -40,7 +39,7 @@ namespace InitialProject.Injector
             _implementations.Add(typeof(INotificationRepository), notificationRepository);
             _implementations.Add(typeof(ITourRequestRepository), tourRequestRepository);
             _implementations.Add(typeof(INewTourNotificationRepository), newTorNotificationRepository);
-            _implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository); 
+            _implementations.Add(typeof(ITourRequestAcceptedNotificationRepository), tourRequestAcceptedNotificationRepository);
 
             notificationRepository.BindNotificationTourReservation();
             reservationRescheduleRequestRepository.BindReservationRescheduleRequestWithAccommodationReservation();
@@ -49,7 +48,7 @@ namespace InitialProject.Injector
             voucherRepository.BindVoucherUser();
             tourRequestRepository.BindTourRequestUser();
             tourRequestRepository.BindTourRequestLocation();
-            notificationForRequestRepository.BindNotificationTourRequest();
+            tourRequestAcceptedNotificationRepository.BindTourRequestAcceptedNotificationTourRequest();
             RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
             
         }

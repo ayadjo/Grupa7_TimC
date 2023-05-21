@@ -25,7 +25,7 @@ public partial class SignInForm : Window
 
     public AccommodationReservationController _accommodationReservationController;
     public NotificationController _notificationController;
-    public NotificationForRequestController _notificationForRequestController;
+    public TourRequestAcceptedNotificationController _tourRequestAcceptedNotifactionController;
     public NewTourNotificationController _newTourNotificationController;
 
     private static User loggedUser;
@@ -67,7 +67,7 @@ public partial class SignInForm : Window
 
         _accommodationReservationController = new AccommodationReservationController();
         _notificationController = new NotificationController();
-        _notificationForRequestController = new NotificationForRequestController();
+        _tourRequestAcceptedNotifactionController = new TourRequestAcceptedNotificationController();
         _newTourNotificationController = new NewTourNotificationController();
 
         SignInCommand = new RelayCommand(SignIn);
@@ -120,13 +120,13 @@ public partial class SignInForm : Window
                         
                     }
 
-                    List<NotificationForRequest> notificationsForRequest = _notificationForRequestController.GetNotificationForUser(loggedUser.Id);
+                    List<TourRequestAcceptedNotification> tourRequestAcceptedNotification = _tourRequestAcceptedNotifactionController.GetNotificationForUser(loggedUser.Id);
 
-                    foreach (NotificationForRequest notification in notificationsForRequest)
+                    foreach (TourRequestAcceptedNotification notification in tourRequestAcceptedNotification)
                     {
 
                         string requestLocation = notification.TourRequest.Location.City + "(" + notification.TourRequest.Location.Country + ")";
-                        MessageBoxResult result = MessageBox.Show(this, "Vas zahtev je prihvacen - " + requestLocation);
+                        MessageBoxResult result = MessageBox.Show(this, "Vas zahtev je prihvacen - " + requestLocation + ", vreme: " + notification.StartTime);
 
                     }
 
