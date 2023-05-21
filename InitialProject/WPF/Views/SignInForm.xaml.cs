@@ -118,15 +118,6 @@ public partial class SignInForm : Window
                         
                     }
 
-                    /*List<NotificationForRequest> notificationsForRequest = _notificationForRequestController.GetNotificationForUser(loggedUser.Id);
-
-                    foreach (NotificationForRequest notification in notificationsForRequest)
-                    {
-
-                        string requestLocation = notification.TourRequest.Location.City + "(" + notification.TourRequest.Location.City + ")";
-                        MessageBoxResult result = MessageBox.Show(this, "Vas zahtev je prihvacen - " + requestLocation);
-
-                    }*/
 
                     Guest2MainWindow guest2MainWindow = new Guest2MainWindow();
                     guest2MainWindow.Show();

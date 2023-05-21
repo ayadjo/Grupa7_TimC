@@ -36,8 +36,7 @@ namespace InitialProject.Injector
             tourRequestRepository.BindTourRequestUser();
             tourRequestRepository.BindTourRequestLocation();
 
-            /*NotificationForRequestRepository notificationForRequestRepository = new NotificationForRequestRepository();
-            notificationForRequestRepository.BindNotificationTourRequest();*/
+            
 
 
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
@@ -47,7 +46,6 @@ namespace InitialProject.Injector
             _implementations.Add(typeof(ITourRequestRepository), tourRequestRepository);
 
             RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
-            //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
         }
 
         public static T CreateInstance<T>()
