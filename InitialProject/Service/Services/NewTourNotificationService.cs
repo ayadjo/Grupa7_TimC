@@ -8,53 +8,47 @@ using System.Threading.Tasks;
 
 namespace InitialProject.Service.Services
 {
-    public class NotificationForRequestService
+    public class NewTourNotificationService 
     {
-        /*private INotificationForRequestRepository _notificationRepository;
+        private INewTourNotificationRepository _notificationRepository;
 
-        public NotificationForRequestService()
+        public NewTourNotificationService()
         {
-            _notificationRepository = Injector.Injector.CreateInstance<INotificationForRequestRepository>();
+            _notificationRepository = Injector.Injector.CreateInstance<INewTourNotificationRepository>();
         }
 
-        public List<NotificationForRequest> GetAll()
+        public List<NewTourNotification> GetAll()
         {
             return _notificationRepository.GetAll();
         }
 
-        public NotificationForRequest Get(int id)
+        public NewTourNotification Get(int id)
         {
             return _notificationRepository.Get(id);
         }
 
-        public NotificationForRequest Save(NotificationForRequest notification)
+        public NewTourNotification Save(NewTourNotification notification)
         {
             return _notificationRepository.Save(notification);
         }
 
-        public void Delete(NotificationForRequest notification)
+        public void Delete(NewTourNotification notification)
         {
             _notificationRepository.Delete(notification);
         }
 
-        public void Update(NotificationForRequest notification)
+        public void Update(NewTourNotification notification)
         {
             _notificationRepository.Update(notification);
         }
-
-        public int NextId()
+        public List<NewTourNotification> GetNotificationForUser(int userId)
         {
-            return _notificationRepository.NextId();
-        }
-
-        public List<NotificationForRequest> GetNotificationForUser(int userId)
-        {
-            List<NotificationForRequest> notificationList = new List<NotificationForRequest>();
+            List<NewTourNotification> notificationList = new List<NewTourNotification>();
             var allNotifications = _notificationRepository.GetAll();
             for (int i = 0; i < allNotifications.Count(); i++)
             {
                 var notification = allNotifications.ElementAt(i);
-                if (!notification.IsDelivered && notification.TourRequest.Guest.Id == userId)
+                if (!notification.IsDelivered && notification.Guest.Id == userId)
                 {
                     notification.IsDelivered = true;
                     _notificationRepository.Update(notification);
@@ -62,6 +56,7 @@ namespace InitialProject.Service.Services
                 }
             }
             return notificationList;
-        }*/
+        }
+
     }
 }

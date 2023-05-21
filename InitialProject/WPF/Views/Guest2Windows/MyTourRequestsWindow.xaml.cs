@@ -1,4 +1,5 @@
-﻿using InitialProject.WPF.ViewModels.Guest2ViewModels;
+﻿using InitialProject.WPF.ViewModels;
+using InitialProject.WPF.ViewModels.Guest2ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -25,7 +25,8 @@ public partial class SignInForm : Window
 
     public AccommodationReservationController _accommodationReservationController;
     public NotificationController _notificationController;
-    public NotificationForRequestController _notificationForRequestController;
+    public TourRequestAcceptedNotificationController _tourRequestAcceptedNotifactionController;
+    public NewTourNotificationController _newTourNotificationController;
 
     private static User loggedUser;
 
@@ -66,7 +67,8 @@ public partial class SignInForm : Window
 
         _accommodationReservationController = new AccommodationReservationController();
         _notificationController = new NotificationController();
-        _notificationForRequestController = new NotificationForRequestController();
+        _tourRequestAcceptedNotifactionController = new TourRequestAcceptedNotificationController();
+        _newTourNotificationController = new NewTourNotificationController();
 
         SignInCommand = new RelayCommand(SignIn);
 
@@ -118,6 +120,24 @@ public partial class SignInForm : Window
                         
                     }
 
+                    List<TourRequestAcceptedNotification> tourRequestAcceptedNotification = _tourRequestAcceptedNotifactionController.GetNotificationForUser(loggedUser.Id);
+
+                    foreach (TourRequestAcceptedNotification notification in tourRequestAcceptedNotification)
+                    {
+
+                        string requestLocation = notification.TourRequest.Location.City + "(" + notification.TourRequest.Location.Country + ")";
+                        MessageBoxResult result = MessageBox.Show(this, "Vas zahtev je prihvacen - " + requestLocation + ", vreme: " + notification.StartTime);
+
+                    }
+
+                    List<NewTourNotification> newTourNotifications = _newTourNotificationController.GetNotificationForUser(loggedUser.Id);
+                    foreach (NewTourNotification notification in newTourNotifications)
+                    {
+
+                        //string tourName = notification.Tour.Name;
+                        MessageBoxResult result = MessageBox.Show(this, "Nova tura kreirana");
+
+                    }
 
                     Guest2MainWindow guest2MainWindow = new Guest2MainWindow();
                     guest2MainWindow.Show();

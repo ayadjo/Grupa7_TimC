@@ -16,8 +16,9 @@ using System.Windows.Navigation;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
-    public class CreateTourRequestViewModel : ViewModelBase
+    public class CreateTourRequestViewModel : ViewModelBase, IClose
     {
+        public Action Close { get; set; }
         public NavigationService NavigationService { get; set; }
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
@@ -25,6 +26,8 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public LocationController _locationController;
 
         public TourRequestController _tourRequestController;
+
+        public TourController _tourController;  //
 
 
         public RelayCommand CreateRequestCommand { get; set; }
@@ -148,6 +151,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
 
             _tourRequestController.Save(tourRequest);
+            Close();
             //NavigationService.Navigate(new Uri("WPF/Views/Guest2Windows/MyTourRequests.xaml", UriKind.Relative));
         }
 
@@ -173,6 +177,9 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             SelectedEndDate = DateTime.Now;
         }
        
+       
 
+            
+        
     }
 }
