@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"   
+        xmlns:local="clr-namespace:InitialProject.Localization"
         mc:Ignorable="d"
         Title="Naziv aplikacije" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Window.Icon>
@@ -117,7 +118,7 @@
                         <Button Click="Close_click" Background="#FFFFFF" Height="24" Width="90" Margin="-2,-2,0,0">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/Images/Guest2/logout.png" Width="15" Height="15" Margin="0,0,5,0" />
-                                <TextBlock Text="Odjavi se"></TextBlock>
+                                <TextBlock Text="{local:Loc LogOut}"></TextBlock>
                             </StackPanel>
                         </Button>
                     </Button>
@@ -127,17 +128,17 @@
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
             <Menu Style="{StaticResource MenuStyle}" Width="232.7" Margin="0,200,0,0">
-                <MenuItem Header="Pregled tura" Style="{StaticResource BaseMenuItem}" Name="NavigateToToursOverview" Command="{Binding NavigateToToursOverviewCommand}" Margin="0,0,0,10">
+                <MenuItem Header="{local:Loc ToursOverview}" Style="{StaticResource BaseMenuItem}" Name="NavigateToToursOverview" Command="{Binding NavigateToToursOverviewCommand}" Margin="0,0,0,10">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/Guest2/transparency.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Moje ture" Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMyToursCommand}"  Margin="0,0,0,10">
+                <MenuItem Header="{local:Loc MyTours}" Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMyToursCommand}"  Margin="0,0,0,10">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/Guest2/hiking.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Moji zahtevi" Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMyTourRequestsCommand}" Margin="0,0,0,10" >
+                <MenuItem Header="{local:Loc MyRequests}" Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMyTourRequestsCommand}" Margin="0,0,0,10" >
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/Guest2/questionnaire.png" />
                     </MenuItem.Icon>
@@ -147,18 +148,18 @@
 
 
         <StackPanel Orientation="Horizontal" Margin="877,0,10,532">
-            <Button x:Name="languageSerbian" HorizontalContentAlignment="Center" Width="37" Height="30" VerticalAlignment="Top" BorderBrush="#DFFDFF" Background="#DFFDFF">
+            <Button x:Name="languageSerbian" HorizontalContentAlignment="Center" Width="45" Height="30" VerticalAlignment="Top" BorderBrush="#DFFDFF" Background="#DFFDFF" Command="{Binding SwitchToSerbianCommand}">
                 <Button.Content>
                     <WrapPanel>
-                        <TextBlock TextDecorations="Underline" Width="32" TextAlignment="Center">srpski</TextBlock>
+                        <TextBlock TextDecorations="Underline" Width="39" TextAlignment="Center" Text="{local:Loc Serbian}"></TextBlock>
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <Button x:Name="languageEnglish" HorizontalContentAlignment="Center" Width="47" Height="30" VerticalAlignment="Top" BorderBrush="#DFFDFF" Background="#DFFDFF">
+            <Button x:Name="languageEnglish" HorizontalContentAlignment="Center" Width="47" Height="30" VerticalAlignment="Top" BorderBrush="#DFFDFF" Background="#DFFDFF" Command="{Binding SwitchToEnglishCommand}">
                 <Button.Content>
                     <WrapPanel>
                         <!--<Image Source="/Resources/Images/transparency.png" Height="28" Width="28"/>-->
-                        <TextBlock TextDecorations="Underline" Width="45" TextAlignment="Center">engleski</TextBlock>
+                        <TextBlock TextDecorations="Underline" Width="45" TextAlignment="Center" Text="{local:Loc English}"></TextBlock>
                     </WrapPanel>
                 </Button.Content>
             </Button>
@@ -167,6 +168,7 @@
 
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="55,0,0,30">
+            <Label Content="{local:Loc Light}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <ToggleButton x:Name="ToggleButton"  Foreground="White"
                          Height="25" Width="40" FontSize="10" >
                 <ToggleButton.Template>
@@ -195,7 +197,7 @@
                     </ControlTemplate>
                 </ToggleButton.Template>
             </ToggleButton>
-            <Label Content="promeni temu" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <Label Content="{local:Loc Dark}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         </StackPanel>
         
 

@@ -123,9 +123,6 @@
   <data name="Country" xml:space="preserve">
     <value>Country</value>
   </data>
-  <data name="Dark" xml:space="preserve">
-    <value>Dark</value>
-  </data>
   <data name="Duration" xml:space="preserve">
     <value>Duration</value>
   </data>
@@ -134,9 +131,6 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>Light</value>
   </data>
   <data name="LogOut" xml:space="preserve">
     <value>Log out</value>

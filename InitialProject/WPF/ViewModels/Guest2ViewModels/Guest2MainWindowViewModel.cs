@@ -26,6 +26,16 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             }
         }
         */
+        private string currentLanguage;
+
+        public string CurrentLanguage
+        {
+            get { return currentLanguage; }
+            set
+            {
+                currentLanguage = value;
+            }
+        }
         public NavigationService NavigationService { get; set; }
 
         public RelayCommand NavigateToToursOverviewCommand { get; set; }
@@ -34,6 +44,10 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public RelayCommand NavigateToMyTourRequestsCommand { get; set; }
 
         public RelayCommand LogOutCommand { get; set; }
+
+        public RelayCommand SwitchToEnglishCommand { get; set; }
+
+        public RelayCommand SwitchToSerbianCommand { get; set; }
 
         public Action CloseAction { get; set; }
 
@@ -88,6 +102,26 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             return true;
         }
 
+        private void Execute_SwitchToEnglishCommand(object obj)
+        {
+            var app = (App)Application.Current;
+            
+            
+            CurrentLanguage = "en-US";
+            
+            app.ChangeLanguage(CurrentLanguage);
+        }
+
+        private void Execute_SwitchToSerbianCommand(object obj)
+        {
+            var app = (App)Application.Current;
+
+
+            CurrentLanguage = "sr-LATN";
+
+            app.ChangeLanguage(CurrentLanguage);
+        }
+
         #endregion
 
         #region Konstruktori
@@ -98,7 +132,10 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             this.NavigateToMyToursCommand = new RelayCommand(Execute_NavigateToMyToursCommand, CanExecute_NavigateCommand);
             this.NavigateToMyTourRequestsCommand = new RelayCommand(Execute_NavigateToMyTourRequestsCommand, CanExecute_NavigateCommand);
             this.LogOutCommand = new RelayCommand(Execute_LogOutCommand, CanExecute_NavigateCommand);
-           // this.Checker = false;
+            // this.Checker = false;
+            this.SwitchToEnglishCommand = new RelayCommand(Execute_SwitchToEnglishCommand);
+            this.SwitchToSerbianCommand = new RelayCommand(Execute_SwitchToSerbianCommand);
+            this.CurrentLanguage = "en-US";
 
             GuestFullName = SignInForm.LoggedUser.FirstName + " " + SignInForm.LoggedUser.LastName;
         }

@@ -118,48 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="City" xml:space="preserve">
-    <value>City</value>
+    <value>Grad</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>Country</value>
+    <value>Država</value>
   </data>
   <data name="Dark" xml:space="preserve">
-    <value>Dark</value>
+    <value>Tamna</value>
   </data>
   <data name="Duration" xml:space="preserve">
-    <value>Duration</value>
+    <value>Trajanje</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>english</value>
+    <value>engleski</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Jezik</value>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>Light</value>
+    <value>Svetla</value>
   </data>
   <data name="LogOut" xml:space="preserve">
-    <value>Log out</value>
+    <value>Odjavi se</value>
   </data>
   <data name="MyRequests" xml:space="preserve">
-    <value>My requests</value>
+    <value>Moji zahtevi</value>
   </data>
   <data name="MyTours" xml:space="preserve">
-    <value>My tours</value>
+    <value>Moje ture</value>
   </data>
   <data name="NumberOfPeople" xml:space="preserve">
-    <value>Number of people</value>
+    <value>Broj ljudi</value>
   </data>
   <data name="Reserve" xml:space="preserve">
-    <value>Reserve</value>
+    <value>Rezerviši</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search</value>
+    <value>Pretraži</value>
   </data>
   <data name="Serbian" xml:space="preserve">
-    <value>serbian</value>
+    <value>srpski</value>
   </data>
   <data name="ToursOverview" xml:space="preserve">
-    <value>Tours overview</value>
+    <value>Pregled tura</value>
   </data>
 </root>
