@@ -123,8 +123,20 @@
   <data name="Country" xml:space="preserve">
     <value>Country</value>
   </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreateComplexRequest" xml:space="preserve">
+    <value>Create complex request</value>
+  </data>
   <data name="Dark" xml:space="preserve">
     <value>Dark</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Date range</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
   </data>
   <data name="Duration" xml:space="preserve">
     <value>Duration</value>
@@ -147,6 +159,9 @@
   <data name="MyTours" xml:space="preserve">
     <value>My tours</value>
   </data>
+  <data name="NumberOfGuests" xml:space="preserve">
+    <value>Number of guests</value>
+  </data>
   <data name="NumberOfPeople" xml:space="preserve">
     <value>Number of people</value>
   </data>
@@ -158,6 +173,12 @@
   </data>
   <data name="Serbian" xml:space="preserve">
     <value>serbian</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="ToursOverview" xml:space="preserve">
     <value>Tours overview</value>

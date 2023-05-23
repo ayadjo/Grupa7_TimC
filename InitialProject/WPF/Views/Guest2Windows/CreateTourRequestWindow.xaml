@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
+        xmlns:local2="clr-namespace:InitialProject.Localization"
         xmlns:viewModel="clr-namespace:InitialProject.WPF.ViewModels.Guest2ViewModels"
         mc:Ignorable="d"
         Title="Kreiraj zahtev" Height="584" Width="764">
@@ -21,19 +22,19 @@
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/earth.png"  Height="20" Width="35" />
-                <Label Content="Država:" Height="27" Width="90"/>
+                <Label Content="{local2:Loc Country}" Height="27" Width="90"/>
                 <ComboBox x:Name="CountryComboBox" SelectedItem="{Binding Path=SelectedCountry,  Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Countries}" Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!" LostFocus="CountryComboBox_LostFocus"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/skyscraper.png"  Height="20" Width="35" />
-                <Label Content="Grad:" Height="27" Width="90"/>
+                <Label Content="{local2:Loc City}" Height="27" Width="90"/>
                 <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Cities}" Width="100" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/translation.png"  Height="20" Width="35" />
-                <Label Content="Jezik:" Height="27" Width="90"/>
+                <Label Content="{local2:Loc Language}" Height="27" Width="90"/>
                 <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="10,10,10,10" Width="100" Height="25" ToolTip="This field is required!" LostFocus="LanguageComboBox_LostFocus">
                     <ComboBoxItem>srpski</ComboBoxItem>
                     <ComboBoxItem>engleski</ComboBoxItem>
@@ -45,7 +46,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/group.png"  Height="20" Width="35" />
-                <Label Content="Broj gostiju:" Height="27" Width="90"/>
+                <Label Content="{local2:Loc NumberOfGuests}" Height="27" Width="90"/>
                 <TextBox x:Name="MaxGuestTextBox" Text="{Binding Path=MaxGuests, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25" ToolTip="This field is required!" Margin="10,10,10,10"/>
             </StackPanel>
 
@@ -53,7 +54,7 @@
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,10,0,0">
                     <Image Source="/Resources/Images/Guest2/info.png" Height="20" Width="35" />
-                    <Label Content="Opis:" Height="27" Width="90"/>
+                    <Label Content="{local2:Loc Description}" Height="27" Width="90"/>
                 </StackPanel>
 
                 <StackPanel>
@@ -64,7 +65,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/schedule.png" Height="20" Width="35" />
-                <Label Content="Opseg datuma:" Height="27" Width="90"/>
+                <Label Content="{local2:Loc DateRange}" Height="27" Width="90"/>
                 <DatePicker Name="StartDateDatePicker" SelectedDate="{Binding Path= SelectedStartDate}" Width="102" Margin="10,10,10,10"/>
                 <DatePicker Name="EndDateDatePicker" SelectedDate="{Binding Path= SelectedEndDate}" Width="102" Margin="0,10,10,10"/>
             </StackPanel>
@@ -72,7 +73,7 @@
             <Button x:Name="CreateRequest" Command="{Binding Path=CreateRequestCommand}" Height="35" Width="95" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,20,10,20">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <ContentControl Content="Kreiraj"></ContentControl>
+                    <ContentControl Content="{local2:Loc Create}"></ContentControl>
                 </StackPanel>
             </Button>
 

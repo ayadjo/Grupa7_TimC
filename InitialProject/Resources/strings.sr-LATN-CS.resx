@@ -117,14 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Cerate" xml:space="preserve">
+    <value>Kreiraj</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>Grad</value>
   </data>
   <data name="Country" xml:space="preserve">
     <value>Država</value>
   </data>
+  <data name="CreateComplexRequest" xml:space="preserve">
+    <value>Kreiraj složeni zahtev</value>
+  </data>
   <data name="Dark" xml:space="preserve">
     <value>Tamna</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Opseg datuma</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Opis</value>
   </data>
   <data name="Duration" xml:space="preserve">
     <value>Trajanje</value>
@@ -147,6 +159,9 @@
   <data name="MyTours" xml:space="preserve">
     <value>Moje ture</value>
   </data>
+  <data name="NumberOfGuests" xml:space="preserve">
+    <value>Broj gostiju</value>
+  </data>
   <data name="NumberOfPeople" xml:space="preserve">
     <value>Broj ljudi</value>
   </data>
@@ -158,6 +173,12 @@
   </data>
   <data name="Serbian" xml:space="preserve">
     <value>srpski</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistika</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="ToursOverview" xml:space="preserve">
     <value>Pregled tura</value>
