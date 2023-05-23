@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using InitialProject.WPF.Views;
 using InitialProject.Domain.Models;
 using System.Windows;
+using System.Windows.Media;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
@@ -26,6 +27,24 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             }
         }
         */
+
+        private bool isDarkTheme;
+
+        public bool IsDarkTheme
+        {
+            get { return isDarkTheme; }
+            set
+            {
+                if (isDarkTheme != value)
+                {
+                    isDarkTheme = value;
+                    UpdateTheme();
+                    OnPropertyChanged(nameof(IsDarkTheme));
+                    OnPropertyChanged(nameof(BackgroundColor)); // Notify UI about the background color change
+                }
+            }
+        }
+
         private string currentLanguage;
 
         public string CurrentLanguage
@@ -144,6 +163,43 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         {
         }
         #endregion
+
+
+        public Brush BackgroundColor
+        {
+            get
+            {
+                if (IsDarkTheme)
+                {
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#283A82"));
+                }
+                else
+                {
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DFFDFF"));
+                }
+            }
+        }
+        private void UpdateTheme()
+        {
+            if (IsDarkTheme)
+            {
+                // Apply dark theme
+                Application.Current.Resources["PrimaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#283A82"));
+                Application.Current.Resources["SecondaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+                Application.Current.Resources["TextColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+            }
+            else
+            {
+                // Apply light theme
+                Application.Current.Resources["PrimaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DFFDFF"));
+                Application.Current.Resources["SecondaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
+                Application.Current.Resources["TextColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
+            }
+        }
+
+
+
+
 
     }
 }

@@ -95,7 +95,7 @@
         </Style>
 
     </Window.Resources>
-    <Grid Background="#DFFDFF">
+    <Grid Background="{Binding BackgroundColor}">
         <!--Background="#BBDDE6"-->
 
         <Separator HorizontalAlignment="Left" Margin="-67,234,0,0" VerticalAlignment="Top" Height="100" Width="600" Background="Black" RenderTransformOrigin="0.5,0.5">
@@ -170,7 +170,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="55,0,0,30">
             <Label Content="{local:Loc Light}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <ToggleButton x:Name="ToggleButton"  Foreground="White"
-                         Height="25" Width="40" FontSize="10" >
+                         Height="25" Width="40" FontSize="10" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" >
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="ToggleButton">
                         <Border x:Name="B1" Background="Black"
