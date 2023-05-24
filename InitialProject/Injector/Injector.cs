@@ -56,7 +56,6 @@ namespace InitialProject.Injector
             tourRequestRepository.BindTourRequestUser();
             tourRequestRepository.BindTourRequestLocation();
             tourRequestAcceptedNotificationRepository.BindTourRequestAcceptedNotificationTourRequest();
-            RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
             accommodationRenovationRepository.BindAccommodationRenovationWithAccommodation();
             
             //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
