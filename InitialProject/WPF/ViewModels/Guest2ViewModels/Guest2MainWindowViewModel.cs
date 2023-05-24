@@ -40,10 +40,10 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
                     isDarkTheme = value;
                     UpdateTheme();
                     OnPropertyChanged(nameof(IsDarkTheme));
-                    OnPropertyChanged(nameof(BackgroundColor)); // Notify UI about the background color change
                 }
             }
         }
+
 
         private string currentLanguage;
 
@@ -164,41 +164,23 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         }
         #endregion
 
-
-        public Brush BackgroundColor
-        {
-            get
-            {
-                if (IsDarkTheme)
-                {
-                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#283A82"));
-                }
-                else
-                {
-                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DFFDFF"));
-                }
-            }
-        }
         private void UpdateTheme()
         {
+            var app = (App)Application.Current;
+
             if (IsDarkTheme)
             {
                 // Apply dark theme
-                Application.Current.Resources["PrimaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#283A82"));
-                Application.Current.Resources["SecondaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
-                Application.Current.Resources["TextColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+                App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#283A82");
             }
             else
             {
                 // Apply light theme
-                Application.Current.Resources["PrimaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DFFDFF"));
-                Application.Current.Resources["SecondaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
-                Application.Current.Resources["TextColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
+                App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#DFFDFF");
             }
+
+            app.Resources["AppBackgroundBrush"] = new SolidColorBrush(App.BackgroundColor);
         }
-
-
-
 
 
     }

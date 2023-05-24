@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"   
         xmlns:local="clr-namespace:InitialProject.Localization"
         mc:Ignorable="d"
-        Title="Naziv aplikacije" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Naziv aplikacije" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="{DynamicResource AppBackgroundBrush}">
     <Window.Icon>
         <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
     </Window.Icon>
@@ -61,9 +61,9 @@
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1"
                                  StartPoint="0.5,0">
-                                        <GradientStop Color="#DFFDFF"
+                                        <GradientStop Color="{Binding BackgroundColor}"
                                         Offset="0" />
-                                        <GradientStop Color="#DFFDFF"
+                                        <GradientStop Color="{Binding BackgroundColor}"
                                         Offset="1" />
                                     </LinearGradientBrush>
                                 </Border.Background>
@@ -77,7 +77,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="MenuItemBorder" Property="Background" Value="#B6F8FC" />
+                                <Setter TargetName="MenuItemBorder" Property="Background" Value="#FFFFFF" />
                             </Trigger>
                             <DataTrigger Binding="{Binding Path=Checker}" Value="True">
                                 <DataTrigger.EnterActions>
@@ -148,14 +148,14 @@
 
 
         <StackPanel Orientation="Horizontal" Margin="877,0,10,532">
-            <Button x:Name="languageSerbian" HorizontalContentAlignment="Center" Width="45" Height="30" VerticalAlignment="Top" BorderBrush="#DFFDFF" Background="#DFFDFF" Command="{Binding SwitchToSerbianCommand}">
+            <Button x:Name="languageSerbian" HorizontalContentAlignment="Center" Width="45" Height="30" VerticalAlignment="Top" BorderBrush="{Binding BackgroundColor}" Background="{Binding BackgroundColor}" Command="{Binding SwitchToSerbianCommand}">
                 <Button.Content>
                     <WrapPanel>
                         <TextBlock TextDecorations="Underline" Width="39" TextAlignment="Center" Text="{local:Loc Serbian}"></TextBlock>
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <Button x:Name="languageEnglish" HorizontalContentAlignment="Center" Width="47" Height="30" VerticalAlignment="Top" BorderBrush="#DFFDFF" Background="#DFFDFF" Command="{Binding SwitchToEnglishCommand}">
+            <Button x:Name="languageEnglish" HorizontalContentAlignment="Center" Width="47" Height="30" VerticalAlignment="Top" BorderBrush="{Binding BackgroundColor}" Background="{Binding BackgroundColor}" Command="{Binding SwitchToEnglishCommand}">
                 <Button.Content>
                     <WrapPanel>
                         <!--<Image Source="/Resources/Images/transparency.png" Height="28" Width="28"/>-->
@@ -170,7 +170,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="55,0,0,30">
             <Label Content="{local:Loc Light}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <ToggleButton x:Name="ToggleButton"  Foreground="White"
-                         Height="25" Width="40" FontSize="10" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" >
+                         Height="25" Width="40" FontSize="10" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" IsChecked="{Binding IsDarkTheme, Mode=TwoWay}">
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="ToggleButton">
                         <Border x:Name="B1" Background="Black"

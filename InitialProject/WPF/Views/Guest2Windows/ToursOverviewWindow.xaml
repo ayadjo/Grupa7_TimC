@@ -16,7 +16,7 @@
             </StackPanel>
         </ControlTemplate>
     </UserControl.Resources>
-    <DockPanel Background="#DFFDFF" Width="764" Height="540">
+    <DockPanel Width="764" Height="540">
 
         <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>

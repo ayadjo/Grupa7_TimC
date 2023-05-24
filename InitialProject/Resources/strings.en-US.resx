@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="CheckAvailability" xml:space="preserve">
+    <value>Check availability</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>City</value>
   </data>
@@ -141,6 +147,9 @@
   <data name="English" xml:space="preserve">
     <value>english</value>
   </data>
+  <data name="ExpirationDate" xml:space="preserve">
+    <value>Expiration date</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
@@ -152,6 +161,9 @@
   </data>
   <data name="MyTours" xml:space="preserve">
     <value>My tours</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
   </data>
   <data name="NumberOfGuests" xml:space="preserve">
     <value>Number of Guests</value>
@@ -168,13 +180,25 @@
   <data name="Serbian" xml:space="preserve">
     <value>serbian</value>
   </data>
+  <data name="StartDateAndTime" xml:space="preserve">
+    <value>Start date and time</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start time</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistics</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="TourPoints" xml:space="preserve">
+    <value>Tour points</value>
+  </data>
   <data name="ToursOverview" xml:space="preserve">
     <value>Tours overview</value>
+  </data>
+  <data name="VoucherReport" xml:space="preserve">
+    <value>Voucher report</value>
   </data>
 </root>

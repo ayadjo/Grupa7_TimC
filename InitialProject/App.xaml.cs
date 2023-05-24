@@ -1,14 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Injector;
 using InitialProject.Localization;
 using InitialProject.Repositories;
+using InitialProject.WPF.ViewModels;
 
 namespace InitialProject
 {
@@ -17,6 +21,13 @@ namespace InitialProject
     /// </summary>
     public partial class App : Application
     {
+        private static Color backgroundColor;
+
+        public static Color BackgroundColor
+        {
+            get { return backgroundColor; }
+            set { backgroundColor = value; }
+        }
         public void ChangeLanguage(string currLang)
         {
             if (currLang.Equals("en-US"))
@@ -78,6 +89,20 @@ namespace InitialProject
 
             //VoucherRepository.GetInstance().BindVoucherUser();
             TourReservationRepository.GetInstance().BindTourReservationVoucher();
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            // Set the initial background color
+            BackgroundColor = (Color)ColorConverter.ConvertFromString("#DFFDFF");
+
+            // Create the SolidColorBrush for the initial background color
+            var appBackgroundBrush = new SolidColorBrush(BackgroundColor);
+
+            // Assign the SolidColorBrush to the resource
+            Current.Resources["AppBackgroundBrush"] = appBackgroundBrush;
         }
     }
 }

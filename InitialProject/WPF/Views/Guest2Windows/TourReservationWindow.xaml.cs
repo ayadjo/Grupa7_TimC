@@ -16,15 +16,18 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using InitialProject.Domain.Models;
+using InitialProject.WPF.ViewModels.Guest2ViewModels;
+using InitialProject.WPF.Views.Guest2Windows;
 
 namespace InitialProject.WPF.Views.Guest2Window
 {
     /// <summary>
     /// Interaction logic for TourReservationWindow.xaml
     /// </summary>
-    public partial class TourReservationWindow : Window,INotifyPropertyChanged
+    public partial class TourReservationWindow : Window, INotifyPropertyChanged
     {
 
+        private Guest2MainWindowViewModel viewModel;
         public TourReservationController _tourReservationController;
         public TourEventController _tourEventController;
         public VoucherController _voucherController;
@@ -115,7 +118,8 @@ namespace InitialProject.WPF.Views.Guest2Window
         public TourReservationWindow(Tour tour)
         {
             InitializeComponent();
-            this.DataContext = this;
+            this.viewModel = viewModel;
+            DataContext = viewModel;
 
             _tourReservationController = new TourReservationController();
             _tourEventController = new TourEventController();
@@ -125,6 +129,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             Vouchers = new ObservableCollection<Voucher>(_voucherController.VoucherForUser(SignInForm.LoggedUser.Id));
 
             numberOfPeopleTextBox.Focus();
+
         }
 
         private void Reserve_Click(object sender, RoutedEventArgs e)

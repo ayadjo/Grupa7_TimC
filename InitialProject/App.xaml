@@ -11,8 +11,8 @@
 
             <!--Color guest2-->
             <Color x:Key="PrimaryColor">#DFFDFF</Color>
-            <Color x:Key="SecondaryColor">#000000</Color>
-            <Color x:Key="TextColor">#000000</Color>
+            <Color x:Key="SecondaryColor">#283A82</Color>
+            <Color x:Key="TextColor">#FFFFF0</Color>
 
             <!--New color for background guide-->
             <SolidColorBrush x:Key="GuideBackgroudColor1" Color="#75627B" />

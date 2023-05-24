@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
   <data name="Cerate" xml:space="preserve">
     <value>Kreiraj</value>
+  </data>
+  <data name="CheckAvailability" xml:space="preserve">
+    <value>Proveri dostupnost</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>Grad</value>
@@ -144,6 +150,9 @@
   <data name="English" xml:space="preserve">
     <value>engleski</value>
   </data>
+  <data name="ExpirationDate" xml:space="preserve">
+    <value>Važi do</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Jezik</value>
   </data>
@@ -158,6 +167,9 @@
   </data>
   <data name="MyTours" xml:space="preserve">
     <value>Moje ture</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Naziv</value>
   </data>
   <data name="NumberOfGuests" xml:space="preserve">
     <value>Broj gostiju</value>
@@ -174,13 +186,25 @@
   <data name="Serbian" xml:space="preserve">
     <value>srpski</value>
   </data>
+  <data name="StartDateAndTime" xml:space="preserve">
+    <value>Datum i vreme početka</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Vreme početka</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistika</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="TourPoints" xml:space="preserve">
+    <value>Ključne tačke</value>
+  </data>
   <data name="ToursOverview" xml:space="preserve">
     <value>Pregled tura</value>
+  </data>
+  <data name="VoucherReport" xml:space="preserve">
+    <value>Izveštaj o vaučerima</value>
   </data>
 </root>

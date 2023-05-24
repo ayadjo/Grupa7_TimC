@@ -61,6 +61,24 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check availability.
+        /// </summary>
+        internal static string CheckAvailability {
+            get {
+                return ResourceManager.GetString("CheckAvailability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
         internal static string City {
@@ -142,6 +160,15 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expiration date.
+        /// </summary>
+        internal static string ExpirationDate {
+            get {
+                return ResourceManager.GetString("ExpirationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string Language {
@@ -183,6 +210,15 @@ namespace InitialProject.Properties {
         internal static string MyTours {
             get {
                 return ResourceManager.GetString("MyTours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -232,6 +268,24 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start date and time.
+        /// </summary>
+        internal static string StartDateAndTime {
+            get {
+                return ResourceManager.GetString("StartDateAndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start time.
+        /// </summary>
+        internal static string StartTime {
+            get {
+                return ResourceManager.GetString("StartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Statistics.
         /// </summary>
         internal static string Statistics {
@@ -250,11 +304,29 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tour points.
+        /// </summary>
+        internal static string TourPoints {
+            get {
+                return ResourceManager.GetString("TourPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tours overview.
         /// </summary>
         internal static string ToursOverview {
             get {
                 return ResourceManager.GetString("ToursOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voucher report.
+        /// </summary>
+        internal static string VoucherReport {
+            get {
+                return ResourceManager.GetString("VoucherReport", resourceCulture);
             }
         }
     }

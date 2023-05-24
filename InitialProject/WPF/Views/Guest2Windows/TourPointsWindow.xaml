@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
+        xmlns:local2="clr-namespace:InitialProject.Localization"
         mc:Ignorable="d"
-        Title="Ključne tačke" Height="250" Width="300" WindowStartupLocation="CenterScreen">
+        Title="Ključne tačke" Height="250" Width="300" WindowStartupLocation="CenterScreen" Background="{DynamicResource AppBackgroundBrush}">
     <Window.Icon>
         <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
     </Window.Icon>
-    <Grid Background="#DFFDFF">
+    <Grid>
         <StackPanel Orientation="Horizontal" Width="220" Height="150">
             <StackPanel Orientation="Vertical" Margin="0,25,0,0">
                 <Image Source="/Resources/Images/Guest2/point.png" Width="15" Height="15" Margin="0,0,5,5" />
