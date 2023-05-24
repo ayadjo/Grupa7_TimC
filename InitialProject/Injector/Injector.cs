@@ -30,9 +30,14 @@ namespace InitialProject.Injector
             TourRequestRepository tourRequestRepository = new TourRequestRepository();
 
             TourRequestAcceptedNotificationRepository tourRequestAcceptedNotificationRepository = new TourRequestAcceptedNotificationRepository();
+            AccommodationRenovationRepository accommodationRenovationRepository = new AccommodationRenovationRepository();
+            
+            /*NotificationForRequestRepository notificationForRequestRepository = new NotificationForRequestRepository();
+            notificationForRequestRepository.BindNotificationTourRequest();*/
 
             NewTourNotificationRepository newTorNotificationRepository = new NewTourNotificationRepository();
 
+            RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
             _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);
             _implementations.Add(typeof(IReservationRescheduleRequestRepository), reservationRescheduleRequestRepository);
@@ -40,6 +45,8 @@ namespace InitialProject.Injector
             _implementations.Add(typeof(ITourRequestRepository), tourRequestRepository);
             _implementations.Add(typeof(INewTourNotificationRepository), newTorNotificationRepository);
             _implementations.Add(typeof(ITourRequestAcceptedNotificationRepository), tourRequestAcceptedNotificationRepository);
+            _implementations.Add(typeof(IAccommodationRenovationRepository), accommodationRenovationRepository);
+            _implementations.Add(typeof(IRenovationRecommendationRepository), renovationRecommendationRepository);
 
             notificationRepository.BindNotificationTourReservation();
             reservationRescheduleRequestRepository.BindReservationRescheduleRequestWithAccommodationReservation();
@@ -50,7 +57,9 @@ namespace InitialProject.Injector
             tourRequestRepository.BindTourRequestLocation();
             tourRequestAcceptedNotificationRepository.BindTourRequestAcceptedNotificationTourRequest();
             RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
+            accommodationRenovationRepository.BindAccommodationRenovationWithAccommodation();
             
+            //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
         }
 
         public static T CreateInstance<T>()

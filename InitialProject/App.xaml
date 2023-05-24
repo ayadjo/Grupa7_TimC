@@ -18,6 +18,11 @@
                 <Setter Property="TextBlock.Foreground" Value="LightGray"/>
             </Style>
 
+            <Style TargetType="Label" x:Key="DefaultLabelDark">
+                <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextBlock.Foreground" Value="#191e29"/>
+            </Style>
             <Style TargetType="Label" x:Key="DefaultLabelS" BasedOn="{StaticResource DefaultLabel}">
                 <Setter Property="FontSize" Value="16"/>
 
@@ -28,6 +33,13 @@
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontSize" Value="25"/>
                 <Setter Property="TextBlock.Foreground" Value="LightGray"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="BoldLabelDark">
+                <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="TextBlock.Foreground" Value="#191e29"/>
             </Style>
 
             <!--Tabbed Panel-->

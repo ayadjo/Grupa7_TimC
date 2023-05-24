@@ -105,18 +105,31 @@ namespace InitialProject.Service.Services
         public List<ReservationRescheduleRequest> GetDeclined(int guest)
         {
             List<ReservationRescheduleRequest> reservationRescheduleRequests = new List<ReservationRescheduleRequest>();
-            foreach (ReservationRescheduleRequest reservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
+            foreach (ReservationRescheduleRequest ReservationRescheduleRequest in _reservationRescheduleRequestRepository.GetAll())
             {
-                if (reservationRescheduleRequest.Guest.Id == guest)
+                if (ReservationRescheduleRequest.Guest.Id == guest)
                 {
-                    if (reservationRescheduleRequest.Status == RequestStatusType.Declined)
+                    if (ReservationRescheduleRequest.Status == RequestStatusType.Declined)
                     {
-                        reservationRescheduleRequests.Add(reservationRescheduleRequest);
+                        reservationRescheduleRequests.Add(ReservationRescheduleRequest);
                     }
                 }
             }
 
             return reservationRescheduleRequests;
+        }
+
+        public bool IsReservationRescheduled(AccommodationReservation reservation)
+        {
+            List<ReservationRescheduleRequest> reservationRescheduleRequests = _reservationRescheduleRequestRepository.GetAll();
+            foreach (ReservationRescheduleRequest ReservationRescheduleRequest in reservationRescheduleRequests)
+            {
+                if(ReservationRescheduleRequest.Reservation.Id == reservation.Id && ReservationRescheduleRequest.Status == RequestStatusType.Approved)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

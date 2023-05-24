@@ -1,4 +1,5 @@
-﻿using InitialProject.Domain.Models;
+﻿using InitialProject.Domain.Dto;
+using InitialProject.Domain.Models;
 using InitialProject.Repositories;
 using InitialProject.Service.Services;
 using System;
@@ -63,6 +64,11 @@ namespace InitialProject.Controller
         {
 
             return _accommodationService.GetByOwner(id);
+        }
+
+        public List<AccommodationDto> GetDtos(List<Accommodation> accommodations)
+        {
+            return _accommodationService.GetDtos(accommodations);
         }
 
     }
