@@ -22,10 +22,10 @@ namespace InitialProject.WPF.Views.OwnerWindows
     /// </summary>
     public partial class AccommodationStatisticsByMonth : Window
     {
-        public AccommodationStatisticsByMonth(AccommodationByYearStatisticDto statisticByYear, Accommodation accommodation)
+        public AccommodationStatisticsByMonth(AccommodationByYearStatisticDto selectedStatistic, Accommodation accommodation)
         {
             InitializeComponent();
-            this.DataContext = new ViewModels.OwnerViewModels.AccommodationStatisticsByMonthViewModel(statisticByYear, accommodation);
+            this.DataContext = new ViewModels.OwnerViewModels.AccommodationStatisticsByMonthViewModel(selectedStatistic, accommodation);
 
             if (DataContext is IClose vm)
             {

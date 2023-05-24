@@ -21,8 +21,17 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
 
         public Accommodation Accommodation { get; set; }
 
-        public AccommodationByYearStatisticDto SelectedStatistic { get; set; }
+        private AccommodationByYearStatisticDto _selectedStatistic;
+        public AccommodationByYearStatisticDto SelectedStatistic
+        {
+            get { return _selectedStatistic; }
 
+            set
+            {
+                _selectedStatistic = value;
+                OnPropertyChanged();
+            }
+        }
         public RelayCommand StatisticsByMonthCommand { get; set; }
 
         public int BestYear { get; set; }
@@ -31,8 +40,8 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
             Accommodation = accommodation;
             _accommodationReservationController = new AccommodationReservationController();
             AccommodationStatistics = new ObservableCollection<AccommodationByYearStatisticDto>(_accommodationReservationController.GetYearStatisticForAccommodation(Accommodation.Id));
-            
 
+            
             StatisticsByMonthCommand = new RelayCommand(Execute_StatisticsByMonthCommand, CanExecute_StatisticsByMonthCommand);
 
             BestYear = _accommodationReservationController.GetBestYearForAccommodation(Accommodation.Id);
