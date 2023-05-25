@@ -150,6 +150,9 @@
   <data name="English" xml:space="preserve">
     <value>engleski</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Greška</value>
+  </data>
   <data name="ExpirationDate" xml:space="preserve">
     <value>Važi do</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="NumberOfPeople" xml:space="preserve">
     <value>Broj ljudi</value>
+  </data>
+  <data name="Please select a tour!" xml:space="preserve">
+    <value>Odaberite turu!</value>
   </data>
   <data name="Reserve" xml:space="preserve">
     <value>Rezerviši</value>

@@ -120,6 +120,9 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="CannotViewKeyPoints" xml:space="preserve">
+    <value>You can view key points only for tours that have started.</value>
+  </data>
   <data name="CheckAvailability" xml:space="preserve">
     <value>Check availability</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="English" xml:space="preserve">
     <value>english</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="ExpirationDate" xml:space="preserve">
     <value>Expiration date</value>
   </data>
@@ -176,6 +182,9 @@
   </data>
   <data name="NumberOfPeople" xml:space="preserve">
     <value>Number of people</value>
+  </data>
+  <data name="Please select a tour!" xml:space="preserve">
+    <value>Please select a tour!</value>
   </data>
   <data name="Reserve" xml:space="preserve">
     <value>Reserve</value>
