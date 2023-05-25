@@ -28,6 +28,8 @@ using PdfSharp.Pdf;
 using PdfSharp.Fonts;
 using System.Diagnostics;
 using System.Drawing.Printing;
+using System.Reflection;
+using System.Drawing;
 
 namespace InitialProject.WPF.Views.Guest2Window
 {
@@ -237,10 +239,10 @@ namespace InitialProject.WPF.Views.Guest2Window
             List<TourEvent> tourEventsForLocation = _tourEventController.GetAvailableTourEventsForLocation(SelectedTourEvent.Tour.Location, NumberOfPeople);
             RefreshTours(tourEventsForLocation);
         }
+        
 
         private void VoucherReports_Click(object sender, RoutedEventArgs e)
         {
-            //GenerateVoucherReports();
             // Create a new PDF document
             using (PdfDocument document = new PdfDocument())
             {
@@ -253,34 +255,52 @@ namespace InitialProject.WPF.Views.Guest2Window
                 // Set up the font
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                 XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode);
-                XFont font = new XFont("Arial", 12, XFontStyle.Regular, options);
+                XFont titleFont = new XFont("Arial", 16, XFontStyle.Bold, options);
+                XFont subtitleFont = new XFont("Arial", 12, XFontStyle.Bold, options);
+                XFont contentFont = new XFont("Arial", 10, XFontStyle.Regular, options);
 
                 // Get the voucher data
                 List<Voucher> vouchers = _voucherController.VoucherForUser(SignInForm.LoggedUser.Id);
 
-                // Generate the voucher report
-                int yPos = 20;
+                // Set up the page layout
+                XRect pageBounds = new XRect(40, 40, page.Width - 80, page.Height - 80);
+                XRect titleBounds = new XRect(pageBounds.Left, pageBounds.Top, pageBounds.Width, 30);
+                XRect tableBounds = new XRect(pageBounds.Left, pageBounds.Top + 40, pageBounds.Width, pageBounds.Height - 40);
+
+
+                // Draw the title
+                gfx.DrawString("Voucher Reports", titleFont, XBrushes.Black, titleBounds, XStringFormats.Center);
+
+                // Draw the table headers
+                int headerXPos = (int)tableBounds.Left;
+                int headerYPos = (int)tableBounds.Top;
+                int columnWidth = (int)tableBounds.Width / 3;
+
+                gfx.DrawString("Voucher ID", subtitleFont, XBrushes.Black, new XRect(headerXPos, headerYPos, columnWidth, 20), XStringFormats.CenterLeft);
+                gfx.DrawString("Name", subtitleFont, XBrushes.Black, new XRect(headerXPos + columnWidth, headerYPos, columnWidth, 20), XStringFormats.CenterLeft);
+                gfx.DrawString("Expiration Date", subtitleFont, XBrushes.Black, new XRect(headerXPos + (2 * columnWidth), headerYPos, columnWidth, 20), XStringFormats.CenterLeft);
+
+                // Draw the voucher data
+                int dataYPos = headerYPos + 20;
                 foreach (Voucher voucher in vouchers)
                 {
-                    // Format the voucher information
-                    string voucherInfo = $"Voucher ID: {voucher.Id}, Name: {voucher.Name}, Expiration Date: {voucher.ExpirationDate}";
+                    gfx.DrawString(voucher.Id.ToString(), contentFont, XBrushes.Black, new XRect(headerXPos, dataYPos, columnWidth, 20), XStringFormats.CenterLeft);
+                    gfx.DrawString(voucher.Name, contentFont, XBrushes.Black, new XRect(headerXPos + columnWidth, dataYPos, columnWidth, 20), XStringFormats.CenterLeft);
+                    gfx.DrawString(voucher.ExpirationDate.ToString("dd-MM-yyyy"), contentFont, XBrushes.Black, new XRect(headerXPos + (2 * columnWidth), dataYPos, columnWidth, 20), XStringFormats.CenterLeft);
 
-                    // Draw the voucher information on the PDF
-                    gfx.DrawString(voucherInfo, font, XBrushes.Black, new XPoint(10, yPos));
-                    yPos += 20;
+                    dataYPos += 20;
                 }
 
                 // Save the PDF document
                 string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\voucher_report.pdf";
                 document.Save(filePath);
 
-                // Show a message box to indicate successful generation
-                MessageBox.Show("Voucher reports generated successfully!");
-
                 // Open the PDF document with the default application
                 Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
             }
         }
 
+
     }
 }
+    
