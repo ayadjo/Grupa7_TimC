@@ -204,7 +204,7 @@
   <data name="ToursOverview" xml:space="preserve">
     <value>Tours overview</value>
   </data>
-  <data name="VoucherReport" xml:space="preserve">
-    <value>Voucher report</value>
+  <data name="VoucherReports" xml:space="preserve">
+    <value>Voucher reports</value>
   </data>
 </root>

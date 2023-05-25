@@ -13,7 +13,6 @@ namespace InitialProject.Domain.Models
     public class Voucher : ISerializable
     {
         public int Id { get; set; }
-
         public string Name { get; set; }
         public User User { get; set; }
         public bool Used { get; set; }

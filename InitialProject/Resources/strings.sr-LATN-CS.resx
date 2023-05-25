@@ -210,7 +210,7 @@
   <data name="ToursOverview" xml:space="preserve">
     <value>Pregled tura</value>
   </data>
-  <data name="VoucherReport" xml:space="preserve">
+  <data name="VoucherReports" xml:space="preserve">
     <value>Izveštaj o vaučerima</value>
   </data>
 </root>

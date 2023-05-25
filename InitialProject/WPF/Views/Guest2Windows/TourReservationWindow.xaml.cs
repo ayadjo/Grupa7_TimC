@@ -18,6 +18,16 @@ using System.Diagnostics.Metrics;
 using InitialProject.Domain.Models;
 using InitialProject.WPF.ViewModels.Guest2ViewModels;
 using InitialProject.WPF.Views.Guest2Windows;
+using System.Reflection.Metadata;
+using System.Printing;
+using System.IO;
+using System.Xml.Linq;
+using System.Windows.Xps.Packaging;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using PdfSharp.Fonts;
+using System.Diagnostics;
+using System.Drawing.Printing;
 
 namespace InitialProject.WPF.Views.Guest2Window
 {
@@ -27,14 +37,13 @@ namespace InitialProject.WPF.Views.Guest2Window
     public partial class TourReservationWindow : Window, INotifyPropertyChanged
     {
 
-        private Guest2MainWindowViewModel viewModel;
         public TourReservationController _tourReservationController;
         public TourEventController _tourEventController;
         public VoucherController _voucherController;
 
         private string _availableSpotsText { get; set; }
         private int _availableSpots { get; set; }
-        
+
 
         private TourEvent _selectedTourEvent;
 
@@ -118,8 +127,7 @@ namespace InitialProject.WPF.Views.Guest2Window
         public TourReservationWindow(Tour tour)
         {
             InitializeComponent();
-            this.viewModel = viewModel;
-            DataContext = viewModel;
+            this.DataContext = this;
 
             _tourReservationController = new TourReservationController();
             _tourEventController = new TourEventController();
@@ -137,7 +145,7 @@ namespace InitialProject.WPF.Views.Guest2Window
 
             if (AvailableSpots >= NumberOfPeople)
             {
-               
+
                 User user = SignInForm.LoggedUser;
                 TourReservation existingTourReservation = _tourReservationController.GetTourReservationForTourEventAndUser(SelectedTourEvent.Id, user.Id);
 
@@ -147,7 +155,7 @@ namespace InitialProject.WPF.Views.Guest2Window
                 }
                 else
                 {
-                    TourPointWhenGuestCame = new TourPoint {  Id = -1 };
+                    TourPointWhenGuestCame = new TourPoint { Id = -1 };
                     TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame, SelectedVoucher);
                     _tourReservationController.Save(tourReservation);
 
@@ -211,7 +219,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             }
         }
 
-        
+
 
         protected void OnPropertyChanged(string propertyName)
         {
@@ -222,12 +230,57 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         private void Suggest_Click(object sender, RoutedEventArgs e)
         {
-            if(SelectedTourEvent == null)
+            if (SelectedTourEvent == null)
             {
                 return;
             }
             List<TourEvent> tourEventsForLocation = _tourEventController.GetAvailableTourEventsForLocation(SelectedTourEvent.Tour.Location, NumberOfPeople);
             RefreshTours(tourEventsForLocation);
         }
+
+        private void VoucherReports_Click(object sender, RoutedEventArgs e)
+        {
+            //GenerateVoucherReports();
+            // Create a new PDF document
+            using (PdfDocument document = new PdfDocument())
+            {
+                // Add a page to the document
+                PdfPage page = document.AddPage();
+
+                // Create a graphics object for drawing on the page
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                // Set up the font
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode);
+                XFont font = new XFont("Arial", 12, XFontStyle.Regular, options);
+
+                // Get the voucher data
+                List<Voucher> vouchers = _voucherController.VoucherForUser(SignInForm.LoggedUser.Id);
+
+                // Generate the voucher report
+                int yPos = 20;
+                foreach (Voucher voucher in vouchers)
+                {
+                    // Format the voucher information
+                    string voucherInfo = $"Voucher ID: {voucher.Id}, Name: {voucher.Name}, Expiration Date: {voucher.ExpirationDate}";
+
+                    // Draw the voucher information on the PDF
+                    gfx.DrawString(voucherInfo, font, XBrushes.Black, new XPoint(10, yPos));
+                    yPos += 20;
+                }
+
+                // Save the PDF document
+                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\voucher_report.pdf";
+                document.Save(filePath);
+
+                // Show a message box to indicate successful generation
+                MessageBox.Show("Voucher reports generated successfully!");
+
+                // Open the PDF document with the default application
+                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+        }
+
     }
 }

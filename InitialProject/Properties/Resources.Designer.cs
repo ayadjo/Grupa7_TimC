@@ -349,11 +349,11 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Voucher report.
+        ///   Looks up a localized string similar to Voucher reports.
         /// </summary>
-        public static string VoucherReport {
+        public static string VoucherReports {
             get {
-                return ResourceManager.GetString("VoucherReport", resourceCulture);
+                return ResourceManager.GetString("VoucherReports", resourceCulture);
             }
         }
     }

@@ -80,9 +80,9 @@
                 </StackPanel>
 
                 <DataGrid 
-                  ItemsSource="{Binding Vouchers, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding SelectedVoucher, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True"
+                      ItemsSource="{Binding Vouchers, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding SelectedVoucher, UpdateSourceTrigger=PropertyChanged}"
+                      AutoGenerateColumns="False" IsReadOnly="True"
                   Width="205" Height="80" x:Name="myVoucherOverview" Margin="0,10,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="{local2:Loc Name}" Binding="{Binding Name}" Width="80"/>
@@ -90,10 +90,10 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Button Height="30" Width="130" Background="{Binding BackgroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#DFFDFF">
+                <Button Height="30" Width="130" Background="{Binding BackgroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{DynamicResource AppBackgroundBrush}" Click="VoucherReports_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/pdf.png" Width="15" Height="15" Margin="0,0,5,0" />
-                        <ContentControl Content="{local2:Loc VoucherReport}" FontSize="10"></ContentControl>
+                        <ContentControl Content="{local2:Loc VoucherReports}" FontSize="10"></ContentControl>
                     </StackPanel>
                 </Button>
 
@@ -119,18 +119,13 @@
 
         </StackPanel>
 
-        <DataGrid DockPanel.Dock="Bottom"
-                       SelectionMode="Single"
-                  ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True"
-                  Width="570" Height="90" Margin="0,10,0,0">
+        <DataGrid DockPanel.Dock="Bottom" SelectionMode="Single" ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly="True" Width="550" Height="163" Margin="0,10,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn  Header="{local2:Loc Country}" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn  Header="{local2:Loc City}" Binding="{Binding Tour.Location.City}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn  Header="{local2:Loc Language}" Binding="{Binding Tour.Languages}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn  Header="{local2:Loc Duration}" Binding="{Binding Tour.Duration}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn  Header="{local2:Loc StartTime}" Binding="{Binding StartTime}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding Tour.Location.City}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding Tour.Languages}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="{local2:Loc Duration}" Binding="{Binding Tour.Duration}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="{local2:Loc StartTime}" Binding="{Binding StartTime}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
