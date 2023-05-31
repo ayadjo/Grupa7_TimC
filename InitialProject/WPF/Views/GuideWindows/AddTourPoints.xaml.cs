@@ -83,12 +83,14 @@ namespace InitialProject.WPF.Views.GuideWindows
        
         private void SubmitButton_Click(object sender, RoutedEventArgs e) {
 
-           
-            
-            TourPoint tourPoint = new TourPoint(-1, Namee, null, -1 , false);
-            AllTourPoints.Add(tourPoint);
-            SaveTourPoints.Add(tourPoint);
 
+            
+            
+                TourPoint tourPoint = new TourPoint(-1, Namee, null, -1, false);
+                AllTourPoints.Add(tourPoint);
+                SaveTourPoints.Add(tourPoint);
+            
+            
         }
 
         

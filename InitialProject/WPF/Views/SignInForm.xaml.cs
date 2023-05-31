@@ -12,6 +12,7 @@ using InitialProject.Enumerations;
 using System.Collections.Generic;
 using InitialProject.WPF.Views.Guest2Windows;
 using InitialProject.Commands;
+using InitialProject.Service.Services;
 
 namespace InitialProject.WPF.Views;
 
@@ -25,6 +26,7 @@ public partial class SignInForm : Window
 
     public AccommodationReservationController _accommodationReservationController;
     public NotificationController _notificationController;
+    public TourRequestAcceptedNotificationController _tourRequestAcceptedNotificationController;
     public NotificationForRequestController _notificationForRequestController;
 
     private static User loggedUser;
@@ -66,6 +68,7 @@ public partial class SignInForm : Window
 
         _accommodationReservationController = new AccommodationReservationController();
         _notificationController = new NotificationController();
+        _tourRequestAcceptedNotificationController = new TourRequestAcceptedNotificationController();
         _notificationForRequestController = new NotificationForRequestController();
 
         SignInCommand = new RelayCommand(SignIn);
@@ -117,6 +120,16 @@ public partial class SignInForm : Window
                         MessageBoxResult result = MessageBox.Show(this, "You have been added to " + tourName);
                         
                     }
+
+                    List<TourRequestAcceptedNotification> tourRequestAcceptedNotifications = _tourRequestAcceptedNotificationController.GetNotificationForUser(loggedUser.Id);
+                    foreach (TourRequestAcceptedNotification tourRequestAcceptedNotification in tourRequestAcceptedNotifications)
+                    {
+
+                        string tourRequestName = tourRequestAcceptedNotification.TourRequest.Name;
+                        MessageBoxResult result = MessageBox.Show(this, "Your request for" + tourRequestName + " tour is accepted!");
+
+                    }
+
 
                     /*List<NotificationForRequest> notificationsForRequest = _notificationForRequestController.GetNotificationForUser(loggedUser.Id);
 

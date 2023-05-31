@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InitialProject.Domain.Models;
+using InitialProject.WPF.ViewModels.GuideViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,12 @@ namespace InitialProject.WPF.Views.GuideWindows
     /// </summary>
     public partial class CreateTourBasedOnStatistics : Page
     {
+        public NavigationService navigationService;
         public CreateTourBasedOnStatistics()
         {
             InitializeComponent();
+            TourRequestStatisticsViewModel tourRequestStatistics = new TourRequestStatisticsViewModel(navigationService);
+            this.DataContext = tourRequestStatistics;
         }
 
         private void CountryComboBox_LostFocus(object sender, RoutedEventArgs e)

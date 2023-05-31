@@ -14,6 +14,7 @@ namespace InitialProject.Domain.Models
     public class TourRequest : ISerializable
     {
         public int Id { get; set; }
+        public string Name { get; set; }    
         public Location Location { get; set; }
         public string Language { get; set; }
         public int MaxGuests { get; set; }
@@ -25,10 +26,11 @@ namespace InitialProject.Domain.Models
 
         public TourRequest() { }
 
-        public TourRequest(int id, Location location, string language, int maxGuests, string description, DateTime start, DateTime end, User guest, RequestStatusType status)
+        public TourRequest(int id,string name, Location location, string language, int maxGuests, string description, DateTime start, DateTime end, User guest, RequestStatusType status)
         {
 
             Id = id;
+            Name = name;
             Location = location;
             Language = language;
             MaxGuests = maxGuests;
@@ -44,6 +46,7 @@ namespace InitialProject.Domain.Models
             string[] csvValues =
             {
                Id.ToString(),
+               Name,
                Location.Id.ToString(),
                Language.ToString(),
                MaxGuests.ToString(),
@@ -60,14 +63,15 @@ namespace InitialProject.Domain.Models
         public void FromCSV(string[] values)
         {
             Id = Convert.ToInt32(values[0]);
-            Location = new Location() { Id = Convert.ToInt32(values[1]) };
-            Language = values[2];
-            MaxGuests = Convert.ToInt32(values[3]);
-            Description = values[4];
-            Start = Convert.ToDateTime(values[5]);
-            End = Convert.ToDateTime(values[6]);
-            Guest = new User() { Id = Convert.ToInt32(values[7]) };
-            Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), values[8]);
+            Name = values[1];
+            Location = new Location() { Id = Convert.ToInt32(values[2]) };
+            Language = values[3];
+            MaxGuests = Convert.ToInt32(values[4]);
+            Description = values[5];
+            Start = Convert.ToDateTime(values[6]);
+            End = Convert.ToDateTime(values[7]);
+            Guest = new User() { Id = Convert.ToInt32(values[8]) };
+            Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), values[9]);
         }
     }
 }

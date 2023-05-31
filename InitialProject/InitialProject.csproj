@@ -523,7 +523,6 @@
 
   <ItemGroup>
     <Folder Include="WPF\ViewModels\Guest1ViewModels\" />
-    <Folder Include="WPF\ViewModels\GuideViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

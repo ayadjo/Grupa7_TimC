@@ -3,6 +3,7 @@ using InitialProject.Domain.Models;
 using InitialProject.Service.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,11 @@ namespace InitialProject.Controller
             return _tourRequestService.GetAllTourRequestsForUser(userId);
         }
 
+        public List<TourRequest> GetAllTourRequests()
+        {
+            return _tourRequestService.GetAllTourRequests();   
+        }
+
         public List<int> YearsOfTourRequests(int guestId)
         {
             return _tourRequestService.YearsOfTourRequests(guestId);
@@ -65,5 +71,47 @@ namespace InitialProject.Controller
         {
             return _tourRequestService.GetPercentageOfTourRequestForYear(userId, year);
         }
+
+        public List<TourRequest> SearchTourRequests(string country, string city, string language, int maxGuests, DateTime start, DateTime end)
+        {
+            return _tourRequestService.SearchTourRequests(country,city,language,maxGuests,start,end);
+        }
+
+        public List<TourRequestsByMonthDto> GetStatisticsForLanguageMonts(string language, int year)
+        {
+            return _tourRequestService.GetStatisticsForLanguageMonts(language,year);
+        }
+
+        public List<TourRequestsByMonthDto> GetStatisticsForLocationMonts(string country, string city, int year)
+        {
+            return _tourRequestService.GetStatisticsForLocationMonts(country,city, year);
+        }
+
+        public List<TourRequestsByYearDto> GetStatisticsForLanguage(string language)
+        {
+            return _tourRequestService.GetStatisticsForLanguage(language);
+        }
+
+        public List<TourRequestsByYearDto> GetStatisticsForLocation(string country, string city)
+        {
+            return _tourRequestService.GetStatisticsForLocation(country, city);
+        }
+
+        public List<TourRequest> LoadTourRequestsInLastYear()
+        {
+            return _tourRequestService.LoadTourRequestsInLastYear();
+        }
+
+        public void HandleTourRequest(TourRequest request, DateTime date)
+        {
+             _tourRequestService.HandleTourRequest(request, date);
+        }
+
+       
+
+        /*public Location FindMostWanteddLocation(ObservableCollection<TourRequest> requests)
+        {
+            return _tourRequestService.FindMostWanteddLocation(requests);
+        }*/
     }
 }

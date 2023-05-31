@@ -52,7 +52,7 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         private void ReviewsButton_Click(object sender, RoutedEventArgs e)
         {
-            ReviewsWindow reviews = new ReviewsWindow();
+            ReviewsWindow reviews = new ReviewsWindow(this.NavigationService);
             this.NavigationService.Navigate(reviews);
         }
 
@@ -66,11 +66,14 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         private void Request_Click(object sender, RoutedEventArgs e)
         {
-
+            AcceptingTourRequestsWindow acceptingTourRequests = new AcceptingTourRequestsWindow(this.NavigationService);
+            this.NavigationService.Navigate(acceptingTourRequests);
         }
 
         private void Statistics_Click(object sender, RoutedEventArgs e)
         {
+            TourRequestStatisticsWindow tourRequestStatistics = new TourRequestStatisticsWindow(this.NavigationService);
+            this.NavigationService.Navigate(tourRequestStatistics);
 
         }
 

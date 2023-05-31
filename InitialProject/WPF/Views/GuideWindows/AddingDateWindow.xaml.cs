@@ -1,4 +1,7 @@
-﻿using System;
+﻿using InitialProject.Domain.Dto;
+using InitialProject.Domain.Models;
+using InitialProject.WPF.ViewModels.GuideViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,14 @@ namespace InitialProject.WPF.Views.GuideWindows
     /// </summary>
     public partial class AddingDateWindow : Page
     {
-        public AddingDateWindow()
+        public NavigationService navigationService;
+        public AddingDateWindow(TourRequest tourRequest)
         {
             InitializeComponent();
+            AddingDateViewModel addingDateViewModel = new AddingDateViewModel(navigationService, tourRequest);
+            this.DataContext = addingDateViewModel;
+
+
         }
 
         private void datePickerForEnd_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -35,9 +43,6 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

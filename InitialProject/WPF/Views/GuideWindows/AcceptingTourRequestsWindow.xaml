@@ -13,7 +13,7 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="350"/>
             <RowDefinition/>
 
         </Grid.RowDefinitions>
@@ -26,11 +26,13 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" >
             <StackPanel Grid.Column="0">
-                <ComboBox x:Name="CountryComboBox"  SelectedItem="{Binding Path=SelectedCountry, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" ItemsSource="{Binding Countries}" LostFocus="CountryComboBox_LostFocus"  Margin="10,10,10,10" Width="120" Height="25" ToolTip="This field is required!"/>
+                <ComboBox x:Name="CountryComboBox" ItemsSource="{Binding Countries}" SelectedItem="{Binding Path=SelectedCountry, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left"   Margin="10,10,10,10" Width="120" Height="25" ToolTip="This field is required!">
+                   
+                </ComboBox>
                 <Label Content="Država" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="0">
-                <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" ItemsSource="{Binding Cities}" LostFocus="CityComboBox_LostFocus"  Width="120" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!"/>
+                <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" ItemsSource="{Binding Cities}"   Width="120" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!"/>
                 <Label Content="Grad" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575"/>
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="0">
@@ -41,7 +43,7 @@
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Width="430" Height="100"/>
 
 
-        <ComboBox x:Name="LanguageComboBox"  Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,10,10" Width="120" Height="25" ToolTip="This field is required!" LostFocus="LanguageComboBox_LostFocus">
+        <ComboBox x:Name="LanguageComboBox"  Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,10,10" Width="120" Height="25" ToolTip="This field is required!" >
             <ComboBoxItem Content="srpski"/>
             <ComboBoxItem Content="engleski"/>
             <ComboBoxItem Content="italijanski"/>
@@ -49,28 +51,30 @@
             <ComboBoxItem Content="japanski"/>
         </ComboBox>
         <Label Content="Jezik" Grid.Column="0" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575" Margin="0,62,0,6" Width="51" Grid.Row="1" />
-        <DatePicker SelectedDate="{Binding SelectedDate}" Height="25" x:Name="datePickerForStart" Width="120" SelectedDateChanged="datePickerForStart_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" Grid.Column="1" Margin="12,38,11,38" Grid.Row="1" />
+        <DatePicker SelectedDate="{Binding Start}" Height="25" x:Name="datePickerForStart" Width="120"  VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" Grid.Column="1" Margin="12,38,11,38" Grid.Row="1" />
         <Label Content="Početak" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575" Margin="0,62,0,6" Width="68" Grid.Row="1" />
-        <DatePicker SelectedDate="{Binding SelectedDate}" Height="25" x:Name="datePickerForEnd" Width="120" SelectedDateChanged="datePickerForEnd_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" Grid.Column="2" Margin="12,38,11,38" Grid.Row="1" />
+        <DatePicker SelectedDate="{Binding End}" Height="25" x:Name="datePickerForEnd" Width="120"  VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" Grid.Column="2" Margin="12,38,11,38" Grid.Row="1" />
         <Label Content="Kraj" Grid.Column="2" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575" Margin="0,62,0,6" Width="51" Grid.Row="1" />
-        <Button x:Name="FilterButton" Grid.Row="2" Content="Filtriraj" Click="FilterButton_Click" Style="{StaticResource RoundButtonStyle}" Height="40" FontSize="15" Width="100" Margin="12,24,31,36" Grid.Column="1" />
+        <Button x:Name="FilterButton" Grid.Row="2" Content="Filtriraj" Command="{Binding FilterCommand}"  Style="{StaticResource RoundButtonStyle}" Height="40" FontSize="15" Width="100" Margin="12,24,31,36" Grid.Column="1" />
 
-        <DataGrid Style="{StaticResource DataGridStyle}" ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedTour, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.ColumnSpan="3"
+        <DataGrid Style="{StaticResource DataGridStyle}" ItemsSource="{Binding Path=TourRequests, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedTourRequest, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.ColumnSpan="3"
                   Margin="5,10,5,77" AutoGenerateColumns="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden"
-                  x:Name="ToursDataGrid" IsReadOnly="True" SelectionMode="Single" RowStyle="{StaticResource DataGridRow}" CellStyle="{StaticResource DataGridCell}">
+                  x:Name="TourRequestsDataGrid" IsReadOnly="True" SelectionMode="Single" RowStyle="{StaticResource DataGridRow}" CellStyle="{StaticResource DataGridCell}">
             <DataGrid.Columns >
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="112" Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="100" Header="Država" Binding="{Binding Location.Country}"></DataGridTextColumn>
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="100" Header="Grad" Binding="{Binding Location.City}"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="70" Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="60" Header="Država" Binding="{Binding Location.Country}"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="60" Header="Grad" Binding="{Binding Location.City}"></DataGridTextColumn>
 
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="111" Header="Jezici" Binding="{Binding Languages}"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="60" Header="Jezici" Binding="{Binding Language}"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="90" Header="Pocetak" Binding="{Binding Start}"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="90" Header="Kraj" Binding="{Binding End}"></DataGridTextColumn>
 
             </DataGrid.Columns>
 
         </DataGrid>
 
-        <Button x:Name="AcceptButton" Content="Prihvati" Click="AcceptButton_Click" Style="{StaticResource RoundButtonStyle}" Height="40" FontSize="15" Width="100" Margin="21,0,22,110" Grid.Row="4" Grid.Column="1" />
+        <Button x:Name="AcceptButton" Content="Prihvati" Command="{Binding AcceptCommand}" Style="{StaticResource RoundButtonStyle}" Height="40" FontSize="15" Width="100" Margin="12,300,31,10" Grid.Row="3" Grid.Column="1" />
 
     </Grid>
 </Page>

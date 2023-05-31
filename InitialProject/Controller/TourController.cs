@@ -77,5 +77,10 @@ namespace InitialProject.Controller
         public List<Tour> GetAllToursForGuide(int guideId) {
             return _tourService.GetAllToursForGuide(guideId);
         }
+
+        public Tour CreateTourBasedOnTourRequest(TourRequest tourRequest, DateTime startTime)
+        {
+            return _tourService.CreateTourBasedOnTourRequest(tourRequest,startTime);
+        }
     }
 }

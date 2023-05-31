@@ -13,9 +13,8 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="70"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition/>
+            <RowDefinition Height="470"/>
+
 
         </Grid.RowDefinitions>
 
@@ -27,20 +26,16 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" >
             <StackPanel Grid.Column="0">
-                <ComboBox x:Name="CountryComboBox"  SelectedItem="{Binding Path=SelectedCountry, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" ItemsSource="{Binding Countries}" LostFocus="CountryComboBox_LostFocus"  Margin="10,10,10,10" Width="120" Height="25" ToolTip="This field is required!"/>
+                <ComboBox x:Name="CountryComboBox" IsEnabled="{Binding IsCountryComboBoxSelected}" SelectedItem="{Binding Path=SelectedCountry, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" ItemsSource="{Binding Countries}"   Margin="10,10,10,10" Width="120" Height="25" ToolTip="This field is required!"/>
                 <Label Content="Država" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="0">
-                <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" ItemsSource="{Binding Cities}" LostFocus="CityComboBox_LostFocus"  Width="120" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!"/>
+                <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" ItemsSource="{Binding Cities}"   Width="120" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!" />
                 <Label Content="Grad" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575"/>
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="0">
-                <ComboBox x:Name="LanguageComboBox"  Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,10,10" Width="120" Height="25" ToolTip="This field is required!" LostFocus="LanguageComboBox_LostFocus">
-                    <ComboBoxItem Content="srpski"/>
-                    <ComboBoxItem Content="engleski"/>
-                    <ComboBoxItem Content="italijanski"/>
-                    <ComboBoxItem Content="korejski"/>
-                    <ComboBoxItem Content="japanski"/>
+                <ComboBox x:Name="LanguageComboBox" ItemsSource="{Binding Languages}" IsEnabled="{Binding IsLanguageComboBoxSelected}" SelectedItem="{Binding Path=SelectedLanguage}" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,10,10" Width="120" Height="25" ToolTip="This field is required!"  >
+                    
                 </ComboBox>
                 <Label Content="Jezik" Grid.Column="2" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575"  Width="51" Grid.Row="0" />
             </StackPanel>
@@ -48,52 +43,31 @@
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Width="430" Height="100"/>
 
 
-        <ComboBox x:Name="YearComboBox"  SelectedItem="{Binding Path=SelectedYear}"  HorizontalAlignment="Left" ItemsSource="{Binding Years}" LostFocus="YearComboBox_LostFocus"  Margin="10,35,0,40" Width="120" Height="25" Grid.Row="1"/>
-        <Label Content="Godina" Grid.Column="0" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575" Margin="0,62,0,6" Width="64" Grid.Row="1" />
-        <ComboBox x:Name="MonthComboBox"  SelectedItem="{Binding Path=SelectedMonth}"  HorizontalAlignment="Center" ItemsSource="{Binding Months}" LostFocus="MonthComboBox_LostFocus"  Width="120" Height="25" Grid.Row="1" Grid.Column="1" Margin="0,35,0,40"/>
-        <Label Content="Mesec" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="17" Foreground="#E80575" Margin="0,62,0,6" Width="68" Grid.Row="1" />
-        <Button x:Name="ShowButton" Grid.Row="1" Content="Prikaži" Click="ShowButton_Click" Style="{StaticResource RoundButtonStyle}" Height="30" FontSize="15" Width="100" Margin="22,32,22,38" Grid.Column="2" />
+
+        <Button x:Name="ShowLocationButton" Grid.Row="1" Content="Prikaži po lokaciji" Command="{Binding ShowLocationCommand}" Style="{StaticResource RoundButtonStyle}" Height="30" FontSize="15" Margin="19,35,18,35" Grid.Column="1" />
+
+        <Button x:Name="ShowLanguageButton" Grid.Row="1" Content="Prikaži po jeziku" Command="{Binding ShowLanguageCommand}" Style="{StaticResource RoundButtonStyle}" Height="30" FontSize="15" Margin="16,35,16,35" />
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal">
             <Label Content="Kreiraj turu na osnovu statistike:" Style="{StaticResource BoldLabel}" Foreground="#E80575" FontSize="17" Width="255" Height="34"/>
             <Button x:Name="CreateButton" Content="+" Command="{Binding CreateCommand}" Style="{StaticResource RoundButtonStyle}" Height="34" FontSize="15" Width="42"/>
         </StackPanel>
-        <DataGrid Style="{StaticResource DataGridStyle}" ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedTour, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.ColumnSpan="3"
-                  Margin="5,10,5,24" AutoGenerateColumns="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden"
+        <StackPanel  Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="10,30,-10,396">
+            <Label Height="40" FontSize="16"  Content="{Binding SelectedLanguage}" Style="{StaticResource BoldLabel}" Foreground="#E80575" Width="94"/>
+            <Label Height="40" FontSize="16"  Content="{Binding SelectedLocation}" Style="{StaticResource BoldLabel}" Foreground="#E80575" Width="136"/>
+
+        </StackPanel>
+        <DataGrid Style="{StaticResource DataGridStyle}" ItemsSource="{Binding Path=Statistics, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedTourRequestsYearDto, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.ColumnSpan="3"
+                  Margin="5,79,5,137" AutoGenerateColumns="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden"
                   x:Name="ToursDataGrid" IsReadOnly="True" SelectionMode="Single" RowStyle="{StaticResource DataGridRow}" CellStyle="{StaticResource DataGridCell}">
             <DataGrid.Columns >
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="210" Header="Jezik" Binding="{Binding Languages}"></DataGridTextColumn>
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="210" Header="Zahtevi" Binding="{Binding TourRequests}"></DataGridTextColumn>
-                
+                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="210" Header="Godina" Binding="{Binding Year}"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="210" Header="Zahtevi" Binding="{Binding TourRequestsNum}"></DataGridTextColumn>
+
 
             </DataGrid.Columns>
 
         </DataGrid>
-
-        <DataGrid Style="{StaticResource DataGridStyle}" ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedTour, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.ColumnSpan="3"
-                  AutoGenerateColumns="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="100" HorizontalScrollBarVisibility="Hidden"
-                  x:Name="CountryAndCityDataGrid" IsReadOnly="True" SelectionMode="Single" RowStyle="{StaticResource DataGridRow}" CellStyle="{StaticResource DataGridCell}">
-            <DataGrid.Columns >
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="150" Header="Država" Binding="{Binding Tour.Location.Country}"></DataGridTextColumn>
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="140" Header="Grad" Binding="{Binding Tour.Location.City}"></DataGridTextColumn>
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="140" Header="Zahtevi" Binding="{Binding TourRequests}"></DataGridTextColumn>
-            </DataGrid.Columns>
-
-        </DataGrid>
-
-        <DataGrid Style="{StaticResource DataGridStyle}" ItemsSource="{Binding Path=Tours, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedTour, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.ColumnSpan="3"
-                  AutoGenerateColumns="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="100" HorizontalScrollBarVisibility="Hidden"
-                  x:Name="CountryAndLanguageDataGrid" IsReadOnly="True" SelectionMode="Single" RowStyle="{StaticResource DataGridRow}" CellStyle="{StaticResource DataGridCell}">
-            <DataGrid.Columns >
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="100" Header="Država" Binding="{Binding Tour.Location.Country}"></DataGridTextColumn>
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="100" Header="Grad" Binding="{Binding Tour.Location.City}"></DataGridTextColumn>
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="100" Header="Jezik" Binding="{Binding Languages}"></DataGridTextColumn>
-                <DataGridTextColumn HeaderStyle="{StaticResource DataGridHeader}" Width="130" Header="Zahtevi" Binding="{Binding TourRequests}"></DataGridTextColumn>
-            </DataGrid.Columns>
-
-        </DataGrid>
-
+        <Button x:Name="ShowForMonthsButton" Content="Prikazi po mesecima" Grid.Row="3" Command="{Binding ShowForMonthsCommand}" Style="{StaticResource RoundButtonStyle}" Height="34" FontSize="15" Margin="132,362,132,74" Grid.ColumnSpan="3"/>
     </Grid>
 </Page>

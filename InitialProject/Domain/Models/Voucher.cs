@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 using System.Xml.Linq;
+using InitialProject.Util;
 
 namespace InitialProject.Domain.Models
 {
@@ -51,7 +52,7 @@ namespace InitialProject.Domain.Models
                User.Id.ToString(),
                Used.ToString(),
                Duration.ToString(),
-               ExpirationDate.ToString()
+               DateHelper.DateToString(ExpirationDate)
 
 
             };
@@ -67,7 +68,7 @@ namespace InitialProject.Domain.Models
             User = new User() { Id = Convert.ToInt32(values[2]) };
             Used = bool.Parse(values[3]);
             Duration = Convert.ToInt32(values[4]);
-            ExpirationDate = Convert.ToDateTime(values[5]); 
+            ExpirationDate = DateHelper.StringToDate(values[5]);
 
         }
     }

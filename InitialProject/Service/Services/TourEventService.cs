@@ -231,5 +231,17 @@ namespace InitialProject.Service.Services
             return _allTourEvents;
         }
 
+        public bool IsGuideFree(int guideId, DateTime dateTime)
+        {
+            foreach (TourEvent tourE in _tourEventRepository.GetAll())
+            {
+                if (tourE.Tour.Guide.Id == guideId && tourE.StartTime.Date == dateTime.Date)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

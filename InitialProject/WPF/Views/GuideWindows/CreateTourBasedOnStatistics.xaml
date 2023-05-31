@@ -71,7 +71,7 @@
                 <ComboBox x:Name="CountryComboBox"  SelectedItem="{Binding Path=SelectedCountry, ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" ItemsSource="{Binding Countries}" LostFocus="CountryComboBox_LostFocus" Grid.Row="2"  Margin="10,10,10,10" Width="200" Height="25" ToolTip="This field is required!" RenderTransformOrigin="0.335,0.168"/>
                 <ComboBox x:Name="CityComboBox" SelectedItem="{Binding Path=SelectedCity, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" ItemsSource="{Binding Cities}" LostFocus="CityComboBox_LostFocus" Grid.Row="3" Width="200" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!" RenderTransformOrigin="0.576,0.532"/>
                 <TextBox Grid.Row="4" x:Name="DescriptionTextBox"  BorderBrush="#FF2791" Style="{StaticResource RoundTextBoxStyle}"  Margin="10,10,10,10" HorizontalAlignment="Left" Width="200" Height="25" Text="{Binding Path=Description,Mode=OneWayToSource, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"  ToolTip="This field is required!"/>
-                <ComboBox x:Name="LanguageComboBox"  Grid.Row="5 " HorizontalAlignment="Left" Margin="10,10,10,10" Width="200" Height="25" ToolTip="This field is required!" LostFocus="LanguageComboBox_LostFocus">
+                <ComboBox x:Name="LanguageComboBox"  Grid.Row="5" SelectedItem="{Binding Path= SelectedLanguage}" HorizontalAlignment="Left" Margin="10,10,10,10" Width="200" Height="25" ToolTip="This field is required!" LostFocus="LanguageComboBox_LostFocus">
                     <ComboBoxItem>srpski</ComboBoxItem>
                     <ComboBoxItem>engleski</ComboBoxItem>
                     <ComboBoxItem>italijanski</ComboBoxItem>

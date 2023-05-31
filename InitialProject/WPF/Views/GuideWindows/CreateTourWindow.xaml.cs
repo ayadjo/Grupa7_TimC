@@ -194,29 +194,38 @@ namespace InitialProject.WPF.Views.GuideWindows
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (IsValid)
             {
-                Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
-                User user = SignInForm.LoggedUser;
-
-                Tour tour = new Tour()
+                if (AllTourPoints.Count() <= 1)
                 {
-                    Name = Namee,
-                    Location = location,
-                    Description = Description,
-                    Languages = Languages,
-                    MaxGuests = MaxGuestss,
-                    Duration = Duration,
-                    Guide = user,
-                    Images = AllImages,
-                    TourPoints = AllTourPoints
-                };
+                    MessageBox.Show("Morate dodati bar dve kljucne tacke!");
+                }
+                else
+                {
+                    Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
+                    User user = SignInForm.LoggedUser;
 
-                _tourController.SaveImagesTourPoints(tour);
+                    Tour tour = new Tour()
+                    {
+                        Name = Namee,
+                        Location = location,
+                        Description = Description,
+                        Languages = Languages,
+                        MaxGuests = MaxGuestss,
+                        Duration = Duration,
+                        Guide = user,
+                        Images = AllImages,
+                        TourPoints = AllTourPoints
+                    };
 
-                TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, TourEventStatus.NotStarted);
-                _tourEventController.Save(tourEvent);
-                MessageBox.Show("Kreirali ste turu!");
+                    _tourController.SaveImagesTourPoints(tour);
+
+                    TourEvent tourEvent = new TourEvent(-1, tour, SelectedDate, TourEventStatus.NotStarted);
+                    _tourEventController.Save(tourEvent);
+                    MessageBox.Show("Kreirali ste turu!");
+                }
+
 
             }
             else

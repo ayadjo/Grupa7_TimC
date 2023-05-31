@@ -19,7 +19,7 @@ namespace InitialProject.WPF.ViewModels.GuideViewModels
         public ObservableCollection<GuideReview> Guests { get; set; }
         public GuideReviewController _guideReviewController;
 
-        public NavigationService navigationService { get; set; } //?
+        public NavigationService navigationService { get; set; } 
 
 
         #region NotifyProperties

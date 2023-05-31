@@ -1,5 +1,10 @@
-﻿using System;
+﻿using InitialProject.Controller;
+using InitialProject.Domain.Models;
+using InitialProject.WPF.ViewModels.GuideViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,49 +25,16 @@ namespace InitialProject.WPF.Views.GuideWindows
     /// </summary>
     public partial class AcceptingTourRequestsWindow : Page
     {
-        public AcceptingTourRequestsWindow()
+
+        public AcceptingTourRequestsWindow(NavigationService navigationService)
         {
             InitializeComponent();
-        }
-
-        private void datePickerForStart_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void datePickerForEnd_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
+            AcceptingTourRequestsViewModel acceptingTourRequestsViewModel = new AcceptingTourRequestsViewModel(navigationService);
+            this.DataContext = acceptingTourRequestsViewModel;
+            
 
         }
 
-        private void FilterButton_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void FilterButton_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AcceptButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CityComboBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CountryComboBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void LanguageComboBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

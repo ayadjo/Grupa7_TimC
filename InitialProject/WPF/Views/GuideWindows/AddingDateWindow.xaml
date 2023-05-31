@@ -17,13 +17,12 @@
 
         <StackPanel Grid.Row="1" Height="250">
             <Label Content="Unesite datum" FontSize="30" Height="70" Style="{StaticResource BoldLabel}" Foreground="#E80575" HorizontalAlignment="Center"/>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Width="215">
                 <Label Content="Od:" Height="50" Width="50" FontSize="25" Style="{StaticResource BoldLabel}" Foreground="#E80575"/>
                 <DatePicker SelectedDate="{Binding SelectedDate}" Height="24" x:Name="datePickerForStart" Width="150" SelectedDateChanged="datePickerForStart_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="15" />
-                <Label Content="Do:" Width="50" FontSize="25" Height="52" Style="{StaticResource BoldLabel}" Foreground="#E80575"/>
-                <DatePicker SelectedDate="{Binding SelectedDate}" Height="25" x:Name="datePickerForEnd" Width="150" SelectedDateChanged="datePickerForEnd_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="15" Grid.Row="1" />
+              
             </StackPanel>
-            <Button x:Name="SubmitButton" Height="50" Content="Potvrdi" Click="SubmitButton_Click" Style="{StaticResource RoundButtonStyle}"  FontSize="15" Width="100" />
+            <Button x:Name="SubmitButton" Height="50" Content="Potvrdi" Command="{Binding SubmitCommand}"  Style="{StaticResource RoundButtonStyle}"  FontSize="15" Width="100" />
         </StackPanel>
 
     </Grid>

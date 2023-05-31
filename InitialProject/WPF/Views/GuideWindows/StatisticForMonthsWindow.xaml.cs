@@ -17,18 +17,14 @@ using System.Windows.Shapes;
 namespace InitialProject.WPF.Views.GuideWindows
 {
     /// <summary>
-    /// Interaction logic for TourRequestStatisticsWindow.xaml
+    /// Interaction logic for StatisticForMonthsWindow.xaml
     /// </summary>
-    public partial class TourRequestStatisticsWindow : Page
+    public partial class StatisticForMonthsWindow : Page
     {
-        public TourRequestStatisticsWindow(NavigationService navigationService)
+        public StatisticForMonthsWindow(int year, LastStatistic lastStatistic, string language, string city, string country)
         {
             InitializeComponent();
-            TourRequestStatisticsViewModel TourRequestStatisticsViewModel = new TourRequestStatisticsViewModel(navigationService);
-            this.DataContext = TourRequestStatisticsViewModel;
-
+            this.DataContext = new StatisticForMontsViewModel(year, lastStatistic, language, city, country);
         }
-
-       
     }
 }

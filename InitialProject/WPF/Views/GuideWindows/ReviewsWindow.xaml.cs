@@ -26,9 +26,8 @@ namespace InitialProject.WPF.Views.GuideWindows
     public partial class ReviewsWindow : Page
     {
 
-        public NavigationService navigationService;
 
-        public ReviewsWindow()
+        public ReviewsWindow(NavigationService navigationService)
         {
             InitializeComponent();  
             ReviewsViewModel reviewsViewModel = new ReviewsViewModel(navigationService);
