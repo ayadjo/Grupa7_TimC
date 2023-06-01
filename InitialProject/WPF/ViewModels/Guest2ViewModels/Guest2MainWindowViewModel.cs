@@ -44,7 +44,6 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             }
         }
 
-
         private string currentLanguage;
 
         public string CurrentLanguage
@@ -55,6 +54,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
                 currentLanguage = value;
             }
         }
+
         public NavigationService NavigationService { get; set; }
 
         public RelayCommand NavigateToToursOverviewCommand { get; set; }
@@ -89,9 +89,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         {
             this.NavigationService.Navigate(
                 new Uri("WPF/Views/Guest2Windows/ToursOverviewWindow.xaml", UriKind.Relative));
-            //alternativa
-            ///UserControl tours = new ToursOverviewWindow();
-            //this.frame.NavigationService.Navigate(tours);
+            
         }
 
         private void Execute_NavigateToMyToursCommand(object obj)
@@ -172,16 +170,17 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             {
                 // Apply dark theme
                 App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#283A82");
+
             }
             else
             {
                 // Apply light theme
                 App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#DFFDFF");
+                
             }
 
             app.Resources["AppBackgroundBrush"] = new SolidColorBrush(App.BackgroundColor);
+            
         }
-
-
     }
 }

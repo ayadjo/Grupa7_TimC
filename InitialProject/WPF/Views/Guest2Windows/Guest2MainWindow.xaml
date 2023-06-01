@@ -77,7 +77,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="MenuItemBorder" Property="Background" Value="#FFFFFF" />
+                                <Setter TargetName="MenuItemBorder" Property="Background" Value="Pink" />
                             </Trigger>
                             <DataTrigger Binding="{Binding Path=Checker}" Value="True">
                                 <DataTrigger.EnterActions>
@@ -88,6 +88,7 @@
                                     </BeginStoryboard>
                                 </DataTrigger.EnterActions>
                             </DataTrigger>
+                            
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -159,7 +160,7 @@
                 <Button.Content>
                     <WrapPanel>
                         <!--<Image Source="/Resources/Images/transparency.png" Height="28" Width="28"/>-->
-                        <TextBlock TextDecorations="Underline" Width="45" TextAlignment="Center" Text="{local:Loc English}"></TextBlock>
+                        <TextBlock TextDecorations="Underline" Width="45" TextAlignment="Center" Text="{local:Loc English}" ></TextBlock>
                     </WrapPanel>
                 </Button.Content>
             </Button>

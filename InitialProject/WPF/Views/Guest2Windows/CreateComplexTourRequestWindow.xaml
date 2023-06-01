@@ -17,6 +17,8 @@
             </StackPanel>
         </ControlTemplate>
     </Window.Resources>
+
+    
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 

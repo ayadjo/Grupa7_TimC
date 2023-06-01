@@ -28,6 +28,9 @@ namespace InitialProject
             get { return backgroundColor; }
             set { backgroundColor = value; }
         }
+
+        
+
         public void ChangeLanguage(string currLang)
         {
             if (currLang.Equals("en-US"))
@@ -104,5 +107,7 @@ namespace InitialProject
             // Assign the SolidColorBrush to the resource
             Current.Resources["AppBackgroundBrush"] = appBackgroundBrush;
         }
+
+        
     }
 }
