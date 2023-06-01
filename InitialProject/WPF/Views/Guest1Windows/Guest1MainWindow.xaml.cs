@@ -62,8 +62,8 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void ForumsOverview_Click(object sender, RoutedEventArgs e)
         {
-            //ForumsOverview forumsOverview = new ForumsOverview();
-            //forumsOverview.Show();
+            ForumsOverview forumsOverview = new ForumsOverview(guest);
+            forumsOverview.Show();
         }
 
         private void SignOut_Click(object sender, RoutedEventArgs e)

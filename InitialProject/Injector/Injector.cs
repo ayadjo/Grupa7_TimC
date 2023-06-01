@@ -58,7 +58,15 @@ namespace InitialProject.Injector
             tourRequestAcceptedNotificationRepository.BindTourRequestAcceptedNotificationTourRequest();
             accommodationRenovationRepository.BindAccommodationRenovationWithAccommodation();
             
+            
             //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
+
+
+            ForumRepository forumRepository = new ForumRepository();
+            CommentRepository commentRepository = new CommentRepository();
+            _implementations.Add(typeof(IForumRepository), forumRepository);
+            _implementations.Add(typeof(ICommentRepository), commentRepository);
+            forumRepository.BindForumLocation();
         }
 
         public static T CreateInstance<T>()

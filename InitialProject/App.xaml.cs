@@ -38,6 +38,8 @@ namespace InitialProject
 
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
+            ForumRepository forumRepository = new ForumRepository();
+            forumRepository.BindForumLocation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
 
