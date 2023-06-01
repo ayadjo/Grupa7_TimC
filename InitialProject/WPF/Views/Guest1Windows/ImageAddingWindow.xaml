@@ -5,23 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest1Windows"
         mc:Ignorable="d"
-        Title="ImageAddingWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+        Title="ImageAddingWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen" Background="LightSkyBlue">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Franklin Gothic" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Franklin Gothic" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Franklin Gothic" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontFamily" Value="Franklin Gothic" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <Label Content="Dodavanje slike/a:" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="DODAVANJE SLIKE/A:" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="(u tekstualna polja unesite URL slike koju želite da pošaljete uz Vašu recenziju i opis slike slobodnim rečima. klikom na dugme &quot;Dodaj&quot; slika će biti prikazana u tabeli ispod)" HorizontalAlignment="Left" Margin="57,47,0,0" VerticalAlignment="Top"/>
 
-        <Label Content="Unesite URL slike:" HorizontalAlignment="Left" Margin="255,133,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Margin="421,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Height="27" Name="UrlTextBox" Text="{Binding Path=Url, Mode=OneWayToSource}"/>
 
-        <Label Content="Unesite opis slike:" HorizontalAlignment="Left" Margin="253,202,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Margin="421,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Height="27" Name="DescriptionTextBox" Text="{Binding Path=Description,Mode=OneWayToSource}"/>
 
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="649,159,0,0" VerticalAlignment="Top" Command="{Binding AddImageCommand}" Height="52" Width="138"/>
-        <Button Content="Završi" HorizontalAlignment="Center" Margin="0,644,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}" Height="52" Width="138"/>
+        <Label Content="Unesite URL slike:" HorizontalAlignment="Left" Margin="57,115,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox HorizontalAlignment="Left" Margin="57,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" Height="27" Name="UrlTextBox" Text="{Binding Path=Url, Mode=OneWayToSource}"/>
 
-        <DataGrid ItemsSource="{Binding Path=AllImages, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" x:Name="AllImagesDataGrid" Grid.Column="0" Margin="38,262,38,153">
+        <Label Content="Unesite opis slike:" HorizontalAlignment="Left" Margin="413,115,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox HorizontalAlignment="Left" Margin="413,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="429" Height="87" Name="DescriptionTextBox" Text="{Binding Path=Description,Mode=OneWayToSource}"/>
+
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="867,152,0,0" VerticalAlignment="Top" Command="{Binding AddImageCommand}" Background="white" Height="50" Width="100"/>
+
+
+
+        <DataGrid ItemsSource="{Binding Path=AllImages, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" x:Name="AllImagesDataGrid" Grid.Column="0" Margin="10,262,10,91" Background="white">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Url" Width="*" Binding="{Binding Url}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+
+
+        <Button HorizontalAlignment="Left" Margin="898,666,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}" Height="50" Width="100" Background="White">
+            <Grid>
+                <Image Source="\Resources\Images\Guest1\back.png" Width="30" Height="30" Margin="34,0,-16,0"/>
+                <TextBlock Text="Nazad" VerticalAlignment="Center" Margin="-19,0,19,0" />
+            </Grid>
+        </Button>
     </Grid>
 </Window>

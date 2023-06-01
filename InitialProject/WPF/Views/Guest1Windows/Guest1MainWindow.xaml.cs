@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.WPF.Views.Guest2Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,9 +60,27 @@ namespace InitialProject.WPF.Views.Guest1Windows
             accommodationReservationCancellationWindow.Show();
         }
 
+        private void ForumsOverview_Click(object sender, RoutedEventArgs e)
+        {
+            //ForumsOverview forumsOverview = new ForumsOverview();
+            //forumsOverview.Show();
+        }
+
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow profileWindow = new ProfileWindow();
+            profileWindow.Show();
+        }
+
+        private void Tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            TutorialWindow tutorialWindow = new TutorialWindow();
+            tutorialWindow.Show();
         }
     }
 }

@@ -94,6 +94,24 @@
     <None Remove="Resources\Images\glacierNationalPark.jpg" />
     <None Remove="Resources\Images\graph.png" />
     <None Remove="Resources\Images\group.png" />
+    <None Remove="Resources\Images\Guest1\arrow.png" />
+    <None Remove="Resources\Images\Guest1\back.png" />
+    <None Remove="Resources\Images\Guest1\book.png" />
+    <None Remove="Resources\Images\Guest1\forum.png" />
+    <None Remove="Resources\Images\Guest1\kylesmyle.jpg" />
+    <None Remove="Resources\Images\Guest1\list.jpg" />
+    <None Remove="Resources\Images\Guest1\logout.png" />
+    <None Remove="Resources\Images\Guest1\pause.png" />
+    <None Remove="Resources\Images\Guest1\photo.png" />
+    <None Remove="Resources\Images\Guest1\play.png" />
+    <None Remove="Resources\Images\Guest1\print.png" />
+    <None Remove="Resources\Images\Guest1\profile.png" />
+    <None Remove="Resources\Images\Guest1\renovation.png" />
+    <None Remove="Resources\Images\Guest1\search.jpg" />
+    <None Remove="Resources\Images\Guest1\star.png" />
+    <None Remove="Resources\Images\Guest1\stop.png" />
+    <None Remove="Resources\Images\Guest1\tutorial.png" />
+    <None Remove="Resources\Images\Guest1\x.png" />
     <None Remove="Resources\Images\Guest2\adventure.png" />
     <None Remove="Resources\Images\Guest2\application.png" />
     <None Remove="Resources\Images\Guest2\check.png" />
@@ -193,6 +211,60 @@
     </Resource>
     <Resource Include="Resources\Images\down-arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\arrow.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\back.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\book.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\forum.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\kylesmyle.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\list.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\logout.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\pause.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\photo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\play.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\print.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\profile.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\renovation.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\search.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\star.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\stop.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\tutorial.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest1\x.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

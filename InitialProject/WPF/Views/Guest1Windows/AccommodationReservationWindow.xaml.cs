@@ -124,6 +124,7 @@ namespace InitialProject.WPF.Views
             }
         }
 
+        /*
         public static List<AccommodationReservation> ReadCSV(string filePath)
         {
             StreamReader reader = new StreamReader(filePath);
@@ -147,6 +148,7 @@ namespace InitialProject.WPF.Views
         }
 
         List<AccommodationReservation> reservations = ReadCSV("../../../Resources/Data/accommodationReservations.csv");
+        */
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {

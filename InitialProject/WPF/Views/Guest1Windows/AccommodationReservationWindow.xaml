@@ -5,9 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views"
         mc:Ignorable="d"
-        Title="AccommodationReservationWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+        Title="AccommodationReservationWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen" Background="LightSkyBlue">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Franklin Gothic" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Franklin Gothic" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="FontFamily" Value="Franklin Gothic" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Franklin Gothic" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
+        <Label Content="REZERVACIJA SMEŠTAJA" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20"/>
+
+
         <Label Content="Izaberite opseg datuma za rezervaciju:" HorizontalAlignment="Left" Margin="11,63,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="(u naredna dva polja za unos datuma unesite datum početka opsega pretrage&#xD;&#xA;i datum kraja tog opsega)" HorizontalAlignment="Left" Margin="11,105,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Početni datum:" HorizontalAlignment="Left" Margin="12,166,0,0" VerticalAlignment="Top"/>
         <DatePicker HorizontalAlignment="Left" Margin="21,197,0,0" VerticalAlignment="Top" Name="StartDateDatePicker" SelectedDateChanged="StartDateDatePicker_SelectedDateChanged" Width="200"/>
@@ -15,19 +38,35 @@
         <Label Content="Krajnji datum:" HorizontalAlignment="Left" Margin="237,166,0,0" VerticalAlignment="Top"/>
         <DatePicker HorizontalAlignment="Left" Margin="237,197,0,0" VerticalAlignment="Top" Name="EndDateDatePicker" SelectedDateChanged="EndDateDatePicker_SelectedDateChanged" Width="195"/>
 
+
+
+
         <Label Content="Broj dana za boravak:" HorizontalAlignment="Left" Margin="674,63,0,0" VerticalAlignment="Top" FontSize="20"/>
         <TextBox HorizontalAlignment="Left" Margin="680,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" Height="26" Name="NumberOfDaysTextBox"/>
+        <Label Content="(u gornje polje za unos unesite ceo broj koji predstavlja&#xD;&#xA;broj dana koji planirate da provedete u smeštaju u &#xD;&#xA;okviru datuma koje ste malopre uneli)" HorizontalAlignment="Left" Margin="680,136,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Broj ljudi koji dolaze:" HorizontalAlignment="Left" Margin="680,231,0,0" VerticalAlignment="Top" FontSize="20"/>
         <TextBox HorizontalAlignment="Left" Margin="680,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" Height="28" Name="NumberOfGuestsTextBox"/>
-
-        <Button Content="REZERVIŠI" HorizontalAlignment="Center" Margin="0,502,0,0" VerticalAlignment="Top" Name="Reserve" Height="54" Width="262" Click="Reserve_Click"/>
-        <Label Content="REZERVACIJA SMEŠTAJA" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="(u naredna dva polja za unos datuma unesite datum početka opsega pretrage&#xD;&#xA;i datum kraja tog opsega)" HorizontalAlignment="Left" Margin="11,105,0,0" VerticalAlignment="Top"/>
-        <Label Content="(u gornje polje za unos unesite ceo broj koji predstavlja&#xD;&#xA;broj dana koji planirate da provedete u smeštaju u &#xD;&#xA;okviru datuma koje ste malopre uneli)" HorizontalAlignment="Left" Margin="680,136,0,0" VerticalAlignment="Top"/>
         <Label Content="(u gornje polje za unos unesite ceo broj koji predstavlja&#xD;&#xA;broj ljudi koji (uključujući Vas) dolaze u izabrani smeštaj)" HorizontalAlignment="Left" Margin="680,306,0,0" VerticalAlignment="Top"/>
-        <Label Content="(ukoliko ste sve parametre dobro uneli, klikom na ovo dugme rezervisaćete smeštaj)" HorizontalAlignment="Left" Margin="279,561,0,0" VerticalAlignment="Top"/>
-        <Label Content="(ukoliko niste, dobićete odgovarajuću poruku šta treba ispraviti)" HorizontalAlignment="Center" Margin="0,587,0,0" VerticalAlignment="Top"/>
-        <Button Content="Odustani" HorizontalAlignment="Left" Margin="934,706,0,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+
+
+
+        <Button HorizontalAlignment="Center" Margin="0,549,0,0" VerticalAlignment="Top" Name="Reserve" Height="75" Width="200" Click="Reserve_Click" Background="white">
+            <Grid>
+                <TextBlock Text="REZERVIŠI" Margin="28,30,-28,-29"/>
+                <Image Source="\Resources\Images\Guest1\book.png" Margin="93,22,22,21"/>
+            </Grid>
+        </Button>
+        <Label Content="(ukoliko ste sve parametre dobro uneli, klikom na ovo dugme rezervisaćete smeštaj)" HorizontalAlignment="Left" Margin="279,624,0,0" VerticalAlignment="Top"/>
+        <Label Content="(ukoliko niste, dobićete odgovarajuću poruku šta treba ispraviti)" HorizontalAlignment="Center" Margin="0,650,0,0" VerticalAlignment="Top"/>
+
+
+
+        <Button HorizontalAlignment="Left" Margin="898,666,0,0" VerticalAlignment="Top" Click="CancelButton_Click" Height="50" Width="100" Background="White">
+            <Grid>
+                <Image Source="\Resources\Images\Guest1\back.png" Width="30" Height="30" Margin="34,0,-16,0"/>
+                <TextBlock Text="Odustani" VerticalAlignment="Center" Margin="-19,0,19,0" />
+            </Grid>
+        </Button>
     </Grid>
 </Window>
