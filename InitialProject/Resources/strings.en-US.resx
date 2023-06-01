@@ -120,9 +120,6 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="CannotViewKeyPoints" xml:space="preserve">
-    <value>You can view key points only for tours that have started.</value>
-  </data>
   <data name="CheckAvailability" xml:space="preserve">
     <value>Check availability</value>
   </data>
@@ -133,13 +130,10 @@
     <value>Country</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>Kreiraj</value>
   </data>
   <data name="CreateComplexRequest" xml:space="preserve">
     <value>Create complex request</value>
-  </data>
-  <data name="Dark" xml:space="preserve">
-    <value>Dark</value>
   </data>
   <data name="DateRange" xml:space="preserve">
     <value>Date range</value>
@@ -162,9 +156,6 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="Light" xml:space="preserve">
-    <value>Light</value>
-  </data>
   <data name="LogOut" xml:space="preserve">
     <value>Log out</value>
   </data>
@@ -178,7 +169,7 @@
     <value>Name</value>
   </data>
   <data name="NumberOfGuests" xml:space="preserve">
-    <value>Number of guests</value>
+    <value>Number of Guests</value>
   </data>
   <data name="NumberOfPeople" xml:space="preserve">
     <value>Number of people</value>

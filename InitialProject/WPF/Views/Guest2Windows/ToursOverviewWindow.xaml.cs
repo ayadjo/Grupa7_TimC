@@ -20,7 +20,8 @@ using System.ComponentModel;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using System.Data;
-
+using System.Resources;
+using InitialProject.Properties;
 
 namespace InitialProject.WPF.Views.Guest2Window
 {
@@ -71,15 +72,16 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         private void Reserve_Click(object sender, RoutedEventArgs e)
         {
-             if (SelectedTour != null)
-             {
-                 TourReservationWindow tourReservation = new TourReservationWindow(SelectedTour);
-                 tourReservation.Show();
-             }
-             else
-             {
-                 MessageBox.Show("Morate odabrati turu", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
-             }
+            if (SelectedTour != null)
+            {
+                TourReservationWindow tourReservation = new TourReservationWindow(SelectedTour);
+                tourReservation.Show();
+            }
+            else
+            {
+                //MessageBox.Show(Properties.Resources.SelectTour, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Localization.TranslationSource.Instance["Please select a tour!"], Localization.TranslationSource.Instance["Error"], MessageBoxButton.OK);
+            }
         }
 
         private void RefreshTours(List<Tour> tours)

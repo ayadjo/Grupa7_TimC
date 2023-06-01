@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using InitialProject.WPF.Views;
 using InitialProject.Domain.Models;
 using System.Windows;
+using System.Windows.Media;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
@@ -26,6 +27,34 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             }
         }
         */
+
+        private bool isDarkTheme;
+
+        public bool IsDarkTheme
+        {
+            get { return isDarkTheme; }
+            set
+            {
+                if (isDarkTheme != value)
+                {
+                    isDarkTheme = value;
+                    UpdateTheme();
+                    OnPropertyChanged(nameof(IsDarkTheme));
+                }
+            }
+        }
+
+        private string currentLanguage;
+
+        public string CurrentLanguage
+        {
+            get { return currentLanguage; }
+            set
+            {
+                currentLanguage = value;
+            }
+        }
+
         public NavigationService NavigationService { get; set; }
 
         public RelayCommand NavigateToToursOverviewCommand { get; set; }
@@ -34,6 +63,10 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public RelayCommand NavigateToMyTourRequestsCommand { get; set; }
 
         public RelayCommand LogOutCommand { get; set; }
+
+        public RelayCommand SwitchToEnglishCommand { get; set; }
+
+        public RelayCommand SwitchToSerbianCommand { get; set; }
 
         public Action CloseAction { get; set; }
 
@@ -56,9 +89,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         {
             this.NavigationService.Navigate(
                 new Uri("WPF/Views/Guest2Windows/ToursOverviewWindow.xaml", UriKind.Relative));
-            //alternativa
-            ///UserControl tours = new ToursOverviewWindow();
-            //this.frame.NavigationService.Navigate(tours);
+            
         }
 
         private void Execute_NavigateToMyToursCommand(object obj)
@@ -88,6 +119,26 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             return true;
         }
 
+        private void Execute_SwitchToEnglishCommand(object obj)
+        {
+            var app = (App)Application.Current;
+            
+            
+            CurrentLanguage = "en-US";
+            
+            app.ChangeLanguage(CurrentLanguage);
+        }
+
+        private void Execute_SwitchToSerbianCommand(object obj)
+        {
+            var app = (App)Application.Current;
+
+
+            CurrentLanguage = "sr-LATN";
+
+            app.ChangeLanguage(CurrentLanguage);
+        }
+
         #endregion
 
         #region Konstruktori
@@ -98,7 +149,10 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             this.NavigateToMyToursCommand = new RelayCommand(Execute_NavigateToMyToursCommand, CanExecute_NavigateCommand);
             this.NavigateToMyTourRequestsCommand = new RelayCommand(Execute_NavigateToMyTourRequestsCommand, CanExecute_NavigateCommand);
             this.LogOutCommand = new RelayCommand(Execute_LogOutCommand, CanExecute_NavigateCommand);
-           // this.Checker = false;
+            // this.Checker = false;
+            this.SwitchToEnglishCommand = new RelayCommand(Execute_SwitchToEnglishCommand);
+            this.SwitchToSerbianCommand = new RelayCommand(Execute_SwitchToSerbianCommand);
+            this.CurrentLanguage = "en-US";
 
             GuestFullName = SignInForm.LoggedUser.FirstName + " " + SignInForm.LoggedUser.LastName;
         }
@@ -108,5 +162,25 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         }
         #endregion
 
+        private void UpdateTheme()
+        {
+            var app = (App)Application.Current;
+
+            if (IsDarkTheme)
+            {
+                // Apply dark theme
+                App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#283A82");
+
+            }
+            else
+            {
+                // Apply light theme
+                App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#DFFDFF");
+                
+            }
+
+            app.Resources["AppBackgroundBrush"] = new SolidColorBrush(App.BackgroundColor);
+            
+        }
     }
 }

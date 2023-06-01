@@ -118,102 +118,102 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Add</value>
+    <value>Dodaj</value>
   </data>
   <data name="CannotViewKeyPoints" xml:space="preserve">
-    <value>You can view key points only for tours that have started.</value>
+    <value>Samo za ture koje su počele možete pogledati ključne tačke.</value>
   </data>
   <data name="CheckAvailability" xml:space="preserve">
-    <value>Check availability</value>
+    <value>Proveri dostupnost</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>City</value>
+    <value>Grad</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>Country</value>
+    <value>Država</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>Kreiraj</value>
   </data>
   <data name="CreateComplexRequest" xml:space="preserve">
-    <value>Create complex request</value>
+    <value>Kreiraj složeni zahtev</value>
   </data>
   <data name="Dark" xml:space="preserve">
-    <value>Dark</value>
+    <value>Tamna</value>
   </data>
   <data name="DateRange" xml:space="preserve">
-    <value>Date range</value>
+    <value>Opseg datuma</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Opis</value>
   </data>
   <data name="Duration" xml:space="preserve">
-    <value>Duration</value>
+    <value>Trajanje</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>english</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Greška</value>
   </data>
   <data name="ExpirationDate" xml:space="preserve">
-    <value>Expiration date</value>
+    <value>Važi do</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Jezik</value>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>Light</value>
+    <value>Svetla</value>
   </data>
   <data name="LogOut" xml:space="preserve">
-    <value>Log out</value>
+    <value>Odjavi se</value>
   </data>
   <data name="MyRequests" xml:space="preserve">
-    <value>My requests</value>
+    <value>Moji zahtevi</value>
   </data>
   <data name="MyTours" xml:space="preserve">
-    <value>My tours</value>
+    <value>Moje ture</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>Naziv</value>
   </data>
   <data name="NumberOfGuests" xml:space="preserve">
-    <value>Number of guests</value>
+    <value>Broj gostiju</value>
   </data>
   <data name="NumberOfPeople" xml:space="preserve">
-    <value>Number of people</value>
+    <value>Broj ljudi</value>
   </data>
   <data name="Please select a tour!" xml:space="preserve">
-    <value>Please select a tour!</value>
+    <value>Odaberite turu!</value>
   </data>
   <data name="Reserve" xml:space="preserve">
-    <value>Reserve</value>
+    <value>Rezerviši</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search</value>
+    <value>Pretraži</value>
   </data>
   <data name="Serbian" xml:space="preserve">
-    <value>serbian</value>
+    <value>srpski</value>
   </data>
   <data name="StartDateAndTime" xml:space="preserve">
-    <value>Start date and time</value>
+    <value>Vreme i datum početka</value>
   </data>
   <data name="StartTime" xml:space="preserve">
-    <value>Start time</value>
+    <value>Vreme početka</value>
   </data>
   <data name="Statistics" xml:space="preserve">
-    <value>Statistics</value>
+    <value>Statistika</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
   <data name="TourPoints" xml:space="preserve">
-    <value>Tour points</value>
+    <value>Ključne tačke</value>
   </data>
   <data name="ToursOverview" xml:space="preserve">
-    <value>Tours overview</value>
+    <value>Pregled tura</value>
   </data>
   <data name="VoucherReports" xml:space="preserve">
-    <value>Voucher reports</value>
+    <value>Izveštaj o vaučerima</value>
   </data>
 </root>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         d:DesignHeight="584" d:DesignWidth="764">
     
-    <StackPanel Background="#DFFDFF">
+    <StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="30,20,30,25" Width="396" Height="90" >
             <Image Source="/Resources/Images/Guest2/travel-itinerary.png" Height="60" Width="128"/>

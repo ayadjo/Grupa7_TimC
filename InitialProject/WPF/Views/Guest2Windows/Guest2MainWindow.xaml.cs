@@ -16,6 +16,7 @@ using InitialProject.Domain.Models;
 using System.ComponentModel;
 using InitialProject.WPF.Views;
 using InitialProject.WPF.ViewModels.Guest2ViewModels;
+using InitialProject.Localization;
 
 namespace InitialProject.WPF.Views.Guest2Windows
 {
@@ -40,5 +41,20 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
             Close();
         }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            _ViewModel.IsDarkTheme = true;
+
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _ViewModel.IsDarkTheme = false;
+
+        }
+
+        
+
     }
 }

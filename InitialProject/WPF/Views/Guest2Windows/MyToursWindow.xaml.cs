@@ -19,6 +19,8 @@ using InitialProject.WPF.ViewModels.Guest2ViewModels;
 using System.Windows.Navigation;
 using System.Threading.Channels;
 using InitialProject.WPF.ViewModels;
+using InitialProject.Properties;
+using System.Resources;
 
 namespace InitialProject.WPF.Views.Guest2Windows
 {
@@ -64,20 +66,21 @@ namespace InitialProject.WPF.Views.Guest2Windows
         {
             if(SelectedTourEvent == null)
             {
-                MessageBox.Show("Morate selektovati turu!");
+                var resourceManager = new ResourceManager("InitialProject.Properties.Resources", typeof(Resources).Assembly);
+                var selectTourMessage = resourceManager.GetString("SelectTour");
+                MessageBox.Show(selectTourMessage);
+                //MessageBox.Show("Morate selektovati turu!");
                 //return;
             }
             else if(_selectedTourEvent.Status != Enumerations.TourEventStatus.Started)
             {
-                MessageBox.Show("Nije moguce pregledati kljucne tacke");
+                MessageBox.Show(Properties.Resources.CannotViewKeyPoints);
             }
             else
             {
                 TourPointsWindow tourPointsWindow = new TourPointsWindow(SelectedTourEvent);
                 tourPointsWindow.Show();
-            }
-            
-            
+            } 
             
         }
 

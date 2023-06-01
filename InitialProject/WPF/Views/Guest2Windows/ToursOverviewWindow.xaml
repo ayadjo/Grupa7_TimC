@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Window"
+        xmlns:local2="clr-namespace:InitialProject.Localization"
         mc:Ignorable="d"
         d:DesignHeight="540" d:DesignWidth="764">
     <UserControl.Resources>
@@ -15,7 +16,7 @@
             </StackPanel>
         </ControlTemplate>
     </UserControl.Resources>
-    <DockPanel Background="#DFFDFF" Width="764" Height="540">
+    <DockPanel Width="764" Height="540">
 
         <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
@@ -46,7 +47,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" >
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Image Source="/Resources/Images/Guest2/earth.png"  Height="20" Width="35" Margin="0,8,0,-5" />
-                        <Label Content="Država" Height="27" Width="50" VerticalAlignment="Center"/>
+                        <Label Content="{local2:Loc Country}" Height="27" Width="50" VerticalAlignment="Center"/>
                     </StackPanel>
                     <TextBox x:Name="tbCountry" Text="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
                 </StackPanel>
@@ -54,7 +55,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
                         <Image Source="/Resources/Images/Guest2/skyscraper.png"  Height="20" Width="35" Margin="0,8,0,-5"/>
-                        <Label Content="Grad" Height="27" Width="39"/>
+                        <Label Content="{local2:Loc City}" Height="27" Width="39"/>
                     </StackPanel>
                     <TextBox x:Name="tbCity" Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
                 </StackPanel>
@@ -62,7 +63,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
                         <Image Source="/Resources/Images/Guest2/group.png"  Height="20" Width="35" Margin="0,8,0,-5"/>
-                        <Label Content="Broj ljudi" Height="27" Width="56" Margin="-3,0,0,0"/>
+                        <Label Content="{local2:Loc NumberOfPeople}" Height="27" Width="56" Margin="-3,0,0,0"/>
                     </StackPanel>
                     <TextBox x:Name="tbNumberOfPeople" Text="{Binding Path=NumberOfPeople, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
                 </StackPanel>
@@ -70,7 +71,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
                         <Image Source="/Resources/Images/Guest2/translation.png"  Height="20" Width="38" Margin="3,8,3,-5"/>
-                        <Label Content="Jezik" Height="27" Width="40" Margin="3,0,3,0"/>
+                        <Label Content="{local2:Loc Language}" Height="27" Width="40" Margin="3,0,3,0"/>
                     </StackPanel>
                     <TextBox x:Name="tbLanguage" Text="{Binding Path=Languages, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
                 </StackPanel>
@@ -78,7 +79,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
                         <Image Source="/Resources/Images/Guest2/duration.png"  Height="20" Width="38" Margin="0,8,0,-5"/>
-                        <Label Content="Trajanje" Height="27" Width="52"/>
+                        <Label Content="{local2:Loc Duration}" Height="27" Width="52"/>
                     </StackPanel>
                     <TextBox x:Name="tbDuration" Text="{Binding Path=Duration, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
                 </StackPanel>
@@ -87,7 +88,7 @@
                 <Button x:Name="Search" Click="Search_Click" Grid.Row="1" Grid.Column="4"  Margin="20,5,0,10" Background="White" Height="23" Width="120">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/search.png" Width="20" Height="15" Margin="0,0,5,0" />
-                        <ContentControl Content="Pretraži" Height="15"></ContentControl>
+                        <ContentControl Content="{local2:Loc Search}" Height="15"></ContentControl>
                     </StackPanel>
                 </Button>
 
@@ -99,7 +100,7 @@
         <Button x:Name="Reserve" DockPanel.Dock="Bottom" Margin="550,-90,-26,30" Height="40" Width="120" Click="Reserve_Click" Background="White">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/check.png" Width="15" Height="15" Margin="0,0,5,0" />
-                <ContentControl Content="Rezerviši"></ContentControl>
+                <ContentControl Content="{local2:Loc Reserve}"></ContentControl>
             </StackPanel>
         </Button>
 

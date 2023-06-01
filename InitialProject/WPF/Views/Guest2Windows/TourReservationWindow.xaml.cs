@@ -16,13 +16,27 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using InitialProject.Domain.Models;
+using InitialProject.WPF.ViewModels.Guest2ViewModels;
+using InitialProject.WPF.Views.Guest2Windows;
+using System.Reflection.Metadata;
+using System.Printing;
+using System.IO;
+using System.Xml.Linq;
+using System.Windows.Xps.Packaging;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using PdfSharp.Fonts;
+using System.Diagnostics;
+using System.Drawing.Printing;
+using System.Reflection;
+using System.Drawing;
 
 namespace InitialProject.WPF.Views.Guest2Window
 {
     /// <summary>
     /// Interaction logic for TourReservationWindow.xaml
     /// </summary>
-    public partial class TourReservationWindow : Window,INotifyPropertyChanged
+    public partial class TourReservationWindow : Window, INotifyPropertyChanged
     {
 
         public TourReservationController _tourReservationController;
@@ -31,7 +45,7 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         private string _availableSpotsText { get; set; }
         private int _availableSpots { get; set; }
-        
+
 
         private TourEvent _selectedTourEvent;
 
@@ -125,6 +139,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             Vouchers = new ObservableCollection<Voucher>(_voucherController.VoucherForUser(SignInForm.LoggedUser.Id));
 
             numberOfPeopleTextBox.Focus();
+
         }
 
         private void Reserve_Click(object sender, RoutedEventArgs e)
@@ -132,7 +147,7 @@ namespace InitialProject.WPF.Views.Guest2Window
 
             if (AvailableSpots >= NumberOfPeople)
             {
-               
+
                 User user = SignInForm.LoggedUser;
                 TourReservation existingTourReservation = _tourReservationController.GetTourReservationForTourEventAndUser(SelectedTourEvent.Id, user.Id);
 
@@ -142,7 +157,7 @@ namespace InitialProject.WPF.Views.Guest2Window
                 }
                 else
                 {
-                    TourPointWhenGuestCame = new TourPoint {  Id = -1 };
+                    TourPointWhenGuestCame = new TourPoint { Id = -1 };
                     TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame, SelectedVoucher);
                     _tourReservationController.Save(tourReservation);
 
@@ -206,7 +221,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             }
         }
 
-        
+
 
         protected void OnPropertyChanged(string propertyName)
         {
@@ -217,12 +232,75 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         private void Suggest_Click(object sender, RoutedEventArgs e)
         {
-            if(SelectedTourEvent == null)
+            if (SelectedTourEvent == null)
             {
                 return;
             }
             List<TourEvent> tourEventsForLocation = _tourEventController.GetAvailableTourEventsForLocation(SelectedTourEvent.Tour.Location, NumberOfPeople);
             RefreshTours(tourEventsForLocation);
         }
+        
+
+        private void VoucherReports_Click(object sender, RoutedEventArgs e)
+        {
+            // Create a new PDF document
+            using (PdfDocument document = new PdfDocument())
+            {
+                // Add a page to the document
+                PdfPage page = document.AddPage();
+
+                // Create a graphics object for drawing on the page
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                // Set up the font
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode);
+                XFont titleFont = new XFont("Arial", 16, XFontStyle.Bold, options);
+                XFont subtitleFont = new XFont("Arial", 12, XFontStyle.Bold, options);
+                XFont contentFont = new XFont("Arial", 10, XFontStyle.Regular, options);
+
+                // Get the voucher data
+                List<Voucher> vouchers = _voucherController.VoucherForUser(SignInForm.LoggedUser.Id);
+
+                // Set up the page layout
+                XRect pageBounds = new XRect(40, 40, page.Width - 80, page.Height - 80);
+                XRect titleBounds = new XRect(pageBounds.Left, pageBounds.Top, pageBounds.Width, 30);
+                XRect tableBounds = new XRect(pageBounds.Left, pageBounds.Top + 40, pageBounds.Width, pageBounds.Height - 40);
+
+
+                // Draw the title
+                gfx.DrawString("Voucher Reports", titleFont, XBrushes.Black, titleBounds, XStringFormats.Center);
+
+                // Draw the table headers
+                int headerXPos = (int)tableBounds.Left;
+                int headerYPos = (int)tableBounds.Top;
+                int columnWidth = (int)tableBounds.Width / 3;
+
+                gfx.DrawString("Voucher ID", subtitleFont, XBrushes.Black, new XRect(headerXPos, headerYPos, columnWidth, 20), XStringFormats.CenterLeft);
+                gfx.DrawString("Name", subtitleFont, XBrushes.Black, new XRect(headerXPos + columnWidth, headerYPos, columnWidth, 20), XStringFormats.CenterLeft);
+                gfx.DrawString("Expiration Date", subtitleFont, XBrushes.Black, new XRect(headerXPos + (2 * columnWidth), headerYPos, columnWidth, 20), XStringFormats.CenterLeft);
+
+                // Draw the voucher data
+                int dataYPos = headerYPos + 20;
+                foreach (Voucher voucher in vouchers)
+                {
+                    gfx.DrawString(voucher.Id.ToString(), contentFont, XBrushes.Black, new XRect(headerXPos, dataYPos, columnWidth, 20), XStringFormats.CenterLeft);
+                    gfx.DrawString(voucher.Name, contentFont, XBrushes.Black, new XRect(headerXPos + columnWidth, dataYPos, columnWidth, 20), XStringFormats.CenterLeft);
+                    gfx.DrawString(voucher.ExpirationDate.ToString("dd-MM-yyyy"), contentFont, XBrushes.Black, new XRect(headerXPos + (2 * columnWidth), dataYPos, columnWidth, 20), XStringFormats.CenterLeft);
+
+                    dataYPos += 20;
+                }
+
+                // Save the PDF document
+                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\voucher_report.pdf";
+                document.Save(filePath);
+
+                // Open the PDF document with the default application
+                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+        }
+
+
     }
 }
+    
