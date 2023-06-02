@@ -1,12 +1,17 @@
 ﻿using InitialProject.Commands;
 using InitialProject.Controller;
 using InitialProject.Domain.Models;
+using InitialProject.Service.Services;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
@@ -18,14 +23,19 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
 
+        public ObservableCollection<TourRequest> PartsOfTheRequest { get; set; }
+
         public LocationController _locationController;
+
+        public ComplexTourRequestController _complexTourRequestController;
 
         public TourRequestController _tourRequestController;
 
-
         public RelayCommand AddRequestCommand { get; set; }
-        
+
         public RelayCommand CreateRequestCommand { get; set; }
+
+        public int ComplexRequestId { get; set; }
 
         private string _selectedCountry;
         public string SelectedCountry
@@ -127,6 +137,12 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         public void Executed_CreateRequestCommand(object obj)
         {
+            List<TourRequest> tourRequests = new List<TourRequest>(PartsOfTheRequest);
+            ComplexTourRequest complexTourRequest = new ComplexTourRequest(ComplexRequestId, tourRequests, SignInForm.LoggedUser, Enumerations.RequestStatusType.Standby);
+
+            _complexTourRequestController.Save(complexTourRequest);
+            MessageBox.Show("Uspešno ste kreirali zahtev!");
+            //this.Close();
 
         }
 
@@ -137,8 +153,32 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         public void Executed_AddRequestCommand(object obj)
         {
+            Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
+            User user = SignInForm.LoggedUser;
 
+            TourRequest simpleTourRequest = new TourRequest() { };
+            simpleTourRequest.Location = location;
+            simpleTourRequest.Language = Language;
+            simpleTourRequest.MaxGuests = MaxGuests;
+            simpleTourRequest.Description = Description;
+            simpleTourRequest.Start = SelectedStartDate;
+            simpleTourRequest.End = SelectedEndDate;
+            simpleTourRequest.Guest = user;
+            simpleTourRequest.Status = Enumerations.RequestStatusType.Standby;
+            simpleTourRequest.ComplexTourRequestId = ComplexRequestId;
+
+            PartsOfTheRequest.Add(simpleTourRequest);
+            _tourRequestController.Save(simpleTourRequest);
+
+            SelectedCountry = null;
+            SelectedCity = null;
+            Language = null;
+            MaxGuests = 0;
+            Description = "";
+            SelectedStartDate = DateTime.Now;
+            SelectedEndDate = DateTime.Now;
         }
+
 
         public bool CanExecute_AddRequestCommand(object obj)
         {
@@ -152,15 +192,20 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             this.NavigationService = navigationService;
 
             _locationController = new LocationController();
+            _complexTourRequestController = new ComplexTourRequestController();
             _tourRequestController = new TourRequestController();
 
             Countries = new ObservableCollection<string>(_locationController.GetAllCountries());
             Cities = new ObservableCollection<string>();
+            PartsOfTheRequest = new ObservableCollection<TourRequest>();
 
-            //TourRequest tourRequest = new TourRequest();
+
+            ComplexTourRequest complexTourRequest = new ComplexTourRequest();
 
             SelectedStartDate = DateTime.Now;
             SelectedEndDate = DateTime.Now;
+
+            ComplexRequestId = _complexTourRequestController.NextId();
         }
 
     }

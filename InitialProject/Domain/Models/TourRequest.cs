@@ -23,9 +23,11 @@ namespace InitialProject.Domain.Models
         public User Guest { get; set; }
         public RequestStatusType Status { get; set; }
 
+        public int ComplexTourRequestId { get; set; }
+
         public TourRequest() { }
 
-        public TourRequest(int id, Location location, string language, int maxGuests, string description, DateTime start, DateTime end, User guest, RequestStatusType status)
+        public TourRequest(int id, Location location, string language, int maxGuests, string description, DateTime start, DateTime end, User guest, RequestStatusType status, int complexTourRequestId)
         {
 
             Id = id;
@@ -37,6 +39,7 @@ namespace InitialProject.Domain.Models
             End = end;
             Guest = guest;
             Status = status;
+            ComplexTourRequestId = complexTourRequestId;
         }
 
         public string[] ToCSV()
@@ -51,7 +54,8 @@ namespace InitialProject.Domain.Models
                Start.ToString(),
                End.ToString(),
                Guest.Id.ToString(),
-               Status.ToString()
+               Status.ToString(),
+               ComplexTourRequestId.ToString()
             };
 
             return csvValues;
@@ -68,6 +72,7 @@ namespace InitialProject.Domain.Models
             End = Convert.ToDateTime(values[6]);
             Guest = new User() { Id = Convert.ToInt32(values[7]) };
             Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), values[8]);
+            ComplexTourRequestId = Convert.ToInt32(values[9]);
         }
     }
 }

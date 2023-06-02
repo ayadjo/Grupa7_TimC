@@ -30,6 +30,7 @@ namespace InitialProject.Injector
             ForumRepository forumRepository = new ForumRepository();
             CommentRepository commentRepository = new CommentRepository();
             NewForumNotificationRepository newForumNotificationRepository = new NewForumNotificationRepository();
+            ComplexTourRequestRepository complexTourRequestRepository = new ComplexTourRequestRepository();
 
             /*NotificationForRequestRepository notificationForRequestRepository = new NotificationForRequestRepository();
             notificationForRequestRepository.BindNotificationTourRequest();*/
@@ -49,6 +50,7 @@ namespace InitialProject.Injector
             _implementations.Add(typeof(IForumRepository), forumRepository);
             _implementations.Add(typeof(ICommentRepository), commentRepository);
             _implementations.Add(typeof(INewForumNotificationRepository), newForumNotificationRepository);
+            _implementations.Add(typeof(IComplexTourRequestRepository), complexTourRequestRepository);
 
             notificationRepository.BindNotificationTourReservation();
             reservationRescheduleRequestRepository.BindReservationRescheduleRequestWithAccommodationReservation();
@@ -61,6 +63,7 @@ namespace InitialProject.Injector
             accommodationRenovationRepository.BindAccommodationRenovationWithAccommodation();
             forumRepository.BindForumLocation();
             newForumNotificationRepository.BindNotificationForum();
+            complexTourRequestRepository.BindComplexTourRequestUser();
             //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
 
 

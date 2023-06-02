@@ -43,13 +43,28 @@
 
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0,20,0,10">Složeni zahtevi</Label>
             <DataGrid 
+                  ItemsSource="{Binding Path=ComplexRequests, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedComplexRequest, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True" x:Name="myComplexRequestsOverview" Height="105" Width="700">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="{local2:Loc Country}"  Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc City}"  Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc Language}"  Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc DateRange}" Width="*"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="{local2:Loc Country}" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource FirstTourRequestConverter}">
+                                            <Binding Path="SimpleTourRequests" />
+                                            <Binding Path="Location.Country" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding SimpleTourRequests[0].Location.City}" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding SimpleTourRequests[0].Language}" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}"  Binding="{Binding SimpleTourRequests[0].NumberOfGuests}" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc DateRange}" Binding="{Binding SimpleTourRequests[0].Start}" Width="*"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
