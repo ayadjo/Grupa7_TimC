@@ -19,25 +19,24 @@ namespace InitialProject.Injector
         {
 
             VoucherRepository voucherRepository = new VoucherRepository();
-            
             AccommodationOwnerReviewRepository accommodationOwnerReviewRepository = new AccommodationOwnerReviewRepository();
-
             ReservationRescheduleRequestRepository reservationRescheduleRequestRepository = new ReservationRescheduleRequestRepository();
-
             NotificationRepository notificationRepository = new NotificationRepository();
-
-
             TourRequestRepository tourRequestRepository = new TourRequestRepository();
-
             TourRequestAcceptedNotificationRepository tourRequestAcceptedNotificationRepository = new TourRequestAcceptedNotificationRepository();
             AccommodationRenovationRepository accommodationRenovationRepository = new AccommodationRenovationRepository();
-            
+            NewTourNotificationRepository newTorNotificationRepository = new NewTourNotificationRepository();
+            RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
+            ForumRepository forumRepository = new ForumRepository();
+            CommentRepository commentRepository = new CommentRepository();
+            NewForumNotificationRepository newForumNotificationRepository = new NewForumNotificationRepository();
+
             /*NotificationForRequestRepository notificationForRequestRepository = new NotificationForRequestRepository();
             notificationForRequestRepository.BindNotificationTourRequest();*/
 
-            NewTourNotificationRepository newTorNotificationRepository = new NewTourNotificationRepository();
 
-            RenovationRecommendationRepository renovationRecommendationRepository = new RenovationRecommendationRepository();
+
+
             _implementations.Add(typeof(IVoucherRepository), voucherRepository);
             _implementations.Add(typeof(IAccommodationOwnerReviewRepository), accommodationOwnerReviewRepository);
             _implementations.Add(typeof(IReservationRescheduleRequestRepository), reservationRescheduleRequestRepository);
@@ -47,6 +46,9 @@ namespace InitialProject.Injector
             _implementations.Add(typeof(ITourRequestAcceptedNotificationRepository), tourRequestAcceptedNotificationRepository);
             _implementations.Add(typeof(IAccommodationRenovationRepository), accommodationRenovationRepository);
             _implementations.Add(typeof(IRenovationRecommendationRepository), renovationRecommendationRepository);
+            _implementations.Add(typeof(IForumRepository), forumRepository);
+            _implementations.Add(typeof(ICommentRepository), commentRepository);
+            _implementations.Add(typeof(INewForumNotificationRepository), newForumNotificationRepository);
 
             notificationRepository.BindNotificationTourReservation();
             reservationRescheduleRequestRepository.BindReservationRescheduleRequestWithAccommodationReservation();
@@ -57,16 +59,14 @@ namespace InitialProject.Injector
             tourRequestRepository.BindTourRequestLocation();
             tourRequestAcceptedNotificationRepository.BindTourRequestAcceptedNotificationTourRequest();
             accommodationRenovationRepository.BindAccommodationRenovationWithAccommodation();
-            
-            
+            forumRepository.BindForumLocation();
+            newForumNotificationRepository.BindNotificationForum();
             //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
 
 
-            ForumRepository forumRepository = new ForumRepository();
-            CommentRepository commentRepository = new CommentRepository();
-            _implementations.Add(typeof(IForumRepository), forumRepository);
-            _implementations.Add(typeof(ICommentRepository), commentRepository);
-            forumRepository.BindForumLocation();
+
+
+
         }
 
         public static T CreateInstance<T>()

@@ -27,6 +27,7 @@ public partial class SignInForm : Window
     public NotificationController _notificationController;
     public TourRequestAcceptedNotificationController _tourRequestAcceptedNotifactionController;
     public NewTourNotificationController _newTourNotificationController;
+    public NewForumNotificationController _newForumNotificationController;
 
     private static User loggedUser;
 
@@ -69,6 +70,7 @@ public partial class SignInForm : Window
         _notificationController = new NotificationController();
         _tourRequestAcceptedNotifactionController = new TourRequestAcceptedNotificationController();
         _newTourNotificationController = new NewTourNotificationController();
+        _newForumNotificationController = new NewForumNotificationController();
 
         SignInCommand = new RelayCommand(SignIn);
 
@@ -87,14 +89,23 @@ public partial class SignInForm : Window
                 loggedUser = user;
                 if (user.Type == UserType.Owner)
                 {
+                    
                     int NumberOfGuestsWithoutReview = _accommodationReservationController.FindNumberOfGuestsWithoutReview();
+                    List<NewForumNotification> newForumNotifications = _newForumNotificationController.GetNotificationForUser(loggedUser.Id);
+                    if (newForumNotifications.Count > 0)
+                    {
+                        int newForumsNumber = newForumNotifications.Count;
+                        MessageBoxResult result = MessageBox.Show(this, "Broj novih foruma: " + newForumsNumber);
+                    }
                     MainWindow OwnerMainWindow = new MainWindow();
                     OwnerMainWindow.Show();
+                    
                     if (NumberOfGuestsWithoutReview > 0)
                     {
                         GuestsWithoutReviewNotificationWindow Notification = new GuestsWithoutReviewNotificationWindow();
                         Notification.Show();
                     }
+                    
                     Close();
                 }
                 else if (user.Type == UserType.Guide)

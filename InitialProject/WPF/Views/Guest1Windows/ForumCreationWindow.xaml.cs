@@ -52,6 +52,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         public CommentController _commentController;
 
+        public NewForumNotificationController _notificationController;
         public List<Comment> AllComments { get; set; }
 
         public User guest { get; set; }
@@ -116,6 +117,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
             _locationController = new LocationController();
             _forumController = new ForumController();
             _commentController = new CommentController();
+            _notificationController = new NewForumNotificationController(); //
 
             Countries = new ObservableCollection<string>(_locationController.GetAllCountries());
             Cities = new ObservableCollection<string>();
@@ -139,11 +141,12 @@ namespace InitialProject.WPF.Views.Guest1Windows
             Forum forum = new Forum() { Location = location, Author = guest, IsOpen = true, Comments = AllComments };
             Comment comment = new Comment() { Text = FirstComment, Author = guest, Role = guest.Type, ForumId = forum.Id, ReportsNumber = 0 };
             AllComments.Add(comment);
+            NewForumNotification notification = new NewForumNotification() { Forum = forum, IsDelivered = false }; //
 
-            
             if (_forumController.AvailableForum(forum))
             {
                 _forumController.SaveForumComment(forum);
+                _notificationController.Save(notification); //
                 MessageBox.Show("Uspešno ste otvorili forum!", "Forum otvoren!", MessageBoxButton.OK);
                 this.Close();
             }

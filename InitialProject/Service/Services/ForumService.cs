@@ -1,5 +1,6 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Domain.RepositoryInterfaces;
+using InitialProject.Enumerations;
 using InitialProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,15 @@ namespace InitialProject.Service.Services
 
         private ICommentRepository _commentRepository;
 
+        
+
         public ForumService()
         {
             _forumRepository = Injector.Injector.CreateInstance<IForumRepository>();
 
             _commentRepository = Injector.Injector.CreateInstance<ICommentRepository>();
+
+            
         }
 
         public List<Forum> GetAll()
@@ -62,5 +67,8 @@ namespace InitialProject.Service.Services
             }
             return true;
         }
+
+     
+
     }
 }
