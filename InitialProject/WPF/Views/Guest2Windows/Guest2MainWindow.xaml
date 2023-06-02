@@ -200,10 +200,10 @@
             </ToggleButton>
             <Label Content="{local:Loc Dark}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         </StackPanel>
-        
 
-        <Grid HorizontalAlignment="Left" Margin="234,50,0,0" VerticalAlignment="Center" Width="764" Height="530" >
-            <Frame x:Name="frame" Source="MyProfileWindow.xaml" Margin="0,-17,0,0"/>
+
+        <Grid HorizontalAlignment="Left" Margin="234,40,0,0" VerticalAlignment="Center" Width="764" Height="540" >
+            <Frame x:Name="frame" Source="ToursOverviewWindow.xaml" Margin="0,-15,0,0"/>
         </Grid>
 
     </Grid>

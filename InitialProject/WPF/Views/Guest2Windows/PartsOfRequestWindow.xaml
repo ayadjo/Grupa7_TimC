@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
-        Title="PartsOfRequestWindow" Height="450" Width="800">
+        Title="Chigra" Height="550" Width="700">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <Label FontSize="20" HorizontalAlignment="Center" Margin="0,20,0,0">Parts of TourRequests</Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding Path=PartsOfRequest, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedPart, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myRequestsOverview" Height="105" Width="700">
+            
+        </DataGrid>
+       
     </Grid>
 </Window>

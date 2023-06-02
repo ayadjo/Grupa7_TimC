@@ -72,10 +72,10 @@
             
             
 
-            <Button x:Name="CreateRequest" Command="{Binding Path=CreateRequestCommand}" Height="35" Width="95" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,20,10,20">
+            <Button x:Name="CreateRequest" Command="{Binding Path=CreateRequestCommand}" Height="35" Width="150" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,20,10,20">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <ContentControl Content="{local2:Loc Create}"></ContentControl>
+                    <ContentControl Content="{local2:Loc CreateRequest}"></ContentControl>
                 </StackPanel>
             </Button>
 
