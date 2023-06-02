@@ -169,7 +169,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             if (IsDarkTheme)
             {
                 // Apply dark theme
-                App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#283A82");
+                App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#5d74cf");
 
             }
             else

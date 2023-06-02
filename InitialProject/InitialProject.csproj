@@ -136,6 +136,8 @@
     <None Remove="Resources\Images\Guest2\pdf.png" />
     <None Remove="Resources\Images\Guest2\pencil.png" />
     <None Remove="Resources\Images\Guest2\percent.png" />
+    <None Remove="Resources\Images\Guest2\percentage.png" />
+    <None Remove="Resources\Images\Guest2\percentage2.png" />
     <None Remove="Resources\Images\Guest2\photo.png" />
     <None Remove="Resources\Images\Guest2\picture.png" />
     <None Remove="Resources\Images\Guest2\point.png" />
@@ -145,6 +147,7 @@
     <None Remove="Resources\Images\Guest2\search.png" />
     <None Remove="Resources\Images\Guest2\skyscraper.png" />
     <None Remove="Resources\Images\Guest2\star.png" />
+    <None Remove="Resources\Images\Guest2\tour-points.png" />
     <None Remove="Resources\Images\Guest2\tour.png" />
     <None Remove="Resources\Images\Guest2\translation.png" />
     <None Remove="Resources\Images\Guest2\transparency.png" />
@@ -184,6 +187,7 @@
     <None Remove="Resources\Images\stars.png" />
     <None Remove="Resources\Images\statistics.png" />
     <None Remove="Resources\Images\svet.png" />
+    <None Remove="Resources\Images\tour-point.png" />
     <None Remove="Resources\Images\tour.png" />
     <None Remove="Resources\Images\tour-bus.png" />
     <None Remove="Resources\Images\tourist.png" />
@@ -265,6 +269,9 @@
     </Resource>
     <Resource Include="Resources\Images\Guest1\x.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\percentage2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -366,6 +373,9 @@
     <Resource Include="Resources\Images\Guest2\translation.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\tour-point.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\travell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -436,12 +446,6 @@
 
   <ItemGroup>
     <Resource Include="Resources\Images\Guest2\photo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Images\Guest2\percent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -601,6 +605,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\Images\Guest2\percentage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Images\Guest2\tour-points.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\Images\map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

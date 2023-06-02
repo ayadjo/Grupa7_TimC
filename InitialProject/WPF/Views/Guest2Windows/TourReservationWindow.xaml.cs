@@ -136,7 +136,7 @@ namespace InitialProject.WPF.Views.Guest2Window
             _voucherController = new VoucherController();
 
             TourEvents = new ObservableCollection<TourEvent>(_tourEventController.GetTourEventsNotPassedForTour(tour));
-            Vouchers = new ObservableCollection<Voucher>(_voucherController.VoucherForUser(SignInForm.LoggedUser.Id));
+            Vouchers = new ObservableCollection<Voucher>(_voucherController.VoucherForUser(SignInForm.LoggedUser));
 
             numberOfPeopleTextBox.Focus();
 
@@ -158,7 +158,7 @@ namespace InitialProject.WPF.Views.Guest2Window
                 else
                 {
                     TourPointWhenGuestCame = new TourPoint { Id = -1 };
-                    TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame, SelectedVoucher);
+                    TourReservation tourReservation = new TourReservation(-1, NumberOfPeople, SelectedTourEvent, user, TourPointWhenGuestCame, SelectedVoucher, false);
                     _tourReservationController.Save(tourReservation);
 
                     if (SelectedVoucher != null)
@@ -260,7 +260,7 @@ namespace InitialProject.WPF.Views.Guest2Window
                 XFont contentFont = new XFont("Arial", 10, XFontStyle.Regular, options);
 
                 // Get the voucher data
-                List<Voucher> vouchers = _voucherController.VoucherForUser(SignInForm.LoggedUser.Id);
+                List<Voucher> vouchers = _voucherController.VoucherForUser(SignInForm.LoggedUser);
 
                 // Set up the page layout
                 XRect pageBounds = new XRect(40, 40, page.Width - 80, page.Height - 80);

@@ -8,7 +8,7 @@
         d:DesignHeight="584" d:DesignWidth="764">
     
     <StackPanel>
-
+        <Label FontSize="20" Content="My tours" HorizontalAlignment="Center" Margin="0,20,0,0"></Label>
         <StackPanel Orientation="Horizontal" Margin="30,20,30,25" Width="396" Height="90" >
             <Image Source="/Resources/Images/Guest2/travel-itinerary.png" Height="60" Width="128"/>
             <Image Source="/Resources/Images/Guest2/adventure.png" Height="90" Width="140"/>
@@ -17,7 +17,7 @@
         <DataGrid 
                   ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="0,0,10,-100" Height="311" Width="700">
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="0,0,10,-100" Height="260" Width="700">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Tour.Name}" Width="100"></DataGridTextColumn>
                 <DataGridTextColumn Header="Država" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
@@ -31,21 +31,21 @@
 
         <StackPanel Orientation="Horizontal" Height="205" Width="708">
 
-            <Button x:Name="CreateRequest" Click="CreateRequest_Click" Margin="0,100,0,30" Height="35" Width="120" Background="#FFFFFF">
+            <Button x:Name="CreateRequest" Click="CreateRequest_Click" Margin="0,100,0,30" Height="35" Width="150" Background="#FFFFFF">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/Guest2/star.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <ContentControl Content="Kreiraj"></ContentControl>
                 </StackPanel>
             </Button>
             
-            <Button x:Name="TourPoint" Click="TourPoint_Click" Margin="439,100,0,30" Height="35" Width="120" Background="#FFFFFF">
+            <Button x:Name="TourPoint" Click="TourPoint_Click" Margin="439,100,0,30" Height="35" Width="150" Background="#FFFFFF">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/Guest2/destination.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <ContentControl Content="Ključne tačke"></ContentControl>
                 </StackPanel>
             </Button>
 
-            <Button x:Name="Rate" Click="Rate_Click" Margin="20,100,0,30" Height="35" Width="120" Background="#FFFFFF">
+            <Button x:Name="Rate" Click="Rate_Click" Margin="20,100,0,30" Height="35" Width="150" Background="#FFFFFF">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/Guest2/star.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <ContentControl Content="Oceni"></ContentControl>
