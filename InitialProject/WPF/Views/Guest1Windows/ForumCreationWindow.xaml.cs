@@ -52,7 +52,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         public CommentController _commentController;
 
-        public NewForumNotificationController _notificationController;
+        public NewForumNotificationController _notificationController; //
         public List<Comment> AllComments { get; set; }
 
         public User guest { get; set; }
