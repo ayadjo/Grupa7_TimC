@@ -21,7 +21,9 @@ namespace InitialProject.Domain.Models
 
         public TourPoint TourPointWhenGuestCame { get; set; }
 
-        public Voucher Voucher { get; set; }    
+        public Voucher Voucher { get; set; }  
+        
+        public bool IsRewarded { get; set; }
 
         public TourReservation()
         {
@@ -29,7 +31,7 @@ namespace InitialProject.Domain.Models
         }
 
 
-        public TourReservation(int id, int numberOfPeople,TourEvent tourEvent, User guest, TourPoint tourPointWhenGuestCame, Voucher voucher)
+        public TourReservation(int id, int numberOfPeople,TourEvent tourEvent, User guest, TourPoint tourPointWhenGuestCame, Voucher voucher, bool isRewarded)
         {
             Id = id;
             NumberOfPeople = numberOfPeople;
@@ -37,6 +39,7 @@ namespace InitialProject.Domain.Models
             Guest = guest;
             TourPointWhenGuestCame = tourPointWhenGuestCame;
             Voucher = voucher;
+            IsRewarded = isRewarded;
         }
 
         public string[] ToCSV()
@@ -48,7 +51,8 @@ namespace InitialProject.Domain.Models
                 TourEvent.Id.ToString(),
                 Guest.Id.ToString(),
                 TourPointWhenGuestCame.Id.ToString(),
-                Voucher.Id.ToString()
+                Voucher.Id.ToString(),
+                IsRewarded.ToString()
             };
             return csvValues;
         }
@@ -61,6 +65,7 @@ namespace InitialProject.Domain.Models
             Guest = new User() { Id = Convert.ToInt32(values[3]) };
             TourPointWhenGuestCame = new TourPoint() { Id= Convert.ToInt32(values[4]) };
             Voucher = new Voucher() { Id = Convert.ToInt32(values[5]) };
+            IsRewarded = bool.Parse(values[6]);
         }
     }
 }

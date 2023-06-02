@@ -20,5 +20,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
 
         Voucher Update(Voucher voucher);
 
+        int NextId();
     }
 }

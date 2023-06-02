@@ -56,9 +56,9 @@ namespace InitialProject.Controller
             return _voucherService.GetVouchersThatArentUsed(vouchers);
         }
 
-        public List<Voucher> VoucherForUser(int userId)
+        public List<Voucher> VoucherForUser(User user)
         {
-            return _voucherService.VoucherForUser(userId);
+            return _voucherService.VoucherForUser(user);
         }
     }
 }
