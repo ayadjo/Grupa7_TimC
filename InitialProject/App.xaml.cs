@@ -65,8 +65,6 @@ namespace InitialProject
 
 
             AccommodationRepository.GetInstance().BindAccomodationLocation();
-            ForumRepository forumRepository = new ForumRepository();
-            forumRepository.BindForumLocation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationAccommodation();
             AccommodationReservationRepository.GetInstance().BindAccomodationReservationGuest();
 
@@ -84,16 +82,16 @@ namespace InitialProject
 
             GuestReviewRepository.GetInstance().BindGuestReviewWithAccommodationReservation();
 
-            //AccommodationOwnerReviewRepository.GetInstance().BindAccommodationOwnerReviewWithAccommodationReservation();
+            
 
             GuideReviewRepository.GetInstance().BindGuideReviewWithTourReservation();
 
 
+
             Injector.Injector.BindComponents();
 
-
-            //VoucherRepository.GetInstance().BindVoucherUser();
             TourReservationRepository.GetInstance().BindTourReservationVoucher();
+
         }
 
         protected override void OnStartup(StartupEventArgs e)
