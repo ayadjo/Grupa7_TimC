@@ -12,9 +12,11 @@ namespace InitialProject.Service.Services
     public class ComplexTourRequestService
     {
         private IComplexTourRequestRepository _tourRequestRepository;
+        private ITourRequestRepository _simpleTourRequestRepository;
         public ComplexTourRequestService()
         {
             _tourRequestRepository = Injector.Injector.CreateInstance<IComplexTourRequestRepository>();
+            _simpleTourRequestRepository = Injector.Injector.CreateInstance<ITourRequestRepository>();
         }
 
         public List<ComplexTourRequest> GetAll()
@@ -47,7 +49,7 @@ namespace InitialProject.Service.Services
             return _tourRequestRepository.NextId();
         }
 
-        public List<ComplexTourRequest> GetAllComplexTourRequestsForUser(int userId)
+        /*public List<ComplexTourRequest> GetAllComplexTourRequestsForUser(int userId)
         {
             List<ComplexTourRequest> myComplexRequests = new List<ComplexTourRequest>();
             var allComplexRequests = _tourRequestRepository.GetAll();
@@ -61,12 +63,50 @@ namespace InitialProject.Service.Services
                     {
                         request.Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), "Declined");
                         _tourRequestRepository.Update(request);
-                    }*/
+                    }
                     myComplexRequests.Add(request);
                 }
             }
 
             return myComplexRequests;
+        }*/
+
+        public List<ComplexTourRequest> GetAllComplexTourRequestsForUser(int userId)
+        {
+            List<ComplexTourRequest> myComplexRequests = new List<ComplexTourRequest>();
+            var allComplexRequests = _tourRequestRepository.GetAll();
+
+            for (int i = 0; i < allComplexRequests.Count(); i++)
+            {
+                var request = allComplexRequests.ElementAt(i);
+                if (request.Guest.Id == userId)
+                {
+                    // Retrieve the associated simple tour requests for the complex tour request
+                    List<TourRequest> simpleRequests = GetSimpleTourRequestsForComplexRequest(request.Id);
+
+                    // Assign the simple tour requests to the SimpleTourRequests property of the complex tour request
+                    request.SimpleTourRequests = simpleRequests;
+
+                    myComplexRequests.Add(request);
+                }
+            }
+
+            return myComplexRequests;
+        }
+
+        public List<TourRequest> GetSimpleTourRequestsForComplexRequest(int complexRequestId)
+        {
+            List<TourRequest> tourRequests = new List<TourRequest>();
+            foreach (TourRequest request in _simpleTourRequestRepository.GetAll()) 
+            {
+                if(request.ComplexTourRequestId == complexRequestId)
+                {
+                    tourRequests.Add(request);
+                }
+
+            }
+
+            return tourRequests;
         }
     }
 }

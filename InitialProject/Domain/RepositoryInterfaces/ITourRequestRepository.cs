@@ -14,5 +14,7 @@ namespace InitialProject.Domain.RepositoryInterfaces
         TourRequest Save(TourRequest tourRequest);
         void Delete(TourRequest tourRequest);
         TourRequest Update(TourRequest tourRequest);
+
+        int NextId();
     }
 }

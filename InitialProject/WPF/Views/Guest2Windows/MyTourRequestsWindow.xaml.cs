@@ -49,5 +49,11 @@ namespace InitialProject.WPF.Views.Guest2Windows
             TourRequestStatisticsWindow tourRequestStatisticsWindow = new TourRequestStatisticsWindow();
             tourRequestStatisticsWindow.Show();
         }
+
+        private void CreateComplexTourRequest_Click(object sender, RoutedEventArgs e)
+        {
+            CreateComplexTourRequestWindow createComplexTourRequestWindow = new CreateComplexTourRequestWindow();
+            createComplexTourRequestWindow.Show();
+        }
     }
 }

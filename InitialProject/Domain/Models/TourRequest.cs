@@ -72,7 +72,7 @@ namespace InitialProject.Domain.Models
             End = Convert.ToDateTime(values[6]);
             Guest = new User() { Id = Convert.ToInt32(values[7]) };
             Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), values[8]);
-            ComplexTourRequestId = Convert.ToInt32(values[9]);
+            ComplexTourRequestId = int.Parse(values[9]);
         }
     }
 }

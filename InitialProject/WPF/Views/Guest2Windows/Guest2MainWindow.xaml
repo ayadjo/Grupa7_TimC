@@ -171,28 +171,23 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="55,0,0,30">
             <Label Content="{local:Loc Light}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <ToggleButton x:Name="ToggleButton"  Foreground="White"
-                         Height="25" Width="40" FontSize="10" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" IsChecked="{Binding IsDarkTheme, Mode=TwoWay}">
+                         Height="27" Width="40" FontSize="10" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" IsChecked="{Binding IsDarkTheme, Mode=TwoWay}">
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="ToggleButton">
-                        <Border x:Name="B1" Background="Black"
-                                CornerRadius="12" Padding="5">
-                            <Border x:Name="B2" Background="White"
+                        <Border x:Name="B1" Background="#5d74cf"
+                                CornerRadius="15" Padding="5">
+                            <Border x:Name="B2" Background="#DFFDFF"
                                     Width="20"
-                                    CornerRadius="8" HorizontalAlignment="Left">
-                                <TextBlock x:Name="T1" Text="OFF" Foreground="Black" FontSize="8"
-                                          HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
-                                          TextAlignment="Center"/>
+                                    CornerRadius="10" HorizontalAlignment="Left">
+                                <Image x:Name="Img" Source="/Resources/Images/Guest2/sun.png" Width="16" Height="16" />
                             </Border>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="B2" Property="HorizontalAlignment" Value="Right"/>
-                                <Setter TargetName="B2" Property="Background" Value="Black" />
-                                <Setter TargetName="B1" Property="Background" Value="White" />
-                                <Setter TargetName="T1" Property="Text" Value="ON" />
-                                <Setter TargetName="T1" Property="Foreground" Value="White"/>
-                                <Setter TargetName="T1" Property="FontSize" Value="10"/>
+                                <Setter TargetName="B2" Property="Background" Value="#5d74cf" />
+                                <Setter TargetName="B1" Property="Background" Value="#DFFDFF" />
+                                <Setter TargetName="Img" Property="Source" Value="/Resources/Images/Guest2/moon.png" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

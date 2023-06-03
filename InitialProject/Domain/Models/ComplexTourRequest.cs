@@ -34,7 +34,7 @@ namespace InitialProject.Domain.Models
             foreach (TourRequest tourRequest in SimpleTourRequests)
             {
                 requestList.Append(tourRequest.Id.ToString());
-                requestList.Append("|");
+                requestList.Append(",");
             }
             if (requestList.Length > 0)
             {
@@ -59,7 +59,7 @@ namespace InitialProject.Domain.Models
             Id = int.Parse(values[0]);
             Guest = new User() { Id = Convert.ToInt32(values[1]) };
             Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), values[2]);
-            string[] tourRequestIds = values[3].Split("|");
+            string[] tourRequestIds = values[3].Split(",");
             SimpleTourRequests = new List<TourRequest>();
 
             foreach (string tourRequestId in tourRequestIds)
@@ -68,7 +68,6 @@ namespace InitialProject.Domain.Models
                 TourRequest tourRequest = new TourRequest { Id = requestId };
                 SimpleTourRequests.Add(tourRequest);
             }
-
 
         }
 

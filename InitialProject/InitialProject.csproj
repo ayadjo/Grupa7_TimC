@@ -132,6 +132,7 @@
     <None Remove="Resources\Images\Guest2\logout.png" />
     <None Remove="Resources\Images\Guest2\man.png" />
     <None Remove="Resources\Images\Guest2\map.png" />
+    <None Remove="Resources\Images\Guest2\moon.png" />
     <None Remove="Resources\Images\Guest2\passport.png" />
     <None Remove="Resources\Images\Guest2\pdf.png" />
     <None Remove="Resources\Images\Guest2\pencil.png" />
@@ -147,6 +148,7 @@
     <None Remove="Resources\Images\Guest2\search.png" />
     <None Remove="Resources\Images\Guest2\skyscraper.png" />
     <None Remove="Resources\Images\Guest2\star.png" />
+    <None Remove="Resources\Images\Guest2\sun.png" />
     <None Remove="Resources\Images\Guest2\tour-points.png" />
     <None Remove="Resources\Images\Guest2\tour.png" />
     <None Remove="Resources\Images\Guest2\translation.png" />
@@ -270,7 +272,13 @@
     <Resource Include="Resources\Images\Guest1\x.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\Guest2\moon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\Guest2\percentage2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\sun.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\home.png">

@@ -72,14 +72,23 @@
             </StackPanel>
 
             <DataGrid 
-                  ItemsSource="{Binding Path=TourPoints, UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding Path=PartsOfTheRequest, UpdateSourceTrigger=PropertyChanged}"
+                  
                   AutoGenerateColumns="False" IsReadOnly="True" x:Name="myComplexTourRequest" Width="344" Margin="-5,0,0,0" Height="103" Background="White">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Country}" Width="65"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding City}" Width="65"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Location.Country, Mode=OneWay}" Width="65"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding Location.City, Mode=OneWay}" Width="65"></DataGridTextColumn>
                     <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding Language}" Width="65"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}" Binding="{Binding MaxGuests}" Width="65"></DataGridTextColumn>
                     <DataGridTextColumn Header="{local2:Loc Description}" Binding="{Binding Description}" Width="65"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc DateRange}" Binding="{Binding DateRange}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc DateRange}"  Width="100">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding StringFormat="{}{0} - {1}">
+                                <Binding Path="Start" />
+                                <Binding Path="End" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
 

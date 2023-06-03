@@ -133,9 +133,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
             User user = SignInForm.LoggedUser;
 
-           // MaxGuests = 0;
-
-
+            // MaxGuests = 0;
 
             TourRequest tourRequest = new TourRequest()
             {
@@ -144,9 +142,10 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
                 MaxGuests = MaxGuests,
                 Description = Description,
                 Start = SelectedStartDate,
-                End = SelectedEndDate,               
+                End = SelectedEndDate,
                 Guest = user,
-                Status = Enumerations.RequestStatusType.Standby
+                Status = Enumerations.RequestStatusType.Standby,
+                ComplexTourRequestId = -1
             };
 
 

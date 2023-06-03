@@ -47,6 +47,11 @@ namespace InitialProject.Service.Services
             _tourRequestRepository.Delete(request);
         }
 
+        public int NextId()
+        {
+            return _tourRequestRepository.NextId();
+        }
+
         public List<TourRequest> GetAllTourRequestsForUser(int userId)
         {
             List<TourRequest> myRequests = new List<TourRequest>();

@@ -46,6 +46,10 @@ namespace InitialProject.Controller
             return _tourRequestService.Update(tourRequest);
         }
 
+        public int NextId()
+        {
+            return _tourRequestService.NextId();
+        }
         public List<TourRequest> GetAllTourRequestsForUser(int userId)
         {
             return _tourRequestService.GetAllTourRequestsForUser(userId);

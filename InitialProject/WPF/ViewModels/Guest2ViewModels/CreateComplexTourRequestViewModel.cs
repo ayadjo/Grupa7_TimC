@@ -3,6 +3,7 @@ using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Service.Services;
 using InitialProject.WPF.Views;
+using InitialProject.WPF.Views.OwnerWindows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -153,10 +154,19 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         public void Executed_AddRequestCommand(object obj)
         {
+            /*int maxG = int.Parse(MaxGuests);
+            User guest = (User)SignInForm.LoggedUser;
+            Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
+            TourRequest simpleTour = new TourRequest(-1, location, Description, Language, maxG, SelectedStartDate, SelectedEndDate, guest, Enumerations.RequestStatusType.Standby, complexTourRequestId);
+            PartsOfTheRequest.Add(simpleTour);
+            _tourRequestController.Save(simpleTour);*/
+
+            
             Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
             User user = SignInForm.LoggedUser;
 
             TourRequest simpleTourRequest = new TourRequest() { };
+            simpleTourRequest.Id = _tourRequestController.NextId();
             simpleTourRequest.Location = location;
             simpleTourRequest.Language = Language;
             simpleTourRequest.MaxGuests = MaxGuests;
@@ -170,13 +180,8 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             PartsOfTheRequest.Add(simpleTourRequest);
             _tourRequestController.Save(simpleTourRequest);
 
-            SelectedCountry = null;
-            SelectedCity = null;
-            Language = null;
-            MaxGuests = 0;
-            Description = "";
-            SelectedStartDate = DateTime.Now;
-            SelectedEndDate = DateTime.Now;
+            //brisanje unosa dodati
+
         }
 
 
