@@ -49,28 +49,6 @@ namespace InitialProject.Service.Services
             return _tourRequestRepository.NextId();
         }
 
-        /*public List<ComplexTourRequest> GetAllComplexTourRequestsForUser(int userId)
-        {
-            List<ComplexTourRequest> myComplexRequests = new List<ComplexTourRequest>();
-            var allComplexRequests = _tourRequestRepository.GetAll();
-
-            for (int i = 0; i < allComplexRequests.Count(); i++)
-            {
-                var request = allComplexRequests.ElementAt(i);
-                if (request.Guest.Id == userId)
-                {
-                    /*if ((request.SimpleTourRequests[0].Start - DateTime.Today).TotalDays <= 2 && request.Status == RequestStatusType.Standby)
-                    {
-                        request.Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), "Declined");
-                        _tourRequestRepository.Update(request);
-                    }
-                    myComplexRequests.Add(request);
-                }
-            }
-
-            return myComplexRequests;
-        }*/
-
         public List<ComplexTourRequest> GetAllComplexTourRequestsForUser(int userId)
         {
             List<ComplexTourRequest> myComplexRequests = new List<ComplexTourRequest>();
@@ -81,12 +59,26 @@ namespace InitialProject.Service.Services
                 var request = allComplexRequests.ElementAt(i);
                 if (request.Guest.Id == userId)
                 {
-                    // Retrieve the associated simple tour requests for the complex tour request
                     List<TourRequest> simpleRequests = GetSimpleTourRequestsForComplexRequest(request.Id);
-
-                    // Assign the simple tour requests to the SimpleTourRequests property of the complex tour request
                     request.SimpleTourRequests = simpleRequests;
 
+                    bool allAccepted = simpleRequests.All(simpleRequest => simpleRequest.Status == RequestStatusType.Approved);
+
+                    bool allDeclined = simpleRequests.All(simpleRequest => simpleRequest.Status == RequestStatusType.Declined);
+
+                    bool within48Hours = (simpleRequests[0].Start - DateTime.Today).TotalHours <= 48;
+
+                    if (allAccepted)
+                    {
+                        request.Status = RequestStatusType.Approved;
+                    }
+                    else if (within48Hours && allDeclined && request.Status == RequestStatusType.Standby)
+                    {
+                        request.Status = RequestStatusType.Declined;
+                    }
+
+                    _tourRequestRepository.Update(request);
+                    
                     myComplexRequests.Add(request);
                 }
             }
