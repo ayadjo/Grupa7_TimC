@@ -38,5 +38,10 @@ namespace InitialProject.Service.Services
         {
             _commentRepository.Delete(comment);
         }
+
+        public List<Comment> GetByForumId(int id)
+        {
+            return _commentRepository.GetByForumId(id);
+        }
     }
 }

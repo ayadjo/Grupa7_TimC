@@ -73,7 +73,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
-            ProfileWindow profileWindow = new ProfileWindow();
+            ProfileWindow profileWindow = new ProfileWindow(guest);
             profileWindow.Show();
         }
 

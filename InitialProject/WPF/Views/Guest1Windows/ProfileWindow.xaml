@@ -26,15 +26,15 @@
 
 
 
-        <Image Source="\Resources\Images\Guest1\profile.png" Margin="91,54,783,548" Width="150" Height="150"/>
+        <Image Source="\Resources\Images\Guest1\profile.png" Margin="116,55,808,597" Width="100" Height="100"/>
 
         <Label Content="Ime:" HorizontalAlignment="Left" Margin="269,57,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Prezime:" HorizontalAlignment="Left" Margin="269,113,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Rola: gost (1)" HorizontalAlignment="Left" Margin="269,171,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Prezime:" HorizontalAlignment="Left" Margin="269,90,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Rola: gost (1)" HorizontalAlignment="Left" Margin="269,122,0,0" VerticalAlignment="Top" FontSize="20"/>
 
         <Label Content="Prosečna ocena:" HorizontalAlignment="Left" Margin="647,57,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Štampanje izveštaja:" HorizontalAlignment="Left" Margin="647,113,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Button HorizontalAlignment="Left" Margin="840,116,0,0" VerticalAlignment="Top" Command="{Binding CancelButtonCommand}" Height="30" Width="100" Background="White">
+        <Label Content="Štampanje izveštaja:" HorizontalAlignment="Left" Margin="647,90,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Button HorizontalAlignment="Left" Margin="840,94,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="White">
             <Grid>
                 <Image Source="\Resources\Images\Guest1\print.png" Margin="39,5,-10,5"/>
                 <TextBlock Text="Štampaj" VerticalAlignment="Center" Margin="-9,0,9,0" />
@@ -42,14 +42,36 @@
         </Button>
 
 
-        <Label Content="Spisak Vaših rezervacija:" HorizontalAlignment="Left" Margin="16,209,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <DataGrid Margin="10,247,10,77" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single"  RowHeight="50" Background="white">
+        
+        <Label Content="Spisak Vaših rezervacija:" HorizontalAlignment="Left" Margin="16,177,0,0" VerticalAlignment="Top" FontSize="20"/>
+        
+        <DataGrid Margin="10,215,10,330" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single"  RowHeight="50" Background="white">
 
         </DataGrid>
 
 
 
-        <Button HorizontalAlignment="Left" Margin="898,666,0,0" VerticalAlignment="Top" Command="{Binding CancelButtonCommand}" Height="50" Width="100" Background="White">
+        <Label Content="Spisak foruma koje ste Vi kreirali:" HorizontalAlignment="Left" Margin="16,422,0,0" VerticalAlignment="Top" FontSize="20"/>
+
+        <DataGrid ItemsSource="{Binding Forums, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedForum, UpdateSourceTrigger=PropertyChanged}"
+                    Margin="10,459,126,86" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single"  RowHeight="50" Background="white">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button HorizontalAlignment="Left" Margin="903,538,0,0" VerticalAlignment="Top" Height="50" Width="100" Background="White"  Click="CloseForumButon_Click">
+            <Grid>
+                <Image Source="/Resources/Images/Guest1/x.png" Width="30" Height="30" Margin="34,0,-16,0"/>
+                <TextBlock Text="Zatvori" VerticalAlignment="Center" Margin="-10,0,10,0" />
+            </Grid>
+        </Button>
+
+
+
+        <Button HorizontalAlignment="Left" Margin="898,666,0,0" VerticalAlignment="Top" Click="CancelButon_Click" Height="50" Width="100" Background="White">
             <Grid>
                 <Image Source="\Resources\Images\Guest1\back.png" Width="30" Height="30" Margin="34,0,-16,0"/>
                 <TextBlock Text="Nazad" VerticalAlignment="Center" Margin="-19,0,19,0" />

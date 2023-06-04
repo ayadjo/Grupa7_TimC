@@ -19,5 +19,7 @@ namespace InitialProject.Domain.RepositoryInterfaces
         public Forum SaveForumComment(Forum forum);
 
         public void BindForumLocation();
+
+        public List<Forum> GetByAuthorId(int id);
     }
 }

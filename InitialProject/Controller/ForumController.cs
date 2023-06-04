@@ -49,6 +49,9 @@ namespace InitialProject.Controller
             return _forumService.AvailableForum(forum);
         }
 
-        
+        public List<Forum> GetByAuthorId(int id)
+        {
+            return _forumService.GetByAuthorId(id);
+        }
     }
 }

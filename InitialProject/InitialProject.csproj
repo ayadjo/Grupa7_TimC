@@ -626,7 +626,6 @@
 
   <ItemGroup>
     <Folder Include="Localization\" />
-    <Folder Include="WPF\ViewModels\Guest1ViewModels\" />
     <Folder Include="WPF\ViewModels\GuideViewModels\" />
   </ItemGroup>
 

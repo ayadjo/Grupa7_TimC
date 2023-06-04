@@ -68,7 +68,10 @@ namespace InitialProject.Service.Services
             return true;
         }
 
-     
 
+        public List<Forum> GetByAuthorId(int id)
+        {
+            return _forumRepository.GetByAuthorId(id);
+        }
     }
 }

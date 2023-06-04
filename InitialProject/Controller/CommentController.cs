@@ -38,5 +38,11 @@ namespace InitialProject.Controller
         {
             _commentService.Update(comment);
         }
+
+        public List<Comment> GetByForumId(int id)
+        {
+
+            return _commentService.GetByForumId(id);
+        }
     }
 }

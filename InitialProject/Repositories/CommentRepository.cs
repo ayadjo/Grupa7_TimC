@@ -62,5 +62,10 @@ namespace InitialProject.Repositories
             _serializer.ToCSV(FilePath, _comments);
             return comment;
         }
+
+        public List<Comment> GetByForumId(int id)
+        {
+            return _comments.FindAll(c => c.ForumId == id);
+        }
     }
 }

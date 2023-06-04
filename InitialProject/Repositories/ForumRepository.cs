@@ -100,5 +100,10 @@ namespace InitialProject.Repositories
                 }
             }
         }
+
+        public List<Forum> GetByAuthorId(int id)
+        {
+            return _forums.FindAll(f => f.Author.Id == id);
+        }
     }
 }

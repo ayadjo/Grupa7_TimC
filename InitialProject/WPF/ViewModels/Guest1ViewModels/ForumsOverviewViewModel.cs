@@ -49,8 +49,15 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
 
         private void Forum_Click()
         {
-            //ForumWindow forumWindow = new ForumWindow();
-            //forumWindow.Show();
+            if (SelectedForum == null)
+            {
+                MessageBox.Show("Prvo morate odabrati forum!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                ForumWindow forumWindow = new ForumWindow(guest, SelectedForum);
+                forumWindow.Show();
+            }
         }
 
         private void CancelButton_Click()
