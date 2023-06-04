@@ -17,8 +17,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}" Width="100"></DataGridTextColumn>
                 <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn Header="Grad" Binding="{Binding Status}" Width="100"></DataGridTextColumn>
-                
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Termin" Binding="{Binding AcceptedRequestGuide.Appointment}" Width="100"></DataGridTextColumn>
             </DataGrid.Columns>
             
         </DataGrid>

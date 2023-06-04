@@ -1,4 +1,5 @@
 ﻿using InitialProject.Domain.Models;
+using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -22,22 +23,25 @@ namespace InitialProject.Repositories
             _acceptedRequestGuide = _serializer.FromCSV(FilePath);
         }
 
-        public void BindTourRequestUser()
+
+        public void BindAcceptedRequestGuideUser()
         {
-            foreach (TourRequest tourRequest in _tourRequests)
+            foreach (AcceptedRequestGuide acceptedRequestGuide in _acceptedRequestGuide)
             {
-                int userId = tourRequest.Guest.Id;
+                int userId = acceptedRequestGuide.Guide.Id;
                 User user = UserRepository.GetInstance().Get(userId);
                 if (user != null)
                 {
-                    tourRequest.Guest = user;
+                    acceptedRequestGuide.Guide = user;
                 }
                 else
                 {
-                    Console.WriteLine("Error in tourRequestUser binding");
+                    Console.WriteLine("Error in acceptedRequestGuideUser binding");
                 }
             }
         }
+
+       
 
         public List<AcceptedRequestGuide> GetAll()
         {

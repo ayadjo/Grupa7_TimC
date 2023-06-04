@@ -57,6 +57,23 @@ namespace InitialProject.Repositories
             }
         }
 
+        public void BindTourRequestAcceptedRequest()
+        {
+            foreach (TourRequest tourRequest in _tourRequests)
+            {
+                int acceptedRequestGuideId = tourRequest.AcceptedRequestGuide.Id;
+                AcceptedRequestGuide acceptedRequest = Injector.Injector.CreateInstance<IAcceptedRequestGuideRepository>().Get(acceptedRequestGuideId);
+                if (acceptedRequest != null)
+                {
+                    tourRequest.AcceptedRequestGuide = acceptedRequest;
+                }
+                else
+                {
+                    Console.WriteLine("Error in tourRequestAcceptedRequest binding");
+                }
+            }
+        }
+
         public List<TourRequest> GetAll()
         {
             return _tourRequests;

@@ -13,7 +13,7 @@ namespace InitialProject.Domain.Models
 
         public User Guide { get; set; }
 
-        public DateTime Appointment { get; set; }
+        public DateTime? Appointment { get; set; }
 
         public AcceptedRequestGuide() { }
 

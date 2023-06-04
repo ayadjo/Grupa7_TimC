@@ -145,7 +145,13 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
                 End = SelectedEndDate,
                 Guest = user,
                 Status = Enumerations.RequestStatusType.Standby,
-                ComplexTourRequestId = -1
+                ComplexTourRequestId = -1,
+                AcceptedRequestGuide = new AcceptedRequestGuide()
+                {
+                    Id = -1, 
+                    Guide = null,
+                    Appointment = null
+                }
             };
 
 
