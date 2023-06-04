@@ -52,5 +52,10 @@ namespace InitialProject.Controller
         {
             return _tourRequestService.GetAllComplexTourRequestsForUser(userId);
         }
+
+        public List<TourRequest> GetSimpleTourRequestsForComplexRequest(int complexRequestId)
+        {
+            return _tourRequestService.GetSimpleTourRequestsForComplexRequest(complexRequestId);
+        }
     }
 }

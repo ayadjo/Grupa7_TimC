@@ -30,12 +30,28 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         
         public RelayCommand CreateComplexRequest { get; set; }
 
-        public MyTourRequestsViewModel(NavigationService service)
+        public RelayCommand ViewComplexRequestCommand { get; set; }
+
+        private ComplexTourRequest _selectedComplexTourRequest;
+
+        public ComplexTourRequest SelectedComplexTourRequest
         {
+            get => _selectedComplexTourRequest;
+            set
+            {
+                if (_selectedComplexTourRequest != value)
+                {
+                    _selectedComplexTourRequest = value;
+                    OnPropertyChanged("SelectedComplexTourRequest");
+                }
+            }
+        }
+        public MyTourRequestsViewModel(NavigationService service)        {
             this.navigationService = service;
             this.CreateRequestCommand = new RelayCommand(Executed_CreateRequestCommand, CanExecute_CreateRequestCommand);
             this.StatisticsCommand = new RelayCommand(Executed_StatisticsCommand, CanExecute_StatisticsCommand);
             this.CreateComplexRequest = new RelayCommand(Executed_CreateComplexRequestCommand, CanExecute_CreateComplexRequestCommand);
+            this.ViewComplexRequestCommand = new RelayCommand(Executed_ViewRequestCommand, CanExecute_ViewRequestCommand);
 
             _tourRequestController = new TourRequestController();
             _complexTourRequestController = new ComplexTourRequestController();
@@ -43,6 +59,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             Requests = new ObservableCollection<TourRequest>(_tourRequestController.GetAllTourRequestsForUser(SignInForm.LoggedUser.Id));
             ComplexRequests = new ObservableCollection<ComplexTourRequest>(_complexTourRequestController.GetAllComplexTourRequestsForUser(SignInForm.LoggedUser.Id));
 
+            
         }
 
         public void Executed_CreateRequestCommand(object obj)
@@ -54,6 +71,18 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public bool CanExecute_CreateRequestCommand(object obj)
         {
             return true;
+        }
+
+        public void Executed_ViewRequestCommand(object obj)
+        {
+            
+            PartsOfRequestWindow partsOfRequestWindow = new PartsOfRequestWindow(SelectedComplexTourRequest);
+            partsOfRequestWindow.Show();
+        }
+
+        public bool CanExecute_ViewRequestCommand(object obj)
+        {
+            return SelectedComplexTourRequest != null;
         }
 
         public void Executed_CreateComplexRequestCommand(object obj)  //???

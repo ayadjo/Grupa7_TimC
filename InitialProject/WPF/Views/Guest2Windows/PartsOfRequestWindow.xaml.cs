@@ -1,4 +1,5 @@
-﻿using InitialProject.WPF.ViewModels.Guest2ViewModels;
+﻿using InitialProject.Domain.Models;
+using InitialProject.WPF.ViewModels.Guest2ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,14 @@ namespace InitialProject.WPF.Views.Guest2Windows
     /// </summary>
     public partial class PartsOfRequestWindow : Window
     {
-      
-        public PartsOfRequestWindow()
+        public NavigationService navigationService;
+
+        public PartsOfTourRequestViewModel partsOfTourRequestViewModel;
+        public PartsOfRequestWindow(ComplexTourRequest selectedComplexTourRequest)
         {
             InitializeComponent();
-          
+            partsOfTourRequestViewModel = new PartsOfTourRequestViewModel(navigationService, selectedComplexTourRequest);
+            this.DataContext = partsOfTourRequestViewModel;
         }
     }
 }

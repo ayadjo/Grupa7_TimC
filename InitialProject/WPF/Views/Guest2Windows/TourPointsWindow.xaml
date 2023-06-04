@@ -22,7 +22,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Margin="60,30,0,0" >
                             <Image Source="/Resources/Images/Guest2/point.png" Width="15" Height="15" Margin="0,0,5,15" />
-                            <CheckBox Content="{Binding Name}" IsChecked="{Binding Active}"/>
+                            <CheckBox Content="{Binding Name}" IsChecked="{Binding Active}" IsEnabled="False"/>
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

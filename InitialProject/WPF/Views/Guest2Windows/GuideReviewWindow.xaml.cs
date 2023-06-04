@@ -38,7 +38,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
             guideReviewViewModel = new GuideReviewViewModel(navigationService, SelectedTourReservation);
             this.DataContext = guideReviewViewModel;
         }
-/*
+        /*
         private void SetReviewForGuideKnowledge(object sender, RoutedEventArgs e)
         {
             if (knowledge1.IsChecked == true)

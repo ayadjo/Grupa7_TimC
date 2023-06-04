@@ -25,6 +25,8 @@ namespace InitialProject.Domain.Models
 
         public int ComplexTourRequestId { get; set; }
 
+        public AcceptedRequestGuide AcceptedRequestGuide { get; set; }
+
         public TourRequest() { }
 
         public TourRequest(int id, Location location, string language, int maxGuests, string description, DateTime start, DateTime end, User guest, RequestStatusType status, int complexTourRequestId)

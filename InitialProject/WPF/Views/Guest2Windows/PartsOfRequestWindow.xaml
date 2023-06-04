@@ -11,9 +11,15 @@
             <Label FontSize="20" HorizontalAlignment="Center" Margin="0,20,0,0">Parts of TourRequests</Label>
             <TextBlock></TextBlock>
         </StackPanel>
-        <DataGrid ItemsSource="{Binding Path=PartsOfRequest, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedPart, UpdateSourceTrigger=PropertyChanged}"
+        <DataGrid ItemsSource="{Binding Path=PartsOfTourRequest, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedComplexTourRequest, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True" x:Name="myRequestsOverview" Height="105" Width="700">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Grad" Binding="{Binding Status}" Width="100"></DataGridTextColumn>
+                
+            </DataGrid.Columns>
             
         </DataGrid>
        

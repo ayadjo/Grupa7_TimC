@@ -12,7 +12,6 @@
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0,20,0,10">Zahtevi</Label>
             <DataGrid 
                   ItemsSource="{Binding Path=Requests, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedRequest, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True" x:Name="myRequestsOverview" Height="105" Width="700">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Location.Country}" Width="100"></DataGridTextColumn>
@@ -44,7 +43,7 @@
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0,20,0,10">Složeni zahtevi</Label>
             <DataGrid 
                   ItemsSource="{Binding Path=ComplexRequests, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Path=SelectedComplexRequest, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedComplexTourRequest, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True" x:Name="myComplexRequestsOverview" Height="105" Width="700">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding SimpleTourRequests[0].Location.Country}" Width="100"></DataGridTextColumn>
@@ -56,12 +55,22 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="CreateComplexTourRequest" Height="35" Width="150" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,10,50,0" Command="{Binding Path=CreateComplexRequestCommand}" Click="CreateComplexTourRequest_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <ContentControl Content="{local2:Loc CreateComplexRequest}"></ContentControl>
-                </StackPanel>
-            </Button>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="ViewComplexTourRequest" Height="35" Width="150" Background="#FFFFFF" HorizontalAlignment="Right" Margin="420,10,30,0" Command="{Binding Path=ViewComplexRequestCommand}" Click="ViewComplexTourRequest_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <ContentControl Content="{local2:Loc ViewComplexRequest}"></ContentControl>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="CreateComplexTourRequest" Height="35" Width="150" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,10,50,0" Command="{Binding Path=CreateComplexRequestCommand}" Click="CreateComplexTourRequest_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <ContentControl Content="{local2:Loc CreateComplexRequest}"></ContentControl>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            
 
         </StackPanel>
 
