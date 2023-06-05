@@ -186,7 +186,6 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         {
             this.CreateRequestCommand = new RelayCommand(Executed_CreateRequestCommand, CanExecute_CreateRequestCommand);
             this.AddRequestCommand = new RelayCommand(Executed_AddRequestCommand, CanExecute_AddRequestCommand);
-            //this.NavigationService = navigationService;
 
             _locationController = new LocationController();
             _complexTourRequestController = new ComplexTourRequestController();

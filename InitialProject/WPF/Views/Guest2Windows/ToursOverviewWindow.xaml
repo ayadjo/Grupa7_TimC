@@ -85,7 +85,7 @@
                 </StackPanel>
 
 
-                <Button x:Name="Search" Click="Search_Click" Grid.Row="1" Grid.Column="4"  Margin="20,5,0,10" Background="White" Height="35" Width="150">
+                <Button x:Name="Search" Click="Search_Click" Grid.Row="1" Grid.Column="4"  Margin="-10,5,0,10" Background="White" Height="35" Width="150">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/search.png" Width="20" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="{local2:Loc Search}" Height="15"></ContentControl>

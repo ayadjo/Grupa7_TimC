@@ -112,6 +112,7 @@
     <None Remove="Resources\Images\Guest1\stop.png" />
     <None Remove="Resources\Images\Guest1\tutorial.png" />
     <None Remove="Resources\Images\Guest1\x.png" />
+    <None Remove="Resources\Images\Guest2\add-button.png" />
     <None Remove="Resources\Images\Guest2\adventure.png" />
     <None Remove="Resources\Images\Guest2\application.png" />
     <None Remove="Resources\Images\Guest2\check.png" />
@@ -271,6 +272,9 @@
     </Resource>
     <Resource Include="Resources\Images\Guest1\x.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\add-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Guest2\moon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

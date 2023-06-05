@@ -70,6 +70,15 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add request.
+        /// </summary>
+        public static string AddRequest {
+            get {
+                return ResourceManager.GetString("AddRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can view key points only for tours that have started..
         /// </summary>
         public static string CannotViewKeyPoints {
@@ -120,6 +129,15 @@ namespace InitialProject.Properties {
         public static string CreateComplexRequest {
             get {
                 return ResourceManager.GetString("CreateComplexRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create request.
+        /// </summary>
+        public static string CreateRequest {
+            get {
+                return ResourceManager.GetString("CreateRequest", resourceCulture);
             }
         }
         
@@ -183,6 +201,42 @@ namespace InitialProject.Properties {
         public static string ExpirationDate {
             get {
                 return ResourceManager.GetString("ExpirationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        public static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to italian.
+        /// </summary>
+        public static string Italian {
+            get {
+                return ResourceManager.GetString("Italian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to japanese.
+        /// </summary>
+        public static string Japanese {
+            get {
+                return ResourceManager.GetString("Japanese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to korean.
+        /// </summary>
+        public static string Korean {
+            get {
+                return ResourceManager.GetString("Korean", resourceCulture);
             }
         }
         
@@ -327,6 +381,15 @@ namespace InitialProject.Properties {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         

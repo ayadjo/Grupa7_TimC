@@ -120,6 +120,9 @@
   <data name="Add" xml:space="preserve">
     <value>Dodaj</value>
   </data>
+  <data name="AddRequest" xml:space="preserve">
+    <value>Dodaj zahtev</value>
+  </data>
   <data name="CannotViewKeyPoints" xml:space="preserve">
     <value>Samo za ture koje su počele možete pogledati ključne tačke.</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="CreateComplexRequest" xml:space="preserve">
     <value>Kreiraj složeni zahtev</value>
+  </data>
+  <data name="CreateRequest" xml:space="preserve">
+    <value>Kreiraj zahtev</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Tamna</value>
@@ -158,6 +164,18 @@
   </data>
   <data name="ExpirationDate" xml:space="preserve">
     <value>Važi do</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Od</value>
+  </data>
+  <data name="Italian" xml:space="preserve">
+    <value>italijanski</value>
+  </data>
+  <data name="Japanese" xml:space="preserve">
+    <value>japanski</value>
+  </data>
+  <data name="Korean" xml:space="preserve">
+    <value>korejski</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Jezik</value>
@@ -206,6 +224,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Do</value>
   </data>
   <data name="TourPoints" xml:space="preserve">
     <value>Ključne tačke</value>
