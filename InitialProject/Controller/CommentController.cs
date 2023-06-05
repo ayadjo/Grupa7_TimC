@@ -38,5 +38,14 @@ namespace InitialProject.Controller
         {
             _commentService.Update(comment);
         }
+        public List<Comment> GetByForum(int forumId)
+        {
+            return _commentService.GetByForum(forumId);
+        }
+
+        public bool CheckGuestOnLocation(Comment comment, Forum forum)
+        {
+            return _commentService.CheckGuestOnLocation(comment, forum);
+        }
     }
 }

@@ -60,6 +60,9 @@ namespace InitialProject.Injector
             tourRequestAcceptedNotificationRepository.BindTourRequestAcceptedNotificationTourRequest();
             accommodationRenovationRepository.BindAccommodationRenovationWithAccommodation();
             forumRepository.BindForumLocation();
+            forumRepository.BindForumAuthor();
+            commentRepository.BindCommentForum();
+            commentRepository.BindCommentAuthor();
             newForumNotificationRepository.BindNotificationForum();
             //_implementations.Add(typeof(INotificationForRequestRepository), notificationForRequestRepository);
 

@@ -15,5 +15,6 @@ namespace InitialProject.Domain.RepositoryInterfaces
         public void Delete(Comment comment);
         public Comment Update(Comment comment);
         public int NextId();
+        List<Comment> GetByForum(int forumId);
     }
 }

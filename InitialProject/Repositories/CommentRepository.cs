@@ -1,5 +1,6 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Domain.RepositoryInterfaces;
+using InitialProject.Enumerations;
 using InitialProject.Serializer;
 using System;
 using System.Collections.Generic;
@@ -62,5 +63,47 @@ namespace InitialProject.Repositories
             _serializer.ToCSV(FilePath, _comments);
             return comment;
         }
+        public void BindCommentForum()
+        {
+            foreach (Comment comment in _comments)
+            {
+                int forumId = comment.ForumId;
+                Forum forum = Injector.Injector.CreateInstance<IForumRepository>().Get(forumId);
+                if (forum != null)
+                {
+                    forum.Comments.Add(comment);
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Error in commentForum binding");
+                }
+            }
+        }
+
+        public void BindCommentAuthor()
+        {
+            foreach (Comment comment in _comments)
+            {
+                string username = comment.Author.Username;
+                User user = UserRepository.GetInstance().GetByUsername(username);
+                if (user != null)
+                {
+                    comment.Author = user;
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Error in forumAuthor binding");
+                }
+            }
+        }
+        
+
+        public List<Comment> GetByForum(int forumId)
+        {
+            return _comments.FindAll(c => c.ForumId == forumId);
+        }
+
     }
 }

@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="InitialProject.WPF.Views.OwnerWindows.ForumsOverviewWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InitialProject.WPF.Views.OwnerWindows"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding SeeCommentsCommand}" Key="Enter"/>
+        
+    </UserControl.InputBindings>
+    <Grid Background="{StaticResource OwnerBackgroudColor1}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" Margin="10,0,0,0">
+
+                <Image Source="/Resources/Images/home.png" Width="20" Margin="0,0,5,0" />
+                <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
+                <Label Content="Forumi" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
+
+            </StackPanel>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ListBox x:Name="ForumsListBox"  ItemsSource="{Binding Forums}" Grid.Row="1" SelectedItem="{Binding SelectedForum}" Background="{StaticResource OwnerBackgroudColor1}" BorderThickness="0">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                    <DataTemplate>
+                            <Button x:Name="ForumButton" Command="{Binding DataContext.SeeCommentsCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"  Margin="5"  HorizontalContentAlignment="Stretch" BorderThickness="1" BorderBrush="Transparent" Style="{StaticResource ForumButton}"  HorizontalAlignment="Stretch">
+                                <Grid>
+                                <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                    </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" Margin="10" Orientation="Vertical"  VerticalAlignment="Center" HorizontalAlignment="Left">
+                                       
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="{Binding Location.City}" Style="{StaticResource BoldLabel}" FontSize="17"/>
+                                            <Label Content="," Style="{StaticResource BoldLabel}" FontSize="16"/>
+                                            <Label Content="{Binding Location.Country}"  Style="{StaticResource BoldLabel}" FontSize="17"/>
+                                            <Label Content=" "/>
+                                            <Image Source="/Resources/Images/medal.png" Height="33" Width="33"/>
+                                        </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                            <Label Content="Autor:" Style="{StaticResource DefaultLabel}" FontSize="16"/>
+                                            <Label Content="{Binding Author.FirstName}" Style="{StaticResource DefaultLabel}" FontSize="16"/>
+                                        <Label Content="{Binding Author.LastName}" Style="{StaticResource DefaultLabel}" FontSize="16"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                    
+                                <!-- Broj komentara -->
+                                    
+                                    
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="10">
+
+                                        <Image Source="/Resources/Images/chat.png" Height="40" Width="40"/>
+                                            <Label Content="{Binding CommentNumber}" />
+                                        </StackPanel>
+                                   
+                                   
+
+                            </Grid>
+                        </Button>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

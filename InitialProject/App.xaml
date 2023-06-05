@@ -24,6 +24,8 @@
                 <Setter Property="TextBlock.Foreground" Value="LightGray"/>
             </Style>
 
+            
+
             <Style TargetType="Label" x:Key="DefaultLabelDark">
                 <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
                 <Setter Property="FontSize" Value="20"/>
@@ -128,6 +130,7 @@
                 </Setter>
             </Style>
 
+           
             <!--Data grid for owner-->
             <Style TargetType="DataGrid" x:Key="DarkDataGrid">
                 <Setter Property="FontFamily" Value="Candara"/>
@@ -211,6 +214,27 @@
 
             </Style>
 
+            <!-- Forum button owner -->
+            <Style TargetType="Button" x:Key="ForumButton">
+                <Setter Property="Background" Value="{StaticResource OwnerRectangleFill}"/>
+                <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="FontSize" Value="16"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                                <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                
+            </Style>
 
 
             <!--Data grid for guide-->

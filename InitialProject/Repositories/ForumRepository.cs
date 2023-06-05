@@ -100,5 +100,22 @@ namespace InitialProject.Repositories
                 }
             }
         }
+
+        public void BindForumAuthor()
+        {
+            foreach (Forum forum in _forums)
+            {
+                string username = forum.Author.Username;
+                User user = UserRepository.GetInstance().GetByUsername(username);
+                if (user != null)
+                {
+                    forum.Author = user;
+                }
+                else
+                {
+                    Console.WriteLine("Error in forumAuthor binding");
+                }
+            }
+        }
     }
 }
