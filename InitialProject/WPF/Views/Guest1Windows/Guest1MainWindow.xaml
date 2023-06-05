@@ -67,7 +67,7 @@
             </StackPanel>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="512,359,0,0" VerticalAlignment="Top" Width="488" Height="132" Background="white">
+        <Button HorizontalAlignment="Left" Margin="512,359,0,0" VerticalAlignment="Top" Width="488" Height="132" Background="white" Click="WhereverWhenever_Click">
             <StackPanel>
                 <Image Source="\Resources\Images\Guest1\kylesmyle.jpg" Width="65" Height="65"/>
                 <TextBlock Text="'BILO GDE, BILO KADA'" VerticalAlignment="Center" />

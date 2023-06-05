@@ -60,6 +60,12 @@ namespace InitialProject.WPF.Views.Guest1Windows
             accommodationReservationCancellationWindow.Show();
         }
 
+        private void WhereverWhenever_Click(object sender, RoutedEventArgs e)
+        {
+            WhereverWheneverWindow whereverWheneverWindow = new WhereverWheneverWindow(guest);
+            whereverWheneverWindow.Show();
+        }
+
         private void ForumsOverview_Click(object sender, RoutedEventArgs e)
         {
             ForumsOverview forumsOverview = new ForumsOverview(guest);
