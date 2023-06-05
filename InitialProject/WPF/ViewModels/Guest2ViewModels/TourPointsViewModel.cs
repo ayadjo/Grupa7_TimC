@@ -15,20 +15,16 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
     public class TourPointsViewModel
     {
-
-        private NavigationService navigationService;
         public ObservableCollection<TourPoint> TourPoints { get; set; }
 
         public TourPointController _tourPointController { get; set; }
         public TourEventController _tourEventController { get; set; }
 
-
         public TourEvent SelectedTourEvent { get; set; }
 
 
-        public TourPointsViewModel(NavigationService service, TourEvent selectedTourEvent)
+        public TourPointsViewModel(TourEvent selectedTourEvent)
         {
-            this.navigationService = service;
 
             _tourPointController = new TourPointController();
             _tourEventController = new TourEventController();
@@ -38,7 +34,6 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             _tourPointController = new TourPointController();
 
             TourPoints = new ObservableCollection<TourPoint>(SelectedTourEvent.Tour.TourPoints);
-
 
         }
     }

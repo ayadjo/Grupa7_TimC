@@ -85,7 +85,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             return SelectedComplexTourRequest != null;
         }
 
-        public void Executed_CreateComplexRequestCommand(object obj)  //???
+        public void Executed_CreateComplexRequestCommand(object obj)  
         {
             CreateComplexTourRequestWindow createComplexTourRequestWindow = new CreateComplexTourRequestWindow();
             createComplexTourRequestWindow.ShowDialog();
@@ -98,7 +98,8 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         public void Executed_StatisticsCommand(object obj)
         {
-            
+            TourRequestStatisticsWindow statisticsWindow = new TourRequestStatisticsWindow();
+            statisticsWindow.Show();
         }
 
         public bool CanExecute_StatisticsCommand(object obj)

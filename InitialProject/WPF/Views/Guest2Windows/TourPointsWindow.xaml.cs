@@ -25,11 +25,10 @@ namespace InitialProject.WPF.Views.Guest2Windows
     /// </summary>
     public partial class TourPointsWindow : Window
     {
-        public NavigationService navigationService;
         public TourPointsWindow(TourEvent SelectedTourEvent)
         {
             InitializeComponent();
-            this.DataContext = new TourPointsViewModel(navigationService, SelectedTourEvent);
+            this.DataContext = new TourPointsViewModel(SelectedTourEvent);
         }
     }
 }

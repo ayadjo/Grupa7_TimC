@@ -23,12 +23,10 @@ namespace InitialProject.WPF.Views.Guest2Windows
     public partial class CreateComplexTourRequestWindow : Window
     {
         public CreateComplexTourRequestViewModel createComplexTourRequestViewModel;
-
-        public NavigationService NavigationService { get; set; }
         public CreateComplexTourRequestWindow()
         {
             InitializeComponent();
-            createComplexTourRequestViewModel = new CreateComplexTourRequestViewModel(NavigationService);
+            createComplexTourRequestViewModel = new CreateComplexTourRequestViewModel();
             this.DataContext = createComplexTourRequestViewModel;
 
             if (DataContext is IClose vm)

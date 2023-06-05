@@ -17,7 +17,7 @@ namespace InitialProject.Domain.Models
 
         public AcceptedRequestGuide() { }
 
-        public AcceptedRequestGuide(int id, User guide, DateTime appointment)
+        public AcceptedRequestGuide(int id, User guide, DateTime? appointment)
         {
             Id = id;
             Guide = guide;

@@ -51,13 +51,11 @@ namespace InitialProject.WPF.Views.Guest2Windows
         }
 
        
-
+        /*
         private void CreateRequest_Click(object sender, RoutedEventArgs e)
         {
-            CreateTourRequestViewModel createTourRequestViewModel = new CreateTourRequestViewModel(this.NavigationService);
             CreateTourRequestWindow createTourRequestWindow = new CreateTourRequestWindow();
-            createTourRequestWindow.DataContext = createTourRequestViewModel;  //??
-            this.NavigationService.Navigate(createTourRequestWindow);
+            createTourRequestWindow.Show();
         }
 
         
@@ -81,7 +79,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
                 PartsOfRequestWindow partsOfRequestWindow = new PartsOfRequestWindow(SelectedComplexTourRequest);
                 partsOfRequestWindow.Show();
             }
-        }
+        }*/
 
         protected void OnPropertyChanged(string propertyName)
         {

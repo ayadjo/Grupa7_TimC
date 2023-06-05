@@ -25,12 +25,10 @@ namespace InitialProject.WPF.Views.Guest2Windows
     {
         public CreateTourRequestViewModel createTourRequestViewModel;
 
-        public NavigationService NavigationService { get; set; }
-
         public CreateTourRequestWindow()
         {
             InitializeComponent();
-            createTourRequestViewModel = new CreateTourRequestViewModel(NavigationService);
+            createTourRequestViewModel = new CreateTourRequestViewModel();
             this.DataContext = createTourRequestViewModel;
 
             if (DataContext is IClose vm)

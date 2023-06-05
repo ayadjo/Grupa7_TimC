@@ -27,7 +27,6 @@ namespace InitialProject.WPF.Views.Guest2Windows
  
     public partial class GuideReviewWindow : Window
     {
-        public NavigationService navigationService;
 
         public GuideReviewViewModel guideReviewViewModel;
 
@@ -35,7 +34,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
         {
             InitializeComponent();
             //navigationService = NavigationService.GetNavigationService(this);
-            guideReviewViewModel = new GuideReviewViewModel(navigationService, SelectedTourReservation);
+            guideReviewViewModel = new GuideReviewViewModel(SelectedTourReservation);
             this.DataContext = guideReviewViewModel;
         }
         /*

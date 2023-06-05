@@ -103,9 +103,9 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             }
         }
 
-        public GuideReviewViewModel(NavigationService service, TourReservation tourReservation)
+        public GuideReviewViewModel(TourReservation tourReservation)
         {
-            this.navigationService = service;
+            //this.navigationService = service;
             this.AddImageCommand = new RelayCommand(Executed_AddImageCommand, CanExecute_AddImageCommand);
             this.RemoveImageCommand = new RelayCommand(Executed_RemoveImageCommand, CanExecute_RemoveImageCommand);
             this.AddReviewCommand = new RelayCommand(Executed_AddReviewCommand, CanExecute_AddReviewCommand);

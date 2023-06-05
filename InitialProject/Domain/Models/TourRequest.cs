@@ -25,11 +25,11 @@ namespace InitialProject.Domain.Models
 
         public int ComplexTourRequestId { get; set; }
 
-        public AcceptedRequestGuide AcceptedRequestGuide { get; set; }
+        public AcceptedRequestGuide? AcceptedRequestGuide { get; set; }
 
         public TourRequest() { }
 
-        public TourRequest(int id, Location location, string language, int maxGuests, string description, DateTime start, DateTime end, User guest, RequestStatusType status, int complexTourRequestId, AcceptedRequestGuide acceptedRequestGuide)
+        public TourRequest(int id, Location location, string language, int maxGuests, string description, DateTime start, DateTime end, User guest, RequestStatusType status, int complexTourRequestId, AcceptedRequestGuide? acceptedRequestGuide)
         {
 
             Id = id;
@@ -59,7 +59,7 @@ namespace InitialProject.Domain.Models
                Guest.Id.ToString(),
                Status.ToString(),
                ComplexTourRequestId.ToString(),
-               AcceptedRequestGuide.Id.ToString()
+               (AcceptedRequestGuide != null ? AcceptedRequestGuide.Id.ToString() : String.Empty)
             };
 
             return csvValues;
@@ -77,7 +77,15 @@ namespace InitialProject.Domain.Models
             Guest = new User() { Id = Convert.ToInt32(values[7]) };
             Status = (RequestStatusType)Enum.Parse(typeof(RequestStatusType), values[8]);
             ComplexTourRequestId = int.Parse(values[9]);
-            AcceptedRequestGuide = new AcceptedRequestGuide() { Id = Convert.ToInt32(values[10]) };
+            //AcceptedRequestGuide = new AcceptedRequestGuide() { Id = Convert.ToInt32(values[10]) };
+            if (!string.IsNullOrEmpty(values[10]))
+            {
+                AcceptedRequestGuide = new AcceptedRequestGuide() { Id = Convert.ToInt32(values[10]) };
+            }
+            else
+            {
+                AcceptedRequestGuide = null;
+            }
         }
     }
 }

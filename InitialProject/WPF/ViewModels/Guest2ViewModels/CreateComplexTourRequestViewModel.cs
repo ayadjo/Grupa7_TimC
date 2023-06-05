@@ -20,7 +20,6 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
     public class CreateComplexTourRequestViewModel : ViewModelBase, IClose
     {
         public Action Close { get; set; }
-        public NavigationService NavigationService { get; set; }
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
 
@@ -154,13 +153,6 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         public void Executed_AddRequestCommand(object obj)
         {
-            /*int maxG = int.Parse(MaxGuests);
-            User guest = (User)SignInForm.LoggedUser;
-            Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
-            TourRequest simpleTour = new TourRequest(-1, location, Description, Language, maxG, SelectedStartDate, SelectedEndDate, guest, Enumerations.RequestStatusType.Standby, complexTourRequestId);
-            PartsOfTheRequest.Add(simpleTour);
-            _tourRequestController.Save(simpleTour);*/
-
             
             Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
             User user = SignInForm.LoggedUser;
@@ -190,11 +182,11 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             return true;
         }
 
-        public CreateComplexTourRequestViewModel(NavigationService navigationService)
+        public CreateComplexTourRequestViewModel()
         {
             this.CreateRequestCommand = new RelayCommand(Executed_CreateRequestCommand, CanExecute_CreateRequestCommand);
             this.AddRequestCommand = new RelayCommand(Executed_AddRequestCommand, CanExecute_AddRequestCommand);
-            this.NavigationService = navigationService;
+            //this.NavigationService = navigationService;
 
             _locationController = new LocationController();
             _complexTourRequestController = new ComplexTourRequestController();

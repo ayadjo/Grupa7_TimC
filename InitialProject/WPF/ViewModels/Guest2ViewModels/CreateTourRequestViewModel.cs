@@ -19,7 +19,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
     public class CreateTourRequestViewModel : ViewModelBase, IClose
     {
         public Action Close { get; set; }
-        public NavigationService NavigationService { get; set; }
+        //public NavigationService NavigationService { get; set; }
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
 
@@ -165,10 +165,10 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             return true;
         }
 
-        public CreateTourRequestViewModel(NavigationService navigationService)
+        public CreateTourRequestViewModel()
         {
             this.CreateRequestCommand = new RelayCommand(Executed_CreateRequestCommand, CanExecute_CreateRequestCommand);
-            this.NavigationService = navigationService;
+            //this.NavigationService = navigationService;
 
             _locationController = new LocationController();
             _tourRequestController = new TourRequestController();
