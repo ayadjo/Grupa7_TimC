@@ -4,12 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"   
         xmlns:local="clr-namespace:InitialProject.Localization"
+        xmlns:local1="clr-namespace:InitialProject.WPF.ViewModels.Guest2ViewModels"
         mc:Ignorable="d"
         Title="Naziv aplikacije" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="{DynamicResource AppBackgroundBrush}">
     <Window.Icon>
         <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
     </Window.Icon>
     <Window.Resources>
+        <local1:BoolToBrushConverter1 x:Key="BoolToBrushConverter1" />
+        <local1:BoolToBrushConverter2 x:Key="BoolToBrushConverter2" />
+        <local1:BoolToBrushConverter3 x:Key="BoolToBrushConverter3" />
         <!--instead of specifying an x:Key you can use DataType-->
         <!--This DataTemplate gets applied automatically to HomeViewModel-->
         <!--<DataTemplate DataType="{x:Type viewModels:ToursOverviewViewModel}">
@@ -129,17 +133,18 @@
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
             <Menu Style="{StaticResource MenuStyle}" Width="232.7" Margin="0,200,0,0">
-                <MenuItem Header="{local:Loc ToursOverview}" Style="{StaticResource BaseMenuItem}" Name="NavigateToToursOverview" Command="{Binding NavigateToToursOverviewCommand}" Margin="0,0,0,10">
+                <MenuItem  Header="{local:Loc ToursOverview}" Foreground="{Binding OpenPage, Converter={StaticResource BoolToBrushConverter1}}" Style="{StaticResource BaseMenuItem}" Name="NavigateToToursOverview" Command="{Binding NavigateToToursOverviewCommand}" Margin="0,0,0,10">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/Guest2/transparency.png" />
                     </MenuItem.Icon>
+                    
                 </MenuItem>
-                <MenuItem Header="{local:Loc MyTours}" Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMyToursCommand}"  Margin="0,0,0,10">
+                <MenuItem Header="{local:Loc MyTours}" Foreground="{Binding OpenPage, Converter={StaticResource BoolToBrushConverter2}}" Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMyToursCommand}"  Margin="0,0,0,10">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/Guest2/hiking.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{local:Loc MyRequests}" Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMyTourRequestsCommand}" Margin="0,0,0,10" >
+                <MenuItem Header="{local:Loc MyRequests}" Foreground="{Binding OpenPage, Converter={StaticResource BoolToBrushConverter3}}" Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMyTourRequestsCommand}" Margin="0,0,0,10" >
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/Guest2/questionnaire.png" />
                     </MenuItem.Icon>

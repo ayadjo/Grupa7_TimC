@@ -271,6 +271,14 @@ namespace InitialProject.WPF.Views.Guest2Window
                 // Draw the title
                 gfx.DrawString("Voucher Reports", titleFont, XBrushes.Black, titleBounds, XStringFormats.Center);
 
+                // Add a line after the title
+                XPoint lineStart = new XPoint(titleBounds.Left, titleBounds.Bottom + 2);
+                XPoint lineEnd = new XPoint(titleBounds.Right, titleBounds.Bottom + 2);
+                gfx.DrawLine(XPens.Black, lineStart, lineEnd);
+
+                XRect userDetailsBounds = new XRect(pageBounds.Left, lineEnd.Y + 5, 100, 20);
+                gfx.DrawString("User details", subtitleFont, XBrushes.Black, userDetailsBounds, XStringFormats.TopLeft);
+
                 // Draw the table headers
                 int headerXPos = (int)tableBounds.Left;
                 int headerYPos = (int)tableBounds.Top;

@@ -97,7 +97,7 @@
             </Grid>
         </Grid>
 
-        <Button x:Name="Reserve" DockPanel.Dock="Bottom" Margin="550,-90,-26,30" Height="35" Width="150" Click="Reserve_Click" Background="White">
+        <Button x:Name="Reserve" DockPanel.Dock="Bottom" Margin="520,-90,-26,30" Height="35" Width="150" Click="Reserve_Click" Background="White">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/check.png" Width="15" Height="15" Margin="0,0,5,0" />
                 <ContentControl Content="{local2:Loc Reserve}"></ContentControl>

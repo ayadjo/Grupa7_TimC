@@ -62,6 +62,13 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             
         }
 
+        public void Refresh()
+        {
+            List<ComplexTourRequest> complexRequests = _complexTourRequestController.GetAllComplexTourRequestsForUser(SignInForm.LoggedUser.Id);
+            ComplexRequests.Clear();
+            complexRequests.ForEach(x => ComplexRequests.Add(x));
+        }
+
         public void Executed_CreateRequestCommand(object obj)
         {
             CreateTourRequestWindow createTourRequestWindow = new CreateTourRequestWindow();
@@ -87,7 +94,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         public void Executed_CreateComplexRequestCommand(object obj)  
         {
-            CreateComplexTourRequestWindow createComplexTourRequestWindow = new CreateComplexTourRequestWindow();
+            CreateComplexTourRequestWindow createComplexTourRequestWindow = new CreateComplexTourRequestWindow(this);
             createComplexTourRequestWindow.ShowDialog();
         }
 

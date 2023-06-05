@@ -11,9 +11,61 @@ using InitialProject.WPF.Views;
 using InitialProject.Domain.Models;
 using System.Windows;
 using System.Windows.Media;
+using System.Globalization;
+using System.Windows.Data;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
+    
+    public class BoolToBrushConverter1 : IValueConverter
+    {
+      
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return Brushes.Transparent;
+            
+            return (int)(value) == 1 ? Brushes.Red : Brushes.Black;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class BoolToBrushConverter2 : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return Brushes.Transparent;
+
+            return (int)(value) == 2 ? Brushes.Red : Brushes.Black;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class BoolToBrushConverter3 : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return Brushes.Transparent;
+
+            return (int)(value) == 3 ? Brushes.Red : Brushes.Black;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    
     public class Guest2MainWindowViewModel : ViewModelBase
     {
         /*private bool checker;
@@ -27,6 +79,23 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             }
         }
         */
+
+        private int openPage;
+        public int OpenPage
+        {
+            get { return openPage; }
+            set
+            {
+                if (openPage != value)
+                {
+                    openPage = value;
+                    OnPropertyChanged("OpenPage");
+                }
+            }
+        }
+
+
+      
 
         private bool isDarkTheme;
 
@@ -87,6 +156,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         #region Akcije
         private void Execute_NavigateToToursOverviewCommand(object obj)
         {
+            OpenPage = 1;
             this.NavigationService.Navigate(
                 new Uri("WPF/Views/Guest2Windows/ToursOverviewWindow.xaml", UriKind.Relative));
             
@@ -94,12 +164,14 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         private void Execute_NavigateToMyToursCommand(object obj)
         {
+            OpenPage = 2;
             this.NavigationService.Navigate(
                 new Uri("WPF/Views/Guest2Windows/MyToursWindow.xaml", UriKind.Relative));
         }
 
         private void Execute_NavigateToMyTourRequestsCommand(object obj)
         {
+            OpenPage = 3;
             this.NavigationService.Navigate(
                 new Uri("WPF/Views/Guest2Windows/MyTourRequestsWindow.xaml", UriKind.Relative));
         }
@@ -144,6 +216,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         #region Konstruktori
         public Guest2MainWindowViewModel(NavigationService navigationService)
         {
+            OpenPage = 1;
             this.NavigationService = navigationService;
             this.NavigateToToursOverviewCommand = new RelayCommand(Execute_NavigateToToursOverviewCommand, CanExecute_NavigateCommand);
             this.NavigateToMyToursCommand = new RelayCommand(Execute_NavigateToMyToursCommand, CanExecute_NavigateCommand);

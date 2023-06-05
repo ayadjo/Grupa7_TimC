@@ -20,6 +20,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
     {
         public Action Close { get; set; }
         //public NavigationService NavigationService { get; set; }
+
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
 
@@ -27,8 +28,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         public TourRequestController _tourRequestController;
 
-        public TourController _tourController;  //
-
+        public TourController _tourController;  
 
         public RelayCommand CreateRequestCommand { get; set; }
 

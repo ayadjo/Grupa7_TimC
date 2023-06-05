@@ -17,9 +17,11 @@ using System.ComponentModel;
 using InitialProject.WPF.Views;
 using InitialProject.WPF.ViewModels.Guest2ViewModels;
 using InitialProject.Localization;
+using System.Globalization;
 
 namespace InitialProject.WPF.Views.Guest2Windows
 {
+    
     /// <summary>
     /// Interaction logic for Guest2MainWindow.xaml
     /// </summary>

@@ -27,13 +27,13 @@
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/earth.png"  Height="20" Width="35" />
                 <Label Content="{local2:Loc Country}" Height="27" Width="100"/>
-                <ComboBox x:Name="CountryComboBox" SelectedItem="{Binding Path=SelectedCountry,  Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Countries}" Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!" LostFocus="CountryComboBox_LostFocus"/>
+                <ComboBox x:Name="CountryComboBox" SelectedItem="{Binding Path=SelectedCountry,UpdateSourceTrigger=PropertyChanged,  Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Countries}" Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!" LostFocus="CountryComboBox_LostFocus"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/skyscraper.png"  Height="20" Width="35" />
                 <Label Content="{local2:Loc City}" Height="27" Width="100"/>
-                <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Cities}" Width="100" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!"/>
+                <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Cities}" Width="100" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -62,7 +62,7 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <TextBox x:Name="DescriptionTextBox" Text="{Binding Path=Description, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="204" Height="46" ToolTip="This field is required!" Margin="20,10,10,10"/>
+                    <TextBox x:Name="DescriptionTextBox" Text="{Binding Path=Description,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="204" Height="46" ToolTip="This field is required!" Margin="20,10,10,10"/>
                 </StackPanel>
 
             </StackPanel>

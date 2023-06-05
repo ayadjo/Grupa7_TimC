@@ -3,6 +3,7 @@ using InitialProject.Controller;
 using InitialProject.Domain.Models;
 using InitialProject.Service.Services;
 using InitialProject.WPF.Views;
+using InitialProject.WPF.Views.Guest2Windows;
 using InitialProject.WPF.Views.OwnerWindows;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
@@ -23,6 +25,8 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
 
+        NavigationService NavigationService { get; set; }
+
         public ObservableCollection<TourRequest> PartsOfTheRequest { get; set; }
 
         public LocationController _locationController;
@@ -30,6 +34,8 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public ComplexTourRequestController _complexTourRequestController;
 
         public TourRequestController _tourRequestController;
+
+        public MyTourRequestsViewModel MyRequestsViewModel { get; set; }
 
         public RelayCommand AddRequestCommand { get; set; }
 
@@ -134,6 +140,8 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             }
         }
 
+        
+
 
         public void Executed_CreateRequestCommand(object obj)
         {
@@ -142,13 +150,39 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
             _complexTourRequestController.Save(complexTourRequest);
             MessageBox.Show("Uspešno ste kreirali zahtev!");
+            MyTourRequestsViewModel.Refresh();
             //this.Close();
 
+
+        }
+
+        /*private void RefreshComplexTourRequest(List<ComplexTourRequest> complexRequest)
+        {
+            .Clear();
+            foreach (ComplexTourRequest request in complexRequest)
+            {
+                Tours.Add(tour);
+            }
+        }*/
+
+        private void RefreshComplexTourRequest(List<ComplexTourRequest> complexRequest)
+        {
+            MyRequestsViewModel.ComplexRequests.Clear();
+            foreach (ComplexTourRequest request in complexRequest)
+            {
+                MyRequestsViewModel.ComplexRequests.Add(request);
+            }
         }
 
         public bool CanExecute_CreateRequestCommand(object obj)
         {
             return true;
+        }
+
+        private void Reset()
+        {
+            SelectedCity = null;
+            Description = "";
         }
 
         public void Executed_AddRequestCommand(object obj)
@@ -173,6 +207,9 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             _tourRequestController.Save(simpleTourRequest);
 
             //brisanje unosa dodati
+            MyTourRequestsViewModel.Refresh();
+
+            Reset();
 
         }
 
@@ -181,9 +218,11 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         {
             return true;
         }
-
-        public CreateComplexTourRequestViewModel()
+        private MyTourRequestsViewModel MyTourRequestsViewModel { get; set; }
+        public CreateComplexTourRequestViewModel(MyTourRequestsViewModel myTourRequestsViewModel)
         {
+            MyTourRequestsViewModel = myTourRequestsViewModel;
+            //this.NavigationService = service;
             this.CreateRequestCommand = new RelayCommand(Executed_CreateRequestCommand, CanExecute_CreateRequestCommand);
             this.AddRequestCommand = new RelayCommand(Executed_AddRequestCommand, CanExecute_AddRequestCommand);
 
@@ -202,6 +241,8 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             SelectedEndDate = DateTime.Now;
 
             ComplexRequestId = _complexTourRequestController.NextId();
+
+
         }
 
     }
