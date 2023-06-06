@@ -119,7 +119,7 @@ namespace InitialProject.Service.Services
             for (int i = 0; i < _tourReservationRepository.GetAll().Count; i++)
             {
                 var tourReservation = _tourReservationRepository.GetAll().ElementAt(i);
-                if (tourReservation.Guest.Id == user.Id && tourReservation.IsRewarded == false && tourReservation.TourEvent.StartTime.Year == DateTime.Now.Year)
+                if (tourReservation.Guest.Id == user.Id && tourReservation.IsRewarded == false && (DateTime.Now - tourReservation.TourEvent.StartTime).TotalDays <= 365)
                 {
                     numberOfUnrewardedReservations++;
                     rewardedReservation.Add(tourReservation);

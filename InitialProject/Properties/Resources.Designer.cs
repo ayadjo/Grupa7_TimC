@@ -349,11 +349,11 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start date and time.
+        ///   Looks up a localized string similar to Start date.
         /// </summary>
-        public static string StartDateAndTime {
+        public static string StartDate {
             get {
-                return ResourceManager.GetString("StartDateAndTime", resourceCulture);
+                return ResourceManager.GetString("StartDate", resourceCulture);
             }
         }
         
@@ -399,6 +399,15 @@ namespace InitialProject.Properties {
         public static string TourPoints {
             get {
                 return ResourceManager.GetString("TourPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tour reservation.
+        /// </summary>
+        public static string TourReservation {
+            get {
+                return ResourceManager.GetString("TourReservation", resourceCulture);
             }
         }
         

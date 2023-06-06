@@ -213,8 +213,8 @@
   <data name="Serbian" xml:space="preserve">
     <value>srpski</value>
   </data>
-  <data name="StartDateAndTime" xml:space="preserve">
-    <value>Vreme i datum početka</value>
+  <data name="StartDate" xml:space="preserve">
+    <value>Datum početka</value>
   </data>
   <data name="StartTime" xml:space="preserve">
     <value>Vreme početka</value>
@@ -230,6 +230,9 @@
   </data>
   <data name="TourPoints" xml:space="preserve">
     <value>Ključne tačke</value>
+  </data>
+  <data name="TourReservation" xml:space="preserve">
+    <value>Rezervacija ture</value>
   </data>
   <data name="ToursOverview" xml:space="preserve">
     <value>Pregled tura</value>

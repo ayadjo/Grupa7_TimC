@@ -213,8 +213,8 @@
   <data name="Serbian" xml:space="preserve">
     <value>serbian</value>
   </data>
-  <data name="StartDateAndTime" xml:space="preserve">
-    <value>Start date and time</value>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date</value>
   </data>
   <data name="StartTime" xml:space="preserve">
     <value>Start time</value>
@@ -230,6 +230,9 @@
   </data>
   <data name="TourPoints" xml:space="preserve">
     <value>Tour points</value>
+  </data>
+  <data name="TourReservation" xml:space="preserve">
+    <value>Tour reservation</value>
   </data>
   <data name="ToursOverview" xml:space="preserve">
     <value>Tours overview</value>

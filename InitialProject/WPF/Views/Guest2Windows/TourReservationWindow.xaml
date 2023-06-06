@@ -6,126 +6,125 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Window"
         xmlns:local2="clr-namespace:InitialProject.Localization"
         mc:Ignorable="d"
-        Title="Rezervacija tura" Height="550" Width="700" WindowStartupLocation="CenterScreen" Background="{DynamicResource AppBackgroundBrush}">
+        Title="{local2:Loc TourReservation}" Height="550" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="{DynamicResource AppBackgroundBrush}">
     <Window.Icon>
         <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
     </Window.Icon>
-    <StackPanel Orientation="Vertical" >
+    <StackPanel Orientation="Horizontal">
 
-        <StackPanel Orientation="Horizontal" Width="582" Height="402">
-
-            <StackPanel Orientation="Vertical" Width="340" Margin="6,30,0,0">
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/Guest2/hiking.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <TextBlock Text="{local2:Loc Name}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Name}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/Guest2/earth.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <TextBlock Text="{local2:Loc Country}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.Country}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/Guest2/skyscraper.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <TextBlock Text="{local2:Loc City}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.City}"/>
-                </StackPanel>
-                
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/Guest2/translation.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <TextBlock Text="{local2:Loc Language}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Languages}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/Guest2/group.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <TextBlock Text="{local2:Loc NumberOfGuests}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedTourEvent.Tour.MaxGuests}"/>
-                </StackPanel>
-                
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/Guest2/dateAndTime.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <TextBlock Text="{local2:Loc StartDateAndTime}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedTourEvent.StartTime}"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Image Source="/Resources/Images/Guest2/duration.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <TextBlock Text="{local2:Loc Duration}" FontWeight="Bold" />
-                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Duration}"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Height="35">
-                    <Image Source="/Resources/Images/Guest2/tour.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Top" />
-                    <TextBlock Text="{local2:Loc TourPoints}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedTourEvent.Tour.TourPoints}"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Height="50">
-                    <Image Source="/Resources/Images/Guest2/info.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Top"/>
-                    <TextBlock Text="{local2:Loc Description}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedTourEvent.Tour.Description}"/>
-                </StackPanel>
-
-
+        <StackPanel Orientation="Vertical" Width="295" Margin="30,0,0,0" Height="500">
+            <Image Source="{Binding SelectedTourEvent.Tour.Images[0].Url}" Width="150" Height="100" Margin="0,20,0,18"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                <Image Source="/Resources/Images/Guest2/hiking.png" Width="20" Height="20" HorizontalAlignment="Center"/>
+                <Label Content="{local2:Loc Name}" Height="27" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                <TextBlock Text="{Binding SelectedTourEvent.Tour.Name}" VerticalAlignment="Center" Height="17" TextAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                <Image Source="/Resources/Images/Guest2/earth.png" Width="20" Height="20" Margin="0,0,5,0" />
+                <Label Content="{local2:Loc Country}" Height="27" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.Country}" VerticalAlignment="Center" Height="17" TextAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                <Image Source="/Resources/Images/Guest2/skyscraper.png" Width="20" Height="20" Margin="0,0,5,0" />
+                <Label Content="{local2:Loc City}" Height="27" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                <TextBlock Text="{Binding SelectedTourEvent.Tour.Location.City}" VerticalAlignment="Center" Height="17" TextAlignment="Center"/>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" Margin="0,30,0,0" Width="205">
-                <Image Source="{Binding SelectedTourEvent.Tour.Images[0].Url}" Width="150" Height="100" Margin="0,0,0,10" VerticalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
-                    <Image Source="/Resources/Images/Guest2/group.png" Width="15" Height="15" Margin="0,0,5,0" />
-                    <TextBlock Text="{local2:Loc NumberOfPeople}" FontWeight="Bold" Margin="0,0,10,0"/>
-                    <TextBox x:Name="numberOfPeopleTextBox" Text="{Binding NumberOfPeople}" Width="50"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                <Image Source="/Resources/Images/Guest2/translation.png" Width="20" Height="20" Margin="0,0,5,0" />
+                <Label Content="{local2:Loc Language}" Height="27" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                <TextBlock Text="{Binding SelectedTourEvent.Tour.Languages}" VerticalAlignment="Center" Height="17" TextAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                <Image Source="/Resources/Images/Guest2/group.png" Width="20" Height="20" Margin="0,0,5,0" />
+                <Label Content="{local2:Loc NumberOfGuests}" Height="27" Width="105" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                <TextBlock Text="{Binding SelectedTourEvent.Tour.MaxGuests}" VerticalAlignment="Center" Height="17" TextAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                <Image Source="/Resources/Images/Guest2/dateAndTime.png" Width="20" Height="20" Margin="0,0,5,0" />
+                <Label Content="{local2:Loc StartDate}" Height="27" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                <TextBlock Text="{Binding SelectedTourEvent.StartTime}" VerticalAlignment="Center" Height="17" TextAlignment="Center"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                <Image Source="/Resources/Images/Guest2/duration.png" Width="20" Height="20" Margin="0,0,5,0" />
+                <Label Content="{local2:Loc Duration}" Height="27" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                <TextBlock Text="{Binding SelectedTourEvent.Tour.Duration}" VerticalAlignment="Center" Height="17" TextAlignment="Center"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10" >
+                <Image Source="/Resources/Images/Guest2/info.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                <Label Content="{local2:Loc Description}" Height="27" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                <TextBlock Text="{Binding SelectedTourEvent.Tour.Description}" VerticalAlignment="Center" Height="17" TextAlignment="Center"/>
+            </StackPanel>
+
+
+        </StackPanel>
+
+
+
+        <StackPanel Orientation="Vertical" Margin="0,50,0,0" Height="431">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,-30,0,50" HorizontalAlignment="Center">
+                    <Image Source="/Resources/Images/Guest2/group.png" Width="20" Height="20" Margin="0,0,5,0" />
+                    <Label Content="{local2:Loc NumberOfPeople}" Margin="0,0,10,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="numberOfPeopleTextBox" Text="{Binding NumberOfPeople}" Width="100" Height="25"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center" Width="120">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Center" Width="120" Height="30">
                     <TextBlock Text="{Binding AvailableSpotsText, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Label> </Label>
+                    <Label></Label>
                     <TextBlock Text="{Binding AvailableSpots, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
+            </StackPanel>
+           
 
-                <DataGrid 
+            <DataGrid 
                       ItemsSource="{Binding Vouchers, UpdateSourceTrigger=PropertyChanged}"
                       SelectedItem="{Binding SelectedVoucher, UpdateSourceTrigger=PropertyChanged}"
                       AutoGenerateColumns="False" IsReadOnly="True"
-                  Width="205" Height="80" x:Name="myVoucherOverview" Margin="0,10,0,0">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="{local2:Loc Name}" Binding="{Binding Name}" Width="80"/>
-                        <DataGridTextColumn Header="{local2:Loc ExpirationDate}" Binding="{Binding ExpirationDate}" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                  Width="320" Height="130" x:Name="myVoucherOverview" Margin="0,-40,0,10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{local2:Loc Name}" Binding="{Binding Name}" Width="160"/>
+                    <DataGridTextColumn Header="{local2:Loc ExpirationDate}" Binding="{Binding ExpirationDate}" Width="160"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-                <Button Height="35" Width="150" Background="{Binding BackgroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{DynamicResource AppBackgroundBrush}" Click="VoucherReports_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Images/Guest2/pdf.png" Width="15" Height="15" Margin="0,0,5,0" />
-                        <ContentControl Content="{local2:Loc VoucherReports}" FontSize="10"></ContentControl>
-                    </StackPanel>
-                </Button>
+            <Button Height="35" Width="150" Background="{Binding BackgroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{DynamicResource AppBackgroundBrush}" Click="VoucherReports_Click" Margin="0,0,0,20">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Images/Guest2/pdf.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <ContentControl Content="{local2:Loc VoucherReports}" FontSize="10"></ContentControl>
+                </StackPanel>
+            </Button>
 
-                <Button x:Name="CheckAvailability" Height="35" Width="150" Click="Check_Availability_Button_Click" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+            <DataGrid DockPanel.Dock="Bottom" SelectionMode="Single" ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly="True" Width="320" Height="130" Margin="0,0,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Tour.Location.Country}" Width="80"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding Tour.Location.City}" Width="80"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding Tour.Languages}" Width="80"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc StartTime}" Binding="{Binding StartTime, StringFormat='{}{0:dd.MM.yyyy}'}" Width="80"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                <Button x:Name="CheckAvailability" Height="35" Width="150" Click="Check_Availability_Button_Click" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,20,0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/question-mark.png" Width="15" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="{local2:Loc CheckAvailability}"></ContentControl>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="Reserve" Height="35" Width="150" Click="Reserve_Click" Background="White" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+                <Button x:Name="Reserve" Height="35" Width="150" Click="Reserve_Click" Background="White" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/check.png" Width="15" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="{local2:Loc Reserve}"></ContentControl>
                     </StackPanel>
                 </Button>
-
-
-
-
             </StackPanel>
+
 
 
         </StackPanel>
 
-        <DataGrid DockPanel.Dock="Bottom" SelectionMode="Single" ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" IsReadOnly="True" Width="478" Height="163" Margin="-80,10,0,0">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Tour.Location.Country}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding Tour.Location.City}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding Tour.Languages}" Width="100"></DataGridTextColumn>
-                <DataGridTextColumn Header="{local2:Loc StartTime}" Binding="{Binding StartTime}" Width="*"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        
+        
     </StackPanel>
 </Window>
