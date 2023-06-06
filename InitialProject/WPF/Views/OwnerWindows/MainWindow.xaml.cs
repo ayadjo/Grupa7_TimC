@@ -61,6 +61,13 @@ namespace InitialProject.WPF.Views.OwnerWindows
             signInForm.Show();
             this.Close();
         }
+
+        private void DemoModeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
     
 }

@@ -84,6 +84,7 @@
     <None Remove="Resources\Images\comment.png" />
     <None Remove="Resources\Images\dateAndTime.png" />
     <None Remove="Resources\Images\complex.png" />
+    <None Remove="Resources\Images\decrease.png" />
     <None Remove="Resources\Images\destination.png" />
     <None Remove="Resources\Images\diversity.png" />
     <None Remove="Resources\Images\down-arrow.png" />
@@ -93,6 +94,7 @@
     <None Remove="Resources\Images\favorite.png" />
     <None Remove="Resources\Images\filter.png" />
     <None Remove="Resources\Images\filter2.png" />
+    <None Remove="Resources\Images\fire-owner.png" />
     <None Remove="Resources\Images\glacierNationalPark.jpg" />
     <None Remove="Resources\Images\graph.png" />
     <None Remove="Resources\Images\group.png" />
@@ -156,6 +158,7 @@
     <None Remove="Resources\Images\Guest2\world-globe.png" />
     <None Remove="Resources\Images\hiking.png" />
     <None Remove="Resources\Images\home.png" />
+    <None Remove="Resources\Images\idea-owner.png" />
     <None Remove="Resources\Images\info-2-48.png" />
     <None Remove="Resources\Images\info.png" />
     <None Remove="Resources\Images\home2.png" />
@@ -170,6 +173,7 @@
     <None Remove="Resources\Images\menu111.png" />
     <None Remove="Resources\Images\osakaKyoto.png" />
     <None Remove="Resources\Images\passport.png" />
+    <None Remove="Resources\Images\pdf.png" />
     <None Remove="Resources\Images\people.png" />
     <None Remove="Resources\Images\photo.png" />
     <None Remove="Resources\Images\picture.png" />
@@ -179,6 +183,7 @@
     <None Remove="Resources\Images\question-mark.png" />
     <None Remove="Resources\Images\plus.png" />
     <None Remove="Resources\Images\questionnaire.png" />
+    <None Remove="Resources\Images\sad-owner.png" />
     <None Remove="Resources\Images\search.png" />
     <None Remove="Resources\Images\sign.png" />
     <None Remove="Resources\Images\skyscraper.png" />
@@ -212,7 +217,22 @@
     <Resource Include="Resources\Images\chat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\decrease.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\fire-owner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\idea-owner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\medal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\pdf.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\sad-owner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

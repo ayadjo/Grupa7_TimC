@@ -1,0 +1,31 @@
+﻿<Window x:Class="InitialProject.WPF.Views.OwnerWindows.AddNewCommentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.WPF.Views.OwnerWindows"
+        mc:Ignorable="d"
+        Title="AddNewCommentWindow" Height="300" Width="350" WindowStartupLocation="CenterScreen">
+    <Grid Background="#5E4B64">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <TextBox Name="DescriptionTextBox" Grid.Row="0" Height="100" Width="280" Text="{Binding Path=Text, UpdateSourceTrigger=LostFocus, Mode=TwoWay}" Background="{StaticResource OwnerRectangleFill}" Foreground="White"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="5">
+            <Button  x:Name="SaveCommentButton"  Command="{Binding FinishCommand}" Style="{StaticResource AccommodationPinkButton}"  Height="58" Width="78">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="3,0,0,0" >
+                    <TextBlock Text="Završi" HorizontalAlignment="Center"/>
+                    <TextBlock Text="CTRL + S" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button  HorizontalAlignment="Right" x:Name="CloseAddNewCommentWindowButton" Command="{Binding CloseCommand}" FontSize="15" Width="78" Height="58" Style="{StaticResource DarkButton}" Margin="5">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Nazad" HorizontalAlignment="Center"/>
+                    <TextBlock Text="ESC" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

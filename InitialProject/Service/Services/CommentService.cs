@@ -1,6 +1,7 @@
 ﻿using InitialProject.Domain.Models;
 using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Repositories;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,11 @@ namespace InitialProject.Service.Services
     public class CommentService
     {
         private ICommentRepository _commentRepository;
-        private AccommodationReservationRepository _accommodationRepository;
+        private AccommodationReservationRepository _accommodationReservationRepository;
         public CommentService()
         {
             _commentRepository = Injector.Injector.CreateInstance<ICommentRepository>();
-            _accommodationRepository = AccommodationReservationRepository.GetInstance();
+            _accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
         }
 
         public List<Comment> GetAll()
@@ -49,15 +50,19 @@ namespace InitialProject.Service.Services
 
         public bool CheckGuestOnLocation(Comment comment, Forum forum)
         {
-            List<AccommodationReservation> reservations = _accommodationRepository.GetAll();
+            List<AccommodationReservation> reservations = _accommodationReservationRepository.GetAll();
             foreach(AccommodationReservation reservation in reservations)
             {
-                if(reservation.Guest.Id == comment.Author.Id && reservation.IsCancelled == false && comment.ForumId == forum.Id && reservation.Accommodation.Location == forum.Location)
+                if(reservation.Guest.Id == comment.Author.Id && reservation.IsCancelled == false && comment.ForumId == forum.Id && reservation.Accommodation.Location == forum.Location || comment.Role == Enumerations.UserType.Owner)
                 {
                     return true;
                 }
             }
             return false;
         }
+
+        
+
+        
     }
 }

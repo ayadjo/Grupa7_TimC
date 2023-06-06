@@ -2,6 +2,7 @@
 using InitialProject.Domain.RepositoryInterfaces;
 using InitialProject.Enumerations;
 using InitialProject.Repositories;
+using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace InitialProject.Service.Services
 
         private ICommentRepository _commentRepository;
 
-        
+        private AccommodationRepository _accommodationRepository;
 
         public ForumService()
         {
@@ -25,7 +26,7 @@ namespace InitialProject.Service.Services
 
             _commentRepository = Injector.Injector.CreateInstance<ICommentRepository>();
 
-            
+            _accommodationRepository = AccommodationRepository.GetInstance();
         }
 
         public List<Forum> GetAll()
@@ -68,7 +69,18 @@ namespace InitialProject.Service.Services
             return true;
         }
 
-     
+        public bool CheckIfOwnerHasAccommodationOnLocation(Forum forum)
+        {
+            List<Accommodation> accommodations = _accommodationRepository.GetByOwner(SignInForm.LoggedUser.Id);
+            foreach (Accommodation accommodation in accommodations)
+            {
+                if (accommodation.Location == forum.Location)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
     }
 }

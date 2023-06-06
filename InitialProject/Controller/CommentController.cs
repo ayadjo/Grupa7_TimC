@@ -47,5 +47,8 @@ namespace InitialProject.Controller
         {
             return _commentService.CheckGuestOnLocation(comment, forum);
         }
+
+        
+        
     }
 }

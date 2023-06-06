@@ -4,7 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.OwnerWindows"
-        mc:Ignorable="d" Height="600" Width="700" WindowStartupLocation="CenterScreen" >
+        mc:Ignorable="d" Height="600" Width="700" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding CloseCommand}" Key="Esc"/>
+        <KeyBinding Command="{Binding AddNewCommentCommand}" Key="K" Modifiers="Ctrl"/>
+    </Window.InputBindings>
     <Grid Background="{StaticResource OwnerRectangleFill}">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -15,6 +19,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
           
                 <Image Grid.Column="0" Source="/Resources/Images/chat.png" Height="50" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
@@ -33,7 +38,7 @@
                     
         </Grid>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <ListBox ItemsSource="{Binding Comments}" BorderThickness="0" Background="{StaticResource OwnerRectangleFill}">
+            <ListBox ItemsSource="{Binding Comments}" SelectedItem="{Binding SelectedComment}" BorderThickness="0" Background="{StaticResource OwnerRectangleFill}">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -98,7 +103,7 @@
                                         </Image.Style>
                                     </Image>
 
-                                    <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Height="70">
+                                    <Button Height="70" Margin="5" VerticalAlignment="Bottom" Command="{Binding DataContext.ReportCommentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}">
                                         <Button.Style>
                                             <Style TargetType="Button">
                                                 <Setter Property="Visibility" Value="Collapsed"/>
@@ -107,7 +112,6 @@
                                                 <Setter Property="TextBlock.Foreground" Value="Black"/>
                                                 <Setter Property="Cursor" Value="Hand"/>
                                                 <Setter Property="FontSize" Value="14"/>
-                                                <Setter Property="Padding" Value="10"/>
                                                 <Setter Property="Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="Button">
@@ -133,11 +137,44 @@
                                                 </Style.Triggers>
                                             </Style>
                                         </Button.Style>
-                                        <StackPanel Orientation="Vertical">
-                                            <Label Content="Prijavi" HorizontalAlignment="Center"/>
-                                            <Label Content="CTRL + N" HorizontalAlignment="Center"/>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                            <Label Content="Prijavi" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <Label Content="CTRL + N" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                     </Button>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Broj prijava: ">
+                                            <Label.Style>
+                                                <Style TargetType="Label">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsGuestOnLocation}" Value="False">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding IsGuestOnLocation}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Label.Style>
+                                        </Label>
+                                        <Label Content="{Binding ReportsNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            <Label.Style>
+                                                <Style TargetType="Label">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsGuestOnLocation}" Value="False">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding IsGuestOnLocation}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Label.Style>
+                                        </Label>
+                                    </StackPanel>
+                                    
                                 </StackPanel>
                                 
                                 

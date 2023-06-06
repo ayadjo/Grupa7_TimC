@@ -8,6 +8,7 @@
         Title="Statistika po godinama" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.InputBindings>
         <KeyBinding Command="{Binding StatisticsByMonthCommand}" Key="M" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding GeneratePdfReportCommand}" Key="D" Modifiers="Ctrl"/>
     </Window.InputBindings>
     <Window.Resources>
         <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
@@ -31,8 +32,15 @@
             <Label Height="40" FontSize="20"  Content="{Binding Accommodation.Name}" Style="{StaticResource BoldLabel}" Margin="0,20,0,0"/>
             <Label Height="40"  Content=" - najviše zauzet tokom" Margin="0,20,0,0" Style="{StaticResource DefaultLabel}"/>
             <Label Height="40" Content="{Binding BestYear}" Margin="0,20,0,0" Style="{StaticResource DefaultLabel}"/>
+            
+
         </StackPanel>
-        
+        <Button Grid.Column="1" Command="{Binding GeneratePdfReportCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Background="Transparent" BorderThickness="0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                <Image Source="/Resources/Images/pdf.png" Height="30" Width="30" VerticalAlignment="Top"/>
+                <Label Content="Ctrl + D" Style="{StaticResource DefaultLabel}" FontSize="12"/>
+            </StackPanel>
+        </Button>
         <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="False" x:Name="StatisticsByYearDataGrid" 
                   IsReadOnly="True" SelectionMode="Single"
                   ItemsSource="{Binding Path=AccommodationStatistics, UpdateSourceTrigger=PropertyChanged}"

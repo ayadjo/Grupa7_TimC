@@ -49,6 +49,9 @@ namespace InitialProject.Controller
             return _forumService.AvailableForum(forum);
         }
 
-        
+        public bool CheckIfOwnerHasAccommodationOnLocation(Forum forum)
+        {
+            return _forumService.CheckIfOwnerHasAccommodationOnLocation(forum);
+        }
     }
 }

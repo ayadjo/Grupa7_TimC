@@ -152,7 +152,5 @@ namespace InitialProject.WPF.ViewModels.OwnerViewModels
 
         
 
-
-        
     }
 }

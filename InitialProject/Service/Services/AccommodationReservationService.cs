@@ -5,9 +5,11 @@ using InitialProject.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Diagnostics;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace InitialProject.Service.Services
 {
@@ -16,12 +18,14 @@ namespace InitialProject.Service.Services
         private AccommodationReservationRepository _accommodationReservationRepository;
         private ReservationRescheduleRequestService _reservationRescheduleService;
         private AccommodationOwnerReviewService _accommodationOwnerService;
+        private AccommodationRepository _accommodationRepository;
 
         public AccommodationReservationService()
         {
             _accommodationReservationRepository = AccommodationReservationRepository.GetInstance();
             _reservationRescheduleService = new ReservationRescheduleRequestService();
             _accommodationOwnerService = new AccommodationOwnerReviewService();
+            _accommodationRepository = AccommodationRepository.GetInstance();
         }
 
         public List<AccommodationReservation> GetAll()
@@ -443,6 +447,67 @@ namespace InitialProject.Service.Services
             return bestStatistic.Month;
         }
 
+        //LocationPopularity
+        private void AddLocationPopularityStatistic(List<LocationPopularityStatistic> statistics, AccommodationReservation reservation)
+        {
+            LocationPopularityStatistic foundStatistic = statistics.FirstOrDefault(st => st.Location.Id == reservation.Accommodation.Location.Id);
+            if (foundStatistic == null)
+            {
+                statistics.Add(new LocationPopularityStatistic(reservation.Accommodation.Location, 1));
+            }
+            else
+            {
+                foundStatistic.NumberOfReservation += 1;
+            }
+        }
 
+        public List<LocationPopularityStatistic> GetLocationPopularityStatistics()
+        {
+            List<LocationPopularityStatistic> statistics = new List<LocationPopularityStatistic>();
+            foreach (AccommodationReservation reservation in _accommodationReservationRepository.GetAll())
+            {
+                AddLocationPopularityStatistic(statistics, reservation);
+            }
+
+
+
+            return statistics;
+        }
+
+        public List<Location> GetMostPopularLocations()
+        {
+            List<LocationPopularityStatistic> statistics = GetLocationPopularityStatistics();
+            statistics = statistics.OrderByDescending(x => x.NumberOfReservation).ToList();
+
+            return statistics.Take(3).Select(x => x.Location).ToList();
+        }
+
+        private List<Location> GetLeastPopularLocations()
+        {
+            List<LocationPopularityStatistic> statistics = GetLocationPopularityStatistics();
+            statistics = statistics.OrderBy(x => x.NumberOfReservation).ToList();
+
+            return statistics.Take(3).Select(x => x.Location).ToList();
+        }
+
+        public List<Accommodation> FindAccommodationsOnLeastPopularLocations()
+        {
+            List<Location> locations = GetLeastPopularLocations();
+            List<Accommodation> accommodations = _accommodationRepository.GetByOwner(SignInForm.LoggedUser.Id);
+            List<Accommodation> accommodaionsForClosing = new List<Accommodation>();
+            foreach (Location location in locations)
+            {
+                foreach (Accommodation accommodation in accommodations)
+                {
+                    if (accommodation.Location.Id == location.Id)
+                    {
+                        accommodaionsForClosing.Add(accommodation);
+                    }
+                }
+            }
+            return accommodaionsForClosing;
+        }
+
+        
     }
 }

@@ -112,5 +112,15 @@ namespace InitialProject.Controller
         {
             return _accommodationReservationService.GetBestMonthForAccommodation(year, accommodationId);
         }
+        public List<Location> GetMostPopularLocations()
+        {
+            return _accommodationReservationService.GetMostPopularLocations();
+        }
+        public List<Accommodation> FindAccommodationsOnLeastPopularLocations()
+        {
+            return _accommodationReservationService.FindAccommodationsOnLeastPopularLocations();
+        }
+
+        
     }
 }

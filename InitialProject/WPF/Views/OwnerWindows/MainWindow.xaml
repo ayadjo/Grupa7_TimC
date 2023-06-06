@@ -24,12 +24,10 @@
             <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
-        <Button Background="Transparent" BorderBrush="Transparent" Grid.Column="4">
+        <Button Background="Transparent" x:Name="DemoModeButton" Click="DemoModeButton_Click" BorderBrush="Transparent"  Grid.Column="4">
             <Image Source="/Resources/Images/arrow-demo.png" Height="23" Width="23"/>
         </Button>
-        <Button Grid.Column="3" Background="Transparent" BorderBrush="Transparent">
-            <Image Source="/Resources/Images/info-2-48.png" Height="23" Width="23"/>
-        </Button>
+        
         <Button Grid.Row="2" Grid.Column="4"  Background="Transparent" BorderBrush="Transparent" Command="{Binding LogOutCommand}">
             <Image Source="/Resources/Images/logout-32.png" Height="23" Width="23"/>
         </Button>
@@ -43,7 +41,7 @@
                 </Style>
             </TabControl.Resources>
             <TabItem Header="Početna stranica" Style="{StaticResource DarkTabbedItem}">
-                <local:WelcomeWindow x:Name="HomeTab" Height="491" Margin="0,0,0,0" />
+                <local:SuggestionsWindow x:Name="HomeTab"/>
             </TabItem>
             <TabItem Header="Smeštaji" Style="{StaticResource DarkTabbedItem}">
                 <local:AccommodationOverviewWindow x:Name="AccommodationTab" Height="647" Margin="0,0,0,0"/>
