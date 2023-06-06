@@ -178,6 +178,15 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End date.
+        /// </summary>
+        public static string EndDate {
+            get {
+                return ResourceManager.GetString("EndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to english.
         /// </summary>
         public static string English {
@@ -417,6 +426,15 @@ namespace InitialProject.Properties {
         public static string ToursOverview {
             get {
                 return ResourceManager.GetString("ToursOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View request.
+        /// </summary>
+        public static string ViewComplexRequest {
+            get {
+                return ResourceManager.GetString("ViewComplexRequest", resourceCulture);
             }
         }
         

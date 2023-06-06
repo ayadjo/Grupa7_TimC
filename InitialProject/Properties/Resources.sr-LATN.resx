@@ -156,6 +156,9 @@
   <data name="Duration" xml:space="preserve">
     <value>Trajanje</value>
   </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Datum kraja</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>english</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="ToursOverview" xml:space="preserve">
     <value>Pregled tura</value>
+  </data>
+  <data name="ViewComplexRequest" xml:space="preserve">
+    <value>Pregledaj zahtev</value>
   </data>
   <data name="VoucherReports" xml:space="preserve">
     <value>Izveštaj o vaučerima</value>

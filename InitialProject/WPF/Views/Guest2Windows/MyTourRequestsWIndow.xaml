@@ -9,22 +9,22 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0,20,0,10">Zahtevi</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0,20,0,10" FontWeight="Bold">Zahtevi</Label>
             <DataGrid 
                   ItemsSource="{Binding Path=Requests, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myRequestsOverview" Height="105" Width="700">
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myRequestsOverview" Height="130" Width="700">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Location.Country}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding Location.City}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc Description}" Binding="{Binding Description}" Width="120"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding Language}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}" Binding="{Binding MaxGuests}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc DateRange}" Binding="{Binding Start}" Width="*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc DateRange}" Binding="{Binding End}" Width="*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc Status}" Binding="{Binding Status}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Location.Country}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding Location.City}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Description}" Binding="{Binding Description}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding Language}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}" Binding="{Binding MaxGuests}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc StartDate}" Binding="{Binding Start, StringFormat='{}{0:dd.MM.yyyy}'}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc EndDate}" Binding="{Binding End, StringFormat='{}{0:dd.MM.yyyy}'}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Status}" Binding="{Binding Status}" Width="110"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,50,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,31,0">
                 <Button x:Name="Statistics" Height="35" Width="150" Background="#FFFFFF" Margin="0,0,20,0" Command="{Binding Path=StatisticsCommand}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/graph.png" Width="15" Height="15" Margin="0,0,5,0" />
@@ -35,35 +35,36 @@
                 <Button x:Name="CreateRequest" Height="35" Width="150" Background="#FFFFFF" Command="{Binding Path=CreateRequestCommand}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
-                        <ContentControl Content="Kreiraj zahtev"></ContentControl>
+                        <ContentControl Content="{local2:Loc CreateRequest}"></ContentControl>
                     </StackPanel>
                 </Button>
             </StackPanel>
 
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0,20,0,10">Složeni zahtevi</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0,20,0,10" FontWeight="Bold">Složeni zahtevi</Label>
             <DataGrid 
                   ItemsSource="{Binding Path=ComplexRequests, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedComplexTourRequest, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myComplexRequestsOverview" Height="105" Width="700">
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myComplexRequestsOverview" Height="130" Width="700">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding SimpleTourRequests[0].Location.Country}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding SimpleTourRequests[0].Location.City}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding SimpleTourRequests[0].Language}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}"  Binding="{Binding SimpleTourRequests[0].MaxGuests}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc DateRange}" Binding="{Binding SimpleTourRequests[0].Start, StringFormat='{}{0:dd.MM.yyyy}'}" Width="100"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc Status}"  Binding="{Binding Status}" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding SimpleTourRequests[0].Location.Country}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding SimpleTourRequests[0].Location.City}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding SimpleTourRequests[0].Language}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}"  Binding="{Binding SimpleTourRequests[0].MaxGuests}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc StartDate}" Binding="{Binding SimpleTourRequests[0].Start, StringFormat='{}{0:dd.MM.yyyy}'}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc EndDate}" Binding="{Binding SimpleTourRequests[0].End, StringFormat='{}{0:dd.MM.yyyy}'}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Status}"  Binding="{Binding Status}" Width="110"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="ViewComplexTourRequest" Height="35" Width="150" Background="#FFFFFF" HorizontalAlignment="Right" Margin="420,10,30,0" Command="{Binding Path=ViewComplexRequestCommand}" >
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button x:Name="ViewComplexTourRequest" Height="35" Width="150" Background="#FFFFFF" HorizontalAlignment="Right" Margin="411,0,20,0" Command="{Binding Path=ViewComplexRequestCommand}" >
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
+                        <Image Source="/Resources/Images/Guest2/file.png" Width="15" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="{local2:Loc ViewComplexRequest}"></ContentControl>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="CreateComplexTourRequest" Height="35" Width="150" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,10,50,0" Command="{Binding Path=CreateComplexRequest}" >
+                <Button x:Name="CreateComplexTourRequest" Height="35" Width="150" Background="#FFFFFF" HorizontalAlignment="Right" Command="{Binding Path=CreateComplexRequest}" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Images/Guest2/pencil.png" Width="15" Height="15" Margin="0,0,5,0" />
                         <ContentControl Content="{local2:Loc CreateComplexRequest}"></ContentControl>

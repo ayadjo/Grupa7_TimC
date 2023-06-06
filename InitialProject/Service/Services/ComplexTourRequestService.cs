@@ -72,9 +72,13 @@ namespace InitialProject.Service.Services
                     {
                         request.Status = RequestStatusType.Approved;
                     }
-                    else if (within48Hours && allDeclined && request.Status == RequestStatusType.Standby)
+                    else if (within48Hours && !allDeclined && request.Status == RequestStatusType.Standby)
                     {
                         request.Status = RequestStatusType.Declined;
+                    }
+                    else if (!allAccepted && !allDeclined)
+                    {
+                        request.Status = RequestStatusType.Standby;
                     }
 
                     _tourRequestRepository.Update(request);

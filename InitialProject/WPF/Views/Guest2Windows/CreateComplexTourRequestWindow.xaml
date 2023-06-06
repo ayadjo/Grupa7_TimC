@@ -27,7 +27,7 @@
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/earth.png"  Height="20" Width="35" />
                 <Label Content="{local2:Loc Country}" Height="27" Width="100"/>
-                <ComboBox x:Name="CountryComboBox" SelectedItem="{Binding Path=SelectedCountry,UpdateSourceTrigger=PropertyChanged,  Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Countries}" Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!" LostFocus="CountryComboBox_LostFocus"/>
+                <ComboBox x:Name="CountryComboBox" SelectedItem="{Binding Path=SelectedCountry,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Countries}" Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!" LostFocus="CountryComboBox_LostFocus"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -45,13 +45,16 @@
                     <ComboBoxItem Content="{local2:Loc Italian}"></ComboBoxItem>
                     <ComboBoxItem Content="{local2:Loc Korean}"></ComboBoxItem>
                     <ComboBoxItem Content="{local2:Loc Japanese}"></ComboBoxItem>
+                    <ComboBox.SelectedItem>
+                        <Binding Path="Language" UpdateSourceTrigger="PropertyChanged" />
+                    </ComboBox.SelectedItem>
                 </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/group.png"  Height="20" Width="35" />
                 <Label Content="{local2:Loc NumberOfGuests}" Height="27" Width="100"/>
-                <TextBox x:Name="MaxGuestTextBox" Text="{Binding Path=MaxGuests, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25" ToolTip="This field is required!" Margin="10,10,10,10"/>
+                <TextBox x:Name="MaxGuestTextBox" Text="{Binding Path=MaxGuests, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25" ToolTip="This field is required!" Margin="10,10,10,10"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -70,21 +73,21 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Image Source="/Resources/Images/Guest2/schedule.png" Height="20" Width="35" />
                 <Label Content="{local2:Loc DateRange}" Height="27" Width="90"/>
-                <DatePicker Name="StartDateDatePicker" SelectedDate="{Binding Path= SelectedStartDate}" Width="97" Margin="20,10,10,10"/>
-                <DatePicker Name="EndDateDatePicker" SelectedDate="{Binding Path= SelectedEndDate}" Width="97" Margin="0,10,10,10"/>
+                <DatePicker Name="StartDateDatePicker" SelectedDate="{Binding Path= SelectedStartDate, UpdateSourceTrigger=PropertyChanged}" Width="97" Margin="20,10,10,10"/>
+                <DatePicker Name="EndDateDatePicker" SelectedDate="{Binding Path= SelectedEndDate, UpdateSourceTrigger=PropertyChanged}" Width="97" Margin="0,10,10,10"/>
             </StackPanel>
 
             <DataGrid 
                   ItemsSource="{Binding Path=PartsOfTheRequest, UpdateSourceTrigger=PropertyChanged}"                 
                   AutoGenerateColumns="False" IsReadOnly="True" x:Name="myComplexTourRequest" Width="344" Margin="-5,0,0,0" Height="103" Background="White">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Location.Country, Mode=OneWay}" Width="80"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding Location.City, Mode=OneWay}" Width="80"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding Language}" Width="80"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}" Binding="{Binding MaxGuests}" Width="80"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc Description}" Binding="{Binding Description}" Width="80"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc From}" Binding="{Binding Start, StringFormat='{}{0:dd.MM.yyyy}'}" Width="80"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{local2:Loc To}" Binding="{Binding End, StringFormat='{}{0:dd.MM.yyyy}'}" Width="80"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Country}" Binding="{Binding Location.Country, Mode=OneWay}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc City}" Binding="{Binding Location.City, Mode=OneWay}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Language}" Binding="{Binding Language}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc NumberOfGuests}" Binding="{Binding MaxGuests}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc Description}" Binding="{Binding Description}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc From}" Binding="{Binding Start, StringFormat='{}{0:dd.MM.yyyy}'}" Width="110"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{local2:Loc To}" Binding="{Binding End, StringFormat='{}{0:dd.MM.yyyy}'}" Width="110"></DataGridTextColumn>
 
                 </DataGrid.Columns>
             </DataGrid>

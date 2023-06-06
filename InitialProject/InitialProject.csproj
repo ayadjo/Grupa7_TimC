@@ -124,6 +124,7 @@
     <None Remove="Resources\Images\Guest2\duration.png" />
     <None Remove="Resources\Images\Guest2\earth.png" />
     <None Remove="Resources\Images\Guest2\education.png" />
+    <None Remove="Resources\Images\Guest2\file.png" />
     <None Remove="Resources\Images\Guest2\flag-srb.png" />
     <None Remove="Resources\Images\Guest2\flag-uk.png" />
     <None Remove="Resources\Images\Guest2\flag.png" />
@@ -278,6 +279,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Guest2\add-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\file.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Guest2\flag-srb.png">

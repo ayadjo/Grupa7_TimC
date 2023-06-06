@@ -156,15 +156,6 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         }
 
-        /*private void RefreshComplexTourRequest(List<ComplexTourRequest> complexRequest)
-        {
-            .Clear();
-            foreach (ComplexTourRequest request in complexRequest)
-            {
-                Tours.Add(tour);
-            }
-        }*/
-
         private void RefreshComplexTourRequest(List<ComplexTourRequest> complexRequest)
         {
             MyRequestsViewModel.ComplexRequests.Clear();
@@ -181,8 +172,13 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 
         private void Reset()
         {
+            SelectedCountry = null;
             SelectedCity = null;
             Description = "";
+            Language = null;
+            MaxGuests = 0;
+            SelectedStartDate = DateTime.Today.Date;
+            SelectedEndDate = DateTime.Today.Date;
         }
 
         public void Executed_AddRequestCommand(object obj)

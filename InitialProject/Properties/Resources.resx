@@ -156,6 +156,9 @@
   <data name="Duration" xml:space="preserve">
     <value>Duration</value>
   </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>english</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="ToursOverview" xml:space="preserve">
     <value>Tours overview</value>
+  </data>
+  <data name="ViewComplexRequest" xml:space="preserve">
+    <value>View request</value>
   </data>
   <data name="VoucherReports" xml:space="preserve">
     <value>Voucher reports</value>
