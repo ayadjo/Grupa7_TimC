@@ -114,6 +114,7 @@
     <None Remove="Resources\Images\Guest1\x.png" />
     <None Remove="Resources\Images\Guest2\add-button.png" />
     <None Remove="Resources\Images\Guest2\adventure.png" />
+    <None Remove="Resources\Images\Guest2\annual-percentage-rate.png" />
     <None Remove="Resources\Images\Guest2\application.png" />
     <None Remove="Resources\Images\Guest2\check.png" />
     <None Remove="Resources\Images\Guest2\comment.png" />
@@ -124,6 +125,7 @@
     <None Remove="Resources\Images\Guest2\duration.png" />
     <None Remove="Resources\Images\Guest2\earth.png" />
     <None Remove="Resources\Images\Guest2\education.png" />
+    <None Remove="Resources\Images\Guest2\family.png" />
     <None Remove="Resources\Images\Guest2\file.png" />
     <None Remove="Resources\Images\Guest2\flag-srb.png" />
     <None Remove="Resources\Images\Guest2\flag-uk.png" />
@@ -139,6 +141,7 @@
     <None Remove="Resources\Images\Guest2\man.png" />
     <None Remove="Resources\Images\Guest2\map.png" />
     <None Remove="Resources\Images\Guest2\moon.png" />
+    <None Remove="Resources\Images\Guest2\partrequests.png" />
     <None Remove="Resources\Images\Guest2\passport.png" />
     <None Remove="Resources\Images\Guest2\pdf.png" />
     <None Remove="Resources\Images\Guest2\pencil.png" />
@@ -281,6 +284,12 @@
     <Resource Include="Resources\Images\Guest2\add-button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\Guest2\annual-percentage-rate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\family.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\Guest2\file.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -294,6 +303,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Guest2\moon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\partrequests.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Guest2\percentage2.png">

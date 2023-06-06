@@ -7,12 +7,28 @@
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         xmlns:local2="clr-namespace:InitialProject.Localization"
         Title="{local2:Loc Statistics}" Height="550" Width="700" Background="{DynamicResource AppBackgroundBrush}" WindowStartupLocation="CenterScreen">
+    <Window.Icon>
+        <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
+    </Window.Icon>
     <StackPanel>
         <Label HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20">Statistics on requests</Label>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,10">
-            <Button x:Name="InGeneral" Command="{Binding InGeneralCommand}" Content="Tokom svih godina" Width="150" Height="35" Margin="0,0,20,0" Background="White"/>
+            
+            <Button x:Name="InGeneral" Command="{Binding InGeneralCommand}" Width="150" Height="35" Margin="0,0,20,0" Background="White">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Images/Guest2/annual-percentage-rate.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <ContentControl Content="{local2:Loc DuringAllYears}"></ContentControl>
+                </StackPanel>
+            </Button>
+
+
             <ComboBox x:Name="YearComboBox"  SelectedItem="{Binding Path=SelectedYear}"  HorizontalAlignment="Right" ItemsSource="{Binding Years}" Width="150" Height="35" Margin="0,0,20,0" Background="White"/>
-            <Button x:Name="View" Command="{Binding ViewCommand}"  HorizontalAlignment="Center" Height="35" Width="150" Content="Prikaži" Background="White"></Button>
+            <Button x:Name="View" Command="{Binding ViewCommand}"  HorizontalAlignment="Center" Height="35" Width="150" Background="White">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Images/Guest2/annual-percentage-rate.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <ContentControl Content="{local2:Loc ViewForYear}"></ContentControl>
+                </StackPanel>
+            </Button>
         </StackPanel>
         
         <Rectangle Stroke="Black" StrokeThickness="2" Width="605" Height="130" Margin="0,10,0,0"/>
@@ -20,18 +36,18 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <Image Source="/Resources/Images/Guest2/percentage2.png" Width="20" Height="20" Margin="0,0,5,0"/>
                 <Label Content="Procenat prihvaćenih zahteva: " />
-                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfAcceptedRequests, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0}%}">
+                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfAcceptedRequests, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0}%}" Height="17">
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Image Source="/Resources/Images/Guest2/percentage2.png" Width="20" Height="20" Margin="0,0,5,0"/>
                 <Label Content="Prosečan broj ljudi u prihvaćenim zahtevima: " />
-                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.AverageNumberOfPeopleInAcceptedRequests, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Width="50" Text="{Binding Path=TourRequestPercentageDto.AverageNumberOfPeopleInAcceptedRequests, UpdateSourceTrigger=PropertyChanged}" Height="17"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Image Source="/Resources/Images/Guest2/percentage2.png" Width="20" Height="20" Margin="0,0,5,0"/>
                 <Label Content="Procenat neprihvaćenih zahteva: "/>
-                <TextBlock  Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfRejectedRequests, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0}%}"/>
+                <TextBlock  Width="50" Text="{Binding Path=TourRequestPercentageDto.PercentageOfRejectedRequests, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0}%}" Height="17"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">

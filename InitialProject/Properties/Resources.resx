@@ -156,6 +156,9 @@
   <data name="Duration" xml:space="preserve">
     <value>Duration</value>
   </data>
+  <data name="DuringAllYears" xml:space="preserve">
+    <value>During all years</value>
+  </data>
   <data name="EndDate" xml:space="preserve">
     <value>End date</value>
   </data>
@@ -204,6 +207,9 @@
   <data name="NumberOfPeople" xml:space="preserve">
     <value>Number of people</value>
   </data>
+  <data name="PartsOfRequests" xml:space="preserve">
+    <value>Parts of complex request</value>
+  </data>
   <data name="Please select a tour!" xml:space="preserve">
     <value>Please select a tour!</value>
   </data>
@@ -242,6 +248,9 @@
   </data>
   <data name="ViewComplexRequest" xml:space="preserve">
     <value>View request</value>
+  </data>
+  <data name="ViewForYear" xml:space="preserve">
+    <value>View for year</value>
   </data>
   <data name="VoucherReports" xml:space="preserve">
     <value>Voucher reports</value>

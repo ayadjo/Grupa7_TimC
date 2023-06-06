@@ -3,17 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local2="clr-namespace:InitialProject.Localization"
         xmlns:local="clr-namespace:InitialProject.WPF.Views.Guest2Windows"
         mc:Ignorable="d"
-        Title="Chigra" Height="450" Width="400">
+        Title="{local2:Loc PartsOfRequests}" Height="450" Width="400" Background="{DynamicResource AppBackgroundBrush}" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Window.Icon>
+        <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
+    </Window.Icon>
     <Grid>
-        <StackPanel Orientation="Horizontal">
+        <!--<StackPanel Orientation="Horizontal">
             <Label FontSize="20" Margin="100,-200,20,0" Height="38" FontWeight="Bold">Parts of tour requests</Label>
             <TextBlock></TextBlock>
-        </StackPanel>
+        </StackPanel>-->
         <DataGrid ItemsSource="{Binding Path=PartsOfTourRequest, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedComplexTourRequest, UpdateSourceTrigger=PropertyChanged}"
-                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myRequestsOverview" Margin="10,165,10,84">
+                  AutoGenerateColumns="False" IsReadOnly="True" x:Name="myRequestsOverview" Margin="10,0,10,84" Width="350" Height="200">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Država" Binding="{Binding Location.Country}" Width="100"></DataGridTextColumn>
                 <DataGridTextColumn Header="Grad" Binding="{Binding Location.City}" Width="100"></DataGridTextColumn>
@@ -22,6 +26,8 @@
             </DataGrid.Columns>
 
         </DataGrid>
+
+        <Image Source="/Resources/Images/Guest2/partrequests.png" Margin="20,280,20,-12" />
 
     </Grid>
 </Window>

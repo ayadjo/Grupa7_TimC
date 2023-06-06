@@ -178,6 +178,15 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to During all years.
+        /// </summary>
+        public static string DuringAllYears {
+            get {
+                return ResourceManager.GetString("DuringAllYears", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End date.
         /// </summary>
         public static string EndDate {
@@ -322,6 +331,15 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parts of complex request.
+        /// </summary>
+        public static string PartsOfRequests {
+            get {
+                return ResourceManager.GetString("PartsOfRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select a tour!.
         /// </summary>
         public static string Please_select_a_tour_ {
@@ -435,6 +453,15 @@ namespace InitialProject.Properties {
         public static string ViewComplexRequest {
             get {
                 return ResourceManager.GetString("ViewComplexRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View for year.
+        /// </summary>
+        public static string ViewForYear {
+            get {
+                return ResourceManager.GetString("ViewForYear", resourceCulture);
             }
         }
         

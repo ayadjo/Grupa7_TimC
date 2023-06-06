@@ -156,6 +156,9 @@
   <data name="Duration" xml:space="preserve">
     <value>Trajanje</value>
   </data>
+  <data name="DuringAllYears" xml:space="preserve">
+    <value>Tokom svih godina</value>
+  </data>
   <data name="EndDate" xml:space="preserve">
     <value>Datum kraja</value>
   </data>
@@ -204,6 +207,9 @@
   <data name="NumberOfPeople" xml:space="preserve">
     <value>Broj ljudi</value>
   </data>
+  <data name="PartsOfRequests" xml:space="preserve">
+    <value>Delovi složene ture</value>
+  </data>
   <data name="Please select a tour!" xml:space="preserve">
     <value>Odaberite turu!</value>
   </data>
@@ -242,6 +248,9 @@
   </data>
   <data name="ViewComplexRequest" xml:space="preserve">
     <value>Pregledaj zahtev</value>
+  </data>
+  <data name="ViewForYear" xml:space="preserve">
+    <value>Pregled za godinu</value>
   </data>
   <data name="VoucherReports" xml:space="preserve">
     <value>Izveštaj o vaučerima</value>
