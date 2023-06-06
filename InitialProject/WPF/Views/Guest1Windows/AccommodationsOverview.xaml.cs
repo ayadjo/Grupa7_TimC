@@ -5,6 +5,7 @@ using InitialProject.WPF.Views.Guest2Window;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InitialProject.WPF.Views
+namespace InitialProject.WPF.Views.Guest1Windows
 {
     /// <summary>
     /// Interaction logic for AccommodationsOverview.xaml
@@ -153,93 +154,35 @@ namespace InitialProject.WPF.Views
 
 
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-
-
-
-        /*
-        public ObservableCollection<Accommodation> Accommodations { get; set; }
-
-        public AccommodationController _accommodationController;
-        public LocationController _locationController;
-
-        public string Name { get; set; }
-        public string Country { get; set; }
-
-        public string City { get; set; }
-
-        public string Type { get; set; }
-
-        public string MaxGuests { get; set; }
-
-        public string MinDaysForReservation { get; set; }
-
-
-        public Accommodation SelectedAccommodation { get; set; }
-        public AccommodationsOverview()
+        protected virtual void OnPropertyChanged(string name)
         {
-            InitializeComponent();
-
-            this.DataContext = this;
-
-            _accommodationController = new AccommodationController();
-
-            Accommodations = new ObservableCollection<Accommodation>(_accommodationController.GetAll());
-            Name = "";
-            Country = "";
-            City = "";
-            Type = "";
-            MaxGuests = "";
-            MinDaysForReservation = "";
-
-        }
-
-        private void UpdateAccommodationsList()
-        {
-            
-            //Accommodations.Clear();
-            //foreach (var accommodation in _accommodationController.GetAll())
-            //{
-            //    Accommodations.Add(accommodation);
-            //}
-        }
-
-        public void Update()
-        {
-            UpdateAccommodationsList();
-        }
-
-        
-        //private void buttonReserve_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (SelectedTour != null)
-        //    {
-        //        TourReservationWindow tourReservation = new TourReservationWindow();
-        //        tourReservation.Show();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Morate odabrati turu", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
-        
-
-        private void RefreshAccommodations(List<Accommodation> accommodations)
-        {
-            Accommodations.Clear();
-            foreach (Accommodation accommodation in accommodations)
+            if (PropertyChanged != null)
             {
-                Accommodations.Add(accommodation);
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private string _test3;
+        public string Test3
+        {
+            get
+            {
+                return _test3;
+            }
+            set
+            {
+                if (value != _test3)
+                {
+                    _test3 = value;
+                    OnPropertyChanged("Test3");
+                }
             }
         }
 
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
-        {
 
-            List<Accommodation> searchedAccommodations = _accommodationController.AccommodationSearch(Name, Country, City, Type, MaxGuests, MinDaysForReservation);
-            RefreshAccommodations(searchedAccommodations);
-        }
-        */
+
     }
 }

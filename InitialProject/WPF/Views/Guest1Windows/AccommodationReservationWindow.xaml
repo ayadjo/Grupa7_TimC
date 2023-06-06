@@ -1,9 +1,10 @@
-﻿<Window x:Class="InitialProject.WPF.Views.AccommodationReservationWindow"
+﻿<Window x:Class="InitialProject.WPF.Views.Guest1Windows.AccommodationReservationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views"
+        xmlns:val="clr-namespace:InitialProject.WPF.Views.Guest1Windows"
         mc:Ignorable="d"
         Title="AccommodationReservationWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen" Background="LightSkyBlue">
     <Window.Resources>
@@ -42,11 +43,61 @@
 
 
         <Label Content="Broj dana za boravak:" HorizontalAlignment="Left" Margin="674,63,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Margin="680,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" Height="26" Name="NumberOfDaysTextBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="680,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" Height="26" Name="NumberOfDaysTextBox">
+            <TextBox.Text>
+                <Binding Path="Test3" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <val:NumberValidation ValidationStep="RawProposedValue"/>
+                        <val:MinMaxValidationRule ValidationStep="ConvertedProposedValue" Min="10" Max="350"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                        <TextBlock Margin="10,25,0,0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                    </Grid>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
         <Label Content="(u gornje polje za unos unesite ceo broj koji predstavlja&#xD;&#xA;broj dana koji planirate da provedete u smeštaju u &#xD;&#xA;okviru datuma koje ste malopre uneli)" HorizontalAlignment="Left" Margin="680,136,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Broj ljudi koji dolaze:" HorizontalAlignment="Left" Margin="680,231,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Margin="680,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" Height="28" Name="NumberOfGuestsTextBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="680,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" Height="28" Name="NumberOfGuestsTextBox">
+            <TextBox.Text>
+                <Binding Path="Test3" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <val:NumberValidation ValidationStep="RawProposedValue"/>
+                        <val:MinMaxValidationRule ValidationStep="ConvertedProposedValue" Min="10" Max="350"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                        <TextBlock Margin="10,25,0,0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                    </Grid>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
         <Label Content="(u gornje polje za unos unesite ceo broj koji predstavlja&#xD;&#xA;broj ljudi koji (uključujući Vas) dolaze u izabrani smeštaj)" HorizontalAlignment="Left" Margin="680,306,0,0" VerticalAlignment="Top"/>
 
 

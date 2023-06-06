@@ -123,6 +123,16 @@ namespace InitialProject.WPF.ViewModels.Guest1ViewModels
                 _accommodationReservationController.Update(reservation);
                 MessageBox.Show("Uspešno ste ocenili smeštaj i vlasnika!", "Ocenjeno!", MessageBoxButton.OK);
                 this.Close();
+
+                // Get the previous window in the application
+                var previousWindow = Application.Current.Windows
+                    .OfType<Window>()
+                    .Reverse()
+                    .Skip(1)
+                    .FirstOrDefault();
+
+                // Close the previous window if it exists
+                previousWindow?.Close();
             }
         }
 

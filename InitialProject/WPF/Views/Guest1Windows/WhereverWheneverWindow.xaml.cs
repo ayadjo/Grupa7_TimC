@@ -5,6 +5,7 @@ using InitialProject.WPF.Views.Guest1Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -137,7 +138,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
             {
                 MessageBox.Show("Niste uneli broj gostiju koji dolaze!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if(SelectedAccommodation == null)
+            else if (SelectedAccommodation == null)
             {
                 MessageBox.Show("Morate izabrati smeštaj!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -155,6 +156,40 @@ namespace InitialProject.WPF.Views.Guest1Windows
                 else
                 {
                     _accommodationReservationController.GetFirstAvailableDate(accommodationReservation);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private string _test3;
+        public string Test3
+        {
+            get
+            {
+                return _test3;
+            }
+            set
+            {
+                if (value != _test3)
+                {
+                    _test3 = value;
+                    OnPropertyChanged("Test3");
                 }
             }
         }

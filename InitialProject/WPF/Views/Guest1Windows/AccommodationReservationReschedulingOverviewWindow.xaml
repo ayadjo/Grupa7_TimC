@@ -33,7 +33,7 @@
 
         <TabControl Margin="0,78,0,133">
 
-            <TabItem Header="Na čekanju">
+            <TabItem Header="Na čekanju" Height="30" Width="100">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,140">
                     <DataGrid ItemsSource="{Binding StandByReservationRescheduleRequests, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" x:Name="StandByRequestsDataGrid" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,-140" Background="white" RowHeight="50">
@@ -42,13 +42,13 @@
                             <DataGridTextColumn Header="ID rezervacije" Binding="{Binding Reservation.Id}" Width="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Novi početni datum" Binding="{Binding NewStart}" Width="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Novi krajnji datum" Binding="{Binding NewEnd}" Width="*"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}" Width="4*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}" Width="3*"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Odobreni">
+            <TabItem Header="Odobreni" Height="30" Width="100">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,140">
                     <DataGrid ItemsSource="{Binding ApprovedReservationRescheduleRequests, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" x:Name="ApprovedRequestsDataGrid" IsReadOnly="True" SelectionMode="Single" Background="white" RowHeight="50" Margin="0,0,0,-140">
@@ -57,13 +57,13 @@
                             <DataGridTextColumn Header="ID rezervacije" Binding="{Binding Reservation.Id}" Width="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Novi početni datum" Binding="{Binding NewStart}" Width="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Novi krajnji datum" Binding="{Binding NewEnd}" Width="*"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}" Width="4*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}" Width="3*"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Odbijeni">
+            <TabItem Header="Odbijeni" Height="30" Width="100">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,140">
                     <DataGrid ItemsSource="{Binding DeclinedReservationRescheduleRequests, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" x:Name="DeclinedRequestsDataGrid" IsReadOnly="True" SelectionMode="Single" Background="white" RowHeight="50" Margin="0,0,0,-139">
@@ -72,7 +72,7 @@
                             <DataGridTextColumn Header="ID rezervacije" Binding="{Binding Reservation.Id}" Width="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Novi početni datum" Binding="{Binding NewStart}" Width="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Novi krajnji datum" Binding="{Binding NewEnd}" Width="*"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}" Width="4*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Komentar vlasnika" Binding="{Binding Comment}" Width="3*"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

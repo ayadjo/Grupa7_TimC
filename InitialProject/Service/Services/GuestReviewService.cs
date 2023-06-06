@@ -61,5 +61,45 @@ namespace InitialProject.Service.Services
             }
             return guestReviews;
         }
+
+        public string GetCleannessAverageByUserId(int guest)
+        {
+            double sum = 0;
+            double numberOfGuestReviews = 0;
+            double retVal;
+
+            foreach (GuestReview guestReview in _guestReviewRepository.GetAll())
+            {
+                if (guestReview.Guest.Id == guest)
+                {
+                    numberOfGuestReviews++;
+                    sum += guestReview.Cleanliness;
+                }
+            }
+
+            retVal = sum / numberOfGuestReviews;
+
+            return retVal.ToString();
+        }
+
+        public string GetBehaviorAverageByUserId(int guest)
+        {
+            double sum = 0;
+            double numberOfGuestReviews = 0;
+            double retVal;
+
+            foreach (GuestReview guestReview in _guestReviewRepository.GetAll())
+            {
+                if (guestReview.Guest.Id == guest)
+                {
+                    numberOfGuestReviews++;
+                    sum += guestReview.Behaviour;
+                }
+            }
+
+            retVal = sum / numberOfGuestReviews;
+
+            return retVal.ToString();
+        }
     }
 }

@@ -22,7 +22,7 @@
 
 
 
-        <Button HorizontalAlignment="Left" Margin="898,666,0,0" VerticalAlignment="Top" Command="{Binding CancelButtonCommand}" Height="50" Width="100" Background="White">
+        <Button HorizontalAlignment="Left" Margin="898,666,0,0" VerticalAlignment="Top" Click="CancelButton_Click" Height="50" Width="100" Background="White">
             <Grid>
                 <Image Source="\Resources\Images\Guest1\back.png" Width="30" Height="30" Margin="34,0,-16,0"/>
                 <TextBlock Text="Nazad" VerticalAlignment="Center" Margin="-19,0,19,0" />

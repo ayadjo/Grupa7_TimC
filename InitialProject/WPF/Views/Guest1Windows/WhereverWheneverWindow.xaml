@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InitialProject.WPF.Views"
+        xmlns:val="clr-namespace:InitialProject.WPF.Views.Guest1Windows"
         mc:Ignorable="d"
         Title="WhereverWheneverWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen" Background="LightSkyBlue">
 
@@ -42,12 +43,62 @@
             <Label Content="&quot;BILO GDE / BILO KADA&quot;" HorizontalAlignment="Left" Margin="384,0,0,0" VerticalAlignment="Top" FontSize="20"/>
 
             <Label HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Content="Broj gostiju:"/>
-            <TextBox HorizontalAlignment="Left" Margin="10,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" Name="NumberOfGuestsTextBox"/>
+            <TextBox HorizontalAlignment="Left" Margin="10,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" Name="NumberOfGuestsTextBox">
+                <TextBox.Text>
+                    <Binding Path="Test3" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <val:NumberValidation ValidationStep="RawProposedValue"/>
+                            <val:MinMaxValidationRule ValidationStep="ConvertedProposedValue" Min="10" Max="350"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                            <TextBlock Margin="10,25,0,0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
 
             <Label HorizontalAlignment="Left" Margin="775,57,0,0" VerticalAlignment="Top" Content="Broj dana za rezervaciju:"/>
-            <TextBox HorizontalAlignment="Left" Margin="775,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" Name="NumerOfDaysForReservationTextBox"/>
+            <TextBox HorizontalAlignment="Left" Margin="775,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="24" Name="NumerOfDaysForReservationTextBox">
+                <TextBox.Text>
+                    <Binding Path="Test3" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <val:NumberValidation ValidationStep="RawProposedValue"/>
+                            <val:MinMaxValidationRule ValidationStep="ConvertedProposedValue" Min="10" Max="350"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-            <Label Content="(unesite parametre po želi, i filtrirani podaci će biti prikazani)" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"/>
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                            <TextBlock Margin="10,25,0,0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
+
+            <Label Content="(unesite parametre po želi, i filtrirani podaci će biti prikazani)" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
 
             <Button Margin="395,138,554,708" RenderTransformOrigin="1.17,0.661" Background="white" Height="50" Width="200" Click="SearchButton_Click">
                 <Grid>

@@ -626,6 +626,7 @@
 
   <ItemGroup>
     <Folder Include="Localization\" />
+    <Folder Include="Resources\Videos\" />
     <Folder Include="WPF\ViewModels\GuideViewModels\" />
   </ItemGroup>
 

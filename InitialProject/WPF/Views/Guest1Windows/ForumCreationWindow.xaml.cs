@@ -42,7 +42,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
         }
         */
 
-        
+
         public ObservableCollection<string> Countries { get; set; }
         public ObservableCollection<string> Cities { get; set; }
 
@@ -137,22 +137,37 @@ namespace InitialProject.WPF.Views.Guest1Windows
 
         private void CreateForumButton_Click(object sender, RoutedEventArgs e)
         {
-            Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
-            Forum forum = new Forum() { Location = location, Author = guest, IsOpen = true, Comments = AllComments };
-            Comment comment = new Comment() { Text = FirstComment, Author = guest, Role = guest.Type, ForumId = forum.Id, ReportsNumber = 0 };
-            AllComments.Add(comment);
-            NewForumNotification notification = new NewForumNotification() { Forum = forum, IsDelivered = false }; //
-
-            if (_forumController.AvailableForum(forum))
+            if (SelectedCountry == null)
             {
-                _forumController.SaveForumComment(forum);
-                _notificationController.Save(notification); //
-                MessageBox.Show("Uspešno ste otvorili forum!", "Forum otvoren!", MessageBoxButton.OK);
-                this.Close();
+                MessageBox.Show("Niste uneli državu!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (SelectedCity == null)
+            {
+                MessageBox.Show("Niste uneli grad!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (string.IsNullOrEmpty(FirstComment))
+            {
+                MessageBox.Show("Niste uneli prvi komentar!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("Forum o ovoj lokaciji već postoji!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                Location location = _locationController.FindLocationByCountryCity(SelectedCountry, SelectedCity);
+                Forum forum = new Forum() { Location = location, Author = guest, IsOpen = true, Comments = AllComments };
+                Comment comment = new Comment() { Text = FirstComment, Author = guest, Role = guest.Type, ForumId = forum.Id, ReportsNumber = 0 };
+                AllComments.Add(comment);
+                NewForumNotification notification = new NewForumNotification() { Forum = forum, IsDelivered = false }; //
+
+                if (_forumController.AvailableForum(forum))
+                {
+                    _forumController.SaveForumComment(forum);
+                    _notificationController.Save(notification); //
+                    MessageBox.Show("Uspešno ste otvorili forum!", "Forum otvoren!", MessageBoxButton.OK);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Forum o ovoj lokaciji već postoji!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
@@ -160,6 +175,6 @@ namespace InitialProject.WPF.Views.Guest1Windows
         {
             this.Close();
         }
-        
+
     }
 }

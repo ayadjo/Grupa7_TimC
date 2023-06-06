@@ -23,7 +23,7 @@ namespace InitialProject.WPF.Views.Guest1Windows
         {
             InitializeComponent();
 
-            //Tutorial.Source = new Uri("../../../Resources/Videos/test.mkv", UriKind.RelativeOrAbsolute);
+            Tutorial.Source = new Uri("../../../Resources/Videos/tutorial.mp4", UriKind.RelativeOrAbsolute);
 
             Tutorial.LoadedBehavior = MediaState.Manual;
         }
@@ -42,6 +42,11 @@ namespace InitialProject.WPF.Views.Guest1Windows
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             Tutorial.Stop();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -41,7 +41,7 @@
 
 
 
-        <DataGrid ItemsSource="{Binding Path=AllImages, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" x:Name="AllImagesDataGrid" Grid.Column="0" Margin="10,262,10,91" Background="white">
+        <DataGrid ItemsSource="{Binding Path=AllImages, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" x:Name="AllImagesDataGrid" Grid.Column="0" Margin="10,262,10,91" Background="white" RowHeight="50">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Url" Width="*" Binding="{Binding Url}"></DataGridTextColumn>
             </DataGrid.Columns>

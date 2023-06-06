@@ -46,5 +46,15 @@ namespace InitialProject.Controller
         {
             return _guestReviewService.GetByUserId(guest);
         }
+
+        public string GetCleannessAverageByUserId(int guest)
+        {
+            return _guestReviewService.GetCleannessAverageByUserId(guest);
+        }
+
+        public string GetBehaviorAverageByUserId(int guest)
+        {
+            return _guestReviewService.GetBehaviorAverageByUserId(guest);
+        }
     }
 }
