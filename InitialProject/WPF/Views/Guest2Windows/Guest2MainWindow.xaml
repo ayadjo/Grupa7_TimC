@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InitialProject.Localization"
         xmlns:local1="clr-namespace:InitialProject.WPF.ViewModels.Guest2ViewModels"
         mc:Ignorable="d"
-        Title="Naziv aplikacije" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="{DynamicResource AppBackgroundBrush}">
+        Title="Chigra" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="{DynamicResource AppBackgroundBrush}">
     <Window.Icon>
         <BitmapImage UriSource="/Resources/Images/Guest2/diversity.png" />
     </Window.Icon>
@@ -81,7 +81,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="MenuItemBorder" Property="Background" Value="Pink" />
+                                <Setter TargetName="MenuItemBorder" Property="Background" Value="{Binding BackgroundColor}" />
                             </Trigger>
                             <DataTrigger Binding="{Binding Path=Checker}" Value="True">
                                 <DataTrigger.EnterActions>
@@ -153,20 +153,21 @@
         </StackPanel>
 
 
-        <StackPanel Orientation="Horizontal" Margin="877,0,10,532">
-            <Button x:Name="languageSerbian" HorizontalContentAlignment="Center" Width="45" Height="30" VerticalAlignment="Top" BorderBrush="{Binding BackgroundColor}" Background="{Binding BackgroundColor}" Command="{Binding SwitchToSerbianCommand}">
+        <StackPanel Orientation="Horizontal" Margin="830,0,15,532">
+            <Button x:Name="languageSerbian" HorizontalContentAlignment="Center" Width="67" Height="30" VerticalAlignment="Top" BorderBrush="{Binding BackgroundColor}" Background="{Binding BackgroundColor}" Command="{Binding SwitchToSerbianCommand}">
                 <Button.Content>
-                    <WrapPanel>
-                        <TextBlock TextDecorations="Underline" Width="39" TextAlignment="Center" Text="{local:Loc Serbian}"></TextBlock>
-                    </WrapPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/flag-srb.png" Height="20" Width="20"/>
+                        <TextBlock Width="39" TextAlignment="Center" Text="{local:Loc Serbian}" Margin="0,0,10,0"></TextBlock>
+                    </StackPanel>
                 </Button.Content>
             </Button>
-            <Button x:Name="languageEnglish" HorizontalContentAlignment="Center" Width="47" Height="30" VerticalAlignment="Top" BorderBrush="{Binding BackgroundColor}" Background="{Binding BackgroundColor}" Command="{Binding SwitchToEnglishCommand}">
+            <Button x:Name="languageEnglish" HorizontalContentAlignment="Center" Width="67" Height="30" VerticalAlignment="Top" BorderBrush="{Binding BackgroundColor}" Background="{Binding BackgroundColor}" Command="{Binding SwitchToEnglishCommand}">
                 <Button.Content>
-                    <WrapPanel>
-                        <!--<Image Source="/Resources/Images/transparency.png" Height="28" Width="28"/>-->
-                        <TextBlock TextDecorations="Underline" Width="45" TextAlignment="Center" Text="{local:Loc English}" ></TextBlock>
-                    </WrapPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/flag-uk.png" Height="20" Width="20"/>
+                        <TextBlock Width="45" TextAlignment="Center" Text="{local:Loc English}" ></TextBlock>
+                    </StackPanel>
                 </Button.Content>
             </Button>
         </StackPanel>
@@ -202,7 +203,7 @@
         </StackPanel>
 
 
-        <Grid HorizontalAlignment="Left" Margin="234,40,0,0" VerticalAlignment="Center" Width="764" Height="540" >
+        <Grid HorizontalAlignment="Left" Margin="234,37,0,0" VerticalAlignment="Center" Width="764" Height="540" >
             <Frame x:Name="frame" Source="ToursOverviewWindow.xaml" Margin="0,-15,0,0"/>
         </Grid>
 

@@ -124,6 +124,9 @@
     <None Remove="Resources\Images\Guest2\duration.png" />
     <None Remove="Resources\Images\Guest2\earth.png" />
     <None Remove="Resources\Images\Guest2\education.png" />
+    <None Remove="Resources\Images\Guest2\flag-srb.png" />
+    <None Remove="Resources\Images\Guest2\flag-uk.png" />
+    <None Remove="Resources\Images\Guest2\flag.png" />
     <None Remove="Resources\Images\Guest2\graph.png" />
     <None Remove="Resources\Images\Guest2\group.png" />
     <None Remove="Resources\Images\Guest2\hiking.png" />
@@ -131,6 +134,7 @@
     <None Remove="Resources\Images\Guest2\location-pin.png" />
     <None Remove="Resources\Images\Guest2\location.png" />
     <None Remove="Resources\Images\Guest2\logout.png" />
+    <None Remove="Resources\Images\Guest2\loupe.png" />
     <None Remove="Resources\Images\Guest2\man.png" />
     <None Remove="Resources\Images\Guest2\map.png" />
     <None Remove="Resources\Images\Guest2\moon.png" />
@@ -274,6 +278,15 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Guest2\add-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\flag-srb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\flag-uk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Guest2\loupe.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Guest2\moon.png">

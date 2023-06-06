@@ -12,7 +12,7 @@
             <StackPanel>
                 <!-- Placeholder for the TextBox itself -->
                 <AdornedElementPlaceholder x:Name="textBox" />
-                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red" FontSize="10"/>
+                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="#FF8000 " FontSize="10"/>
             </StackPanel>
         </ControlTemplate>
     </UserControl.Resources>
@@ -31,64 +31,63 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="-5,10,20,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="-5,15,20,0" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition Height="10" ></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="144"></ColumnDefinition>
-                    <ColumnDefinition Width="144"></ColumnDefinition>
-                    <ColumnDefinition Width="144"></ColumnDefinition>
-                    <ColumnDefinition Width="144"></ColumnDefinition>
-                    <ColumnDefinition Width="144"></ColumnDefinition>
+                    <ColumnDefinition Width="241"></ColumnDefinition>
+                    <ColumnDefinition Width="241"></ColumnDefinition>
+                    <ColumnDefinition Width="241"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" >
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Image Source="/Resources/Images/Guest2/earth.png"  Height="20" Width="35" Margin="0,8,0,-5" />
-                        <Label Content="{local2:Loc Country}" Height="27" Width="50" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/earth.png"  Height="20" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,-15,0"/>
+                        <Label Content="{local2:Loc Country}" Height="27" Width="100" HorizontalContentAlignment="Center" />
                     </StackPanel>
-                    <TextBox x:Name="tbCountry" Text="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
+                    <TextBox x:Name="tbCountry" Text="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel>
-                        <Image Source="/Resources/Images/Guest2/skyscraper.png"  Height="20" Width="35" Margin="0,8,0,-5"/>
-                        <Label Content="{local2:Loc City}" Height="27" Width="39"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/skyscraper.png"  Height="20" Width="35" Margin="0,0,-15,0" />
+                        <Label Content="{local2:Loc City}" Height="27" Width="100" HorizontalContentAlignment="Center"/>
                     </StackPanel>
-                    <TextBox x:Name="tbCity" Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
+                    <TextBox x:Name="tbCity" Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel>
-                        <Image Source="/Resources/Images/Guest2/group.png"  Height="20" Width="35" Margin="0,8,0,-5"/>
-                        <Label Content="{local2:Loc NumberOfPeople}" Height="27" Width="56" Margin="-3,0,0,0"/>
-                    </StackPanel>
-                    <TextBox x:Name="tbNumberOfPeople" Text="{Binding Path=NumberOfPeople, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel>
-                        <Image Source="/Resources/Images/Guest2/translation.png"  Height="20" Width="38" Margin="3,8,3,-5"/>
-                        <Label Content="{local2:Loc Language}" Height="27" Width="40" Margin="3,0,3,0"/>
-                    </StackPanel>
-                    <TextBox x:Name="tbLanguage" Text="{Binding Path=Languages, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel>
-                        <Image Source="/Resources/Images/Guest2/duration.png"  Height="20" Width="38" Margin="0,8,0,-5"/>
-                        <Label Content="{local2:Loc Duration}" Height="27" Width="52"/>
-                    </StackPanel>
-                    <TextBox x:Name="tbDuration" Text="{Binding Path=Duration, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Height="23" Width="88"/>
-                </StackPanel>
-
-
-                <Button x:Name="Search" Click="Search_Click" Grid.Row="1" Grid.Column="4"  Margin="-10,5,0,10" Background="White" Height="35" Width="150">
                     <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/group.png"  Height="20" Width="35" Margin="0,0,-10,0"/>
+                        <Label Content="{local2:Loc NumberOfGuests}" Height="27" Width="100" Margin="-3,0,0,0" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                    <TextBox x:Name="tbNumberOfPeople" Text="{Binding Path=NumberOfPeople, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/translation.png"  Height="20" Width="38"  Margin="0,0,-15,0"/>
+                        <Label Content="{local2:Loc Language}" Height="27" Width="100" Margin="-3,0,0,0" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                    <TextBox x:Name="tbLanguage" Text="{Binding Path=Languages, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/Guest2/duration.png"  Height="20" Width="35"  Margin="0,0,-15,0"/>
+                        <Label Content="{local2:Loc Duration}" Height="27" Width="100" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                    <TextBox x:Name="tbDuration" Text="{Binding Path=Duration, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25"/>
+                </StackPanel>
+
+
+                <Button x:Name="Search" Click="Search_Click" Grid.Row="2" Grid.Column="3"  Margin="0,10,0,10" Background="White" Height="35" Width="150" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Image Source="/Resources/Images/Guest2/search.png" Width="20" Height="15" Margin="0,0,5,0" />
-                        <ContentControl Content="{local2:Loc Search}" Height="15"></ContentControl>
+                        <ContentControl Content="{local2:Loc Search}" Height="15" ></ContentControl>
                     </StackPanel>
                 </Button>
 
@@ -97,7 +96,7 @@
             </Grid>
         </Grid>
 
-        <Button x:Name="Reserve" DockPanel.Dock="Bottom" Margin="520,-90,-26,30" Height="35" Width="150" Click="Reserve_Click" Background="White">
+        <Button x:Name="Reserve" DockPanel.Dock="Bottom" Margin="520,-80,-26,30" Height="35" Width="150" Click="Reserve_Click" Background="White">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/check.png" Width="15" Height="15" Margin="0,0,5,0" />
                 <ContentControl Content="{local2:Loc Reserve}"></ContentControl>
@@ -121,7 +120,7 @@
                                     <Border.Style>
                                         <Style>
 
-                                            <Setter Property="Border.Background" Value="#DFFDFF"></Setter>
+                                            <Setter Property="Border.Background" Value="{Binding BackgroundColor}"></Setter>
                                             <Style.Triggers>
                                                 <Trigger Property="Border.IsMouseOver" Value="True">
                                                     <Setter Property="Border.Background" Value="#DFFDFF"></Setter>

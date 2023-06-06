@@ -19,14 +19,15 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
     
     public class BoolToBrushConverter1 : IValueConverter
     {
-      
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return Brushes.Transparent;
-            
-            return (int)(value) == 1 ? Brushes.Red : Brushes.Black;
+                return new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)); // Transparent brush
+
+            return (int)value == 1 ? new SolidColorBrush(Color.FromArgb(255, 255, 128, 0)) : new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)); // Green or black brush
         }
+
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -39,10 +40,11 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return Brushes.Transparent;
+                return new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)); // Transparent brush
 
-            return (int)(value) == 2 ? Brushes.Red : Brushes.Black;
+            return (int)value == 2 ? new SolidColorBrush(Color.FromArgb(255, 255, 128, 0)) : new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)); // Green or black brush
         }
+
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -55,10 +57,11 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return Brushes.Transparent;
+                return new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)); // Transparent brush
 
-            return (int)(value) == 3 ? Brushes.Red : Brushes.Black;
+            return (int)value == 3 ? new SolidColorBrush(Color.FromArgb(255, 255, 128, 0)) : new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)); // Green or black brush
         }
+
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -242,7 +245,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             if (IsDarkTheme)
             {
                 // Apply dark theme
-                App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#5d74cf");
+                App.BackgroundColor = (Color)ColorConverter.ConvertFromString("#6f84d9");
 
             }
             else
