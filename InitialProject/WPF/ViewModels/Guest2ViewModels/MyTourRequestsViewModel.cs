@@ -15,6 +15,7 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
     public class MyTourRequestsViewModel : ViewModelBase
     {
+
         public NavigationService navigationService { get; set; }
         public ObservableCollection<TourRequest> Requests { get; set; }
 

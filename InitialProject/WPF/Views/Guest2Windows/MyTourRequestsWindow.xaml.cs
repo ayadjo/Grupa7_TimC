@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace InitialProject.WPF.Views.Guest2Windows
 {
     /// <summary>
@@ -47,39 +48,8 @@ namespace InitialProject.WPF.Views.Guest2Windows
         {
             InitializeComponent();
             myTourRequestsViewModel = new MyTourRequestsViewModel(NavigationService);
-            this.DataContext = myTourRequestsViewModel;          
+            this.DataContext = myTourRequestsViewModel;
         }
-
-       
-        /*
-        private void CreateRequest_Click(object sender, RoutedEventArgs e)
-        {
-            CreateTourRequestWindow createTourRequestWindow = new CreateTourRequestWindow();
-            createTourRequestWindow.Show();
-        }
-
-        
-        
-        private void Statistics_Click(object sender, RoutedEventArgs e)
-        {
-            TourRequestStatisticsWindow tourRequestStatisticsWindow = new TourRequestStatisticsWindow();
-            tourRequestStatisticsWindow.Show();
-        }
-
-        private void CreateComplexTourRequest_Click(object sender, RoutedEventArgs e)
-        {
-            CreateComplexTourRequestWindow createComplexTourRequestWindow = new CreateComplexTourRequestWindow();
-            createComplexTourRequestWindow.Show();
-        }
-
-        private void ViewComplexTourRequest_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedComplexTourRequest != null)
-            {
-                PartsOfRequestWindow partsOfRequestWindow = new PartsOfRequestWindow(SelectedComplexTourRequest);
-                partsOfRequestWindow.Show();
-            }
-        }*/
 
         protected void OnPropertyChanged(string propertyName)
         {
@@ -87,5 +57,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+
     }
 }

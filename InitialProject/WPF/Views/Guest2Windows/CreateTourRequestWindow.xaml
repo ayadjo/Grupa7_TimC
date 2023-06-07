@@ -26,31 +26,101 @@
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/earth.png"  Height="20" Width="35" />
                 <Label Content="{local2:Loc Country}" Height="27" Width="100"/>
-                <ComboBox x:Name="CountryComboBox" SelectedItem="{Binding Path=SelectedCountry,  Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Countries}" Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!" LostFocus="CountryComboBox_LostFocus"/>
+                <!--<ComboBox x:Name="CountryComboBox" SelectedItem="{Binding Path=SelectedCountry,  Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Countries}" Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!"/>-->
+                <ComboBox x:Name="CountryComboBox"
+          SelectedItem="{Binding SelectedCountry, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+          ItemsSource="{Binding Countries}"
+          Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!">
+                    <ComboBox.Resources>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Validation.ErrorTemplate">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <DockPanel LastChildFill="True">
+                                            <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                                <TextBlock Text="!" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                            </Border>
+                                            <AdornedElementPlaceholder x:Name="customAdorner"/>
+                                        </DockPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ComboBox.Resources>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/skyscraper.png"  Height="20" Width="35" />
                 <Label Content="{local2:Loc City}" Height="27" Width="100"/>
-                <ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Cities}" Width="100" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!"/>
+                <!--<ComboBox x:Name="CityComboBox"  SelectedItem="{Binding Path=SelectedCity, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" ItemsSource="{Binding Cities}" Width="100" Height="25"  Margin="10,10,10,10" ToolTip="This field is required!"/>-->
+                <ComboBox x:Name="CityComboBox"
+          SelectedItem="{Binding SelectedCity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+          ItemsSource="{Binding Cities}"
+          Width="100" Height="25" Margin="10,10,10,10" ToolTip="This field is required!">
+                    <ComboBox.Resources>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Validation.ErrorTemplate">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <DockPanel LastChildFill="True">
+                                            <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                                <TextBlock Text="!" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                            </Border>
+                                            <AdornedElementPlaceholder x:Name="customAdorner"/>
+                                        </DockPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ComboBox.Resources>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/translation.png"  Height="20" Width="35" />
                 <Label Content="{local2:Loc Language}" Height="27" Width="100"/>
-                <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="10,10,10,10" Width="100" Height="25" ToolTip="This field is required!" LostFocus="LanguageComboBox_LostFocus">
+                <!--<ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="10,10,10,10" Width="100" Height="25" ToolTip="This field is required!" LostFocus="LanguageComboBox_LostFocus">
+                    <ComboBoxItem Content="{local2:Loc Serbian}"></ComboBoxItem>
+                    <ComboBoxItem Content="{local2:Loc English}"></ComboBoxItem>
+                    <ComboBoxItem Content="{local2:Loc Italian}"></ComboBoxItem>
+                    <ComboBoxItem Content="{local2:Loc Korean}"></ComboBoxItem>
+                    <ComboBoxItem Content="{local2:Loc Japanese}"></ComboBoxItem>
+                </ComboBox>-->
+                <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="10,10,10,10" Width="100" Height="25" ToolTip="This field is required!"
+          SelectedItem="{Binding Language, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" LostFocus="LanguageComboBox_LostFocus">
+                    <ComboBox.Resources>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Validation.ErrorTemplate">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <DockPanel LastChildFill="True">
+                                            <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                                <TextBlock Text="!" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                                            </Border>
+                                            <AdornedElementPlaceholder x:Name="customAdorner"/>
+                                        </DockPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ComboBox.Resources>
                     <ComboBoxItem Content="{local2:Loc Serbian}"></ComboBoxItem>
                     <ComboBoxItem Content="{local2:Loc English}"></ComboBoxItem>
                     <ComboBoxItem Content="{local2:Loc Italian}"></ComboBoxItem>
                     <ComboBoxItem Content="{local2:Loc Korean}"></ComboBoxItem>
                     <ComboBoxItem Content="{local2:Loc Japanese}"></ComboBoxItem>
                 </ComboBox>
+
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Images/Guest2/group.png"  Height="20" Width="35" />
                 <Label Content="{local2:Loc NumberOfGuests}" Height="27" Width="100"/>
-                <TextBox x:Name="MaxGuestTextBox" Text="{Binding Path=MaxGuests, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25" ToolTip="This field is required!" Margin="10,10,10,10"/>
+                <TextBox x:Name="MaxGuestTextBox" Text="{Binding Path=MaxGuests, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="100" Height="25" ToolTip="This field is required!" Margin="10,10,10,10"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -61,7 +131,7 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <TextBox x:Name="DescriptionTextBox" Text="{Binding Path=Description, Mode=OneWayToSource, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="214" Height="46" ToolTip="This field is required!" Margin="10,10,10,10"/>
+                    <TextBox x:Name="DescriptionTextBox" Text="{Binding Path=Description, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Width="214" Height="46" ToolTip="This field is required!" Margin="10,10,10,10"/>
                 </StackPanel>
 
             </StackPanel>

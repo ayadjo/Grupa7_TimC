@@ -28,7 +28,7 @@ namespace InitialProject.WPF.Views.Guest2Window
     /// <summary>
     /// Interaction logic for ToursOverviewWindow.xaml
     /// </summary>
-    public partial class ToursOverviewWindow : UserControl, IDataErrorInfo  
+    public partial class ToursOverviewWindow : UserControl //, IDataErrorInfo  
     {
         public ObservableCollection<Tour> Tours { get; set; }
 
@@ -95,15 +95,15 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            if(IsValid)
-            {
+            //if(IsValid)
+            //{
                 List<Tour> searchedTours = _tourController.SearchTours(Country, City, Languages, NumberOfPeople, Duration);
                 RefreshTours(searchedTours);
-            }
-            else
-            {
+           // }
+            //else
+            //{
                 MessageBox.Show("Neispravno popunjeni podaci", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+           // }
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
@@ -137,7 +137,7 @@ namespace InitialProject.WPF.Views.Guest2Window
 
         //Validacija
 
-        private Regex _CountryRegex = new Regex("[A-Z][a-z]*");
+        /*private Regex _CountryRegex = new Regex("[A-Z][a-z]*");
 
         private Regex _LanguageRegex = new Regex("[a-z]*");
         public string Error => null;
@@ -203,7 +203,7 @@ namespace InitialProject.WPF.Views.Guest2Window
 
                 return true;
             }
-        }
+        }*/
 
     }
 }

@@ -15,8 +15,9 @@ using System.Windows.Navigation;
 
 namespace InitialProject.WPF.ViewModels.Guest2ViewModels
 {
-    public class GuideReviewViewModel : ViewModelBase
+    public class GuideReviewViewModel : ViewModelBase, IClose
     {
+        public Action Close { get; set; }
         public NavigationService navigationService { get; set; }
         public ObservableCollection<int> Grades { get; set; }
         public ObservableCollection<string> Images { get; set; }
@@ -178,13 +179,16 @@ namespace InitialProject.WPF.ViewModels.Guest2ViewModels
             {
                 _guideReviewController.Save(guideReview);
                 MessageBox.Show("Uspešno ste ocenili!");
-                //this.Close();
+                Close();
             }
             else
             {
                 MessageBox.Show("Neispravno uneti podaci!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            /*this.navigationService.Navigate(
+
+
+            /*this.n
+             * avigationService.Navigate(
             new Uri("/WPF/Views/Guest2Windows/MyToursWindow.xaml", UriKind.Relative));*/
             //NavigationCommands.BrowseBack.Execute;
         }

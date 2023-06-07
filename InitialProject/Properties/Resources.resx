@@ -201,6 +201,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="No available space" xml:space="preserve">
+    <value>Sorry, no available space.</value>
+  </data>
   <data name="NumberOfGuests" xml:space="preserve">
     <value>Number of guests</value>
   </data>
@@ -254,5 +257,8 @@
   </data>
   <data name="VoucherReports" xml:space="preserve">
     <value>Voucher reports</value>
+  </data>
+  <data name="You have already reserved this tour!" xml:space="preserve">
+    <value>Sorry, you have already reserved this tour.</value>
   </data>
 </root>

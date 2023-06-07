@@ -163,7 +163,7 @@
     <value>Datum kraja</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>english</value>
+    <value>engleski</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Greška</value>
@@ -200,6 +200,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Naziv</value>
+  </data>
+  <data name="No available space" xml:space="preserve">
+    <value>Izvinjavamo se, nema dovoljno mesta.</value>
   </data>
   <data name="NumberOfGuests" xml:space="preserve">
     <value>Broj gostiju</value>
@@ -254,5 +257,8 @@
   </data>
   <data name="VoucherReports" xml:space="preserve">
     <value>Izveštaj o vaučerima</value>
+  </data>
+  <data name="You have already reserved this tour!" xml:space="preserve">
+    <value>Izvinjavamo se, ali već ste rezervisali ovu turu.</value>
   </data>
 </root>

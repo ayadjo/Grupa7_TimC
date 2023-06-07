@@ -32,6 +32,7 @@ using System.Reflection;
 using System.Drawing;
 using InitialProject.WPF.Views.OwnerWindows;
 using iTextSharp.text;
+using System.Collections;
 
 namespace InitialProject.WPF.Views.Guest2Window
 {
@@ -155,7 +156,8 @@ namespace InitialProject.WPF.Views.Guest2Window
 
                 if (existingTourReservation != null)
                 {
-                    MessageBox.Show("Vec ste rezervisali ovu turu!");
+                    //MessageBox.Show("Vec ste rezervisali ovu turu!");
+                    MessageBox.Show(Localization.TranslationSource.Instance["You have already reserved this tour!"], Localization.TranslationSource.Instance["Error"], MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
@@ -176,7 +178,9 @@ namespace InitialProject.WPF.Views.Guest2Window
             }
             else
             {
-                MessageBox.Show("Nema dovoljno mesta!");
+                
+                //MessageBox.Show("Nema dovoljno mesta!");
+                MessageBox.Show(Localization.TranslationSource.Instance["No available space"], Localization.TranslationSource.Instance["Error"], MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return;

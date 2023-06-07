@@ -40,15 +40,7 @@ namespace InitialProject.WPF.Views.Guest2Windows
             }
         }
 
-        private void CountryComboBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            List<string> cities = createTourRequestViewModel._locationController.GetCitiesByCountry(createTourRequestViewModel.SelectedCountry);
-            createTourRequestViewModel.Cities.Clear();
-            foreach (string city in cities)
-            {
-                createTourRequestViewModel.Cities.Add(city);
-            }
-        }
+       
 
         private void LanguageComboBox_LostFocus(object sender, RoutedEventArgs e)
         {

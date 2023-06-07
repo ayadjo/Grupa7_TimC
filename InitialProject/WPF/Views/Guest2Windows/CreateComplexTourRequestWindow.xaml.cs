@@ -23,6 +23,8 @@ namespace InitialProject.WPF.Views.Guest2Windows
     public partial class CreateComplexTourRequestWindow : Window
     {
         public CreateComplexTourRequestViewModel createComplexTourRequestViewModel;
+
+
         public CreateComplexTourRequestWindow(MyTourRequestsViewModel model)
         {
             InitializeComponent();
@@ -38,15 +40,6 @@ namespace InitialProject.WPF.Views.Guest2Windows
             }
         }
 
-        private void CountryComboBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            List<string> cities = createComplexTourRequestViewModel._locationController.GetCitiesByCountry(createComplexTourRequestViewModel.SelectedCountry);
-            createComplexTourRequestViewModel.Cities.Clear();
-            foreach (string city in cities)
-            {
-                createComplexTourRequestViewModel.Cities.Add(city);
-            }
-        }
 
         private void LanguageComboBox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -56,15 +49,11 @@ namespace InitialProject.WPF.Views.Guest2Windows
             }
             else if (LanguageComboBox.SelectedIndex == 1)
             {
-
                 createComplexTourRequestViewModel.Language = "engleski";
-
             }
             else if (LanguageComboBox.SelectedIndex == 2)
             {
-
                 createComplexTourRequestViewModel.Language = "italijanski";
-
             }
             else if (LanguageComboBox.SelectedIndex == 3)
             {
@@ -77,5 +66,6 @@ namespace InitialProject.WPF.Views.Guest2Windows
 
 
         }
+        
     }
 }

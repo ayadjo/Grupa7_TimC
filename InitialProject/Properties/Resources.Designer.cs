@@ -313,6 +313,15 @@ namespace InitialProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry, no available space..
+        /// </summary>
+        public static string No_available_space {
+            get {
+                return ResourceManager.GetString("No available space", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of guests.
         /// </summary>
         public static string NumberOfGuests {
@@ -471,6 +480,15 @@ namespace InitialProject.Properties {
         public static string VoucherReports {
             get {
                 return ResourceManager.GetString("VoucherReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, you have already reserved this tour..
+        /// </summary>
+        public static string You_have_already_reserved_this_tour_ {
+            get {
+                return ResourceManager.GetString("You have already reserved this tour!", resourceCulture);
             }
         }
     }
