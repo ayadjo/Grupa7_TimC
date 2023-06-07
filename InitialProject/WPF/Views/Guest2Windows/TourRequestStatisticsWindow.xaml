@@ -25,7 +25,7 @@
             <ComboBox x:Name="YearComboBox"  SelectedItem="{Binding Path=SelectedYear}"  HorizontalAlignment="Right" ItemsSource="{Binding Years}" Width="150" Height="35" Margin="0,0,20,0" Background="White"/>
             <Button x:Name="View" Command="{Binding ViewCommand}"  HorizontalAlignment="Center" Height="35" Width="150" Background="White">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/Images/Guest2/annual-percentage-rate.png" Width="15" Height="15" Margin="0,0,5,0" />
+                    <Image Source="/Resources/Images/Guest2/calendar.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <ContentControl Content="{local2:Loc ViewForYear}"></ContentControl>
                 </StackPanel>
             </Button>

@@ -8,13 +8,13 @@
         d:DesignHeight="584" d:DesignWidth="764">
     
     <StackPanel>
-        <Label FontSize="20" Content="My tours" HorizontalAlignment="Center" Margin="0,20,0,0"></Label>
-        <StackPanel Orientation="Horizontal" Margin="30,20,30,25" Width="396" Height="90" >
+        <Label FontSize="20" Content="My tours" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,30,0,30"></Label>
+        <!--<StackPanel Orientation="Horizontal" Margin="30,20,30,25" Width="396" Height="90" >
             <Image Source="/Resources/Images/Guest2/travel-itinerary.png" Height="60" Width="128"/>
             <Image Source="/Resources/Images/Guest2/adventure.png" Height="90" Width="140"/>
             <Image Source="/Resources/Images/Guest2/location-pin.png" Height="60" Width="128"/>
-        </StackPanel>
-        <DataGrid 
+        </StackPanel>-->
+        <!--<DataGrid 
                   ItemsSource="{Binding Path=TourEvents, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Path=SelectedTourEvent, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" IsReadOnly="True" x:Name="myTourOverview" Margin="0,0,10,-100" Height="260" Width="700">
@@ -27,10 +27,63 @@
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Tour.Duration}" Width="60"></DataGridTextColumn>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
 
+        
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Width="720" Height="300" Margin="0,0,25,30" x:Name="aaa">
+                <WrapPanel Orientation="Horizontal" >
+
+                    <ItemsControl ItemsSource="{Binding Path=TourEvents}" Name="bbb" >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel></WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel Margin="0,0,5,5" Width="170" Height="150" >
+                                    <Border BorderThickness="1">
+                                        <Border.Style>
+                                            <Style>
+
+                                                <Setter Property="Border.Background" Value="{Binding BackgroundColor}"></Setter>
+                                                <Style.Triggers>
+                                                    <Trigger Property="Border.IsMouseOver" Value="True">
+                                                        <Setter Property="Border.Background" Value="#DFFDFF"></Setter>
+                                                    </Trigger>
+
+                                                </Style.Triggers>
+
+                                            </Style>
+                                        </Border.Style>
+
+                                        <DockPanel>
+
+                                            <DockPanel DockPanel.Dock="Top" Margin="15,15,15,0">
+                                                <Button x:Name="AButton" Tag="{Binding Id}" Click="SelectClick">
+                                                    <Image  Width="150" Height="100" Source="{Binding Tour.Images[0].Url}" Margin="0,0,0,0" Cursor="Hand">
+
+                                                    </Image>
+
+                                                </Button>
+                                            </DockPanel>
+                                            <DockPanel DockPanel.Dock="Bottom">
+                                                <TextBlock Text="{Binding Tour.Name}" TextAlignment="Center"></TextBlock>
+                                            </DockPanel>
+
+                                        </DockPanel>
+
+                                    </Border>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </WrapPanel>
+            </ScrollViewer>
         <StackPanel Orientation="Horizontal" Height="205" Width="708">
-
             <!--<Button x:Name="CreateRequest" Click="CreateRequest_Click" Margin="0,100,0,30" Height="35" Width="150" Background="#FFFFFF">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/Guest2/star.png" Width="15" Height="15" Margin="0,0,5,0" />
@@ -38,14 +91,14 @@
                 </StackPanel>
             </Button>-->
             
-            <Button x:Name="TourPoint" Click="TourPoint_Click" Margin="380,100,0,30" Height="35" Width="150" Background="#FFFFFF">
+            <Button x:Name="TourPoint" Click="TourPoint_Click" Margin="380,-60,0,30" Height="35" Width="150" Background="#FFFFFF">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/Guest2/destination.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <ContentControl Content="Ključne tačke"></ContentControl>
                 </StackPanel>
             </Button>
 
-            <Button x:Name="Rate" Click="Rate_Click" Margin="20,100,0,30" Height="35" Width="150" Background="#FFFFFF">
+            <Button x:Name="Rate" Click="Rate_Click" Margin="20,-60,0,30" Height="35" Width="150" Background="#FFFFFF">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/Guest2/star.png" Width="15" Height="15" Margin="0,0,5,0" />
                     <ContentControl Content="Oceni"></ContentControl>

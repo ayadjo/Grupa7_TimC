@@ -116,6 +116,7 @@
     <None Remove="Resources\Images\Guest2\adventure.png" />
     <None Remove="Resources\Images\Guest2\annual-percentage-rate.png" />
     <None Remove="Resources\Images\Guest2\application.png" />
+    <None Remove="Resources\Images\Guest2\calendar.png" />
     <None Remove="Resources\Images\Guest2\check.png" />
     <None Remove="Resources\Images\Guest2\comment.png" />
     <None Remove="Resources\Images\Guest2\dateAndTime.png" />
@@ -215,6 +216,12 @@
     <None Remove="Resources\Images\women.png" />
     <None Remove="Resources\Images\world-globe.png" />
     <None Remove="Resources\Images\worldTour.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guest2\calendar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
